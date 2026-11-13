@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Force Calculator Online - Calculate Force, Mass & Acceleration</title>
+
+    <meta name="description" content="Use our free Force Calculator to calculate force, mass or acceleration using Newton's Second Law (F = ma). Supports multiple measurement units.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/force-calculator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Force Calculator Online - ToolSahayak">
+    <meta property="og:description" content="Calculate force, mass and acceleration easily using Newton's Second Law with our free online calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/force-calculator.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Force Calculator Online - ToolSahayak">
+    <meta name="twitter:description" content="Calculate force, mass or acceleration using Newton's Second Law (F = ma).">
+
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #263247;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: #ffffff;
+            padding: 17px 6%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 18px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .heading span {
+            display: inline-block;
+            background: #e0edff;
+            color: #2563eb;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .heading h1 {
+            font-size: 32px;
+            color: #172554;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .calculator-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+        }
+
+        .formula-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .formula-box strong {
+            color: #1d4ed8;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .formula-box p {
+            font-size: 14px;
+            color: #334155;
+        }
+
+        .mode-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 9px;
+        }
+
+        .mode-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .mode-btn {
+            padding: 12px 8px;
+            border: 1px solid #dbe3ef;
+            background: #ffffff;
+            color: #475569;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .mode-btn.active {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #334155;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        input:focus, select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+        }
+
+        .input-row select {
+            max-width: 125px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 24px;
+            padding: 22px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            color: #047857;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            color: #065f46;
+            font-size: 30px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .result-formula {
+            color: #475569;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .error {
+            display: none;
+            margin-top: 15px;
+            color: #dc2626;
+            background: #fef2f2;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .reset-btn {
+            margin-top: 14px;
+            padding: 9px 20px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            border-radius: 7px;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .info-card {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 13px;
+            margin-top: 22px;
+            box-shadow: 0 4px 18px rgba(15,23,42,0.04);
+        }
+
+        .info-card h2 {
+            color: #172554;
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p, .info-card li {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 25px auto;
+            }
+
+            .heading h1 {
+                font-size: 26px;
+            }
+
+            .calculator-card {
+                padding: 19px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .mode-buttons {
+                gap: 6px;
+            }
+
+            .mode-btn {
+                font-size: 12px;
+                padding: 11px 4px;
+            }
+
+            .input-row select {
+                max-width: 115px;
+            }
+
+            .result-value {
+                font-size: 25px;
+            }
+        }
+    
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html">ToolSahayak</a>
+    </nav>
+
+    <main class="container">
+
+        <div class="heading">
+            <span>EDUCATION & SCIENCE</span>
+            <h1>Force Calculator</h1>
+            <p>Calculate force, mass and acceleration easily using Newton's second law.</p>
+        </div>
+
+        <section class="calculator-card">
+
+            <div class="formula-box">
+                <strong>Newton's Second Law of Motion</strong>
+                <p>Force = Mass × Acceleration (F = m × a)</p>
+            </div>
+
+            <label class="mode-label">What do you want to calculate?</label>
+
+            <div class="mode-buttons">
+                <button type="button" class="mode-btn active" data-mode="force">Find Force</button>
+                <button type="button" class="mode-btn" data-mode="mass">Find Mass</button>
+                <button type="button" class="mode-btn" data-mode="acceleration">Find Acceleration</button>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group" id="massGroup">
+                    <label for="mass">Mass</label>
+                    <div class="input-row">
+                        <input type="number" id="mass" placeholder="Enter mass" min="0" step="any">
+                        <select id="massUnit">
+                            <option value="kg">kg</option>
+                            <option value="g">g</option>
+                            <option value="tonne">tonne</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="accelerationGroup">
+                    <label for="acceleration">Acceleration</label>
+                    <div class="input-row">
+                        <input type="number" id="acceleration" placeholder="Enter acceleration" step="any">
+                        <select id="accelerationUnit">
+                            <option value="ms2">m/s²</option>
+                            <option value="cms2">cm/s²</option>
+                            <option value="fts2">ft/s²</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="forceGroup" style="display:none;">
+                    <label for="force">Force</label>
+                    <div class="input-row">
+                        <input type="number" id="force" placeholder="Enter force" step="any">
+                        <select id="forceUnit">
+                            <option value="N">N</option>
+                            <option value="kN">kN</option>
+                            <option value="mN">mN</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="outputUnit">Result Unit</label>
+                <select id="outputUnit"></select>
+            </div>
+
+            <button type="button" class="calculate-btn" id="calculateBtn">
+                Calculate Result
+            </button>
+
+            <div class="error" id="error"></div>
+
+            <div class="result-box" id="resultBox">
+                <h3 id="resultHeading">Calculated Result</h3>
+                <div class="result-value" id="resultValue"></div>
+                <div class="result-formula" id="resultFormula"></div>
+            </div>
+
+            <div style="text-align:center;">
+                <button type="button" class="reset-btn" id="resetBtn">Reset Calculator</button>
+            </div>
+
+        </section>
+
+        <section class="info-card">
+            <h2>What is Force?</h2>
+            <p>
+                Force is a push or pull that can change the motion or shape of an object.
+                Its SI unit is Newton (N).
+            </p>
+        </section>
+
+        <section class="info-card">
+            <h2>Force Formula</h2>
+            <ul>
+                <li><strong>Force:</strong> F = m × a</li>
+                <li><strong>Mass:</strong> m = F ÷ a</li>
+                <li><strong>Acceleration:</strong> a = F ÷ m</li>
+            </ul>
+            <p style="margin-top:10px;">
+                Where F = Force, m = Mass and a = Acceleration.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        © 2026 <a href="../index.html">ToolSahayak</a>. All Rights Reserved.
+    </footer>
+
+    <script>
+        const massInput = document.getElementById("mass");
+        const accelerationInput = document.getElementById("acceleration");
+        const forceInput = document.getElementById("force");
+
+        const massUnit = document.getElementById("massUnit");
+        const accelerationUnit = document.getElementById("accelerationUnit");
+        const forceUnit = document.getElementById("forceUnit");
+        const outputUnit = document.getElementById("outputUnit");
+
+        const massGroup = document.getElementById("massGroup");
+        const accelerationGroup = document.getElementById("accelerationGroup");
+        const forceGroup = document.getElementById("forceGroup");
+
+        const resultBox = document.getElementById("resultBox");
+        const resultValue = document.getElementById("resultValue");
+        const resultHeading = document.getElementById("resultHeading");
+        const resultFormula = document.getElementById("resultFormula");
+        const errorBox = document.getElementById("error");
+
+        let currentMode = "force";
+
+        const outputOptions = {
+            force: [
+                { value: "N", label: "Newton (N)" },
+                { value: "kN", label: "Kilonewton (kN)" },
+                { value: "mN", label: "Millinewton (mN)" }
+            ],
+            mass: [
+                { value: "kg", label: "Kilogram (kg)" },
+                { value: "g", label: "Gram (g)" },
+                { value: "tonne", label: "Tonne (t)" }
+            ],
+            acceleration: [
+                { value: "ms2", label: "Metre/second² (m/s²)" },
+                { value: "cms2", label: "Centimetre/second² (cm/s²)" },
+                { value: "fts2", label: "Foot/second² (ft/s²)" }
+            ]
+        };
+
+        const outputLabels = {
+            N: "N",
+            kN: "kN",
+            mN: "mN",
+            kg: "kg",
+            g: "g",
+            tonne: "tonne",
+            ms2: "m/s²",
+            cms2: "cm/s²",
+            fts2: "ft/s²"
+        };
+
+        function updateOutputOptions() {
+            outputUnit.innerHTML = "";
+
+            outputOptions[currentMode].forEach(option => {
+                const element = document.createElement("option");
+                element.value = option.value;
+                element.textContent = option.label;
+                outputUnit.appendChild(element);
+            });
+        }
+
+        function updateMode(mode) {
+            currentMode = mode;
+
+            document.querySelectorAll(".mode-btn").forEach(button => {
+                button.classList.toggle("active", button.dataset.mode === mode);
+            });
+
+            massGroup.style.display =
+                mode === "force" || mode === "acceleration" ? "block" : "none";
+
+            accelerationGroup.style.display =
+                mode === "force" || mode === "mass" ? "block" : "none";
+
+            forceGroup.style.display =
+                mode === "mass" || mode === "acceleration" ? "block" : "none";
+
+            updateOutputOptions();
+            hideMessages();
+        }
+
+        function hideMessages() {
+            resultBox.style.display = "none";
+            errorBox.style.display = "none";
+        }
+
+        function showError(message) {
+            errorBox.textContent = message;
+            errorBox.style.display = "block";
+            resultBox.style.display = "none";
+        }
+
+        function getNumber(input) {
+            const value = input.value.trim();
+
+            if (value === "") {
+                return null;
+            }
+
+            const number = Number(value);
+
+            if (!Number.isFinite(number)) {
+                return null;
+            }
+
+            return number;
+        }
+
+        function getMassInKg(value, unit) {
+            if (unit === "g") return value / 1000;
+            if (unit === "tonne") return value * 1000;
+            return value;
+        }
+
+        function getAccelerationInMs2(value, unit) {
+            if (unit === "cms2") return value / 100;
+            if (unit === "fts2") return value * 0.3048;
+            return value;
+        }
+
+        function getForceInN(value, unit) {
+            if (unit === "kN") return value * 1000;
+            if (unit === "mN") return value / 1000;
+            return value;
+        }
+
+        function convertResult(value, unit) {
+            if (unit === "kN") return value / 1000;
+            if (unit === "mN") return value * 1000;
+
+            if (unit === "g") return value * 1000;
+            if (unit === "tonne") return value / 1000;
+
+            if (unit === "cms2") return value * 100;
+            if (unit === "fts2") return value / 0.3048;
+
+            return value;
+        }
+
+        function formatNumber(number) {
+            return Number(number.toPrecision(10)).toLocaleString("en-IN", {
+                maximumFractionDigits: 8
+            });
+        }
+
+        function calculate() {
+            hideMessages();
+
+            let result;
+            let formula;
+            let heading;
+            let outputValue;
+
+            if (currentMode === "force") {
+                const mass = getNumber(massInput);
+                const acceleration = getNumber(accelerationInput);
+
+                if (mass === null || acceleration === null) {
+                    showError("Please enter both mass and acceleration.");
+                    return;
+                }
+
+                if (mass <= 0) {
+                    showError("Mass must be greater than zero.");
+                    return;
+                }
+
+                const massKg = getMassInKg(mass, massUnit.value);
+                const accelerationMs2 =
+                    getAccelerationInMs2(acceleration, accelerationUnit.value);
+
+                result = massKg * accelerationMs2;
+                formula = "Force = Mass × Acceleration";
+                heading = "Calculated Force";
+            }
+
+            else if (currentMode === "mass") {
+                const force = getNumber(forceInput);
+                const acceleration = getNumber(accelerationInput);
+
+                if (force === null || acceleration === null) {
+                    showError("Please enter both force and acceleration.");
+                    return;
+                }
+
+                if (force <= 0) {
+                    showError("Force must be greater than zero.");
+                    return;
+                }
+
+                const forceN = getForceInN(force, forceUnit.value);
+                const accelerationMs2 =
+                    getAccelerationInMs2(acceleration, accelerationUnit.value);
+
+                if (accelerationMs2 === 0) {
+                    showError("Acceleration cannot be zero when calculating mass.");
+                    return;
+                }
+
+                result = forceN / accelerationMs2;
+                formula = "Mass = Force ÷ Acceleration";
+                heading = "Calculated Mass";
+            }
+
+            else {
+                const force = getNumber(forceInput);
+                const mass = getNumber(massInput);
+
+                if (force === null || mass === null) {
+                    showError("Please enter both force and mass.");
+                    return;
+                }
+
+                if (force <= 0 || mass <= 0) {
+                    showError("Force and mass must be greater than zero.");
+                    return;
+                }
+
+                const forceN = getForceInN(force, forceUnit.value);
+                const massKg = getMassInKg(mass, massUnit.value);
+
+                result = forceN / massKg;
+                formula = "Acceleration = Force ÷ Mass";
+                heading = "Calculated Acceleration";
+            }
+
+            if (!Number.isFinite(result)) {
+                showError("Unable to calculate this result. Please check your inputs.");
+                return;
+            }
+
+            outputValue = convertResult(result, outputUnit.value);
+
+            resultHeading.textContent = heading;
+            resultValue.textContent =
+                formatNumber(outputValue) + " " + outputLabels[outputUnit.value];
+
+            resultFormula.textContent = formula;
+            resultBox.style.display = "block";
+        }
+
+        document.querySelectorAll(".mode-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                updateMode(button.dataset.mode);
+            });
+        });
+
+        document.getElementById("calculateBtn").addEventListener("click", calculate);
+
+        document.getElementById("resetBtn").addEventListener("click", () => {
+            massInput.value = "";
+            accelerationInput.value = "";
+            forceInput.value = "";
+
+            massUnit.value = "kg";
+            accelerationUnit.value = "ms2";
+            forceUnit.value = "N";
+
+            updateMode("force");
+            hideMessages();
+        });
+
+        // Allow Enter key to calculate
+        document.querySelectorAll("input").forEach(input => {
+            input.addEventListener("keydown", event => {
+                if (event.key === "Enter") {
+                    calculate();
+                }
+            });
+        });
+
+        updateOutputOptions();
+    </script>
+
+</body>
+</html>

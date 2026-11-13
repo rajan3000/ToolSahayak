@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free SIP Calculator Online - Calculate Mutual Fund Returns | ToolSahayak</title>
+
+<meta name="description" content="Calculate your monthly SIP investment returns online for free. Estimate total investment, expected returns and future value with our SIP Calculator.">
+
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/sip-calculator.html">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free SIP Calculator Online | ToolSahayak">
+<meta property="og:description" content="Estimate your mutual fund SIP investment value, total investment and potential returns online.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/sip-calculator.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free SIP Calculator Online | ToolSahayak">
+<meta name="twitter:description" content="Calculate your SIP investment returns and estimated future value online.">
+
+<style>
+
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Arial,sans-serif;background:#f4f5ff;color:#172044}
+      header{background:white;padding:18px 6%;box-shadow:0 2px 10px #0001}
+      header a{font-size:23px;font-weight:bold;color:#3025d9;text-decoration:none}
+      .container{width:min(650px,92%);margin:40px auto}
+      .card{background:white;padding:28px;border-radius:16px;box-shadow:0 5px 25px #20206015}
+      h1{text-align:center;margin-top:0}
+      .subtitle{text-align:center;color:#68708a}
+      label{display:block;font-weight:bold;margin:20px 0 8px}
+      input{width:100%;padding:13px;border:1px solid #c9cce5;border-radius:8px;font-size:16px}
+      button{width:100%;padding:14px;margin-top:22px;background:#3928e8;color:white;border:0;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer}
+      button:hover{background:#2419bd}
+      #result{display:none;margin-top:25px}
+      .result-box{background:#edfff2;border:1px solid #bce8c7;padding:20px;border-radius:10px;text-align:center}
+      .result-box h2{color:#16843a;margin:5px}
+      .amount{font-size:30px;font-weight:bold;margin:12px}
+      .details{line-height:2;margin-top:15px;padding:15px;background:#f5f6ff;border-radius:10px}
+      #error{color:#d62828;text-align:center;margin-top:12px}
+      footer{text-align:center;padding:20px;color:#777}
+      .note{font-size:13px;color:#777;line-height:1.5;margin-top:20px}
+      @media(max-width:500px){.card{padding:20px 16px}}
+      
+</style>
+
+</head>
+
+
+<body>
+
+<header><a href="../index.html">🟪 ToolSahayak</a></header>
+
+<main class="container">
+<section class="card">
+<h1>📈 SIP Calculator</h1>
+<p class="subtitle">Estimate the future value of your monthly SIP investment.</p>
+
+<label for="monthly">Monthly Investment (₹)</label>
+<input type="number" id="monthly" placeholder="Example: 5000" min="1">
+
+<label for="returnRate">Expected Annual Return (%)</label>
+<input type="number" id="returnRate" placeholder="Example: 12" min="0" step="0.1">
+
+<label for="years">Investment Period (Years)</label>
+<input type="number" id="years" placeholder="Example: 15" min="1" step="1">
+
+<button onclick="calculateSIP()">Calculate SIP Returns</button>
+
+<p id="error"></p>
+
+<div id="result">
+<div class="result-box">
+<p>Estimated Future Value</p>
+<div class="amount" id="futureValue">₹0</div>
+<h2 id="gain"></h2>
+</div>
+
+<div class="details">
+<strong>Total Investment:</strong> <span id="invested"></span><br>
+<strong>Estimated Returns:</strong> <span id="returns"></span><br>
+<strong>Investment Period:</strong> <span id="duration"></span>
+</div>
+<p class="note">
+Note: This calculator provides an estimate based on a fixed assumed return.
+Actual mutual fund returns are market-linked and not guaranteed.
+</p>
+</div>
+</section>
+</main>
+
+<footer>© 2026 ToolSahayak. All Rights Reserved.</footer>
+
+<script>
+function formatRupees(value){
+ return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+function calculateSIP(){
+ const monthly = Number(document.getElementById("monthly").value);
+ const annualRate = Number(document.getElementById("returnRate").value);
+ const years = Number(document.getElementById("years").value);
+
+ const error = document.getElementById("error");
+ const result = document.getElementById("result");
+
+ error.textContent = "";
+ result.style.display = "none";
+
+ if(!Number.isFinite(monthly) || monthly <= 0){
+   error.textContent = "Please enter a valid monthly investment.";
+   return;
+ }
+
+ if(!Number.isFinite(annualRate) || annualRate < 0 || annualRate > 100){
+   error.textContent = "Please enter a return rate between 0 and 100%.";
+   return;
+ }
+
+ if(!Number.isFinite(years) || years <= 0 || years > 100){
+   error.textContent = "Please enter a valid investment period (up to 100 years).";
+   return;
+ }
+
+ const months = Math.round(years * 12);
+ const monthlyRate = Math.pow(1 + annualRate / 100, 1/12) - 1;
+
+ // Monthly SIP assumed at the end of each month.
+ let futureValue;
+
+ if(monthlyRate === 0){
+   futureValue = monthly * months;
+ } else {
+   futureValue = monthly *
+     ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+ }
+
+ const totalInvestment = monthly * months;
+ const estimatedReturns = futureValue - totalInvestment;
+
+ document.getElementById("futureValue").textContent =
+   formatRupees(futureValue);
+
+ document.getElementById("gain").textContent =
+   "Estimated Gain: " + formatRupees(estimatedReturns);
+
+ document.getElementById("invested").textContent =
+   formatRupees(totalInvestment);
+
+ document.getElementById("returns").textContent =
+   formatRupees(estimatedReturns);
+
+ document.getElementById("duration").textContent =
+   years + " Years (" + months + " Months)";
+
+ result.style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Speed, Distance & Time Calculator Online - ToolSahayak</title>
+
+    <meta name="description" content="Use our free Speed, Distance and Time Calculator to calculate speed, travel distance or journey time. Supports multiple measurement units.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1769aa">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/speed-distance-time.html">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Speed, Distance & Time Calculator - ToolSahayak">
+    <meta property="og:description" content="Calculate speed, distance or travel time easily with our free online calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/speed-distance-time.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Speed, Distance & Time Calculator - ToolSahayak">
+    <meta name="twitter:description" content="Calculate speed, distance or travel time using our free online calculator.">
+
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #243047;
+            line-height: 1.6;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #1769aa, #123b72);
+            color: white;
+            padding: 28px 16px;
+            text-align: center;
+        }
+
+        .page-header a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .page-header p {
+            font-size: 14px;
+            opacity: .9;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 35px auto;
+            padding: 0 16px;
+        }
+
+        .calculator-card {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 5px 22px rgba(0,0,0,.07);
+        }
+
+        .calculator-card h2 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: #183b65;
+        }
+
+        .intro {
+            color: #697586;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .field {
+            margin-bottom: 19px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1px solid #ccd5e0;
+            border-radius: 8px;
+            font-size: 15px;
+            background: white;
+            color: #243047;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #1769aa;
+            box-shadow: 0 0 0 3px rgba(23,105,170,.12);
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 145px;
+            gap: 10px;
+        }
+
+        .calculate-btn, .reset-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 13px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            background: #1769aa;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .calculate-btn:hover {
+            background: #10548c;
+        }
+
+        .reset-btn {
+            background: #e9eef5;
+            color: #243047;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .result {
+            display: none;
+            margin-top: 24px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #eaf4ff;
+            border: 1px solid #c8e1fb;
+            text-align: center;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result-label {
+            color: #45617e;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .result-value {
+            color: #125a9b;
+            font-size: 30px;
+            font-weight: 700;
+            margin-top: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        .result-detail {
+            color: #52677e;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        .error {
+            display: none;
+            color: #b42318;
+            background: #fff0ee;
+            padding: 11px;
+            border-radius: 7px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 22px;
+            margin-top: 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.04);
+        }
+
+        .info-card h3 {
+            color: #183b65;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .info-card p, .info-card li {
+            font-size: 14px;
+            color: #5d6878;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 22px 12px;
+            color: #788394;
+            font-size: 13px;
+        }
+
+        @media (max-width: 520px) {
+            .page-header h1 {
+                font-size: 23px;
+            }
+
+            .calculator-card {
+                padding: 20px 16px;
+            }
+
+            .input-row {
+                grid-template-columns: 1fr 115px;
+            }
+
+            .result-value {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">← Back to ToolSahayak</a>
+        <h1>Speed, Distance & Time Calculator</h1>
+        <p>Calculate speed, distance and travel time easily.</p>
+    </header>
+
+    <main class="container">
+
+        <section class="calculator-card">
+            <h2>Calculate Your Result</h2>
+            <p class="intro">Choose what you want to calculate and enter the known values.</p>
+
+            <div class="field">
+                <label for="mode">What do you want to calculate?</label>
+                <select id="mode">
+                    <option value="speed">Calculate Speed</option>
+                    <option value="distance">Calculate Distance</option>
+                    <option value="time">Calculate Time</option>
+                </select>
+            </div>
+
+            <div class="field" id="distanceField">
+                <label for="distance">Distance</label>
+                <div class="input-row">
+                    <input type="number" id="distance" min="0" step="any" placeholder="Enter distance">
+                    <select id="distanceUnit">
+                        <option value="km">Kilometres (km)</option>
+                        <option value="m">Metres (m)</option>
+                        <option value="mi">Miles (mi)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field" id="speedField">
+                <label for="speed">Speed</label>
+                <div class="input-row">
+                    <input type="number" id="speed" min="0" step="any" placeholder="Enter speed">
+                    <select id="speedUnit">
+                        <option value="kmh">km/h</option>
+                        <option value="ms">m/s</option>
+                        <option value="mph">mph</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field" id="timeField">
+                <label for="time">Time</label>
+                <div class="input-row">
+                    <input type="number" id="time" min="0" step="any" placeholder="Enter time">
+                    <select id="timeUnit">
+                        <option value="hours">Hours</option>
+                        <option value="minutes">Minutes</option>
+                        <option value="seconds">Seconds</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field" id="outputUnitField">
+                <label for="outputUnit">Result unit</label>
+                <select id="outputUnit"></select>
+            </div>
+
+            <button class="calculate-btn" id="calculateBtn">Calculate Result</button>
+            <button class="reset-btn" id="resetBtn" type="button">Reset Calculator</button>
+
+            <div class="error" id="errorMessage" role="alert"></div>
+
+            <div class="result" id="resultBox" aria-live="polite">
+                <div class="result-label" id="resultLabel">Your Result</div>
+                <div class="result-value" id="resultValue">0</div>
+                <div class="result-detail" id="resultDetail"></div>
+            </div>
+        </section>
+
+        <section class="info-card">
+            <h3>Calculation Formulas</h3>
+            <ul>
+                <li><strong>Speed = Distance ÷ Time</strong></li>
+                <li><strong>Distance = Speed × Time</strong></li>
+                <li><strong>Time = Distance ÷ Speed</strong></li>
+            </ul>
+        </section>
+
+        <section class="info-card">
+            <h3>How to Use This Calculator</h3>
+            <p>1. Select Speed, Distance or Time.</p>
+            <p>2. Enter the two known values.</p>
+            <p>3. Select the correct units.</p>
+            <p>4. Click Calculate Result to see your answer.</p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        © <span id="year"></span> ToolSahayak. All Rights Reserved.
+    </footer>
+
+    <script>
+        const mode = document.getElementById("mode");
+        const distanceField = document.getElementById("distanceField");
+        const speedField = document.getElementById("speedField");
+        const timeField = document.getElementById("timeField");
+        const outputUnitField = document.getElementById("outputUnitField");
+        const outputUnit = document.getElementById("outputUnit");
+
+        const distanceInput = document.getElementById("distance");
+        const speedInput = document.getElementById("speed");
+        const timeInput = document.getElementById("time");
+
+        const distanceUnit = document.getElementById("distanceUnit");
+        const speedUnit = document.getElementById("speedUnit");
+        const timeUnit = document.getElementById("timeUnit");
+
+        const resultBox = document.getElementById("resultBox");
+        const resultLabel = document.getElementById("resultLabel");
+        const resultValue = document.getElementById("resultValue");
+        const resultDetail = document.getElementById("resultDetail");
+        const errorMessage = document.getElementById("errorMessage");
+
+        const distanceFactors = {
+            km: 1000,
+            m: 1,
+            mi: 1609.344
+        };
+
+        const speedFactors = {
+            kmh: 1000 / 3600,
+            ms: 1,
+            mph: 1609.344 / 3600
+        };
+
+        const timeFactors = {
+            hours: 3600,
+            minutes: 60,
+            seconds: 1
+        };
+
+        const unitLabels = {
+            km: "km",
+            m: "m",
+            mi: "miles",
+            kmh: "km/h",
+            ms: "m/s",
+            mph: "mph",
+            hours: "hours",
+            minutes: "minutes",
+            seconds: "seconds"
+        };
+
+        function updateMode() {
+            const selected = mode.value;
+
+            distanceField.style.display = selected === "distance" ? "none" : "block";
+            speedField.style.display = selected === "speed" ? "none" : "block";
+            timeField.style.display = selected === "time" ? "none" : "block";
+
+            outputUnitField.style.display = "block";
+
+            if (selected === "speed") {
+                outputUnit.innerHTML = `
+                    <option value="kmh">Kilometres per hour (km/h)</option>
+                    <option value="ms">Metres per second (m/s)</option>
+                    <option value="mph">Miles per hour (mph)</option>
+                `;
+            } else if (selected === "distance") {
+                outputUnit.innerHTML = `
+                    <option value="km">Kilometres (km)</option>
+                    <option value="m">Metres (m)</option>
+                    <option value="mi">Miles (mi)</option>
+                `;
+            } else {
+                outputUnit.innerHTML = `
+                    <option value="hours">Hours</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="seconds">Seconds</option>
+                `;
+            }
+
+            hideMessages();
+        }
+
+        function getPositiveNumber(input, label) {
+            const value = Number(input.value);
+
+            if (input.value.trim() === "" || !Number.isFinite(value) || value <= 0) {
+                throw new Error("Please enter a valid " + label + " greater than zero.");
+            }
+
+            return value;
+        }
+
+        function formatNumber(value) {
+            return Number(value.toFixed(6)).toLocaleString("en-IN", {
+                maximumFractionDigits: 6
+            });
+        }
+
+        function showResult(label, value, unit, detail) {
+            resultLabel.textContent = label;
+            resultValue.textContent = formatNumber(value) + " " + unit;
+            resultDetail.textContent = detail;
+            resultBox.classList.add("show");
+            errorMessage.style.display = "none";
+        }
+
+        function hideMessages() {
+            resultBox.classList.remove("show");
+            errorMessage.style.display = "none";
+        }
+
+        function calculate() {
+            hideMessages();
+
+            try {
+                const selected = mode.value;
+                const resultUnit = outputUnit.value;
+
+                if (selected === "speed") {
+                    const distance = getPositiveNumber(distanceInput, "distance");
+                    const time = getPositiveNumber(timeInput, "time");
+
+                    const distanceInMetres = distance * distanceFactors[distanceUnit.value];
+                    const timeInSeconds = time * timeFactors[timeUnit.value];
+
+                    const speedInMS = distanceInMetres / timeInSeconds;
+                    const answer = speedInMS / speedFactors[resultUnit];
+
+                    showResult(
+                        "Calculated Speed",
+                        answer,
+                        unitLabels[resultUnit],
+                        "Speed = Distance ÷ Time"
+                    );
+
+                } else if (selected === "distance") {
+                    const speed = getPositiveNumber(speedInput, "speed");
+                    const time = getPositiveNumber(timeInput, "time");
+
+                    const speedInMS = speed * speedFactors[speedUnit.value];
+                    const timeInSeconds = time * timeFactors[timeUnit.value];
+
+                    const distanceInMetres = speedInMS * timeInSeconds;
+                    const answer = distanceInMetres / distanceFactors[resultUnit];
+
+                    showResult(
+                        "Calculated Distance",
+                        answer,
+                        unitLabels[resultUnit],
+                        "Distance = Speed × Time"
+                    );
+
+                } else {
+                    const distance = getPositiveNumber(distanceInput, "distance");
+                    const speed = getPositiveNumber(speedInput, "speed");
+
+                    const distanceInMetres = distance * distanceFactors[distanceUnit.value];
+                    const speedInMS = speed * speedFactors[speedUnit.value];
+
+                    const timeInSeconds = distanceInMetres / speedInMS;
+                    const answer = timeInSeconds / timeFactors[resultUnit];
+
+                    showResult(
+                        "Calculated Time",
+                        answer,
+                        unitLabels[resultUnit],
+                        "Time = Distance ÷ Speed"
+                    );
+                }
+
+            } catch (error) {
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = "block";
+                resultBox.classList.remove("show");
+            }
+        }
+
+        function resetCalculator() {
+            distanceInput.value = "";
+            speedInput.value = "";
+            timeInput.value = "";
+
+            distanceUnit.value = "km";
+            speedUnit.value = "kmh";
+            timeUnit.value = "hours";
+            mode.value = "speed";
+
+            updateMode();
+            hideMessages();
+        }
+
+        mode.addEventListener("change", updateMode);
+        document.getElementById("calculateBtn").addEventListener("click", calculate);
+        document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                calculate();
+            }
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        updateMode();
+    </script>
+
+</body>
+</html>

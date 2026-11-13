@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://toolsahayak.netlify.app/sitemap.xml
+
+

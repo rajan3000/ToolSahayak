@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Online Signature Maker - Create Digital Signature | ToolSahayak</title>
+
+    <meta name="description" content="Create your digital signature online for free using mouse, touch or stylus. Customize pen color and size, undo strokes and download your signature as a transparent PNG.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/signature-maker.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Online Signature Maker | ToolSahayak">
+    <meta property="og:description" content="Create and download your digital signature as a transparent PNG image for free.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/signature-maker.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Online Signature Maker | ToolSahayak">
+    <meta name="twitter:description" content="Create a digital signature online and download it as a transparent PNG.">
+
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 42px;
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        #penSizeValue {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .canvas-wrapper {
+            width: 100%;
+            border: 2px dashed #9ca3af;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 280px;
+            background: transparent;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover:not(:disabled) {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .undo-btn {
+            background: #64748b;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .download-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 15px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 12px;
+            background: #eff6ff;
+            border-radius: 8px;
+            color: #1e40af;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 16px;
+                margin: 10px auto;
+            }
+
+            canvas {
+                height: 230px;
+            }
+
+            .controls {
+                gap: 12px;
+            }
+
+            button {
+                min-width: 100px;
+                font-size: 14px;
+            }
+        }
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <a href="../index.html" class="back-link">← Back to Home</a>
+
+    <h1>Signature Maker</h1>
+
+    <p class="description">
+        Draw your digital signature using mouse, touch or stylus.
+        Download it as a transparent PNG image.
+    </p>
+
+    <div class="controls">
+
+        <div class="control-group">
+            <label for="penColor">Pen Color</label>
+            <input type="color" id="penColor" value="#000000">
+        </div>
+
+        <div class="control-group">
+            <label for="penSize">
+                Pen Size: <span id="penSizeValue">3</span> px
+            </label>
+            <input
+                type="range"
+                id="penSize"
+                min="1"
+                max="15"
+                value="3"
+            >
+        </div>
+
+    </div>
+
+    <div class="canvas-wrapper">
+        <canvas id="signatureCanvas"></canvas>
+    </div>
+
+    <div class="buttons">
+        <button class="undo-btn" id="undoBtn" disabled>
+            ↶ Undo
+        </button>
+
+        <button class="clear-btn" id="clearBtn">
+            Clear
+        </button>
+
+        <button class="download-btn" id="downloadBtn" disabled>
+            Download PNG
+        </button>
+    </div>
+
+    <p class="status" id="status">
+        Draw your signature in the box above.
+    </p>
+
+    <div class="note">
+        <strong>Privacy:</strong> Your signature is processed in your
+        browser. It is not uploaded to a server. The downloaded PNG
+        has a transparent background.
+    </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById("signatureCanvas");
+const ctx = canvas.getContext("2d");
+
+const penColor = document.getElementById("penColor");
+const penSize = document.getElementById("penSize");
+const penSizeValue = document.getElementById("penSizeValue");
+
+const undoBtn = document.getElementById("undoBtn");
+const clearBtn = document.getElementById("clearBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const statusText = document.getElementById("status");
+
+let isDrawing = false;
+let hasDrawing = false;
+let lastX = 0;
+let lastY = 0;
+let history = [];
+
+const MAX_HISTORY = 20;
+
+function setupCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    const ratio = window.devicePixelRatio || 1;
+
+    const oldImage = hasDrawing ? canvas.toDataURL() : null;
+
+    canvas.width = Math.round(rect.width * ratio);
+    canvas.height = Math.round(rect.height * ratio);
+
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    if (oldImage) {
+        const image = new Image();
+
+        image.onload = function() {
+            ctx.drawImage(image, 0, 0, rect.width, rect.height);
+        };
+
+        image.src = oldImage;
+    }
+}
+
+function getPosition(event) {
+    const rect = canvas.getBoundingClientRect();
+
+    return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+    };
+}
+
+function saveHistory() {
+    const snapshot = canvas.toDataURL();
+
+    history.push(snapshot);
+
+    if (history.length > MAX_HISTORY) {
+        history.shift();
+    }
+
+    undoBtn.disabled = history.length === 0;
+}
+
+function updateButtons() {
+    undoBtn.disabled = history.length === 0;
+    downloadBtn.disabled = !hasDrawing;
+}
+
+function startDrawing(event) {
+    if (event.button !== undefined && event.button !== 0) {
+        return;
+    }
+
+    event.preventDefault();
+
+    saveHistory();
+
+    isDrawing = true;
+
+    const position = getPosition(event);
+
+    lastX = position.x;
+    lastY = position.y;
+
+    canvas.setPointerCapture(event.pointerId);
+
+    ctx.beginPath();
+    ctx.arc(lastX, lastY, Number(penSize.value) / 2, 0, Math.PI * 2);
+    ctx.fillStyle = penColor.value;
+    ctx.fill();
+
+    hasDrawing = true;
+    statusText.textContent = "Signature is being created.";
+    updateButtons();
+}
+
+function draw(event) {
+    if (!isDrawing) return;
+
+    event.preventDefault();
+
+    const position = getPosition(event);
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(position.x, position.y);
+
+    ctx.strokeStyle = penColor.value;
+    ctx.lineWidth = Number(penSize.value);
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    lastX = position.x;
+    lastY = position.y;
+}
+
+function stopDrawing(event) {
+    if (!isDrawing) return;
+
+    isDrawing = false;
+
+    if (event && canvas.hasPointerCapture(event.pointerId)) {
+        canvas.releasePointerCapture(event.pointerId);
+    }
+
+    statusText.textContent = "Signature ready to download.";
+    updateButtons();
+}
+
+canvas.addEventListener("pointerdown", startDrawing);
+canvas.addEventListener("pointermove", draw);
+canvas.addEventListener("pointerup", stopDrawing);
+canvas.addEventListener("pointercancel", stopDrawing);
+
+penSize.addEventListener("input", function() {
+    penSizeValue.textContent = penSize.value;
+});
+
+undoBtn.addEventListener("click", function() {
+    if (history.length === 0) return;
+
+    const previousImage = history.pop();
+    const image = new Image();
+
+    image.onload = function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const rect = canvas.getBoundingClientRect();
+        ctx.drawImage(image, 0, 0, rect.width, rect.height);
+
+        hasDrawing = history.length > 0 ||
+            !isCanvasBlank();
+
+        statusText.textContent = hasDrawing
+            ? "Previous drawing restored."
+            : "Canvas is empty.";
+
+        updateButtons();
+    };
+
+    image.src = previousImage;
+});
+
+function isCanvasBlank() {
+    const pixels = ctx.getImageData(
+        0, 0, canvas.width, canvas.height
+    ).data;
+
+    for (let i = 3; i < pixels.length; i += 4) {
+        if (pixels[i] !== 0) return false;
+    }
+
+    return true;
+}
+
+clearBtn.addEventListener("click", function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    history = [];
+    hasDrawing = false;
+
+    statusText.textContent = "Canvas cleared.";
+    updateButtons();
+});
+
+downloadBtn.addEventListener("click", function() {
+    if (!hasDrawing) return;
+
+    const link = document.createElement("a");
+
+    link.download = "ToolSahayak-Signature.png";
+    link.href = canvas.toDataURL("image/png");
+
+    link.click();
+});
+
+setupCanvas();
+</script>
+
+</body>
+</html>

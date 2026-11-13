@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Density Calculator Online - Calculate Density, Mass & Volume</title>
+
+    <meta name="description" content="Use our free Density Calculator to calculate density, mass or volume with different measurement units. Simple and accurate online calculations.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/density-calculator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Density Calculator Online - ToolSahayak">
+    <meta property="og:description" content="Calculate density, mass and volume easily with our free online Density Calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/density-calculator.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Density Calculator - ToolSahayak">
+    <meta name="twitter:description" content="Calculate density, mass or volume with different measurement units.">
+
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #174ea6;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .calculator {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 7px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        select:focus, input:focus {
+            border-color: #174ea6;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 7px;
+            background: #174ea6;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #103b80;
+        }
+
+        .reset-btn {
+            background: #666;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            background: #444;
+        }
+
+        .result {
+            display: none;
+            margin-top: 22px;
+            padding: 20px;
+            background: #eaf3ff;
+            border-left: 5px solid #174ea6;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .result h3 {
+            color: #174ea6;
+            margin-bottom: 10px;
+        }
+
+        .result-value {
+            font-size: 25px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            color: #c62828;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .formula {
+            margin-top: 22px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .formula h3 {
+            margin-bottom: 8px;
+            color: #174ea6;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media(max-width: 550px) {
+            body {
+                padding: 12px;
+            }
+
+            .calculator {
+                padding: 18px;
+            }
+
+            .field-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .result-value {
+                font-size: 21px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Density Calculator</h1>
+        <p>Calculate Density, Mass and Volume easily using different units.</p>
+    </div>
+
+    <div class="calculator">
+
+        <label for="mode">Select Calculation</label>
+        <select id="mode" onchange="updateFields()">
+            <option value="density">Calculate Density</option>
+            <option value="mass">Calculate Mass</option>
+            <option value="volume">Calculate Volume</option>
+        </select>
+
+        <div class="field-grid">
+
+            <div id="massField">
+                <label for="mass">Mass</label>
+                <input type="number" id="mass" placeholder="Enter mass" min="0" step="any">
+
+                <select id="massUnit">
+                    <option value="kg">Kilogram (kg)</option>
+                    <option value="g">Gram (g)</option>
+                    <option value="mg">Milligram (mg)</option>
+                </select>
+            </div>
+
+            <div id="volumeField">
+                <label for="volume">Volume</label>
+                <input type="number" id="volume" placeholder="Enter volume" min="0" step="any">
+
+                <select id="volumeUnit">
+                    <option value="m3">Cubic Meter (m³)</option>
+                    <option value="cm3">Cubic Centimeter (cm³)</option>
+                    <option value="L">Liter (L)</option>
+                    <option value="mL">Milliliter (mL)</option>
+                </select>
+            </div>
+
+            <div id="densityField" style="display:none;">
+                <label for="density">Density</label>
+                <input type="number" id="density" placeholder="Enter density" min="0" step="any">
+
+                <select id="densityUnit">
+                    <option value="kgm3">Kilogram/m³ (kg/m³)</option>
+                    <option value="gcm3">Gram/cm³ (g/cm³)</option>
+                    <option value="gmL">Gram/mL (g/mL)</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button onclick="calculate()">Calculate Now</button>
+        <button class="reset-btn" onclick="resetCalculator()">Reset</button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result" id="result">
+            <h3 id="resultTitle">Result</h3>
+            <div class="result-value" id="resultValue"></div>
+        </div>
+
+        <div class="formula">
+            <h3>Density Formula</h3>
+            <p><b>Density = Mass ÷ Volume</b></p>
+            <p><b>Mass = Density × Volume</b></p>
+            <p><b>Volume = Mass ÷ Density</b></p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 ToolSahayak. All Rights Reserved.
+    </div>
+
+</div>
+
+<script>
+    const massFactors = {
+        kg: 1,
+        g: 0.001,
+        mg: 0.000001
+    };
+
+    const volumeFactors = {
+        m3: 1,
+        cm3: 0.000001,
+        L: 0.001,
+        mL: 0.000001
+    };
+
+    const densityFactors = {
+        kgm3: 1,
+        gcm3: 1000,
+        gmL: 1000
+    };
+
+    function updateFields() {
+        const mode = document.getElementById("mode").value;
+
+        document.getElementById("massField").style.display =
+            mode === "mass" ? "none" : "block";
+
+        document.getElementById("volumeField").style.display =
+            mode === "volume" ? "none" : "block";
+
+        document.getElementById("densityField").style.display =
+            mode === "density" ? "none" : "block";
+
+        document.getElementById("result").style.display = "none";
+        document.getElementById("error").style.display = "none";
+    }
+
+    function showError(message) {
+        const error = document.getElementById("error");
+        error.textContent = message;
+        error.style.display = "block";
+        document.getElementById("result").style.display = "none";
+    }
+
+    function formatNumber(value) {
+        return Number(value.toPrecision(10)).toLocaleString("en-US", {
+            maximumFractionDigits: 10
+        });
+    }
+
+    function calculate() {
+        const mode = document.getElementById("mode").value;
+
+        const mass = Number(document.getElementById("mass").value);
+        const volume = Number(document.getElementById("volume").value);
+        const density = Number(document.getElementById("density").value);
+
+        let answer;
+        let title;
+        let unit;
+
+        document.getElementById("error").style.display = "none";
+
+        if (mode === "density") {
+            const massUnit = document.getElementById("massUnit").value;
+            const volumeUnit = document.getElementById("volumeUnit").value;
+
+            if (document.getElementById("mass").value === "" ||
+                document.getElementById("volume").value === "") {
+                return showError("Please enter both mass and volume.");
+            }
+
+            if (!Number.isFinite(mass) || !Number.isFinite(volume) ||
+                mass <= 0 || volume <= 0) {
+                return showError("Mass and volume must be greater than zero.");
+            }
+
+            const massKg = mass * massFactors[massUnit];
+            const volumeM3 = volume * volumeFactors[volumeUnit];
+
+            answer = massKg / volumeM3;
+            title = "Calculated Density";
+            unit = "kg/m³";
+
+        } else if (mode === "mass") {
+            const densityUnit = document.getElementById("densityUnit").value;
+            const volumeUnit = document.getElementById("volumeUnit").value;
+
+            if (document.getElementById("density").value === "" ||
+                document.getElementById("volume").value === "") {
+                return showError("Please enter both density and volume.");
+            }
+
+            if (!Number.isFinite(density) || !Number.isFinite(volume) ||
+                density <= 0 || volume <= 0) {
+                return showError("Density and volume must be greater than zero.");
+            }
+
+            const densityKgM3 = density * densityFactors[densityUnit];
+            const volumeM3 = volume * volumeFactors[volumeUnit];
+
+            answer = densityKgM3 * volumeM3;
+            title = "Calculated Mass";
+            unit = "kg";
+
+        } else {
+            const densityUnit = document.getElementById("densityUnit").value;
+            const massUnit = document.getElementById("massUnit").value;
+
+            if (document.getElementById("density").value === "" ||
+                document.getElementById("mass").value === "") {
+                return showError("Please enter both density and mass.");
+            }
+
+            if (!Number.isFinite(density) || !Number.isFinite(mass) ||
+                density <= 0 || mass <= 0) {
+                return showError("Density and mass must be greater than zero.");
+            }
+
+            const densityKgM3 = density * densityFactors[densityUnit];
+            const massKg = mass * massFactors[massUnit];
+
+            answer = massKg / densityKgM3;
+            title = "Calculated Volume";
+            unit = "m³";
+        }
+
+        if (!Number.isFinite(answer) || answer <= 0) {
+            return showError("Unable to calculate. Please check your inputs.");
+        }
+
+        document.getElementById("resultTitle").textContent = title;
+        document.getElementById("resultValue").textContent =
+            formatNumber(answer) + " " + unit;
+
+        document.getElementById("result").style.display = "block";
+    }
+
+    function resetCalculator() {
+        document.querySelectorAll("input").forEach(input => {
+            input.value = "";
+        });
+
+        document.getElementById("mode").value = "density";
+        document.getElementById("massUnit").value = "kg";
+        document.getElementById("volumeUnit").value = "m3";
+        document.getElementById("densityUnit").value = "kgm3";
+
+        document.getElementById("result").style.display = "none";
+        document.getElementById("error").style.display = "none";
+
+        updateFields();
+    }
+</script>
+
+</body>
+</html>

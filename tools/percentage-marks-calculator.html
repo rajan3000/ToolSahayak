@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Percentage & Marks Calculator Online - ToolSahayak</title>
+
+    <meta name="description" content="Calculate exam percentage, required marks, grades and pass or fail results with our free online Percentage and Marks Calculator.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/percentage-marks-calculator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Percentage & Marks Calculator - ToolSahayak">
+    <meta property="og:description" content="Calculate exam percentage, required marks, grades and pass or fail results easily with our free calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/percentage-marks-calculator.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Percentage & Marks Calculator - ToolSahayak">
+    <meta name="twitter:description" content="Calculate exam percentage, required marks and grades using our free online calculator.">
+
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #263247;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: #fff;
+            padding: 17px 6%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .navbar a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 38px auto;
+            padding: 0 18px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 27px;
+        }
+
+        .heading span {
+            display: inline-block;
+            background: #e0edff;
+            color: #2563eb;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .heading h1 {
+            color: #172554;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .calculator-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 27px;
+            box-shadow: 0 8px 30px rgba(15,23,42,0.07);
+        }
+
+        .mode-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .mode-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .mode-btn {
+            border: 1px solid #dbe3ef;
+            background: #fff;
+            color: #475569;
+            border-radius: 9px;
+            padding: 12px 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .mode-btn.active {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: #fff;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 17px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 7px;
+            color: #334155;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            background: #fff;
+            color: #1e293b;
+        }
+
+        input:focus, select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+        }
+
+        .help-text {
+            display: block;
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 24px;
+            padding: 22px;
+            border-radius: 12px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            color: #047857;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            color: #065f46;
+            font-size: 32px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .result-details {
+            margin-top: 12px;
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .error {
+            display: none;
+            margin-top: 15px;
+            padding: 11px;
+            border-radius: 8px;
+            background: #fef2f2;
+            color: #dc2626;
+            font-size: 14px;
+        }
+
+        .reset-btn {
+            margin-top: 15px;
+            padding: 9px 20px;
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 22px;
+            border-radius: 13px;
+            margin-top: 22px;
+            box-shadow: 0 4px 18px rgba(15,23,42,0.04);
+        }
+
+        .info-card h2 {
+            color: #172554;
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p, .info-card li {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                margin: 25px auto;
+            }
+
+            .heading h1 {
+                font-size: 25px;
+            }
+
+            .calculator-card {
+                padding: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .mode-buttons {
+                gap: 7px;
+            }
+
+            .mode-btn {
+                font-size: 12px;
+                padding: 11px 5px;
+            }
+
+            .result-value {
+                font-size: 26px;
+            }
+        }
+    
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="../index.html">ToolSahayak</a>
+</nav>
+
+<main class="container">
+
+    <div class="heading">
+        <span>EDUCATION & SCIENCE</span>
+        <h1>Percentage & Marks Calculator</h1>
+        <p>Calculate exam percentage, required marks, grades and results easily.</p>
+    </div>
+
+    <section class="calculator-card">
+
+        <label class="mode-label">Select Calculation Type</label>
+
+        <div class="mode-buttons">
+            <button type="button" class="mode-btn active" data-mode="percentage">
+                Percentage
+            </button>
+
+            <button type="button" class="mode-btn" data-mode="grade">
+                Grade Calculator
+            </button>
+
+            <button type="button" class="mode-btn" data-mode="required">
+                Required Marks
+            </button>
+
+            <button type="button" class="mode-btn" data-mode="pass">
+                Pass / Fail
+            </button>
+        </div>
+
+        <!-- Percentage Mode -->
+        <div id="percentageFields">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="obtained">Marks Obtained</label>
+                    <input type="number" id="obtained" placeholder="e.g. 450" min="0" step="any">
+                </div>
+
+                <div class="form-group">
+                    <label for="total">Total Marks</label>
+                    <input type="number" id="total" placeholder="e.g. 500" min="0" step="any">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Grade Mode -->
+        <div id="gradeFields" style="display:none;">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="gradeObtained">Marks Obtained</label>
+                    <input type="number" id="gradeObtained" placeholder="e.g. 450" min="0" step="any">
+                </div>
+
+                <div class="form-group">
+                    <label for="gradeTotal">Total Marks</label>
+                    <input type="number" id="gradeTotal" placeholder="e.g. 500" min="0" step="any">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gradeSystem">Select Grading System</label>
+                <select id="gradeSystem">
+                    <option value="standard">Standard (A+ to F)</option>
+                    <option value="simple">Simple (A to F)</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Required Marks Mode -->
+        <div id="requiredFields" style="display:none;">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="requiredTotal">Total Marks</label>
+                    <input type="number" id="requiredTotal" placeholder="e.g. 500" min="0" step="any">
+                </div>
+
+                <div class="form-group">
+                    <label for="targetPercentage">Target Percentage (%)</label>
+                    <input type="number" id="targetPercentage" placeholder="e.g. 75" min="0" max="100" step="any">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="currentMarks">Marks Already Obtained (Optional)</label>
+                <input type="number" id="currentMarks" placeholder="e.g. 250" min="0" step="any">
+                <span class="help-text">Enter your current marks if you want to know how many additional marks are needed.</span>
+            </div>
+
+        </div>
+
+        <!-- Pass Fail Mode -->
+        <div id="passFields" style="display:none;">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="passObtained">Marks Obtained</label>
+                    <input type="number" id="passObtained" placeholder="e.g. 35" min="0" step="any">
+                </div>
+
+                <div class="form-group">
+                    <label for="passTotal">Total Marks</label>
+                    <input type="number" id="passTotal" placeholder="e.g. 100" min="0" step="any">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="passPercentage">Passing Percentage (%)</label>
+                <input type="number" id="passPercentage" value="33" min="0" max="100" step="any">
+                <span class="help-text">Default passing percentage is 33%. Change it according to your exam rules.</span>
+            </div>
+
+        </div>
+
+        <button type="button" class="calculate-btn" id="calculateBtn">
+            Calculate Result
+        </button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result-box" id="resultBox">
+            <h3 id="resultHeading">Your Result</h3>
+            <div class="result-value" id="resultValue"></div>
+            <div class="result-details" id="resultDetails"></div>
+        </div>
+
+        <div style="text-align:center;">
+            <button type="button" class="reset-btn" id="resetBtn">Reset Calculator</button>
+        </div>
+
+    </section>
+
+    <section class="info-card">
+        <h2>How to Calculate Percentage?</h2>
+        <p>Use the following formula:</p>
+        <p style="margin-top:8px;"><strong>Percentage = (Marks Obtained ÷ Total Marks) × 100</strong></p>
+        <p style="margin-top:8px;">Example: If you score 450 out of 500, your percentage is 90%.</p>
+    </section>
+
+    <section class="info-card">
+        <h2>How is Grade Calculated?</h2>
+        <ul>
+            <li>90% – 100%: A+</li>
+            <li>80% – 89.99%: A</li>
+            <li>70% – 79.99%: B+</li>
+            <li>60% – 69.99%: B</li>
+            <li>50% – 59.99%: C</li>
+            <li>40% – 49.99%: D</li>
+            <li>Below 40%: F</li>
+        </ul>
+        <p style="margin-top:10px;">
+            Note: Actual grading rules may differ between schools, boards and universities.
+        </p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    © 2026 <a href="../index.html">ToolSahayak</a>. All Rights Reserved.
+</footer>
+
+<script>
+
+    let currentMode = "percentage";
+
+    const modes = ["percentage", "grade", "required", "pass"];
+
+    const fields = {
+        percentage: document.getElementById("percentageFields"),
+        grade: document.getElementById("gradeFields"),
+        required: document.getElementById("requiredFields"),
+        pass: document.getElementById("passFields")
+    };
+
+    const resultBox = document.getElementById("resultBox");
+    const resultHeading = document.getElementById("resultHeading");
+    const resultValue = document.getElementById("resultValue");
+    const resultDetails = document.getElementById("resultDetails");
+    const errorBox = document.getElementById("error");
+
+    function hideMessages() {
+        resultBox.style.display = "none";
+        errorBox.style.display = "none";
+    }
+
+    function showError(message) {
+        errorBox.textContent = message;
+        errorBox.style.display = "block";
+        resultBox.style.display = "none";
+    }
+
+    function showResult(heading, value, details = "") {
+        resultHeading.textContent = heading;
+        resultValue.textContent = value;
+        resultDetails.innerHTML = details;
+        resultBox.style.display = "block";
+        errorBox.style.display = "none";
+    }
+
+    function getNumber(id) {
+        const value = document.getElementById(id).value.trim();
+
+        if (value === "") return null;
+
+        const number = Number(value);
+
+        if (!Number.isFinite(number)) return null;
+
+        return number;
+    }
+
+    function formatNumber(number) {
+        return Number(number.toFixed(4)).toLocaleString("en-IN", {
+            maximumFractionDigits: 4
+        });
+    }
+
+    function validateMarks(obtained, total) {
+        if (obtained === null || total === null) {
+            showError("Please enter all required marks.");
+            return false;
+        }
+
+        if (total <= 0) {
+            showError("Total marks must be greater than zero.");
+            return false;
+        }
+
+        if (obtained < 0 || obtained > total) {
+            showError("Obtained marks must be between 0 and total marks.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function getGrade(percentage, system) {
+        if (system === "simple") {
+            if (percentage >= 80) return "A";
+            if (percentage >= 60) return "B";
+            if (percentage >= 50) return "C";
+            if (percentage >= 40) return "D";
+            return "F";
+        }
+
+        if (percentage >= 90) return "A+";
+        if (percentage >= 80) return "A";
+        if (percentage >= 70) return "B+";
+        if (percentage >= 60) return "B";
+        if (percentage >= 50) return "C";
+        if (percentage >= 40) return "D";
+
+        return "F";
+    }
+
+    function updateMode(mode) {
+        currentMode = mode;
+
+        modes.forEach(item => {
+            fields[item].style.display = item === mode ? "block" : "none";
+        });
+
+        document.querySelectorAll(".mode-btn").forEach(button => {
+            button.classList.toggle("active", button.dataset.mode === mode);
+        });
+
+        hideMessages();
+    }
+
+    function calculate() {
+        hideMessages();
+
+        if (currentMode === "percentage") {
+
+            const obtained = getNumber("obtained");
+            const total = getNumber("total");
+
+            if (!validateMarks(obtained, total)) return;
+
+            const percentage = (obtained / total) * 100;
+
+            showResult(
+                "Your Percentage",
+                formatNumber(percentage) + "%",
+                "Marks Obtained: " + formatNumber(obtained) +
+                " / " + formatNumber(total) +
+                "<br>Percentage: " + formatNumber(percentage) + "%"
+            );
+        }
+
+        else if (currentMode === "grade") {
+
+            const obtained = getNumber("gradeObtained");
+            const total = getNumber("gradeTotal");
+
+            if (!validateMarks(obtained, total)) return;
+
+            const percentage = (obtained / total) * 100;
+            const grade = getGrade(percentage, document.getElementById("gradeSystem").value);
+
+            showResult(
+                "Your Grade",
+                grade,
+                "Percentage: " + formatNumber(percentage) + "%" +
+                "<br>Marks: " + formatNumber(obtained) +
+                " / " + formatNumber(total)
+            );
+        }
+
+        else if (currentMode === "required") {
+
+            const total = getNumber("requiredTotal");
+            const target = getNumber("targetPercentage");
+            const currentInput = document.getElementById("currentMarks").value.trim();
+            const current = currentInput === "" ? 0 : getNumber("currentMarks");
+
+            if (total === null || target === null || current === null) {
+                showError("Please enter valid numbers.");
+                return;
+            }
+
+            if (total <= 0) {
+                showError("Total marks must be greater than zero.");
+                return;
+            }
+
+            if (target < 0 || target > 100) {
+                showError("Target percentage must be between 0 and 100.");
+                return;
+            }
+
+            if (current < 0 || current > total) {
+                showError("Current marks must be between 0 and total marks.");
+                return;
+            }
+
+            const targetMarks = total * target / 100;
+            const additionalMarks = Math.max(0, targetMarks - current);
+
+            showResult(
+                "Marks Required",
+                formatNumber(targetMarks) + " Marks",
+                "Target Percentage: " + formatNumber(target) + "%" +
+                "<br>Target Marks: " + formatNumber(targetMarks) +
+                "<br>Current Marks: " + formatNumber(current) +
+                "<br>Additional Marks Needed: " + formatNumber(additionalMarks)
+            );
+        }
+
+        else if (currentMode === "pass") {
+
+            const obtained = getNumber("passObtained");
+            const total = getNumber("passTotal");
+            const passing = getNumber("passPercentage");
+
+            if (!validateMarks(obtained, total)) return;
+
+            if (passing === null || passing < 0 || passing > 100) {
+                showError("Passing percentage must be between 0 and 100.");
+                return;
+            }
+
+            const percentage = (obtained / total) * 100;
+            const minimumMarks = total * passing / 100;
+            const passed = percentage >= passing;
+
+            showResult(
+                passed ? "Congratulations! You Passed" : "Result: Fail",
+                passed ? "PASS" : "FAIL",
+                "Your Percentage: " + formatNumber(percentage) + "%" +
+                "<br>Passing Percentage: " + formatNumber(passing) + "%" +
+                "<br>Minimum Passing Marks: " + formatNumber(minimumMarks)
+            );
+        }
+    }
+
+    document.querySelectorAll(".mode-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            updateMode(button.dataset.mode);
+        });
+    });
+
+    document.getElementById("calculateBtn").addEventListener("click", calculate);
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+
+        document.querySelectorAll("input").forEach(input => {
+            input.value = "";
+        });
+
+        document.getElementById("passPercentage").value = "33";
+        document.getElementById("gradeSystem").value = "standard";
+
+        updateMode("percentage");
+        hideMessages();
+    });
+
+    document.querySelectorAll("input").forEach(input => {
+        input.addEventListener("keydown", event => {
+            if (event.key === "Enter") calculate();
+        });
+    });
+
+</script>
+
+</body>
+</html>

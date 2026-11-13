@@ -1,0 +1,113 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://toolsahayak.netlify.app/</loc>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/about.html</loc>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/contact.html</loc>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/privacy-policy.html</loc>
+        <priority>0.4</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/disclaimer.html</loc>
+        <priority>0.4</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/quotation-invoice.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Calculator Tools -->
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/age-calculator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/emi-calculator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/sip-calculator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/gst-calculator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/scientific-calculator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/speed-distance-time.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/force-calculator.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/percentage-marks-calculator.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/gpa-cgpa-calculator.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/density-calculator.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/molar-mass-calculator.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/temperature-converter.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Image Tools -->
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/image-compressor.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/photo-resizer.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/signature-maker.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

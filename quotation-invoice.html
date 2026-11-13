@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Quotation Generator Online - Create GST Quotations | ToolSahayak</title>
+
+    <meta name="description" content="Create professional quotations online for free with ToolSahayak. Add company and customer details, products, GST, payment terms and download PDF quotations using 5 templates.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/quotation-invoice.html">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Online Quotation Generator - ToolSahayak">
+    <meta property="og:description" content="Create professional quotations with GST calculations and download PDF documents using ToolSahayak.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/quotation-invoice.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Online Quotation Generator - ToolSahayak">
+    <meta name="twitter:description" content="Create professional quotations with GST calculations and download PDF documents using ToolSahayak.">
+
+
+    <style>
+                * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background: #f1f4f9;
+                color: #333;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 25px auto;
+                padding: 15px;
+            }
+
+            header {
+                background: #17365d;
+                color: white;
+                text-align: center;
+                padding: 25px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+
+            header h1 {
+                font-size: 27px;
+                margin-bottom: 8px;
+            }
+
+            header p {
+                font-size: 14px;
+                color: #dce6f1;
+            }
+
+            .card {
+                background: white;
+                padding: 22px;
+                margin-bottom: 20px;
+                border-radius: 9px;
+                box-shadow: 0 2px 8px #00000010;
+            }
+
+            .card h2 {
+                font-size: 19px;
+                color: #17365d;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #e5eaf0;
+                padding-bottom: 10px;
+            }
+
+            .form-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+                margin-bottom: 18px;
+            }
+
+            .form-grid .full {
+                grid-column: 1 / -1;
+            }
+
+            label {
+                display: block;
+                font-size: 13px;
+                font-weight: bold;
+                margin-bottom: 7px;
+            }
+
+            input, select, textarea {
+                width: 100%;
+                padding: 11px;
+                border: 1px solid #ccd3dd;
+                border-radius: 5px;
+                font-size: 14px;
+                outline: none;
+            }
+
+            input:focus, select:focus, textarea:focus {
+                border-color: #2675cf;
+            }
+
+            textarea {
+                min-height: 80px;
+                resize: vertical;
+            }
+
+            button {
+                border: none;
+                padding: 11px 18px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                margin: 5px 3px;
+            }
+
+            .btn-primary {
+                background: #2675cf;
+                color: white;
+            }
+
+            .btn-success {
+                background: #138754;
+                color: white;
+            }
+
+            .btn-danger {
+                background: #dc3545;
+                color: white;
+            }
+
+            button:hover {
+                opacity: 0.85;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 11px 8px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+
+            th {
+                background: #17365d;
+                color: white;
+            }
+
+            tr:nth-child(even) {
+                background: #f6f8fb;
+            }
+
+            .edit {
+                background: #ffc107;
+                color: black;
+            }
+
+            .delete {
+                background: #dc3545;
+                color: white;
+            }
+
+            .summary {
+                max-width: 400px;
+                margin-left: auto;
+            }
+
+            .summary p {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .grand {
+                background: #e7f1ff;
+                font-size: 19px;
+                color: #17365d;
+                font-weight: bold;
+            }
+
+            .actions {
+                text-align: center;
+                margin: 25px;
+            }
+
+            .actions button {
+                padding: 15px 25px;
+                font-size: 15px;
+            }
+
+            footer {
+                text-align: center;
+                color: #777;
+                font-size: 13px;
+                padding: 20px;
+            }
+
+            @media(max-width: 768px) {
+
+                .form-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                table {
+                    display: block;
+                    overflow-x: auto;
+                    white-space: nowrap;
+                }
+
+                header h1 {
+                    font-size: 21px;
+                }
+
+                .card {
+                    padding: 15px;
+                }
+            }
+
+            /* Quotation Template Selection */
+
+            .template-description {
+                font-size: 13px;
+                color: #777;
+                margin-bottom: 18px;
+            }
+
+            .template-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 12px;
+            }
+
+            .template-option {
+                border: 1px solid #d8dee8;
+                border-radius: 8px;
+                padding: 16px 10px;
+                text-align: center;
+                cursor: pointer;
+                background: #fff;
+                transition: 0.2s;
+            }
+
+            .template-option input {
+                width: auto;
+                margin-bottom: 12px;
+                cursor: pointer;
+            }
+
+            .template-number {
+                display: block;
+                color: #2675cf;
+                font-size: 23px;
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+
+            .template-option strong {
+                display: block;
+                font-size: 14px;
+                color: #17365d;
+                margin-bottom: 6px;
+            }
+
+            .template-option small {
+                display: block;
+                font-size: 11px;
+                color: #777;
+            }
+
+            .template-option:has(input:checked) {
+                border: 2px solid #2675cf;
+                background: #edf5ff;
+            }
+
+            @media(max-width: 768px) {
+                .template-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+</style>
+
+    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Free Online Quotation Generator</h1>
+        <p>Create Professional Quotations with GST Calculation and PDF Download</p>
+    </header>
+
+    <!-- Company Details -->
+
+    <section class="card">
+
+        <h2>Company Details</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Select Company</label>
+                <select id="companySelect"
+                    onchange="selectCompany()">
+                    <option value="">Select Company</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Company Name</label>
+                <input id="shopName"
+                    placeholder="Enter Company Name">
+            </div>
+
+            <div>
+                <label>GST Number</label>
+                <input id="shopGST"
+                    placeholder="Enter GST Number">
+            </div>
+
+            <div>
+                <label>Mobile Number</label>
+                <input id="shopMobile"
+                    placeholder="Mobile Number">
+            </div>
+
+            <div class="full">
+                <label>Company Address</label>
+                <textarea id="shopAddress"
+                    placeholder="Enter Company Address"></textarea>
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input id="shopEmail"
+                    placeholder="Email Address">
+            </div>
+
+        </div>
+
+        <button onclick="saveCompany()" class="btn-primary">
+            Save Company Profile
+        </button>
+
+        <button onclick="deleteCompany()" class="btn-danger">
+            Delete Company
+        </button>
+
+    </section>
+
+
+    <!-- Quotation Details -->
+
+    <section class="card">
+
+        <h2>Quotation Details</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Quotation Number</label>
+                <input id="quotationNo" readonly>
+            </div>
+
+            <div>
+                <label>Quotation Date</label>
+                <input type="date" id="quotationDate">
+            </div>
+
+            <div>
+                <label>Valid Until</label>
+                <input type="date" id="validDate">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Customer Details -->
+
+    <section class="card">
+
+        <h2>Customer Details</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Customer Name</label>
+                <input id="customerName"
+                    placeholder="Customer Name">
+            </div>
+
+            <div>
+                <label>Customer GST Number</label>
+                <input id="customerGST"
+                    placeholder="GST Number">
+            </div>
+
+            <div>
+                <label>Mobile Number</label>
+                <input id="customerMobile"
+                    placeholder="Mobile Number">
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input id="customerEmail"
+                    placeholder="Customer Email">
+            </div>
+
+            <div class="full">
+                <label>Customer Address</label>
+                <textarea id="customerAddress"
+                    placeholder="Customer Address"></textarea>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Material Details -->
+
+    <section class="card">
+
+        <h2>Material / Product Details</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Material Name</label>
+                <input id="materialName"
+                    placeholder="Enter Material Name">
+            </div>
+
+            <div>
+                <label>HSN Code</label>
+                <input id="hsn"
+                    placeholder="HSN Code">
+            </div>
+
+            <div>
+                <label>Quantity</label>
+                <input type="number" id="quantity"
+                    min="0.01" step="any"
+                    placeholder="Quantity">
+            </div>
+
+            <div>
+                <label>Unit</label>
+                <select id="unit">
+                    <option>Nos</option>
+                    <option>Kg</option>
+                    <option>Meter</option>
+                    <option>Box</option>
+                    <option>Set</option>
+                    <option>Piece</option>
+                    <option>Lot</option>
+                    <option>Service</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Rate (₹)</label>
+                <input type="number" id="rate"
+                    min="0" step="0.01"
+                    placeholder="Enter Rate">
+            </div>
+
+            <div>
+                <label>GST (%)</label>
+                <select id="gst">
+                    <option value="0">0%</option>
+                    <option value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18" selected>18%</option>
+                    <option value="28">28%</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button onclick="addMaterial()" class="btn-primary">
+            + Add Material
+        </button>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Sr</th>
+                    <th>Material</th>
+                    <th>HSN</th>
+                    <th>Qty</th>
+                    <th>Rate</th>
+                    <th>GST</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="materialTable"></tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- Total -->
+
+    <section class="card">
+
+        <h2>Quotation Summary</h2>
+
+        <div class="summary">
+
+            <p>Subtotal:
+                <strong id="subtotal">₹0.00</strong>
+            </p>
+
+            <p>Total GST:
+                <strong id="totalGST">₹0.00</strong>
+            </p>
+
+            <p class="grand">
+                Grand Total:
+                <strong id="grandTotal">₹0.00</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Terms -->
+
+    <section class="card">
+
+        <h2>Payment Terms & Conditions</h2>
+
+        <textarea id="paymentTerms"
+            placeholder="Enter Payment Terms and Conditions"></textarea>
+
+        <br><br>
+
+        <label>Additional Remarks</label>
+
+        <textarea id="remarks"
+            placeholder="Enter Additional Remarks"></textarea>
+
+        <br><br>
+
+        <label>Authorized Person Name</label>
+
+        <input id="signName"
+            placeholder="Enter Authorized Person Name">
+
+        <br><br>
+
+        <label>Signature Image (Optional)</label>
+
+        <input type="file" id="signatureImage"
+            accept="image/*">
+
+    </section>
+
+    <!-- Quotation Template Selection -->
+
+    <section class="card template-card">
+
+    <h2>Select Quotation Template</h2>
+
+    <p class="template-description">
+        Select your preferred design for quotation PDF.
+    </p>
+
+    <div class="template-grid">
+
+        <label class="template-option">
+            <input type="radio" name="quotationTemplate"
+                   value="classic" checked>
+            <!-- <span class="template-number">01</span> -->
+            <strong>Classic</strong>
+            <small>Simple & Professional</small>
+        </label>
+
+        <label class="template-option">
+            <input type="radio" name="quotationTemplate"
+                   value="modern">
+            <!-- <span class="template-number">02</span> -->
+            <strong>Modern</strong>
+            <small>Modern Blue Design</small>
+        </label>
+
+        <label class="template-option">
+            <input type="radio" name="quotationTemplate"
+                   value="corporate">
+            <!-- <span class="template-number">03</span> -->
+            <strong>Corporate</strong>
+            <small>Business Professional</small>
+        </label>
+
+        <label class="template-option">
+            <input type="radio" name="quotationTemplate"
+                   value="compact">
+            <!-- <span class="template-number">04</span> -->
+            <strong>Compact</strong>
+            <small>Space Saving Layout</small>
+        </label>
+
+        <label class="template-option">
+            <input type="radio" name="quotationTemplate"
+                   value="gst">
+            <!-- <span class="template-number">05</span> -->
+            <strong>GST Professional</strong>
+            <small>Detailed Tax Layout</small>
+        </label>
+
+    </div>
+
+    </section>
+
+    <!-- Buttons -->
+
+    <section class="actions">
+
+        <button onclick="downloadPDF()" class="btn-success">
+            Download Quotation PDF
+        </button>
+
+        <button onclick="resetQuotation()" class="btn-danger">
+            New Quotation
+        </button>
+
+    </section>
+
+    <footer>
+        Smart Quotation Management System
+        <br>
+        Powered By Mr. Rajan...
+    </footer>
+
+</div>
+
+<script>
+
+    let selectedLogoData = "";
+let materials = [];
+let companies = [];
+let editIndex = -1;
+
+// Load Saved Data
+
+window.onload = function () {
+
+    companies = JSON.parse(
+        localStorage.getItem("companies") || "[]"
+    );
+
+    populateCompanies();
+
+    document.getElementById("quotationDate").value =
+    getTodayDate();
+
+    document.getElementById("quotationNo").value =
+        getQuotationNumber();
+
+    updateTotal();
+};
+
+
+// Quotation Number
+
+function getQuotationNumber() {
+
+    let number = Number(
+        localStorage.getItem("quotationCounter") || 1
+    );
+
+    return "QT-" + String(number).padStart(4, "0");
+}
+
+
+// Save Company
+
+function saveCompany() {
+
+    let name = document.getElementById("shopName").value.trim();
+
+    if (!name) {
+        alert("Please enter Company Name");
+        return;
+    }
+
+    let company = {
+
+        name: name,
+
+        gst: document.getElementById("shopGST").value,
+
+        mobile: document.getElementById("shopMobile").value,
+
+        address: document.getElementById("shopAddress").value,
+
+        email: document.getElementById("shopEmail").value
+
+    };
+
+    let existing = companies.findIndex(
+        c => c.name === name
+    );
+
+    if (existing >= 0) {
+        companies[existing] = company;
+    } else {
+        companies.push(company);
+    }
+
+    localStorage.setItem(
+        "companies",
+        JSON.stringify(companies)
+    );
+
+    populateCompanies();
+
+    document.getElementById("companySelect").value = name;
+
+    alert("Company Profile Saved Successfully");
+}
+
+
+// Populate Companies
+
+function populateCompanies() {
+
+    let select = document.getElementById("companySelect");
+
+    select.innerHTML =
+        '<option value="">Select Company</option>';
+
+    companies.forEach(company => {
+
+        let option = document.createElement("option");
+
+        option.value = company.name;
+        option.textContent = company.name;
+
+        select.appendChild(option);
+
+    });
+}
+
+
+// Select Company
+
+function selectCompany() {
+
+    let name = document.getElementById("companySelect").value;
+
+    let company = companies.find(c => c.name === name);
+
+    if (!company) return;
+
+    document.getElementById("shopName").value = company.name;
+    document.getElementById("shopGST").value = company.gst;
+    document.getElementById("shopMobile").value = company.mobile;
+    document.getElementById("shopAddress").value = company.address;
+    document.getElementById("shopEmail").value = company.email;
+
+}
+
+
+// Delete Company
+
+function deleteCompany() {
+
+    let name = document.getElementById("companySelect").value;
+
+    if (!name) {
+        alert("Select Company First");
+        return;
+    }
+
+    if (!confirm("Are you sure you want to delete this company?")) {
+        return;
+    }
+
+    companies = companies.filter(c => c.name !== name);
+
+    localStorage.setItem(
+        "companies",
+        JSON.stringify(companies)
+    );
+
+    populateCompanies();
+
+    document.getElementById("shopName").value = "";
+    document.getElementById("shopGST").value = "";
+    document.getElementById("shopMobile").value = "";
+    document.getElementById("shopAddress").value = "";
+    document.getElementById("shopEmail").value = "";
+
+    alert("Company Deleted Successfully");
+
+}
+
+
+// Add Material
+
+function addMaterial() {
+
+    let name = document.getElementById("materialName").value.trim();
+
+    let hsn = document.getElementById("hsn").value;
+
+    let qty = Number(document.getElementById("quantity").value);
+
+    let unit = document.getElementById("unit").value;
+
+    let rate = Number(document.getElementById("rate").value);
+
+    let gst = Number(document.getElementById("gst").value);
+
+    if (!name || !qty || qty <= 0 || rate < 0 ||
+        document.getElementById("quantity").value === "" ||
+        document.getElementById("rate").value === "") {
+
+        alert("Please enter valid Material, Quantity and Rate");
+
+        return;
+    }
+
+    let material = {
+
+        name,
+        hsn,
+        qty,
+        unit,
+        rate,
+        gst
+
+    };
+
+    if (editIndex >= 0) {
+
+        materials[editIndex] = material;
+
+        editIndex = -1;
+
+    } else {
+
+        materials.push(material);
+
+    }
+
+    clearMaterialForm();
+
+    displayMaterials();
+
+    updateTotal();
+
+}
+
+
+// Display Materials
+
+function displayMaterials() {
+
+    let table = document.getElementById("materialTable");
+
+    table.innerHTML = "";
+
+    materials.forEach((item, index) => {
+
+        let amount = item.qty * item.rate;
+
+        let gstAmount = amount * item.gst / 100;
+
+        let total = amount + gstAmount;
+
+        table.innerHTML += `
+
+        <tr>
+
+            <td>${index + 1}</td>
+
+            <td>${escapeHTML(item.name)}</td>
+
+            <td>${escapeHTML(item.hsn)}</td>
+
+            <td>${item.qty} ${escapeHTML(item.unit)}</td>
+
+            <td>₹${item.rate.toFixed(2)}</td>
+
+            <td>${item.gst}%</td>
+
+            <td>₹${total.toFixed(2)}</td>
+
+            <td>
+
+                <button class="edit"
+                    onclick="editMaterial(${index})">
+                    Edit
+                </button>
+
+                <button class="delete"
+                    onclick="deleteMaterial(${index})">
+                    Delete
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+
+// Escape HTML
+
+function escapeHTML(value) {
+
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+
+}
+
+
+// Edit Material
+
+function editMaterial(index) {
+
+    let item = materials[index];
+
+    document.getElementById("materialName").value = item.name;
+
+    document.getElementById("hsn").value = item.hsn;
+
+    document.getElementById("quantity").value = item.qty;
+
+    document.getElementById("unit").value = item.unit;
+
+    document.getElementById("rate").value = item.rate;
+
+    document.getElementById("gst").value = item.gst;
+
+    editIndex = index;
+
+    window.scrollTo({
+        top: 600,
+        behavior: "smooth"
+    });
+
+}
+
+
+// Delete Material
+
+function deleteMaterial(index) {
+
+    if (!confirm("Delete this Material?")) return;
+
+    materials.splice(index, 1);
+
+    displayMaterials();
+
+    updateTotal();
+
+}
+
+
+// Clear Material Form
+
+function clearMaterialForm() {
+
+    document.getElementById("materialName").value = "";
+
+    document.getElementById("hsn").value = "";
+
+    document.getElementById("quantity").value = "";
+
+    document.getElementById("rate").value = "";
+
+    document.getElementById("gst").value = "18";
+
+}
+
+
+// Calculate Total
+
+function updateTotal() {
+
+    let subtotal = 0;
+
+    let totalGST = 0;
+
+    materials.forEach(item => {
+
+        let amount = item.qty * item.rate;
+
+        let gstAmount = amount * item.gst / 100;
+
+        subtotal += amount;
+
+        totalGST += gstAmount;
+
+    });
+
+    let grandTotal = subtotal + totalGST;
+
+    document.getElementById("subtotal").innerText =
+        "₹" + subtotal.toFixed(2);
+
+    document.getElementById("totalGST").innerText =
+        "₹" + totalGST.toFixed(2);
+
+    document.getElementById("grandTotal").innerText =
+        "₹" + grandTotal.toFixed(2);
+
+}
+
+
+// PDF Download
+
+
+// =====================================
+// 5 PROFESSIONAL QUOTATION TEMPLATES
+// =====================================
+
+async function downloadPDF() {
+
+    try {
+
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            alert("PDF Library Load Nahi Hui. Internet Check Karein.");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Set PDF Default Zoom to 100%
+        doc.setDisplayMode(1.0);
+
+        if (typeof doc.autoTable !== "function") {
+            alert("PDF Table Library Load Nahi Hui. Page Refresh Karein.");
+            return;
+        }
+
+        // Basic Validation
+
+        const companyName =
+            document.getElementById("shopName").value.trim();
+
+        const customerName =
+            document.getElementById("customerName").value.trim();
+
+        if (!companyName || !customerName || materials.length === 0) {
+            alert("Company, Customer aur Material Details Fill Karein.");
+            return;
+        }
+
+        // Selected Template
+
+        const template =
+            document.querySelector(
+                'input[name="quotationTemplate"]:checked'
+            )?.value || "classic";
+
+        // Template Configuration
+
+        const templates = {
+
+            classic: {
+                color: [23, 54, 93],
+                headerColor: [23, 54, 93],
+                tableTheme: "grid",
+                fontSize: 7,
+                padding: 1,
+                title: "QUOTATION"
+            },
+
+            modern: {
+                color: [32, 105, 190],
+                headerColor: [32, 105, 190],
+                tableTheme: "striped",
+                fontSize: 7,
+                padding: 1,
+                title: "QUOTATION"
+            },
+
+            corporate: {
+                color: [35, 57, 79],
+                headerColor: [35, 57, 79],
+                tableTheme: "grid",
+                fontSize: 7,
+                padding: 1,
+                title: "BUSINESS QUOTATION"
+            },
+
+            compact: {
+                color: [60, 80, 70],
+                headerColor: [60, 80, 70],
+                tableTheme: "plain",
+                fontSize: 7,
+                padding: 1,
+                title: "QUOTATION"
+            },
+
+            gst: {
+                color: [15, 112, 86],
+                headerColor: [15, 112, 86],
+                tableTheme: "grid",
+                fontSize: 7,
+                padding: 1,
+                title: "GST QUOTATION"
+            }
+
+        };
+
+        const design = templates[template];
+
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+
+        // Company Information
+
+        const companyGST =
+            document.getElementById("shopGST").value;
+
+        const companyMobile =
+            document.getElementById("shopMobile").value;
+
+        const companyAddress =
+            document.getElementById("shopAddress").value;
+
+        const companyEmail =
+            document.getElementById("shopEmail").value;
+
+        // Customer Information
+
+        const customerGST =
+            document.getElementById("customerGST").value;
+
+        const customerMobile =
+            document.getElementById("customerMobile").value;
+
+        const customerEmail =
+            document.getElementById("customerEmail").value;
+
+        const customerAddress =
+            document.getElementById("customerAddress").value;
+
+        const quotationNo =
+            document.getElementById("quotationNo").value;
+
+        const quotationDate =
+            document.getElementById("quotationDate").value;
+
+        const validDate =
+            document.getElementById("validDate").value;
+
+        // Calculate Material Amounts
+
+        let subtotal = 0;
+        let totalGST = 0;
+
+        const calculatedMaterials = materials.map((item, index) => {
+
+            const amount = item.qty * item.rate;
+            const gstAmount = amount * item.gst / 100;
+            const total = amount + gstAmount;
+
+            subtotal += amount;
+            totalGST += gstAmount;
+
+            return {
+                item,
+                index: index + 1,
+                amount,
+                gstAmount,
+                total
+            };
+
+        });
+
+        const grandTotal = subtotal + totalGST;
+
+        // =================================
+        // HEADER DESIGN - TEMPLATE WISE
+        // =================================
+
+        const primary = design.color;
+
+        doc.setFont("helvetica", "bold");
+
+        if (template === "modern") {
+
+            doc.setFillColor(...primary);
+            doc.rect(0, 0, pageWidth, 32, "F");
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.text(design.title, 105, 13, { align: "center" });
+
+            doc.setFontSize(19);
+            doc.text(companyName, 105, 22, { align: "center" });
+
+        }
+
+        else if (template === "corporate") {
+
+            doc.setTextColor(...primary);
+            doc.setFontSize(18);
+            doc.text(companyName, 14, 20);
+
+            doc.setFontSize(16);
+            doc.text(design.title, 196, 20, { align: "right" });
+
+            doc.setDrawColor(...primary);
+            doc.setLineWidth(0.6);
+            doc.line(14, 25, 196, 25);
+
+        }
+
+        else if (template === "compact") {
+
+            doc.setTextColor(...primary);
+            doc.setFontSize(16);
+            doc.text(companyName, 14, 18);
+
+            doc.setFontSize(14);
+            doc.text(design.title, 196, 18, { align: "right" });
+
+            doc.setLineWidth(0.5);
+            doc.line(14, 23, 196, 23);
+
+        }
+
+        else if (template === "gst") {
+
+            doc.setFillColor(...primary);
+            doc.rect(0, 0, pageWidth, 32, "F");
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(11);
+            doc.text(design.title, 105, 13, { align: "center" });
+
+            doc.setFontSize(18);
+            doc.text(companyName, 105, 22, { align: "center" });
+
+        }
+
+        else {
+
+            doc.setTextColor(...primary);
+            doc.setFontSize(18);
+            doc.text(design.title, 105, 18, { align: "center" });
+
+            doc.setFontSize(12);
+            doc.text(companyName, 105, 29, { align: "center" });
+
+            doc.setLineWidth(0.5);
+            doc.line(14, 35, 196, 35);
+
+        }
+
+        // Logo if available
+
+        if (selectedLogoData) {
+
+            try {
+
+                const logoInfo = doc.getImageProperties(selectedLogoData);
+
+                doc.addImage(
+                    selectedLogoData,
+                    logoInfo.fileType || "JPEG",
+                    14, 10, 25, 20
+                );
+
+            } catch (logoError) {
+
+                console.warn("Logo could not be added:", logoError);
+
+            }
+
+        }
+
+        // Company Details
+
+        doc.setTextColor(40, 40, 40);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8);
+
+        let y = template === "modern" || template === "gst" ? 47 :
+                template === "compact" ? 31 : 43;
+
+        const companyLines = [
+            companyAddress,
+            companyGST ? "GSTIN: " + companyGST : "",
+            companyMobile ? "Mobile: " + companyMobile : "",
+            companyEmail ? "Email: " + companyEmail : ""
+        ].filter(Boolean);
+
+        companyLines.forEach(line => {
+
+            const lines = doc.splitTextToSize(line, 180);
+
+            doc.text(lines, 14, y);
+
+            y += lines.length * 4 + 1;
+
+        });
+
+        doc.setDrawColor(...primary);
+        doc.line(14, y + 2, 196, y + 2);
+
+        y += 10;
+
+        // Quotation Information
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...primary);
+
+        doc.text("Quotation No: " + quotationNo, 14, y);
+
+        // Date Format: DD-MM-YYYY
+        const formatDate = (dateString) => {
+            if (!dateString) return "-";
+
+            const [year, month, day] = dateString.split("-");
+
+            return `${day}-${month}-${year}`;
+        };
+
+        doc.text(
+            "Date: " + formatDate(quotationDate),
+            196,
+            y,
+            { align: "right" }
+        );
+
+        y += 7;
+
+        // Valid Until directly below Date
+        if (validDate) {
+
+            doc.setTextColor(...primary);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+
+            doc.text(
+                "Valid Until: " + formatDate(validDate),
+                196,
+                y,
+                { align: "right" }
+            );
+
+            y += 2;
+        }
+
+        // Customer Information
+
+        if (template === "corporate") {
+
+            doc.setFillColor(240, 244, 248);
+            doc.roundedRect(14, y, 182, 36, 2, 2, "F");
+
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(...primary);
+            doc.text("CUSTOMER DETAILS", 18, y + 7);
+
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(40, 40, 40);
+
+            doc.text("Name: " + customerName, 18, y + 14);
+            doc.text("GSTIN: " + (customerGST || "-"), 18, y + 21);
+            doc.text("Mobile: " + (customerMobile || "-"), 18, y + 28);
+
+            y += 43;
+
+        }
+
+        else {
+
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(...primary);
+            doc.text("CUSTOMER DETAILS", 14, y);
+
+            y += 6;
+
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(40, 40, 40);
+
+            const customerLines = [
+                "Customer: " + customerName,
+                customerAddress ? "Address: " + customerAddress : "",
+                customerGST ? "GSTIN: " + customerGST : "",
+                customerMobile ? "Mobile: " + customerMobile : "",
+                customerEmail ? "Email: " + customerEmail : ""
+            ].filter(Boolean);
+
+            customerLines.forEach(line => {
+
+                const lines = doc.splitTextToSize(line, 180);
+
+                doc.text(lines, 14, y);
+
+                y += lines.length * 4 + 1;
+
+            });
+
+            y += 4;
+
+        }
+
+        // =================================
+        // MATERIAL TABLE - TEMPLATE WISE
+        // =================================
+
+        let tableHead = [];
+        let tableBody = [];
+
+        if (template === "modern") {
+
+            tableHead = [[
+                "Sr.",
+                "Description",
+                "Qty",
+                "Unit",
+                "Rate",
+                "GST",
+                "Total"
+            ]];
+
+            tableBody = calculatedMaterials.map(data => [
+                data.index,
+                data.item.name,
+                data.item.qty,
+                data.item.unit,
+                data.item.rate.toFixed(2),
+                data.item.gst + "%",
+                data.total.toFixed(2)
+            ]);
+
+        }
+
+        else if (template === "compact") {
+
+            tableHead = [[
+                "Sr.",
+                "Material",
+                "Qty",
+                "Rate",
+                "GST",
+                "Total"
+            ]];
+
+            tableBody = calculatedMaterials.map(data => [
+                data.index,
+                data.item.name,
+                data.item.qty + " " + data.item.unit,
+                data.item.rate.toFixed(2),
+                data.item.gst + "%",
+                data.total.toFixed(2)
+            ]);
+
+        }
+
+        else if (template === "corporate") {
+
+            tableHead = [[
+                "Sr.",
+                "Product / Service",
+                "HSN",
+                "Qty",
+                "Rate",
+                "Amount",
+                "Total"
+            ]];
+
+            tableBody = calculatedMaterials.map(data => [
+                data.index,
+                data.item.name,
+                data.item.hsn || "-",
+                data.item.qty + " " + data.item.unit,
+                data.item.rate.toFixed(2),
+                data.amount.toFixed(2),
+                data.total.toFixed(2)
+            ]);
+
+        }
+
+        else {
+
+            tableHead = [[
+                "Sr.",
+                "Material",
+                "HSN",
+                "Qty",
+                "Rate",
+                "Taxable",
+                "GST %",
+                "GST Amt",
+                "Total"
+            ]];
+
+            tableBody = calculatedMaterials.map(data => [
+                data.index,
+                data.item.name,
+                data.item.hsn || "-",
+                data.item.qty + " " + data.item.unit,
+                data.item.rate.toFixed(2),
+                data.amount.toFixed(2),
+                data.item.gst + "%",
+                data.gstAmount.toFixed(2),
+                data.total.toFixed(2)
+            ]);
+
+        }
+
+        doc.autoTable({
+
+            startY: y,
+
+            head: tableHead,
+
+            body: tableBody,
+
+            theme: design.tableTheme,
+
+            margin: {
+                left: 14,
+                right: 14,
+                bottom: 18
+            },
+
+            styles: {
+                font: "helvetica",
+                fontSize: design.fontSize,
+                cellPadding: design.padding,
+                overflow: "linebreak",
+                valign: "middle"
+            },
+
+            headStyles: {
+                fillColor: design.headerColor,
+                textColor: 255,
+                fontStyle: "bold"
+            },
+
+            alternateRowStyles: {
+                fillColor: [245, 248, 252]
+            },
+
+            columnStyles: {
+                0: { cellWidth: 9 },
+            }
+
+        });
+
+        // =================================
+        // QUOTATION SUMMARY
+        // =================================
+
+        y = doc.lastAutoTable.finalY + 10;
+
+        if (y + 35 > pageHeight - 18) {
+
+            doc.addPage();
+            y = 20;
+
+        }
+
+        doc.setTextColor(40, 40, 40);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+
+        doc.text(
+            "Subtotal: Rs. " + subtotal.toFixed(2),
+            196, y,
+            { align: "right" }
+        );
+
+        y += 7;
+
+        doc.text(
+            "Total GST: Rs. " + totalGST.toFixed(2),
+            196, y,
+            { align: "right" }
+        );
+
+        y += 9;
+
+        doc.setFillColor(...primary);
+        doc.roundedRect(112, y - 5, 84, 14, 2, 2, "F");
+
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(11);
+
+        doc.text(
+            "Grand Total: Rs. " + grandTotal.toFixed(2),
+            192, y + 4,
+            { align: "right" }
+        );
+
+        y += 20;
+
+        // =================================
+        // TERMS & REMARKS
+        // =================================
+
+        function addPDFSection(title, content) {
+
+            if (!content || !content.trim()) return;
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(9);
+            doc.setTextColor(...primary);
+
+            const headingHeight = 6;
+
+            const lines = doc.splitTextToSize(content, 180);
+            const textHeight = lines.length * 4.5;
+
+            if (y + headingHeight + textHeight + 5 > pageHeight - 18) {
+
+                doc.addPage();
+                y = 20;
+
+            }
+
+            doc.text(title, 14, y);
+
+            y += 6;
+
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(40, 40, 40);
+
+            doc.text(lines, 14, y);
+
+            y += textHeight + 8;
+
+        }
+
+        addPDFSection(
+            "PAYMENT TERMS & CONDITIONS",
+            document.getElementById("paymentTerms").value
+        );
+
+        addPDFSection(
+            "ADDITIONAL REMARKS",
+            document.getElementById("remarks").value
+        );
+
+        // =================================
+        // SIGNATURE
+        // =================================
+
+        const signFile =
+            document.getElementById("signatureImage").files[0];
+
+        const signName =
+            document.getElementById("signName").value ||
+            "Authorized Signatory";
+
+        if (y + 38 > pageHeight - 18) {
+
+            doc.addPage();
+            y = 20;
+
+        }
+
+        if (signFile) {
+
+            const imageData = await readImage(signFile);
+
+            const format =
+                signFile.type === "image/png" ? "PNG" : "JPEG";
+
+            doc.addImage(
+                imageData,
+                format,
+                150,
+                y,
+                35,
+                18
+            );
+
+            y += 20;
+
+        }
+
+        doc.setDrawColor(...primary);
+        doc.line(135, y + 5, 195, y + 5);
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9);
+        doc.setTextColor(40, 40, 40);
+
+        doc.text(
+            signName,
+            165,
+            y + 11,
+            { align: "center" }
+        );
+
+        doc.setFont("helvetica", "normal");
+
+        doc.text(
+            "Authorized Signatory",
+            165,
+            y + 16,
+            { align: "center" }
+        );
+
+        // =================================
+        // FOOTER ON ALL PAGES
+        // =================================
+
+        const totalPages = doc.internal.getNumberOfPages();
+
+        for (let i = 1; i <= totalPages; i++) {
+
+            doc.setPage(i);
+
+            doc.setDrawColor(200, 200, 200);
+            doc.line(14, pageHeight - 13, 196, pageHeight - 13);
+
+            doc.setFontSize(8);
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(110, 110, 110);
+
+            doc.text(
+                "Thank You For Your Business!",
+                105,
+                pageHeight - 7,
+                { align: "center" }
+            );
+
+            doc.text(
+                "Page " + i + " of " + totalPages,
+                196,
+                pageHeight - 7,
+                { align: "right" }
+            );
+
+        }
+
+        // =================================
+        // DOWNLOAD PDF
+        // =================================
+
+        doc.save(quotationNo + ".pdf");
+
+        const next = Number(
+            localStorage.getItem("quotationCounter") || 1
+        );
+
+        localStorage.setItem("quotationCounter", next + 1);
+
+        document.getElementById("quotationNo").value =
+            getQuotationNumber();
+
+        alert("Quotation PDF Generated Successfully!");
+
+    }
+
+    catch (error) {
+
+        console.error("PDF Error:", error);
+
+        alert("PDF Download Error: " + error.message);
+
+    }
+
+}
+
+
+// Read Signature Image
+
+function readImage(file) {
+
+    return new Promise((resolve, reject) => {
+
+        let reader = new FileReader();
+
+        reader.onload = () => resolve(reader.result);
+
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+// New Quotation
+
+function resetQuotation() {
+
+    if (!confirm("Start a New Quotation?")) return;
+
+    materials = [];
+
+    editIndex = -1;
+
+    displayMaterials();
+
+    updateTotal();
+
+    [
+        "customerName",
+        "customerGST",
+        "customerMobile",
+        "customerEmail",
+        "customerAddress",
+        "paymentTerms",
+        "remarks",
+        "signName"
+    ].forEach(id => {
+
+        document.getElementById(id).value = "";
+
+    });
+
+    document.getElementById("signatureImage").value = "";
+
+    document.getElementById("quotationNo").value =
+        getQuotationNumber();
+
+    document.getElementById("quotationDate").value =
+    getTodayDate();
+
+    document.getElementById("validDate").value = "";
+
+    clearMaterialForm();
+
+}
+
+function getTodayDate() {
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+}
+
+</script>
+
+</body>
+</html>

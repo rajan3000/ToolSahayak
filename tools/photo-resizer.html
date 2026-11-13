@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Photo Resizer Online - Resize Images to Any Size | ToolSahayak</title>
+
+<meta name="description" content="Resize JPG, PNG and WebP images online for free. Change photo width and height, maintain aspect ratio and download resized images instantly.">
+
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/photo-resizer.html">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Photo Resizer Online | ToolSahayak">
+<meta property="og:description" content="Resize JPG, PNG and WebP images online for free with our easy Photo Resizer.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/photo-resizer.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Photo Resizer Online | ToolSahayak">
+<meta name="twitter:description" content="Resize JPG, PNG and WebP images online for free.">
+
+<style>
+
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Arial,sans-serif;background:#f4f5ff;color:#172044}
+      header{background:white;padding:18px 6%;box-shadow:0 2px 10px #0001}
+      header a{font-size:23px;font-weight:bold;color:#3025d9;text-decoration:none}
+      .container{width:min(850px,92%);margin:35px auto}
+      .card{background:white;padding:28px;border-radius:16px;box-shadow:0 5px 25px #20206015}
+      h1{text-align:center;margin-top:0}
+      .subtitle{text-align:center;color:#68708a;line-height:1.6}
+      .upload-box{margin-top:25px;padding:30px 15px;border:2px dashed #3928e8;border-radius:12px;text-align:center;background:#f8f8ff}
+      input,select{width:100%;padding:12px;border:1px solid #c9cce5;border-radius:8px;font-size:16px;background:white}
+      input[type=file]{border:0}
+      label{display:block;font-weight:bold;margin:20px 0 8px}
+      .dimensions{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+      .check-row{display:flex;align-items:center;gap:10px;margin-top:18px}
+      .check-row input{width:auto;accent-color:#3928e8}
+      .check-row label{margin:0;font-weight:normal}
+      button{width:100%;padding:14px;margin-top:20px;background:#3928e8;color:white;border:0;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer}
+      button:disabled{background:#aaa;cursor:not-allowed}
+      #result{display:none;margin-top:28px}
+      .preview{background:#f5f6ff;padding:15px;border-radius:10px;text-align:center}
+      .preview img{max-width:100%;max-height:300px;object-fit:contain;margin-top:10px}
+      .stats{background:#edfff2;border:1px solid #bce8c7;padding:18px;border-radius:10px;margin-top:18px;line-height:2}
+      #error{color:#d62828;text-align:center;margin-top:15px}
+      .note{font-size:13px;color:#777;line-height:1.6;margin-top:20px}
+      footer{text-align:center;padding:20px;color:#777}
+      @media(max-width:550px){
+      .card{padding:20px 15px}
+      .dimensions{grid-template-columns:1fr}
+      }
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="../index.html">🟪 ToolSahayak</a>
+</header>
+
+<main class="container">
+<section class="card">
+
+<h1>📐 Photo Resizer</h1>
+<p class="subtitle">Resize your photo with custom width and height.</p>
+
+<div class="upload-box">
+<h2>Select Your Photo</h2>
+<p>JPG, PNG and WebP supported (Maximum 20 MB)</p>
+<input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp">
+</div>
+
+<div id="imageInfo" style="margin-top:15px;text-align:center;color:#68708a"></div>
+
+<div class="dimensions">
+<div>
+<label for="width">Width (Pixels)</label>
+<input type="number" id="width" min="1" max="10000" placeholder="Example: 800">
+</div>
+<div>
+<label for="height">Height (Pixels)</label>
+<input type="number" id="height" min="1" max="10000" placeholder="Example: 600">
+</div>
+</div>
+
+<div class="check-row">
+<input type="checkbox" id="aspect" checked>
+<label for="aspect">Maintain Aspect Ratio</label>
+</div>
+
+<label for="format">Output Format</label>
+<select id="format">
+<option value="image/jpeg">JPG</option>
+<option value="image/png">PNG</option>
+<option value="image/webp">WebP</option>
+</select>
+
+<label for="quality">Image Quality (JPG / WebP)</label>
+<input type="range" id="quality" min="10" max="100" value="85">
+<div style="text-align:center;font-weight:bold;color:#3928e8">
+<span id="qualityValue">85</span>%
+</div>
+
+<button id="resizeBtn" disabled>Resize Photo</button>
+
+<p id="error"></p>
+
+<div id="result">
+<div class="preview">
+<strong>Resized Photo Preview</strong><br>
+<img id="previewImage" alt="Resized Photo">
+</div>
+
+<div class="stats">
+<strong>Original Dimensions:</strong> <span id="originalDimensions"></span><br>
+<strong>New Dimensions:</strong> <span id="newDimensions"></span><br>
+<strong>Original File Size:</strong> <span id="originalSize"></span><br>
+<strong>New File Size:</strong> <span id="newSize"></span>
+</div>
+
+<button id="downloadBtn">Download Resized Photo</button>
+</div>
+
+<p class="note">
+Your photo is processed inside your browser. It is not uploaded to our server.
+Very large output dimensions may require more device memory.
+</p>
+
+</section>
+</main>
+
+<footer>© 2026 ToolSahayak. All Rights Reserved.</footer>
+
+<script>
+const imageInput = document.getElementById("imageInput");
+const widthInput = document.getElementById("width");
+const heightInput = document.getElementById("height");
+const aspectInput = document.getElementById("aspect");
+const formatInput = document.getElementById("format");
+const qualityInput = document.getElementById("quality");
+const resizeBtn = document.getElementById("resizeBtn");
+const error = document.getElementById("error");
+const result = document.getElementById("result");
+
+let selectedFile = null;
+let loadedImage = null;
+let originalURL = null;
+let resizedURL = null;
+let resizedBlob = null;
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + " Bytes";
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + " KB";
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+function clearResult() {
+  result.style.display = "none";
+  resizedBlob = null;
+
+  if (resizedURL) {
+    URL.revokeObjectURL(resizedURL);
+    resizedURL = null;
+  }
+}
+
+qualityInput.addEventListener("input", () => {
+  document.getElementById("qualityValue").textContent = qualityInput.value;
+});
+
+imageInput.addEventListener("change", () => {
+  error.textContent = "";
+  clearResult();
+
+  const file = imageInput.files[0];
+
+  selectedFile = null;
+  loadedImage = null;
+  resizeBtn.disabled = true;
+
+  if (originalURL) {
+    URL.revokeObjectURL(originalURL);
+    originalURL = null;
+  }
+
+  document.getElementById("imageInfo").textContent = "";
+
+  if (!file) return;
+
+  const allowed = ["image/jpeg", "image/png", "image/webp"];
+
+  if (!allowed.includes(file.type)) {
+    error.textContent = "Please select JPG, PNG or WebP image.";
+    imageInput.value = "";
+    return;
+  }
+
+  if (file.size > 20 * 1024 * 1024) {
+    error.textContent = "Maximum allowed image size is 20 MB.";
+    imageInput.value = "";
+    return;
+  }
+
+  selectedFile = file;
+  originalURL = URL.createObjectURL(file);
+
+  const image = new Image();
+
+  image.onload = () => {
+    loadedImage = image;
+
+    widthInput.value = image.naturalWidth;
+    heightInput.value = image.naturalHeight;
+
+    document.getElementById("imageInfo").textContent =
+      "Original Size: " + image.naturalWidth + " × " +
+      image.naturalHeight + " pixels";
+
+    resizeBtn.disabled = false;
+  };
+
+  image.onerror = () => {
+    error.textContent = "Unable to load this image.";
+    selectedFile = null;
+    imageInput.value = "";
+  };
+
+  image.src = originalURL;
+});
+
+widthInput.addEventListener("input", () => {
+  if (!aspectInput.checked || !loadedImage) return;
+
+  const width = Number(widthInput.value);
+
+  if (width > 0) {
+    heightInput.value = Math.max(
+      1,
+      Math.round(width * loadedImage.naturalHeight /
+      loadedImage.naturalWidth)
+    );
+  }
+});
+
+heightInput.addEventListener("input", () => {
+  if (!aspectInput.checked || !loadedImage) return;
+
+  const height = Number(heightInput.value);
+
+  if (height > 0) {
+    widthInput.value = Math.max(
+      1,
+      Math.round(height * loadedImage.naturalWidth /
+      loadedImage.naturalHeight)
+    );
+  }
+});
+
+resizeBtn.addEventListener("click", () => {
+  error.textContent = "";
+  clearResult();
+
+  if (!loadedImage || !selectedFile) {
+    error.textContent = "Please select a photo first.";
+    return;
+  }
+
+  const width = Number(widthInput.value);
+  const height = Number(heightInput.value);
+
+  if (
+    !Number.isInteger(width) || !Number.isInteger(height) ||
+    width < 1 || height < 1 ||
+    width > 10000 || height > 10000
+  ) {
+    error.textContent = "Enter valid dimensions between 1 and 10000 pixels.";
+    return;
+  }
+
+  if (width * height > 25000000) {
+    error.textContent = "Maximum output area is 25 megapixels.";
+    return;
+  }
+
+  resizeBtn.disabled = true;
+  resizeBtn.textContent = "Resizing...";
+
+  try {
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) throw new Error("Canvas is unavailable.");
+
+    if (formatInput.value === "image/jpeg") {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    ctx.drawImage(loadedImage, 0, 0, width, height);
+
+    const mimeType = formatInput.value;
+    const quality = Number(qualityInput.value) / 100;
+
+    canvas.toBlob(blob => {
+      resizeBtn.disabled = false;
+      resizeBtn.textContent = "Resize Photo";
+
+      if (!blob) {
+        error.textContent = "Photo resizing failed. Please try again.";
+        return;
+      }
+
+      resizedBlob = blob;
+      resizedURL = URL.createObjectURL(blob);
+
+      document.getElementById("previewImage").src = resizedURL;
+
+      document.getElementById("originalDimensions").textContent =
+        loadedImage.naturalWidth + " × " + loadedImage.naturalHeight + " px";
+
+      document.getElementById("newDimensions").textContent =
+        width + " × " + height + " px";
+
+      document.getElementById("originalSize").textContent =
+        formatSize(selectedFile.size);
+
+      document.getElementById("newSize").textContent =
+        formatSize(blob.size);
+
+      result.style.display = "block";
+
+    }, mimeType, quality);
+
+  } catch (e) {
+    resizeBtn.disabled = false;
+    resizeBtn.textContent = "Resize Photo";
+    error.textContent = "Unable to resize this photo. Try smaller dimensions.";
+  }
+});
+
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  if (!resizedBlob) return;
+
+  const extension = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp"
+  }[resizedBlob.type] || "png";
+
+  const url = URL.createObjectURL(resizedBlob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "toolsahayak-resized." + extension;
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+window.addEventListener("beforeunload", () => {
+  if (originalURL) URL.revokeObjectURL(originalURL);
+  if (resizedURL) URL.revokeObjectURL(resizedURL);
+});
+</script>
+
+</body>
+</html>

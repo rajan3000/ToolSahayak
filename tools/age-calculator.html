@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Age Calculator Online - Calculate Your Exact Age | ToolSahayak</title>
+
+    <meta name="description" content="Calculate your exact age in years, months, days, weeks and total days using our free online Age Calculator.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/age-calculator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Age Calculator Online - ToolSahayak">
+    <meta property="og:description" content="Calculate your exact age in years, months, days and weeks with our free online Age Calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/age-calculator.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Age Calculator - ToolSahayak">
+    <meta name="twitter:description" content="Calculate your exact age in years, months, days and weeks online.">
+
+  <style>
+    
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f5ff;
+      color: #172044;
+    }
+    header {
+      background: white;
+      padding: 18px 6%;
+      box-shadow: 0 2px 10px #00000012;
+    }
+    header a {
+      color: #3025d9;
+      font-size: 23px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .container {
+      width: min(650px, 92%);
+      margin: 45px auto;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px #20206015;
+    }
+    h1 { text-align: center; margin-top: 0; }
+    .subtitle { text-align: center; color: #68708a; }
+    label { display: block; margin: 25px 0 9px; font-weight: bold; }
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #c9cce5;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: #3928e8;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #2419bd; }
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 22px;
+      background: #edfff2;
+      border: 1px solid #bce8c7;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #result h2 { color: #16843a; margin-top: 0; }
+    .age { font-size: 25px; font-weight: bold; margin: 12px 0; }
+    .details { line-height: 1.9; color: #35405c; }
+    #error { color: #d62828; margin-top: 15px; text-align: center; }
+    footer { text-align: center; padding: 20px; color: #777; }
+    @media(max-width: 500px) {
+      .card { padding: 22px 17px; }
+      .container { margin: 25px auto; }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html">🟪 ToolSahayak</a>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h1>🎂 Age Calculator</h1>
+    <p class="subtitle">Calculate your exact age in years, months and days.</p>
+
+    <label for="dob">Enter Your Date of Birth:</label>
+    <input type="date" id="dob">
+
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <p id="error"></p>
+
+    <div id="result">
+      <h2>Your Age Is</h2>
+      <div class="age" id="ageText"></div>
+      <div class="details" id="details"></div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 ToolSahayak. All Rights Reserved.</footer>
+
+<script>
+  const dobInput = document.getElementById("dob");
+
+  function dateString(date) {
+    const d = date.getDate().toString().padStart(2, "0");
+    const m = (date.getMonth() + 1).toString().padStart(2, "0");
+    const y = date.getFullYear();
+    return `${d}-${m}-${y}`;
+  }
+
+  function daysBetween(start, end) {
+    const utcStart = Date.UTC(
+      start.getFullYear(), start.getMonth(), start.getDate()
+    );
+    const utcEnd = Date.UTC(
+      end.getFullYear(), end.getMonth(), end.getDate()
+    );
+    return Math.floor((utcEnd - utcStart) / 86400000);
+  }
+
+  function calculateAge() {
+    const error = document.getElementById("error");
+    const result = document.getElementById("result");
+    error.textContent = "";
+    result.style.display = "none";
+
+    if (!dobInput.value) {
+      error.textContent = "Please enter your date of birth.";
+      return;
+    }
+
+    const [year, month, day] = dobInput.value.split("-").map(Number);
+    const dob = new Date(year, month - 1, day);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (
+      dob.getFullYear() !== year ||
+      dob.getMonth() !== month - 1 ||
+      dob.getDate() !== day
+    ) {
+      error.textContent = "Please enter a valid date.";
+      return;
+    }
+
+    if (dob > today) {
+      error.textContent = "Date of birth cannot be in the future.";
+      return;
+    }
+
+    let years = today.getFullYear() - year;
+    let months = today.getMonth() - (month - 1);
+    let days = today.getDate() - day;
+
+    if (days < 0) {
+      months--;
+      const previousMonthDays = new Date(
+        today.getFullYear(), today.getMonth(), 0
+      ).getDate();
+      days += previousMonthDays;
+    }
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    const totalDays = daysBetween(dob, today);
+    const totalWeeks = Math.floor(totalDays / 7);
+    const birthDay = dob.toLocaleDateString("en-IN", {
+      weekday: "long"
+    });
+
+    // For 29 February birthdays, use 28 February in non-leap years.
+    function nextBirthdayDate(targetYear) {
+      if (month === 2 && day === 29) {
+        const isLeap = new Date(targetYear, 1, 29).getMonth() === 1;
+        return new Date(targetYear, 1, isLeap ? 29 : 28);
+      }
+      return new Date(targetYear, month - 1, day);
+    }
+
+    let nextBirthday = nextBirthdayDate(today.getFullYear());
+    if (nextBirthday < today) {
+      nextBirthday = nextBirthdayDate(today.getFullYear() + 1);
+    }
+
+    const daysLeft = daysBetween(today, nextBirthday);
+
+    document.getElementById("ageText").textContent =
+      `${years} Years, ${months} Months, ${days} Days`;
+
+    document.getElementById("details").innerHTML = `
+      <strong>Date of Birth:</strong> ${dateString(dob)}<br>
+      <strong>Birth Day:</strong> ${birthDay}<br>
+      <strong>Total Days:</strong> ${totalDays.toLocaleString("en-IN")}<br>
+      <strong>Total Weeks:</strong> ${totalWeeks.toLocaleString("en-IN")}<br>
+      <strong>Next Birthday:</strong> ${dateString(nextBirthday)}<br>
+      <strong>Days Until Birthday:</strong> ${daysLeft}
+    `;
+
+    result.style.display = "block";
+  }
+
+  dobInput.max = new Date().toISOString().split("T")[0];
+</script>
+
+</body>
+</html>

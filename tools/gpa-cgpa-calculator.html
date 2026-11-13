@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free GPA & CGPA Calculator Online - ToolSahayak</title>
+
+    <meta name="description" content="Calculate semester GPA, cumulative CGPA and percentage with our free online GPA and CGPA Calculator. Supports credit-based calculations.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/gpa-cgpa-calculator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free GPA & CGPA Calculator - ToolSahayak">
+    <meta property="og:description" content="Calculate semester GPA, cumulative CGPA and percentage easily with our free credit-based calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/gpa-cgpa-calculator.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free GPA & CGPA Calculator - ToolSahayak">
+    <meta name="twitter:description" content="Calculate GPA, CGPA and percentage with our free online calculator.">
+
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #263247;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: #fff;
+            padding: 17px 6%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .navbar a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 38px auto;
+            padding: 0 18px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 27px;
+        }
+
+        .heading span {
+            display: inline-block;
+            background: #e0edff;
+            color: #2563eb;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .heading h1 {
+            color: #172554;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .calculator-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 27px;
+            box-shadow: 0 8px 30px rgba(15,23,42,0.07);
+        }
+
+        .mode-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .mode-btn {
+            padding: 12px 8px;
+            border: 1px solid #dbe3ef;
+            background: #fff;
+            color: #475569;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .mode-btn.active {
+            background: #2563eb;
+            color: #fff;
+            border-color: #2563eb;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 7px;
+            color: #334155;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+            color: #1e293b;
+        }
+
+        input:focus, select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+        }
+
+        .section-title {
+            color: #172554;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .subject-header, .subject-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 42px;
+            gap: 9px;
+            align-items: center;
+        }
+
+        .subject-header {
+            font-size: 12px;
+            font-weight: bold;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .subject-row {
+            margin-bottom: 10px;
+        }
+
+        .remove-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #fee2e2;
+            color: #dc2626;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .add-btn {
+            padding: 10px 15px;
+            border: 1px solid #2563eb;
+            color: #2563eb;
+            background: #eff6ff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 8px 0 20px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 24px;
+            padding: 22px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            color: #047857;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            color: #065f46;
+            font-size: 32px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .result-details {
+            margin-top: 12px;
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .error {
+            display: none;
+            margin-top: 15px;
+            padding: 11px;
+            background: #fef2f2;
+            color: #dc2626;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .reset-btn {
+            margin-top: 15px;
+            padding: 9px 20px;
+            border: 1px solid #cbd5e1;
+            background: #fff;
+            border-radius: 7px;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 22px;
+            border-radius: 13px;
+            margin-top: 22px;
+            box-shadow: 0 4px 18px rgba(15,23,42,0.04);
+        }
+
+        .info-card h2 {
+            color: #172554;
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p, .info-card li {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                margin: 25px auto;
+            }
+
+            .heading h1 {
+                font-size: 25px;
+            }
+
+            .calculator-card {
+                padding: 17px;
+            }
+
+            .mode-buttons {
+                gap: 6px;
+            }
+
+            .mode-btn {
+                font-size: 12px;
+                padding: 11px 4px;
+            }
+
+            .subject-header, .subject-row {
+                grid-template-columns: 1.2fr 1fr 1fr 34px;
+                gap: 5px;
+            }
+
+            .subject-header {
+                font-size: 10px;
+            }
+
+            .subject-row input {
+                padding: 9px 5px;
+                font-size: 12px;
+                min-width: 0;
+            }
+
+            .remove-btn {
+                width: 32px;
+                height: 38px;
+            }
+
+            .result-value {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="../index.html">ToolSahayak</a>
+</nav>
+
+<main class="container">
+
+    <div class="heading">
+        <span>EDUCATION & SCIENCE</span>
+        <h1>GPA / CGPA Calculator</h1>
+        <p>Calculate GPA, CGPA and percentage using your academic grades and credits.</p>
+    </div>
+
+    <section class="calculator-card">
+
+        <div class="mode-buttons">
+            <button type="button" class="mode-btn active" data-mode="gpa">
+                GPA Calculator
+            </button>
+            <button type="button" class="mode-btn" data-mode="cgpa">
+                CGPA Calculator
+            </button>
+            <button type="button" class="mode-btn" data-mode="convert">
+                Percentage Converter
+            </button>
+        </div>
+
+        <!-- GPA Calculator -->
+
+        <div id="gpaFields">
+
+            <h2 class="section-title">Enter Subject Details</h2>
+
+            <div class="subject-header">
+                <span>Subject</span>
+                <span>Grade Point</span>
+                <span>Credits</span>
+                <span></span>
+            </div>
+
+            <div id="gpaSubjects"></div>
+
+            <button type="button" class="add-btn" id="addSubjectBtn">
+                + Add Subject
+            </button>
+
+        </div>
+
+        <!-- CGPA Calculator -->
+
+        <div id="cgpaFields" style="display:none;">
+
+            <h2 class="section-title">Enter Semester Details</h2>
+
+            <div class="subject-header">
+                <span>Semester</span>
+                <span>GPA</span>
+                <span>Credits</span>
+                <span></span>
+            </div>
+
+            <div id="cgpaSemesters"></div>
+
+            <button type="button" class="add-btn" id="addSemesterBtn">
+                + Add Semester
+            </button>
+
+        </div>
+
+        <!-- Percentage Converter -->
+
+        <div id="convertFields" style="display:none;">
+
+            <h2 class="section-title">Percentage / CGPA Conversion</h2>
+
+            <div class="form-group">
+                <label for="conversionType">Select Conversion</label>
+                <select id="conversionType">
+                    <option value="toCgpa">Percentage to CGPA</option>
+                    <option value="toPercentage">CGPA to Percentage</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="conversionValue" id="conversionLabel">Percentage (%)</label>
+                <input type="number" id="conversionValue" placeholder="Enter percentage" min="0" step="any">
+            </div>
+
+            <div class="form-group">
+                <label for="conversionFactor">Conversion Factor</label>
+                <input type="number" id="conversionFactor" value="9.5" min="0.01" step="any">
+                <span class="hint">Default factor: 9.5. Change it according to your university rules.</span>
+            </div>
+
+        </div>
+
+        <button type="button" class="calculate-btn" id="calculateBtn">
+            Calculate Result
+        </button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result-box" id="resultBox">
+            <h3 id="resultHeading">Your Result</h3>
+            <div class="result-value" id="resultValue"></div>
+            <div class="result-details" id="resultDetails"></div>
+        </div>
+
+        <div style="text-align:center;">
+            <button type="button" class="reset-btn" id="resetBtn">
+                Reset Calculator
+            </button>
+        </div>
+
+    </section>
+
+    <section class="info-card">
+        <h2>What is GPA?</h2>
+        <p>
+            GPA (Grade Point Average) represents a student's average academic
+            performance for a particular semester.
+        </p>
+        <p style="margin-top:8px;">
+            <strong>GPA = Sum of (Grade Point × Credits) ÷ Total Credits</strong>
+        </p>
+    </section>
+
+    <section class="info-card">
+        <h2>What is CGPA?</h2>
+        <p>
+            CGPA (Cumulative Grade Point Average) represents a student's
+            overall academic performance across multiple semesters.
+        </p>
+        <p style="margin-top:8px;">
+            <strong>CGPA = Sum of (Semester GPA × Semester Credits) ÷ Total Credits</strong>
+        </p>
+    </section>
+
+    <section class="info-card">
+        <h2>Important Note</h2>
+        <p>
+            GPA and CGPA grading systems vary between universities and institutions.
+            Enter the correct grade points and credits according to your official
+            academic rules.
+        </p>
+        <p style="margin-top:8px;">
+            Percentage conversion using 9.5 is only a commonly used example.
+            Your university may prescribe a different conversion formula.
+        </p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    © 2026 <a href="../index.html">ToolSahayak</a>. All Rights Reserved.
+</footer>
+
+<script>
+
+    let currentMode = "gpa";
+
+    const gpaSubjects = document.getElementById("gpaSubjects");
+    const cgpaSemesters = document.getElementById("cgpaSemesters");
+
+    const gpaFields = document.getElementById("gpaFields");
+    const cgpaFields = document.getElementById("cgpaFields");
+    const convertFields = document.getElementById("convertFields");
+
+    const resultBox = document.getElementById("resultBox");
+    const resultHeading = document.getElementById("resultHeading");
+    const resultValue = document.getElementById("resultValue");
+    const resultDetails = document.getElementById("resultDetails");
+    const errorBox = document.getElementById("error");
+
+    function hideMessages() {
+        resultBox.style.display = "none";
+        errorBox.style.display = "none";
+    }
+
+    function showError(message) {
+        errorBox.textContent = message;
+        errorBox.style.display = "block";
+        resultBox.style.display = "none";
+    }
+
+    function showResult(heading, value, details) {
+        resultHeading.textContent = heading;
+        resultValue.textContent = value;
+        resultDetails.textContent = details;
+        resultBox.style.display = "block";
+        errorBox.style.display = "none";
+    }
+
+    function formatNumber(number) {
+        return Number(number.toFixed(4)).toLocaleString("en-IN", {
+            maximumFractionDigits: 4
+        });
+    }
+
+    function createRow(container, firstPlaceholder, secondPlaceholder, thirdPlaceholder) {
+        const row = document.createElement("div");
+        row.className = "subject-row";
+
+        const first = document.createElement("input");
+        first.type = "text";
+        first.placeholder = firstPlaceholder;
+        first.setAttribute("aria-label", firstPlaceholder);
+
+        const second = document.createElement("input");
+        second.type = "number";
+        second.placeholder = secondPlaceholder;
+        second.min = "0";
+        second.step = "any";
+        second.setAttribute("aria-label", secondPlaceholder);
+
+        const third = document.createElement("input");
+        third.type = "number";
+        third.placeholder = thirdPlaceholder;
+        third.min = "0";
+        third.step = "any";
+        third.setAttribute("aria-label", thirdPlaceholder);
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "remove-btn";
+        remove.textContent = "×";
+        remove.setAttribute("aria-label", "Remove row");
+
+        remove.addEventListener("click", () => {
+            if (container.children.length <= 1) {
+                showError("At least one row is required.");
+                return;
+            }
+
+            row.remove();
+            hideMessages();
+        });
+
+        row.append(first, second, third, remove);
+        container.appendChild(row);
+    }
+
+    function addSubject() {
+        createRow(gpaSubjects, "Subject", "Grade Point", "Credits");
+        hideMessages();
+    }
+
+    function addSemester() {
+        createRow(cgpaSemesters, "Semester", "GPA", "Credits");
+        hideMessages();
+    }
+
+    function updateMode(mode) {
+        currentMode = mode;
+
+        gpaFields.style.display = mode === "gpa" ? "block" : "none";
+        cgpaFields.style.display = mode === "cgpa" ? "block" : "none";
+        convertFields.style.display = mode === "convert" ? "block" : "none";
+
+        document.querySelectorAll(".mode-btn").forEach(button => {
+            button.classList.toggle("active", button.dataset.mode === mode);
+        });
+
+        hideMessages();
+    }
+
+    function getWeightedAverage(container, maxValue) {
+        const rows = Array.from(container.querySelectorAll(".subject-row"));
+
+        if (rows.length === 0) {
+            showError("Please add at least one entry.");
+            return null;
+        }
+
+        let weightedTotal = 0;
+        let totalCredits = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+            const inputs = rows[i].querySelectorAll("input");
+
+            const name = inputs[0].value.trim();
+            const grade = inputs[1].value.trim();
+            const credits = inputs[2].value.trim();
+
+            if (name === "" || grade === "" || credits === "") {
+                showError("Please complete all fields in every row.");
+                return null;
+            }
+
+            const gradeValue = Number(grade);
+            const creditValue = Number(credits);
+
+            if (!Number.isFinite(gradeValue) ||
+                !Number.isFinite(creditValue)) {
+                showError("Please enter valid numbers.");
+                return null;
+            }
+
+            if (gradeValue < 0 || gradeValue > maxValue) {
+                showError("Grade Point / GPA must be between 0 and " + maxValue + ".");
+                return null;
+            }
+
+            if (creditValue <= 0) {
+                showError("Credits must be greater than zero.");
+                return null;
+            }
+
+            weightedTotal += gradeValue * creditValue;
+            totalCredits += creditValue;
+        }
+
+        return {
+            average: weightedTotal / totalCredits,
+            totalCredits: totalCredits
+        };
+    }
+
+    function calculateGPA() {
+        const result = getWeightedAverage(gpaSubjects, 10);
+
+        if (result === null) return;
+
+        showResult(
+            "Your Semester GPA",
+            formatNumber(result.average),
+            "Total Credits: " + formatNumber(result.totalCredits) +
+            " | Weighted Grade Points: " +
+            formatNumber(result.average * result.totalCredits)
+        );
+    }
+
+    function calculateCGPA() {
+        const result = getWeightedAverage(cgpaSemesters, 10);
+
+        if (result === null) return;
+
+        showResult(
+            "Your Overall CGPA",
+            formatNumber(result.average),
+            "Semesters: " + cgpaSemesters.children.length +
+            " | Total Credits: " + formatNumber(result.totalCredits)
+        );
+    }
+
+    function calculateConversion() {
+        const valueText = document.getElementById("conversionValue").value.trim();
+        const factorText = document.getElementById("conversionFactor").value.trim();
+
+        if (valueText === "" || factorText === "") {
+            showError("Please enter both value and conversion factor.");
+            return;
+        }
+
+        const value = Number(valueText);
+        const factor = Number(factorText);
+        const type = document.getElementById("conversionType").value;
+
+        if (!Number.isFinite(value) || !Number.isFinite(factor)) {
+            showError("Please enter valid numbers.");
+            return;
+        }
+
+        if (factor <= 0) {
+            showError("Conversion factor must be greater than zero.");
+            return;
+        }
+
+        if (type === "toCgpa") {
+            if (value < 0 || value > 100) {
+                showError("Percentage must be between 0 and 100.");
+                return;
+            }
+
+            const cgpa = value / factor;
+
+            showResult(
+                "Converted CGPA",
+                formatNumber(cgpa),
+                "Percentage: " + formatNumber(value) +
+                "% | Conversion Factor: " + formatNumber(factor)
+            );
+        } else {
+            if (value < 0 || value > 10) {
+                showError("CGPA must be between 0 and 10.");
+                return;
+            }
+
+            const percentage = value * factor;
+
+            showResult(
+                "Converted Percentage",
+                formatNumber(percentage) + "%",
+                "CGPA: " + formatNumber(value) +
+                " | Conversion Factor: " + formatNumber(factor)
+            );
+        }
+    }
+
+    function calculate() {
+        hideMessages();
+
+        if (currentMode === "gpa") {
+            calculateGPA();
+        } else if (currentMode === "cgpa") {
+            calculateCGPA();
+        } else {
+            calculateConversion();
+        }
+    }
+
+    document.querySelectorAll(".mode-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            updateMode(button.dataset.mode);
+        });
+    });
+
+    document.getElementById("addSubjectBtn").addEventListener("click", addSubject);
+    document.getElementById("addSemesterBtn").addEventListener("click", addSemester);
+
+    document.getElementById("calculateBtn").addEventListener("click", calculate);
+
+    document.getElementById("conversionType").addEventListener("change", event => {
+        const label = document.getElementById("conversionLabel");
+        const input = document.getElementById("conversionValue");
+
+        if (event.target.value === "toCgpa") {
+            label.textContent = "Percentage (%)";
+            input.placeholder = "Enter percentage";
+            input.max = "100";
+        } else {
+            label.textContent = "CGPA";
+            input.placeholder = "Enter CGPA";
+            input.max = "10";
+        }
+
+        input.value = "";
+        hideMessages();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+        gpaSubjects.innerHTML = "";
+        cgpaSemesters.innerHTML = "";
+
+        addSubject();
+        addSemester();
+
+        document.getElementById("conversionType").value = "toCgpa";
+        document.getElementById("conversionValue").value = "";
+        document.getElementById("conversionFactor").value = "9.5";
+        document.getElementById("conversionLabel").textContent = "Percentage (%)";
+
+        const input = document.getElementById("conversionValue");
+        input.placeholder = "Enter percentage";
+        input.max = "100";
+
+        updateMode("gpa");
+        hideMessages();
+    });
+
+    // Initial rows
+    addSubject();
+    addSemester();
+
+</script>
+
+</body>
+</html>

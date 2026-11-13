@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Image Compressor Online - Compress JPG, PNG & WebP | ToolSahayak</title>
+
+    <meta name="description" content="Compress JPG, PNG and WebP images online for free. Reduce image file size directly in your browser with our easy Image Compressor.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/image-compressor.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Image Compressor Online - ToolSahayak">
+    <meta property="og:description" content="Compress JPG, PNG and WebP images online. Reduce image file size directly in your browser.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/image-compressor.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Image Compressor - ToolSahayak">
+    <meta name="twitter:description" content="Compress JPG, PNG and WebP images online for free.">
+
+    <style>
+            
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background: #f4f5ff;
+          color: #172044;
+        }
+
+        header {
+          background: white;
+          padding: 18px 6%;
+          box-shadow: 0 2px 10px #0001;
+        }
+
+        header a {
+          font-size: 23px;
+          font-weight: bold;
+          color: #3025d9;
+          text-decoration: none;
+        }
+
+        .container {
+          width: min(850px, 92%);
+          margin: 35px auto;
+        }
+
+        .card {
+          background: white;
+          padding: 28px;
+          border-radius: 16px;
+          box-shadow: 0 5px 25px #20206015;
+        }
+
+        h1 {
+          text-align: center;
+          margin-top: 0;
+        }
+
+        .subtitle {
+          text-align: center;
+          color: #68708a;
+          line-height: 1.6;
+        }
+
+        .upload-box {
+          margin-top: 25px;
+          padding: 35px 15px;
+          border: 2px dashed #3928e8;
+          border-radius: 12px;
+          text-align: center;
+          background: #f8f8ff;
+        }
+
+        .upload-box p {
+          color: #68708a;
+        }
+
+        input[type="file"] {
+          display: block;
+          width: 100%;
+          margin-top: 15px;
+        }
+
+        label {
+          display: block;
+          font-weight: bold;
+          margin: 25px 0 10px;
+        }
+
+        input[type="range"] {
+          width: 100%;
+          accent-color: #3928e8;
+        }
+
+        .quality-value {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          color: #3928e8;
+        }
+
+        button {
+          width: 100%;
+          padding: 14px;
+          margin-top: 20px;
+          background: #3928e8;
+          color: white;
+          border: 0;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        button:disabled {
+          background: #aaa;
+          cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+          background: #2419bd;
+        }
+
+        #result {
+          display: none;
+          margin-top: 30px;
+        }
+
+        .preview-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 15px;
+        }
+
+        .preview-box {
+          background: #f5f6ff;
+          padding: 15px;
+          border-radius: 10px;
+          text-align: center;
+          min-width: 0;
+        }
+
+        .preview-box img {
+          max-width: 100%;
+          max-height: 230px;
+          object-fit: contain;
+          margin-top: 10px;
+        }
+
+        .preview-box p {
+          font-weight: bold;
+        }
+
+        .stats {
+          background: #edfff2;
+          border: 1px solid #bce8c7;
+          padding: 18px;
+          border-radius: 10px;
+          margin-top: 20px;
+          line-height: 2;
+        }
+
+        #message {
+          text-align: center;
+          margin-top: 15px;
+          color: #d62828;
+        }
+
+        .note {
+          font-size: 13px;
+          color: #777;
+          line-height: 1.6;
+          margin-top: 20px;
+        }
+
+        footer {
+          text-align: center;
+          padding: 20px;
+          color: #777;
+        }
+
+        @media(max-width: 550px) {
+          .card {
+            padding: 20px 15px;
+          }
+
+          .preview-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+  
+</head>
+
+
+<body>
+
+<header>
+  <a href="../index.html">🟪 ToolSahayak</a>
+</header>
+
+<main class="container">
+
+<section class="card">
+
+<h1>🖼️ Image Compressor</h1>
+
+<p class="subtitle">
+Reduce image file size without uploading your photo to a server.
+</p>
+
+<div class="upload-box">
+
+<h2>Select Your Image</h2>
+
+<p>Supported formats: JPG, JPEG, PNG, WebP</p>
+
+<input
+  type="file"
+  id="imageInput"
+  accept="image/jpeg,image/png,image/webp"
+>
+
+</div>
+
+<label for="quality">
+Compression Quality
+</label>
+
+<input
+  type="range"
+  id="quality"
+  min="10"
+  max="100"
+  value="70"
+>
+
+<div class="quality-value">
+<span id="qualityValue">70</span>%
+</div>
+
+<button id="compressBtn" disabled>
+Compress Image
+</button>
+
+<p id="message"></p>
+
+<div id="result">
+
+<div class="preview-grid">
+
+<div class="preview-box">
+
+<p>Original Image</p>
+
+<img id="originalPreview" alt="Original Image">
+
+<div id="originalSize"></div>
+
+</div>
+
+<div class="preview-box">
+
+<p>Compressed Image</p>
+
+<img id="compressedPreview" alt="Compressed Image">
+
+<div id="compressedSize"></div>
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<strong>Original Size:</strong>
+<span id="oldSize"></span><br>
+
+<strong>Compressed Size:</strong>
+<span id="newSize"></span><br>
+
+<strong>Size Reduced:</strong>
+<span id="reduction"></span>
+
+</div>
+
+<button id="downloadBtn">
+Download Compressed Image
+</button>
+
+</div>
+
+<p class="note">
+Note: Compression is performed inside your browser.
+The output format is JPEG. Transparent backgrounds in PNG
+images will be converted to white. Actual file size reduction
+depends on the image and selected quality.
+</p>
+
+</section>
+
+</main>
+
+<footer>
+© 2026 ToolSahayak. All Rights Reserved.
+</footer>
+
+<script>
+
+const imageInput = document.getElementById("imageInput");
+const qualityInput = document.getElementById("quality");
+const qualityValue = document.getElementById("qualityValue");
+const compressBtn = document.getElementById("compressBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const message = document.getElementById("message");
+const result = document.getElementById("result");
+
+let selectedImage = null;
+let compressedBlob = null;
+let originalURL = null;
+let compressedURL = null;
+
+function formatSize(bytes) {
+
+  if (bytes < 1024) {
+    return bytes + " Bytes";
+  }
+
+  if (bytes < 1024 * 1024) {
+    return (bytes / 1024).toFixed(2) + " KB";
+  }
+
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+
+}
+
+qualityInput.addEventListener("input", function() {
+
+  qualityValue.textContent = qualityInput.value;
+
+});
+
+imageInput.addEventListener("change", function() {
+
+  const file = imageInput.files[0];
+
+  message.textContent = "";
+  result.style.display = "none";
+  compressBtn.disabled = true;
+  compressedBlob = null;
+
+  if (compressedURL) {
+    URL.revokeObjectURL(compressedURL);
+    compressedURL = null;
+  }
+
+  if (originalURL) {
+    URL.revokeObjectURL(originalURL);
+    originalURL = null;
+  }
+
+  if (!file) {
+    return;
+  }
+
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+
+    message.textContent = "Please select JPG, PNG or WebP image.";
+
+    imageInput.value = "";
+    selectedImage = null;
+
+    return;
+
+  }
+
+  if (file.size > 20 * 1024 * 1024) {
+
+    message.textContent = "Maximum image size allowed is 20 MB.";
+
+    imageInput.value = "";
+    selectedImage = null;
+
+    return;
+
+  }
+
+  selectedImage = file;
+
+  originalURL = URL.createObjectURL(file);
+
+  document.getElementById("originalPreview").src = originalURL;
+
+  document.getElementById("originalSize").textContent =
+    formatSize(file.size);
+
+  compressBtn.disabled = false;
+
+});
+
+compressBtn.addEventListener("click", function() {
+
+  if (!selectedImage) {
+    message.textContent = "Please select an image first.";
+    return;
+  }
+
+  message.textContent = "Compressing image...";
+
+  compressBtn.disabled = true;
+
+  const image = new Image();
+
+  image.onload = function() {
+
+    try {
+
+      const canvas = document.createElement("canvas");
+
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#ffffff";
+
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.drawImage(image, 0, 0);
+
+      const quality = Number(qualityInput.value) / 100;
+
+      canvas.toBlob(function(blob) {
+
+        compressBtn.disabled = false;
+
+        if (!blob) {
+
+          message.textContent = "Compression failed. Please try another image.";
+          return;
+
+        }
+
+        compressedBlob = blob;
+
+        if (compressedURL) {
+          URL.revokeObjectURL(compressedURL);
+        }
+
+        compressedURL = URL.createObjectURL(blob);
+
+        document.getElementById("compressedPreview").src =
+          compressedURL;
+
+        document.getElementById("compressedSize").textContent =
+          formatSize(blob.size);
+
+        document.getElementById("oldSize").textContent =
+          formatSize(selectedImage.size);
+
+        document.getElementById("newSize").textContent =
+          formatSize(blob.size);
+
+        let percentage = (
+          (selectedImage.size - blob.size) /
+          selectedImage.size
+        ) * 100;
+
+        document.getElementById("reduction").textContent =
+          percentage.toFixed(2) + "%";
+
+        if (percentage < 0) {
+
+          document.getElementById("reduction").textContent =
+            "Image size increased by " +
+            Math.abs(percentage).toFixed(2) + "%";
+
+        }
+
+        result.style.display = "block";
+
+        message.textContent = "Image compression completed successfully!";
+
+      }, "image/jpeg", quality);
+
+    } catch (error) {
+
+      compressBtn.disabled = false;
+
+      message.textContent = "Something went wrong. Please try again.";
+
+    }
+
+  };
+
+  image.onerror = function() {
+
+    compressBtn.disabled = false;
+
+    message.textContent = "Unable to load this image.";
+
+  };
+
+  image.src = originalURL;
+
+});
+
+downloadBtn.addEventListener("click", function() {
+
+  if (!compressedBlob) {
+    return;
+  }
+
+  const link = document.createElement("a");
+
+  const downloadURL = URL.createObjectURL(compressedBlob);
+
+  link.href = downloadURL;
+  link.download = "toolsahayak-compressed.jpg";
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+  setTimeout(function() {
+    URL.revokeObjectURL(downloadURL);
+  }, 1000);
+
+});
+
+window.addEventListener("beforeunload", function() {
+
+  if (originalURL) {
+    URL.revokeObjectURL(originalURL);
+  }
+
+  if (compressedURL) {
+    URL.revokeObjectURL(compressedURL);
+  }
+
+});
+
+</script>
+
+</body>
+</html>

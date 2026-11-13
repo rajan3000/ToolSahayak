@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Molar Mass Calculator Online - ToolSahayak</title>
+
+    <meta name="description" content="Calculate the molar mass and molecular weight of chemical compounds using chemical formulas with our free online Molar Mass Calculator.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/molar-mass-calculator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Molar Mass Calculator - ToolSahayak">
+    <meta property="og:description" content="Calculate the molar mass of chemical compounds from their formulas using our free online calculator.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/molar-mass-calculator.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Molar Mass Calculator - ToolSahayak">
+    <meta name="twitter:description" content="Calculate molecular mass and molar mass from chemical formulas online.">
+
+    <style>
+            
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #174ea6;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .calculator {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 18px 0 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #174ea6;
+        }
+
+        .hint {
+            color: #777;
+            font-size: 13px;
+            margin-top: 7px;
+            line-height: 1.5;
+        }
+
+        .examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .examples button {
+            width: auto;
+            margin: 0;
+            padding: 8px 13px;
+            background: #eaf3ff;
+            color: #174ea6;
+            font-size: 14px;
+            border: 1px solid #c9dcf7;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 7px;
+            background: #174ea6;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #103b80;
+        }
+
+        .reset-btn {
+            background: #666;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            background: #444;
+        }
+
+        .result {
+            display: none;
+            margin-top: 22px;
+            padding: 20px;
+            background: #eaf3ff;
+            border-left: 5px solid #174ea6;
+            border-radius: 8px;
+        }
+
+        .result h3 {
+            color: #174ea6;
+            margin-bottom: 12px;
+        }
+
+        .mass-value {
+            font-size: 27px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+            margin-bottom: 15px;
+        }
+
+        .breakdown {
+            background: white;
+            padding: 14px;
+            border-radius: 8px;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            display: none;
+            color: #c62828;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 22px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .info h3 {
+            color: #174ea6;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media(max-width: 550px) {
+            body {
+                padding: 12px;
+            }
+
+            .calculator {
+                padding: 18px;
+            }
+
+            .mass-value {
+                font-size: 22px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Molar Mass Calculator</h1>
+        <p>Calculate the molar mass of chemical compounds using their chemical formulas.</p>
+    </div>
+
+    <div class="calculator">
+
+        <label for="formula">Enter Chemical Formula</label>
+
+        <input
+            type="text"
+            id="formula"
+            placeholder="Example: H2O"
+            autocomplete="off"
+            spellcheck="false"
+        >
+
+        <p class="hint">
+            Use element symbols and numbers. Parentheses are supported.
+            Example: H2O, CO2, NaCl, Ca(OH)2.
+        </p>
+
+        <div class="examples">
+            <button type="button" onclick="setFormula('H2O')">H₂O</button>
+            <button type="button" onclick="setFormula('CO2')">CO₂</button>
+            <button type="button" onclick="setFormula('NaCl')">NaCl</button>
+            <button type="button" onclick="setFormula('Ca(OH)2')">Ca(OH)₂</button>
+            <button type="button" onclick="setFormula('C6H12O6')">C₆H₁₂O₆</button>
+        </div>
+
+        <button type="button" onclick="calculateMolarMass()">
+            Calculate Molar Mass
+        </button>
+
+        <button type="button" class="reset-btn" onclick="resetCalculator()">
+            Reset
+        </button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result" id="result">
+            <h3>Calculation Result</h3>
+
+            <div class="mass-value" id="massValue"></div>
+
+            <div class="breakdown">
+                <strong>Element-wise Breakdown:</strong>
+                <div id="breakdown"></div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h3>What is Molar Mass?</h3>
+            <p>
+                Molar mass is the mass of one mole of a substance.
+                It is calculated by adding the atomic masses of all
+                atoms present in a chemical formula.
+            </p>
+            <p><strong>Unit:</strong> g/mol</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 ToolSahayak. All Rights Reserved.
+    </div>
+
+</div>
+
+<script>
+const atomicMass = {
+    H: 1.008,
+    He: 4.0026,
+    Li: 6.94,
+    Be: 9.0122,
+    B: 10.81,
+    C: 12.011,
+    N: 14.007,
+    O: 15.999,
+    F: 18.998,
+    Ne: 20.180,
+    Na: 22.990,
+    Mg: 24.305,
+    Al: 26.982,
+    Si: 28.085,
+    P: 30.974,
+    S: 32.06,
+    Cl: 35.45,
+    Ar: 39.948,
+    K: 39.098,
+    Ca: 40.078,
+    Sc: 44.956,
+    Ti: 47.867,
+    V: 50.942,
+    Cr: 51.996,
+    Mn: 54.938,
+    Fe: 55.845,
+    Co: 58.933,
+    Ni: 58.693,
+    Cu: 63.546,
+    Zn: 65.38,
+    Ga: 69.723,
+    Ge: 72.630,
+    As: 74.922,
+    Se: 78.971,
+    Br: 79.904,
+    Kr: 83.798,
+    Rb: 85.468,
+    Sr: 87.62,
+    Y: 88.906,
+    Zr: 91.224,
+    Nb: 92.906,
+    Mo: 95.95,
+    Ru: 101.07,
+    Rh: 102.906,
+    Pd: 106.42,
+    Ag: 107.868,
+    Cd: 112.414,
+    In: 114.818,
+    Sn: 118.710,
+    Sb: 121.760,
+    Te: 127.60,
+    I: 126.904,
+    Xe: 131.293,
+    Cs: 132.905,
+    Ba: 137.327,
+    La: 138.905,
+    Ce: 140.116,
+    Pr: 140.908,
+    Nd: 144.242,
+    Sm: 150.36,
+    Eu: 151.964,
+    Gd: 157.25,
+    Tb: 158.925,
+    Dy: 162.500,
+    Ho: 164.930,
+    Er: 167.259,
+    Tm: 168.934,
+    Yb: 173.045,
+    Lu: 174.967,
+    Hf: 178.49,
+    Ta: 180.948,
+    W: 183.84,
+    Re: 186.207,
+    Os: 190.23,
+    Ir: 192.217,
+    Pt: 195.084,
+    Au: 196.967,
+    Hg: 200.592,
+    Tl: 204.38,
+    Pb: 207.2,
+    Bi: 208.980,
+    Th: 232.038,
+    U: 238.029
+};
+
+function parseFormula(formula) {
+    const text = formula.replace(/\s+/g, "");
+    let position = 0;
+
+    if (!text) {
+        throw new Error("Please enter a chemical formula.");
+    }
+
+    function parseGroup(nested = false) {
+        const counts = {};
+
+        while (position < text.length) {
+            const char = text[position];
+
+            if (char === ")") {
+                if (!nested) {
+                    throw new Error("Unexpected closing bracket.");
+                }
+                position++;
+                return counts;
+            }
+
+            if (char === "(") {
+                position++;
+
+                const inner = parseGroup(true);
+
+                if (position === 0 || text[position - 1] !== ")") {
+                    throw new Error("Missing closing bracket.");
+                }
+
+                const multiplier = readNumber();
+
+                for (const element in inner) {
+                    counts[element] = (counts[element] || 0)
+                        + inner[element] * multiplier;
+                }
+
+            } else if (/[A-Z]/.test(char)) {
+                let symbol = text[position];
+                position++;
+
+                if (position < text.length && /[a-z]/.test(text[position])) {
+                    symbol += text[position];
+                    position++;
+                }
+
+                if (!Object.prototype.hasOwnProperty.call(atomicMass, symbol)) {
+                    throw new Error("Unknown or unsupported element: " + symbol);
+                }
+
+                const quantity = readNumber();
+
+                counts[symbol] = (counts[symbol] || 0) + quantity;
+
+            } else {
+                throw new Error("Invalid formula. Check element symbols and brackets.");
+            }
+        }
+
+        if (nested) {
+            throw new Error("Missing closing bracket.");
+        }
+
+        return counts;
+    }
+
+    function readNumber() {
+        let start = position;
+
+        while (position < text.length && /[0-9]/.test(text[position])) {
+            position++;
+        }
+
+        if (start === position) return 1;
+
+        const number = Number(text.slice(start, position));
+
+        if (!Number.isSafeInteger(number) || number < 1) {
+            throw new Error("Invalid atom count in formula.");
+        }
+
+        return number;
+    }
+
+    const counts = parseGroup();
+
+    if (position !== text.length) {
+        throw new Error("Invalid chemical formula.");
+    }
+
+    return counts;
+}
+
+function calculateMolarMass() {
+    const formula = document.getElementById("formula").value.trim();
+    const errorBox = document.getElementById("error");
+    const resultBox = document.getElementById("result");
+
+    errorBox.style.display = "none";
+    resultBox.style.display = "none";
+
+    try {
+        const counts = parseFormula(formula);
+        let totalMass = 0;
+        let details = "";
+
+        for (const element of Object.keys(counts)) {
+            const count = counts[element];
+            const mass = atomicMass[element];
+            const subtotal = mass * count;
+
+            totalMass += subtotal;
+
+            details += `
+                <p>
+                    <strong>${element}</strong>:
+                    ${count} × ${mass} = ${subtotal.toFixed(4)} g/mol
+                </p>
+            `;
+        }
+
+        document.getElementById("massValue").textContent =
+            totalMass.toFixed(4) + " g/mol";
+
+        document.getElementById("breakdown").innerHTML =
+            details + `
+                <hr style="margin:12px 0;">
+                <p><strong>Total Molar Mass: ${
+                    totalMass.toFixed(4)
+                } g/mol</strong></p>
+            `;
+
+        resultBox.style.display = "block";
+
+    } catch (error) {
+        errorBox.textContent = error.message;
+        errorBox.style.display = "block";
+    }
+}
+
+function setFormula(value) {
+    document.getElementById("formula").value = value;
+    calculateMolarMass();
+}
+
+function resetCalculator() {
+    document.getElementById("formula").value = "";
+    document.getElementById("result").style.display = "none";
+    document.getElementById("error").style.display = "none";
+}
+
+document.getElementById("formula").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        calculateMolarMass();
+    }
+});
+</script>
+
+</body>
+</html>

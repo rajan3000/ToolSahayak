@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Temperature Converter Online - Celsius, Fahrenheit & Kelvin | ToolSahayak</title>
+
+    <meta name="description" content="Convert temperatures between Celsius, Fahrenheit and Kelvin instantly with this free online Temperature Converter. Simple, accurate and mobile-friendly.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#174ea6">
+
+    <link rel="canonical" href="https://toolsahayak.netlify.app/tools/temperature-converter.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Temperature Converter - ToolSahayak">
+    <meta property="og:description" content="Convert Celsius, Fahrenheit and Kelvin instantly using our free online Temperature Converter.">
+    <meta property="og:url" content="https://toolsahayak.netlify.app/tools/temperature-converter.html">
+    <meta property="og:site_name" content="ToolSahayak">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Temperature Converter - ToolSahayak">
+    <meta name="twitter:description" content="Convert temperatures between Celsius, Fahrenheit and Kelvin with ease.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #174ea6;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .calculator {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 16px 0 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 16px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus, select:focus {
+            border-color: #174ea6;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 7px;
+            background: #174ea6;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #103b80;
+        }
+
+        .swap-btn {
+            background: #eaf3ff;
+            color: #174ea6;
+            border: 1px solid #c9dcf7;
+            margin-top: 15px;
+        }
+
+        .swap-btn:hover {
+            background: #d9eaff;
+        }
+
+        .reset-btn {
+            background: #666;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            background: #444;
+        }
+
+        .result {
+            display: none;
+            margin-top: 22px;
+            padding: 20px;
+            background: #eaf3ff;
+            border-left: 5px solid #174ea6;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .result h3 {
+            color: #174ea6;
+            margin-bottom: 12px;
+        }
+
+        .result-value {
+            font-size: 27px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            display: none;
+            color: #c62828;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .formula {
+            margin-top: 22px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 8px;
+            line-height: 1.9;
+        }
+
+        .formula h3 {
+            color: #174ea6;
+            margin-bottom: 8px;
+        }
+
+        .examples {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .examples h3 {
+            color: #174ea6;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media(max-width: 550px) {
+            body {
+                padding: 12px;
+            }
+
+            .calculator {
+                padding: 18px;
+            }
+
+            .field-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .result-value {
+                font-size: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Temperature Converter</h1>
+        <p>Convert temperatures between Celsius, Fahrenheit and Kelvin instantly.</p>
+    </div>
+
+    <div class="calculator">
+
+        <label for="temperature">Enter Temperature</label>
+        <input
+            type="number"
+            id="temperature"
+            placeholder="Enter temperature"
+            step="any"
+        >
+
+        <div class="field-grid">
+
+            <div>
+                <label for="fromUnit">From</label>
+                <select id="fromUnit">
+                    <option value="C">Celsius (°C)</option>
+                    <option value="F">Fahrenheit (°F)</option>
+                    <option value="K">Kelvin (K)</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="toUnit">To</label>
+                <select id="toUnit">
+                    <option value="F">Fahrenheit (°F)</option>
+                    <option value="C">Celsius (°C)</option>
+                    <option value="K">Kelvin (K)</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button type="button" onclick="convertTemperature()">
+            Convert Temperature
+        </button>
+
+        <button type="button" class="swap-btn" onclick="swapUnits()">
+            ⇄ Swap Units
+        </button>
+
+        <button type="button" class="reset-btn" onclick="resetCalculator()">
+            Reset
+        </button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result" id="result">
+            <h3>Conversion Result</h3>
+            <div class="result-value" id="resultValue"></div>
+        </div>
+
+        <div class="formula">
+            <h3>Temperature Conversion Formulas</h3>
+            <p><b>°C to °F:</b> (°C × 9/5) + 32</p>
+            <p><b>°F to °C:</b> (°F − 32) × 5/9</p>
+            <p><b>°C to K:</b> °C + 273.15</p>
+            <p><b>K to °C:</b> K − 273.15</p>
+            <p><b>°F to K:</b> (°F − 32) × 5/9 + 273.15</p>
+            <p><b>K to °F:</b> (K − 273.15) × 9/5 + 32</p>
+        </div>
+
+        <div class="examples">
+            <h3>Temperature Reference</h3>
+            <p>Water Freezing Point: 0°C = 32°F = 273.15 K</p>
+            <p>Water Boiling Point: 100°C = 212°F = 373.15 K</p>
+            <p>Absolute Zero: −273.15°C = −459.67°F = 0 K</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 ToolSahayak. All Rights Reserved.
+    </div>
+
+</div>
+
+<script>
+    function toCelsius(value, unit) {
+        if (unit === "C") return value;
+        if (unit === "F") return (value - 32) * 5 / 9;
+        if (unit === "K") return value - 273.15;
+    }
+
+    function fromCelsius(value, unit) {
+        if (unit === "C") return value;
+        if (unit === "F") return (value * 9 / 5) + 32;
+        if (unit === "K") return value + 273.15;
+    }
+
+    function formatNumber(value) {
+        if (Math.abs(value) < 0.0000000001) {
+            value = 0;
+        }
+
+        return Number(value.toFixed(6)).toString();
+    }
+
+    function convertTemperature() {
+        const inputValue = document.getElementById("temperature").value;
+        const fromUnit = document.getElementById("fromUnit").value;
+        const toUnit = document.getElementById("toUnit").value;
+
+        const error = document.getElementById("error");
+        const result = document.getElementById("result");
+
+        error.style.display = "none";
+        result.style.display = "none";
+
+        if (inputValue.trim() === "") {
+            showError("Please enter a temperature value.");
+            return;
+        }
+
+        const temperature = Number(inputValue);
+
+        if (!Number.isFinite(temperature)) {
+            showError("Please enter a valid temperature.");
+            return;
+        }
+
+        if (fromUnit === "K" && temperature < 0) {
+            showError("Kelvin temperature cannot be below 0 K.");
+            return;
+        }
+
+        if (fromUnit === "C" && temperature < -273.15) {
+            showError("Celsius temperature cannot be below -273.15 °C.");
+            return;
+        }
+
+        if (fromUnit === "F" && temperature < -459.67) {
+            showError("Fahrenheit temperature cannot be below -459.67 °F.");
+            return;
+        }
+
+        const celsiusValue = toCelsius(temperature, fromUnit);
+        const convertedValue = fromCelsius(celsiusValue, toUnit);
+
+        const unitNames = {
+            C: "°C",
+            F: "°F",
+            K: "K"
+        };
+
+        document.getElementById("resultValue").textContent =
+            formatNumber(convertedValue) + " " + unitNames[toUnit];
+
+        result.style.display = "block";
+    }
+
+    function showError(message) {
+        const error = document.getElementById("error");
+        error.textContent = message;
+        error.style.display = "block";
+        document.getElementById("result").style.display = "none";
+    }
+
+    function swapUnits() {
+        const fromUnit = document.getElementById("fromUnit");
+        const toUnit = document.getElementById("toUnit");
+
+        const temp = fromUnit.value;
+        fromUnit.value = toUnit.value;
+        toUnit.value = temp;
+
+        document.getElementById("result").style.display = "none";
+        document.getElementById("error").style.display = "none";
+    }
+
+    function resetCalculator() {
+        document.getElementById("temperature").value = "";
+        document.getElementById("fromUnit").value = "C";
+        document.getElementById("toUnit").value = "F";
+
+        document.getElementById("result").style.display = "none";
+        document.getElementById("error").style.display = "none";
+    }
+
+    document.getElementById("temperature").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            convertTemperature();
+        }
+    });
+</script>
+
+</body>
+</html>
