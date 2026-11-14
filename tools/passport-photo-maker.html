@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Passport Photo Maker Online | ToolSahayak</title>
+<meta name="description" content="Create passport size photos online for free. Resize photos, remove background, add white background and print multiple passport photos on A4 sheet.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/passport-photo-maker.html">
+<link rel="icon" href="../assets/images/favicon.png" type="image/png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Passport Photo Maker - ToolSahayak">
+<meta property="og:description" content="Create passport size photos with white background and multiple copies.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/passport-photo-maker.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#263445}
+header{background:#fff;border-bottom:1px solid #e5eaf1;padding:15px 5%}
+.header-inner{max-width:1150px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.logo{font-size:24px;font-weight:800;color:#174ea6;text-decoration:none}
+nav a{margin-left:17px;text-decoration:none;color:#526176;font-size:14px}
+nav a:hover{color:#174ea6}
+.container{max-width:1050px;margin:32px auto;padding:0 16px}
+.heading{text-align:center;margin-bottom:25px}
+.heading h1{font-size:31px;color:#172b4d;margin:0 0 10px}
+.heading p{color:#718096;font-size:14px;line-height:1.6;margin:0}
+.card{background:#fff;border:1px solid #e4eaf2;border-radius:13px;padding:23px;margin-bottom:20px;box-shadow:0 4px 18px rgba(20,40,70,.04)}
+.card h2{font-size:19px;color:#243b5a;margin:0 0 18px}
+.upload-area{width:100%;min-height:180px;border:2px dashed #b8c9df;border-radius:11px;background:#f8faff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;cursor:pointer;transition:.2s}
+.upload-area:hover,.upload-area.dragover{border-color:#174ea6;background:#eef4ff}
+.upload-icon{font-size:42px;margin-bottom:9px}
+.upload-area strong{font-size:17px;color:#34445a}
+.upload-area small{color:#7b8797;margin-top:8px}
+.choose-btn{display:inline-block;margin-top:13px;background:#174ea6;color:#fff;padding:10px 20px;border-radius:7px;font-size:14px;font-weight:600}
+#photoInput{display:none}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.preview-panel{background:#f4f6fa;border:1px solid #e5eaf1;border-radius:10px;padding:16px;text-align:center;min-width:0}
+.preview-panel h3{font-size:15px;color:#34445a;margin:0 0 12px}
+.preview-wrap{min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:repeating-conic-gradient(#e5e7eb 0% 25%,#fff 0% 50%) 50%/20px 20px;border-radius:7px;padding:12px}
+#photoCanvas{display:none;max-width:100%;max-height:330px;object-fit:contain;box-shadow:0 2px 10px #0002}
+.placeholder{font-size:13px;color:#8995a5;line-height:1.6}
+.controls{display:flex;flex-direction:column;gap:15px}
+.field label{display:block;font-size:13px;font-weight:700;color:#40516a;margin-bottom:7px}
+.field select,.field input[type="text"],.field input[type="number"]{width:100%;padding:11px;border:1px solid #d6deea;border-radius:7px;background:#fff;font-size:14px;outline:none}
+.field select:focus,.field input:focus{border-color:#174ea6}
+.field input[type="range"]{width:100%;accent-color:#174ea6}
+.range-value{font-size:12px;color:#748196;float:right;font-weight:400}
+.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check-line{display:flex;align-items:center;gap:9px;font-size:13px;color:#526176}
+.check-line input{accent-color:#174ea6;width:16px;height:16px}
+.btn{border:0;border-radius:7px;padding:12px 17px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.primary{background:#174ea6;color:#fff}
+.primary:hover:not(:disabled){background:#103b82}
+.secondary{background:#edf1f6;color:#40516a}
+.secondary:hover:not(:disabled){background:#e0e7f0}
+.danger{background:#fff0f0;color:#b42318}
+.button-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.button-row .btn{flex:1}
+.ai-box{border:1px solid #dce6f4;background:#f7faff;padding:14px;border-radius:9px}
+.ai-box p{font-size:12px;color:#68778a;line-height:1.6;margin:7px 0 12px}
+.status{display:none;padding:12px 14px;border-radius:8px;margin-top:15px;font-size:13px;line-height:1.5}
+.status.info{display:block;background:#eef4ff;color:#174ea6}
+.status.success{display:block;background:#eaf7ee;color:#18743b}
+.status.error{display:block;background:#fff0f0;color:#b42318}
+.progress{height:7px;background:#dce6f4;border-radius:8px;overflow:hidden;margin-top:10px}
+.progress div{height:100%;width:0;background:#174ea6;transition:width .2s}
+.output-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.sheet-preview{width:100%;max-height:650px;object-fit:contain;background:#e9edf3;border:1px solid #dce3ec;border-radius:8px;display:none}
+.sheet-info{font-size:13px;color:#68778a;line-height:1.6;margin:12px 0}
+.note{font-size:12px;color:#7a8798;line-height:1.6}
+.info-card h2{margin-bottom:12px}
+.info-card h3{font-size:15px;color:#34445a;margin:18px 0 6px}
+.info-card p,.info-card li{font-size:14px;color:#68778a;line-height:1.7}
+footer{text-align:center;padding:24px 15px;color:#7a8798;font-size:13px}
+footer a{color:#174ea6;text-decoration:none;margin:0 7px}
+@media(max-width:700px){
+ .container{margin:22px auto}
+ .heading h1{font-size:25px}
+ .card{padding:16px}
+ .editor-grid{grid-template-columns:1fr}
+ .preview-wrap{min-height:250px}
+ nav a{margin-left:8px;font-size:12px}
+ .logo{font-size:21px}
+ .output-actions{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="header-inner">
+  <a href="../index.html" class="logo">ToolSahayak</a>
+  <nav>
+   <a href="../index.html">Home</a>
+   <a href="../about.html">About</a>
+   <a href="../contact.html">Contact</a>
+  </nav>
+ </div>
+</header>
+
+<main class="container">
+ <div class="heading">
+  <h1>Free Passport Photo Maker</h1>
+  <p>Create passport-size photos with white background. Adjust photo size, make multiple copies and download an A4 photo sheet.</p>
+ </div>
+
+ <section class="card">
+  <label class="upload-area" id="dropArea" for="photoInput">
+   <div class="upload-icon">📷</div>
+   <strong>Select Your Photo</strong>
+   <small>Drag and drop an image here or browse your device</small>
+   <span class="choose-btn">Choose Image</span>
+   <small>JPG, JPEG, PNG or WebP • Maximum 10 MB</small>
+  </label>
+  <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp">
+
+  <div class="editor-grid">
+   <div class="preview-panel">
+    <h3>Photo Preview</h3>
+    <div class="preview-wrap">
+     <canvas id="photoCanvas"></canvas>
+     <div class="placeholder" id="placeholder">Your passport photo preview<br>will appear here</div>
+    </div>
+    <div class="note" id="photoDimensions">No photo selected</div>
+   </div>
+
+   <div class="controls">
+    <div class="field">
+     <label for="sizePreset">Photo Size</label>
+     <select id="sizePreset">
+      <option value="india">India Passport - 35 × 45 mm</option>
+      <option value="us">US Passport - 2 × 2 inch</option>
+      <option value="35x35">Square Photo - 35 × 35 mm</option>
+      <option value="custom">Custom Size</option>
+     </select>
+    </div>
+
+    <div class="two-fields" id="customFields" style="display:none">
+     <div class="field">
+      <label for="customWidth">Width (mm)</label>
+      <input type="number" id="customWidth" min="10" max="100" value="35">
+     </div>
+     <div class="field">
+      <label for="customHeight">Height (mm)</label>
+      <input type="number" id="customHeight" min="10" max="100" value="45">
+     </div>
+    </div>
+
+    <div class="field">
+     <label for="zoom">Zoom <span class="range-value" id="zoomValue">100%</span></label>
+     <input type="range" id="zoom" min="100" max="250" value="100">
+    </div>
+
+    <div class="field">
+     <label for="horizontal">Horizontal Position <span class="range-value" id="horizontalValue">0</span></label>
+     <input type="range" id="horizontal" min="-100" max="100" value="0">
+    </div>
+
+    <div class="field">
+     <label for="vertical">Vertical Position <span class="range-value" id="verticalValue">0</span></label>
+     <input type="range" id="vertical" min="-100" max="100" value="0">
+    </div>
+
+    <div class="ai-box">
+     <label class="check-line">
+      <input type="checkbox" id="whiteBackground" checked>
+      Use white background
+     </label>
+     <p>For transparent images, white is applied automatically. To remove an existing background, use the optional AI tool below.</p>
+     <button type="button" class="btn secondary" id="removeBgBtn" style="width:100%">✨ AI Remove Background</button>
+    </div>
+
+    <div class="button-row">
+     <button type="button" class="btn secondary" id="resetBtn" disabled>Reset Adjustments</button>
+     <button type="button" class="btn primary" id="makePhotoBtn" disabled>Update Photo</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="status" id="statusBox" role="status" aria-live="polite">
+   <div id="statusText"></div>
+   <div class="progress" id="progressTrack" style="display:none"><div id="progressBar"></div></div>
+  </div>
+
+  <div class="output-actions">
+   <button type="button" class="btn primary" id="downloadPhotoBtn" disabled>Download Photo (JPG)</button>
+   <button type="button" class="btn secondary" id="downloadPngBtn" disabled>Download Photo (PNG)</button>
+  </div>
+ </section>
+
+ <section class="card">
+  <h2>Create Multiple Passport Photo Copies</h2>
+  <div class="two-fields">
+   <div class="field">
+    <label for="copies">Number of Copies</label>
+    <input type="number" id="copies" min="1" max="50" value="8">
+   </div>
+   <div class="field">
+    <label for="sheetGap">Space Between Photos (mm)</label>
+    <input type="number" id="sheetGap" min="0" max="15" value="3">
+   </div>
+  </div>
+
+  <p class="sheet-info">A4 sheet size: 210 × 297 mm. Photos are arranged automatically according to the selected photo size and available page space.</p>
+
+  <div class="button-row">
+   <button type="button" class="btn primary" id="createSheetBtn" disabled>Create A4 Photo Sheet</button>
+  </div>
+
+  <div id="sheetResult" style="display:none;margin-top:18px">
+   <h3 style="font-size:15px;color:#34445a">A4 Sheet Preview</h3>
+   <img id="sheetPreview" class="sheet-preview" alt="A4 passport photo sheet preview">
+   <p class="sheet-info" id="sheetDetails"></p>
+   <div class="output-actions">
+    <button type="button" class="btn primary" id="downloadSheetBtn">Download A4 Sheet (PNG)</button>
+    <button type="button" class="btn secondary" id="printSheetBtn">Print A4 Sheet</button>
+   </div>
+  </div>
+ </section>
+
+ <section class="card info-card">
+  <h2>How to Make Passport Size Photos?</h2>
+  <ol>
+   <li>Upload your photo from your device.</li>
+   <li>Select India Passport 35 × 45 mm or another size.</li>
+   <li>Adjust zoom and photo position.</li>
+   <li>Use AI Remove Background if you need to replace an existing background.</li>
+   <li>Download an individual photo or create an A4 sheet with multiple copies.</li>
+  </ol>
+
+  <h2>Frequently Asked Questions</h2>
+  <h3>Is this Passport Photo Maker free?</h3>
+  <p>Yes. You can create and download passport-size photos without registration or payment.</p>
+  <h3>Does it support a white background?</h3>
+  <p>Yes. The tool uses a white photo background. For an image with an existing colored background, run AI Remove Background first.</p>
+  <h3>Can I print multiple photos on one page?</h3>
+  <p>Yes. Create an A4 sheet with your selected number of copies and download or print it.</p>
+  <h3>Are my photos uploaded to a server?</h3>
+  <p>Photo editing and sheet creation happen in your browser. The optional AI background-removal library and model are downloaded from an external CDN. Your selected photo is not intentionally uploaded by this page.</p>
+  <h3>Will this photo be accepted for every passport or visa application?</h3>
+  <p>Not necessarily. Photo size, face position, background, expression and other requirements vary by country and application. Check the official photo specifications before submitting.</p>
+ </section>
+</main>
+
+<footer>
+ <p>© 2026 ToolSahayak. All rights reserved.</p>
+ <p>
+  <a href="../index.html">Home</a>
+  <a href="../privacy-policy.html">Privacy Policy</a>
+  <a href="../disclaimer.html">Disclaimer</a>
+  <a href="../contact.html">Contact</a>
+ </p>
+</footer>
+
+<script>
+const photoInput = document.getElementById("photoInput");
+const dropArea = document.getElementById("dropArea");
+const canvas = document.getElementById("photoCanvas");
+const ctx = canvas.getContext("2d");
+const placeholder = document.getElementById("placeholder");
+const sizePreset = document.getElementById("sizePreset");
+const customFields = document.getElementById("customFields");
+const customWidth = document.getElementById("customWidth");
+const customHeight = document.getElementById("customHeight");
+const zoom = document.getElementById("zoom");
+const horizontal = document.getElementById("horizontal");
+const vertical = document.getElementById("vertical");
+const zoomValue = document.getElementById("zoomValue");
+const horizontalValue = document.getElementById("horizontalValue");
+const verticalValue = document.getElementById("verticalValue");
+const whiteBackground = document.getElementById("whiteBackground");
+const removeBgBtn = document.getElementById("removeBgBtn");
+const makePhotoBtn = document.getElementById("makePhotoBtn");
+const resetBtn = document.getElementById("resetBtn");
+const downloadPhotoBtn = document.getElementById("downloadPhotoBtn");
+const downloadPngBtn = document.getElementById("downloadPngBtn");
+const createSheetBtn = document.getElementById("createSheetBtn");
+const statusBox = document.getElementById("statusBox");
+const statusText = document.getElementById("statusText");
+const progressTrack = document.getElementById("progressTrack");
+const progressBar = document.getElementById("progressBar");
+
+const DPI = 300;
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const A4_WIDTH = 2480;
+const A4_HEIGHT = 3508;
+
+let sourceImage = null;
+let sourceUrl = null;
+let processedImage = null;
+let processedUrl = null;
+let photoReady = false;
+let sheetCanvas = null;
+let aiBusy = false;
+
+function showStatus(message, type = "info", progress = null) {
+ statusBox.className = "status " + type;
+ statusText.textContent = message;
+ if (progress !== null) {
+  progressTrack.style.display = "block";
+  progressBar.style.width = progress + "%";
+ } else {
+  progressTrack.style.display = "none";
+  progressBar.style.width = "0%";
+ }
+}
+
+function clearStatus() {
+ statusBox.className = "status";
+ statusText.textContent = "";
+ progressTrack.style.display = "none";
+ progressBar.style.width = "0%";
+}
+
+function mmToPixels(mm) {
+ return Math.round(mm * DPI / 25.4);
+}
+
+function getDimensions() {
+ let w = 35, h = 45;
+
+ if (sizePreset.value === "us") {
+  w = 50.8;
+  h = 50.8;
+ } else if (sizePreset.value === "35x35") {
+  w = 35;
+  h = 35;
+ } else if (sizePreset.value === "custom") {
+  w = Number(customWidth.value);
+  h = Number(customHeight.value);
+ }
+
+ if (!Number.isFinite(w) || !Number.isFinite(h) ||
+     w < 10 || h < 10 || w > 100 || h > 100) {
+  throw new Error("Please enter a custom width and height between 10 and 100 mm.");
+ }
+
+ return {
+  widthMM: w,
+  heightMM: h,
+  width: mmToPixels(w),
+  height: mmToPixels(h)
+ };
+}
+
+function loadImageFromBlob(blob) {
+ return new Promise((resolve, reject) => {
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+
+  img.onload = () => resolve({img, url});
+  img.onerror = () => {
+   URL.revokeObjectURL(url);
+   reject(new Error("Unable to read this image."));
+  };
+  img.src = url;
+ });
+}
+
+async function loadPhoto(file) {
+ if (!file || aiBusy) return;
+
+ if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+  showStatus("Please select a JPG, PNG or WebP image.", "error");
+  return;
+ }
+
+ if (file.size > MAX_FILE_SIZE) {
+  showStatus("Image size must be 10 MB or less.", "error");
+  return;
+ }
+
+ try {
+  const loaded = await loadImageFromBlob(file);
+
+  if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+  if (processedUrl) URL.revokeObjectURL(processedUrl);
+
+  sourceImage = loaded.img;
+  sourceUrl = loaded.url;
+  processedImage = null;
+  processedUrl = null;
+  photoReady = false;
+  sheetCanvas = null;
+
+  zoom.value = 100;
+  horizontal.value = 0;
+  vertical.value = 0;
+
+  document.getElementById("photoDimensions").textContent =
+   sourceImage.naturalWidth + " × " + sourceImage.naturalHeight + " pixels";
+
+  placeholder.style.display = "none";
+  canvas.style.display = "block";
+
+  makePhotoBtn.disabled = false;
+  resetBtn.disabled = false;
+  removeBgBtn.disabled = false;
+
+  document.getElementById("sheetResult").style.display = "none";
+
+  renderPhoto();
+  showStatus("Photo loaded. Adjust the position and size, then download.", "success");
+
+ } catch (error) {
+  showStatus(error.message || "Could not load the selected image.", "error");
+ }
+}
+
+function renderPhoto() {
+ if (!sourceImage) return;
+
+ let dims;
+ try {
+  dims = getDimensions();
+ } catch (error) {
+  showStatus(error.message, "error");
+  return;
+ }
+
+ canvas.width = dims.width;
+ canvas.height = dims.height;
+
+ const image = processedImage || sourceImage;
+ const targetRatio = dims.width / dims.height;
+ const imageRatio = image.naturalWidth / image.naturalHeight;
+
+ let cropW, cropH;
+
+ if (imageRatio > targetRatio) {
+  cropH = image.naturalHeight;
+  cropW = cropH * targetRatio;
+ } else {
+  cropW = image.naturalWidth;
+  cropH = cropW / targetRatio;
+ }
+
+ const scale = Number(zoom.value) / 100;
+ cropW /= scale;
+ cropH /= scale;
+
+ const maxX = Math.max(0, image.naturalWidth - cropW);
+ const maxY = Math.max(0, image.naturalHeight - cropH);
+
+ const sx = maxX / 2 + (Number(horizontal.value) / 100) * (maxX / 2);
+ const sy = maxY / 2 + (Number(vertical.value) / 100) * (maxY / 2);
+
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+ if (whiteBackground.checked) {
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+ }
+
+ ctx.drawImage(
+  image,
+  Math.max(0, sx),
+  Math.max(0, sy),
+  cropW,
+  cropH,
+  0,
+  0,
+  dims.width,
+  dims.height
+ );
+
+ photoReady = true;
+ downloadPhotoBtn.disabled = false;
+ downloadPngBtn.disabled = false;
+ createSheetBtn.disabled = false;
+
+ zoomValue.textContent = zoom.value + "%";
+ horizontalValue.textContent = horizontal.value;
+ verticalValue.textContent = vertical.value;
+
+ document.getElementById("photoDimensions").textContent =
+  dims.widthMM + " × " + dims.heightMM + " mm • " +
+  dims.width + " × " + dims.height + " pixels • 300 DPI";
+}
+
+function resetAdjustments() {
+ zoom.value = 100;
+ horizontal.value = 0;
+ vertical.value = 0;
+ renderPhoto();
+ clearStatus();
+}
+
+function downloadCanvas(targetCanvas, filename, type = "image/jpeg") {
+ targetCanvas.toBlob(blob => {
+  if (!blob) {
+   showStatus("Unable to create the download file.", "error");
+   return;
+  }
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+ }, type, type === "image/jpeg" ? 0.95 : undefined);
+}
+
+function downloadPhoto(type) {
+ if (!photoReady) return;
+ downloadCanvas(
+  canvas,
+  type === "image/png" ? "passport-photo.png" : "passport-photo.jpg",
+  type
+ );
+}
+
+async function removeBackground() {
+ if (!sourceImage || aiBusy) return;
+
+ aiBusy = true;
+ removeBgBtn.disabled = true;
+ makePhotoBtn.disabled = true;
+
+ try {
+  showStatus("Loading AI background-removal library. First use may take some time...", "info", 5);
+
+  const module = await import(
+   "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm"
+  );
+
+  const removeBackgroundFunction = module.removeBackground;
+
+  if (typeof removeBackgroundFunction !== "function") {
+   throw new Error("Background-removal function was not found.");
+  }
+
+  const originalBlob = await fetch(sourceUrl).then(response => {
+   if (!response.ok) throw new Error("Could not read the selected image.");
+   return response.blob();
+  });
+
+  const resultBlob = await removeBackgroundFunction(originalBlob, {
+   progress: (key, current, total) => {
+    if (total > 0) {
+     const percent = Math.min(95, Math.round((current / total) * 90) + 5);
+     showStatus("AI is removing the background. Please wait...", "info", percent);
+    }
+   }
+  });
+
+  const loaded = await loadImageFromBlob(resultBlob);
+
+  if (processedUrl) URL.revokeObjectURL(processedUrl);
+  processedImage = loaded.img;
+  processedUrl = loaded.url;
+
+  whiteBackground.checked = true;
+  renderPhoto();
+
+  showStatus("Background removed successfully. White background applied.", "success", 100);
+
+ } catch (error) {
+  console.error("Background removal error:", error);
+  showStatus(
+   "AI background removal failed. Check your internet connection and try again. Details: " +
+   (error.message || "Unknown error"),
+   "error"
+  );
+ } finally {
+  aiBusy = false;
+  removeBgBtn.disabled = !sourceImage;
+  makePhotoBtn.disabled = !sourceImage;
+ }
+}
+
+function createA4Sheet() {
+ if (!photoReady) {
+  showStatus("Please upload and prepare a photo first.", "error");
+  return;
+ }
+
+ try {
+  const dims = getDimensions();
+  const copies = Number(document.getElementById("copies").value);
+  const gapMM = Number(document.getElementById("sheetGap").value);
+
+  if (!Number.isInteger(copies) || copies < 1 || copies > 50) {
+   showStatus("Please enter between 1 and 50 copies.", "error");
+   return;
+  }
+
+  if (!Number.isFinite(gapMM) || gapMM < 0 || gapMM > 15) {
+   showStatus("Photo spacing must be between 0 and 15 mm.", "error");
+   return;
+  }
+
+  const gap = mmToPixels(gapMM);
+  const margin = mmToPixels(5);
+  const usableW = A4_WIDTH - margin * 2;
+  const usableH = A4_HEIGHT - margin * 2;
+
+  const cols = Math.floor((usableW + gap) / (dims.width + gap));
+  const rows = Math.floor((usableH + gap) / (dims.height + gap));
+  const capacity = cols * rows;
+
+  if (cols < 1 || rows < 1 || capacity < 1) {
+   showStatus("Selected photo size is too large for an A4 sheet.", "error");
+   return;
+  }
+
+  if (copies > capacity) {
+   showStatus(
+    "A4 sheet can fit only " + capacity + " copies at this size and spacing. Reduce copies or spacing.",
+    "error"
+   );
+   return;
+  }
+
+  const sheet = document.createElement("canvas");
+  sheet.width = A4_WIDTH;
+  sheet.height = A4_HEIGHT;
+
+  const sctx = sheet.getContext("2d");
+  sctx.fillStyle = "#ffffff";
+  sctx.fillRect(0, 0, A4_WIDTH, A4_HEIGHT);
+
+  const usedRows = Math.ceil(copies / cols);
+  const totalGridW = cols * dims.width + (cols - 1) * gap;
+  const totalGridH = usedRows * dims.height + (usedRows - 1) * gap;
+
+  const startX = Math.round((A4_WIDTH - totalGridW) / 2);
+  const startY = Math.round((A4_HEIGHT - totalGridH) / 2);
+
+  for (let i = 0; i < copies; i++) {
+   const col = i % cols;
+   const row = Math.floor(i / cols);
+   const x = startX + col * (dims.width + gap);
+   const y = startY + row * (dims.height + gap);
+
+   sctx.drawImage(canvas, x, y, dims.width, dims.height);
+  }
+
+  sheetCanvas = sheet;
+
+  const preview = document.getElementById("sheetPreview");
+  preview.src = sheet.toDataURL("image/jpeg", 0.85);
+  preview.style.display = "block";
+
+  document.getElementById("sheetDetails").textContent =
+   copies + " copies • " + cols + " columns • " +
+   usedRows + " rows • A4 portrait • 300 DPI";
+
+  document.getElementById("sheetResult").style.display = "block";
+
+  showStatus("A4 photo sheet created successfully.", "success");
+
+ } catch (error) {
+  showStatus(error.message || "Unable to create the A4 sheet.", "error");
+ }
+}
+
+function downloadSheet() {
+ if (!sheetCanvas) return;
+ downloadCanvas(sheetCanvas, "passport-photo-a4-sheet.png", "image/png");
+}
+
+
+function printSheet() {
+    if (!sheetCanvas) return;
+
+    const imageUrl = sheetCanvas.toDataURL("image/png");
+    const printWindow = window.open("", "_blank");
+
+    if (!printWindow) {
+        showStatus(
+            "Please allow pop-ups in your browser to print the A4 sheet.",
+            "error"
+        );
+        return;
+    }
+
+    const printImage = printWindow.document.createElement("img");
+
+    printImage.src = imageUrl;
+    printImage.alt = "Passport photo sheet";
+
+    printImage.style.width = "210mm";
+    printImage.style.height = "297mm";
+    printImage.style.display = "block";
+
+    printWindow.document.head.innerHTML =
+        "<title>Passport Photo A4 Sheet</title>" +
+        "<style>" +
+        "@page { size: A4 portrait; margin: 0; }" +
+        "html, body { margin: 0; padding: 0; width: 210mm; height: 297mm; }" +
+        "img { width: 210mm; height: 297mm; display: block; }" +
+        "</style>";
+
+    printWindow.document.body.innerHTML = "";
+    printWindow.document.body.appendChild(printImage);
+
+    printImage.onload = function() {
+        printWindow.focus();
+        printWindow.print();
+    };
+
+    printImage.onerror = function() {
+        printWindow.close();
+        showStatus("Unable to load the A4 photo sheet for printing.", "error");
+    };
+}
+
+
+photoInput.addEventListener("change", event => {
+ const file = event.target.files && event.target.files[0];
+ if (file) loadPhoto(file);
+ event.target.value = "";
+});
+
+dropArea.addEventListener("dragover", event => {
+ event.preventDefault();
+ dropArea.classList.add("dragover");
+});
+
+dropArea.addEventListener("dragleave", () => {
+ dropArea.classList.remove("dragover");
+});
+
+dropArea.addEventListener("drop", event => {
+ event.preventDefault();
+ dropArea.classList.remove("dragover");
+ const file = event.dataTransfer.files[0];
+ if (file) loadPhoto(file);
+});
+
+sizePreset.addEventListener("change", () => {
+ customFields.style.display = sizePreset.value === "custom" ? "grid" : "none";
+ if (sourceImage) renderPhoto();
+});
+
+[customWidth, customHeight].forEach(input => {
+ input.addEventListener("input", () => {
+  if (sourceImage && sizePreset.value === "custom") renderPhoto();
+ });
+});
+
+[zoom, horizontal, vertical, whiteBackground].forEach(control => {
+ control.addEventListener("input", () => {
+  if (sourceImage) renderPhoto();
+ });
+});
+
+makePhotoBtn.addEventListener("click", () => {
+ if (sourceImage) {
+  renderPhoto();
+  showStatus("Photo updated successfully.", "success");
+ }
+});
+
+resetBtn.addEventListener("click", resetAdjustments);
+removeBgBtn.addEventListener("click", removeBackground);
+downloadPhotoBtn.addEventListener("click", () => downloadPhoto("image/jpeg"));
+downloadPngBtn.addEventListener("click", () => downloadPhoto("image/png"));
+createSheetBtn.addEventListener("click", createA4Sheet);
+document.getElementById("downloadSheetBtn").addEventListener("click", downloadSheet);
+document.getElementById("printSheetBtn").addEventListener("click", printSheet);
+
+</script>
+</body>
+</html>

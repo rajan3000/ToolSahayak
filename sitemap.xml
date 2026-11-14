@@ -32,6 +32,11 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://toolsahayak.netlify.app/invoice-generator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Calculator Tools -->
     <url>
         <loc>https://toolsahayak.netlify.app/tools/age-calculator.html</loc>
@@ -106,6 +111,38 @@
 
     <url>
         <loc>https://toolsahayak.netlify.app/tools/signature-maker.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/background-remover.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/passport-photo-maker.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- PDF Tools -->
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/merge-pdf.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/split-pdf.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/image-to-pdf.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Text Tools -->
+    <url>
+        <loc>https://toolsahayak.netlify.app/tools/text-to-voice.html</loc>
         <priority>0.8</priority>
     </url>
 

@@ -1,0 +1,972 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image to PDF Converter Online Free | ToolSahayak</title>
+
+<meta name="description" content="Convert multiple JPG, JPEG, PNG and WebP images into one PDF online for free. Arrange photos, select page size, orientation and margins, and download your PDF.">
+
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/image-to-pdf.html">
+<link rel="icon" href="../assets/images/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Image to PDF Converter - ToolSahayak">
+<meta property="og:description" content="Convert multiple images into one PDF online for free.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/image-to-pdf.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#253047;
+    line-height:1.6;
+}
+
+header{
+    background:#174ea6;
+    color:#fff;
+    padding:17px 5%;
+}
+
+.header-inner{
+    max-width:1150px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    color:#fff;
+    text-decoration:none;
+    font-size:24px;
+    font-weight:700;
+}
+
+.logo span{color:#ffd166}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+.container{
+    max-width:1050px;
+    margin:35px auto;
+    padding:0 16px;
+}
+
+.intro{text-align:center;margin-bottom:25px}
+
+.intro h1{
+    font-size:30px;
+    color:#174ea6;
+    margin-bottom:8px;
+}
+
+.intro p{color:#68758a;font-size:15px}
+
+.tool-card{
+    background:#fff;
+    border-radius:13px;
+    padding:25px;
+    box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+
+.upload-area{
+    border:2px dashed #b7c8df;
+    border-radius:12px;
+    padding:35px 15px;
+    text-align:center;
+    background:#f8faff;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.upload-area:hover,.upload-area.dragover{
+    border-color:#174ea6;
+    background:#eef4ff;
+}
+
+.upload-icon{font-size:42px;margin-bottom:8px}
+
+.upload-area h3{font-size:18px;margin-bottom:5px}
+
+.upload-area p{font-size:13px;color:#718096;margin-top:8px}
+
+.btn{
+    border:0;
+    border-radius:7px;
+    padding:11px 18px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn-primary{background:#174ea6;color:#fff}
+.btn-primary:hover{background:#103b82}
+.btn-light{background:#edf2f8;color:#34445b}
+.btn-danger{background:#fff0f0;color:#c0392b}
+.btn-success{background:#138754;color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+#fileInput{display:none}
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin:22px 0 14px;
+}
+
+.toolbar strong{font-size:15px}
+
+.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+.image-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:15px;
+}
+
+.image-item{
+    border:1px solid #e0e6ef;
+    border-radius:10px;
+    overflow:hidden;
+    background:#fff;
+    min-width:0;
+}
+
+.image-preview{
+    height:145px;
+    background-color:#f0f2f5;
+    background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),
+    linear-gradient(-45deg,#ddd 25%,transparent 25%),
+    linear-gradient(45deg,transparent 75%,#ddd 75%),
+    linear-gradient(-45deg,transparent 75%,#ddd 75%);
+    background-size:16px 16px;
+    background-position:0 0,0 8px,8px -8px,-8px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.image-preview img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
+
+.image-info{padding:10px}
+
+.image-name{
+    font-size:12px;
+    font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.image-size{font-size:11px;color:#718096;margin-top:3px}
+
+.image-actions{
+    display:flex;
+    gap:5px;
+    margin-top:9px;
+}
+
+.image-actions button{
+    flex:1;
+    padding:6px 4px;
+    border:0;
+    border-radius:5px;
+    background:#edf2f8;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.image-actions .remove{background:#fff0f0;color:#c0392b}
+
+.settings{
+    margin-top:28px;
+    padding-top:22px;
+    border-top:1px solid #e8edf4;
+}
+
+.settings h2{
+    font-size:19px;
+    margin-bottom:16px;
+    color:#253047;
+}
+
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+}
+
+.field label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.field select,.field input{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccd5e1;
+    border-radius:7px;
+    outline:none;
+    background:#fff;
+    color:#253047;
+}
+
+.field select:focus,.field input:focus{border-color:#174ea6}
+
+.check-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:17px;
+    font-size:13px;
+}
+
+.output-row{
+    margin-top:18px;
+    display:flex;
+    gap:12px;
+    align-items:end;
+}
+
+.output-row .field{flex:1}
+
+.generate-area{
+    margin-top:25px;
+    text-align:center;
+}
+
+.generate-area .btn{
+    min-width:220px;
+    padding:14px 22px;
+    font-size:16px;
+}
+
+.status{
+    display:none;
+    margin-top:17px;
+    padding:12px;
+    border-radius:7px;
+    font-size:13px;
+    text-align:center;
+}
+
+.status.info{display:block;background:#eef4ff;color:#174ea6}
+.status.success{display:block;background:#e9f8ef;color:#14743f}
+.status.error{display:block;background:#fff0f0;color:#b42318}
+
+.progress-wrap{
+    display:none;
+    margin-top:12px;
+    background:#e7edf5;
+    height:9px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0;
+    height:100%;
+    background:#174ea6;
+    transition:width .2s;
+}
+
+.empty{
+    text-align:center;
+    padding:28px 10px;
+    color:#8792a3;
+    border:1px dashed #d5deea;
+    border-radius:9px;
+    font-size:14px;
+}
+
+.info-section{
+    background:#fff;
+    margin-top:22px;
+    padding:23px;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.04);
+}
+
+.info-section h2{
+    color:#174ea6;
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+.info-section p,.info-section li{
+    font-size:14px;
+    color:#5d687a;
+    margin-bottom:7px;
+}
+
+.info-section ul{padding-left:20px}
+
+footer{
+    background:#172b4d;
+    color:#dce5f2;
+    padding:25px 15px;
+    text-align:center;
+    margin-top:35px;
+    font-size:13px;
+}
+
+footer a{color:#fff;text-decoration:none;margin:0 7px}
+
+@media(max-width:600px){
+    .header-inner{flex-direction:column}
+    nav a{margin:0 7px}
+    .intro h1{font-size:25px}
+    .tool-card{padding:16px}
+    .settings-grid{grid-template-columns:1fr}
+    .output-row{flex-direction:column;align-items:stretch}
+    .output-row .btn{width:100%}
+    .image-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .image-preview{height:120px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="../index.html" class="logo">Tool<span>Sahayak</span></a>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#tools">All Tools</a>
+            <a href="../contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h1>Image to PDF Converter</h1>
+        <p>Convert multiple JPG, PNG and WebP images into one PDF document for free.</p>
+    </section>
+
+    <section class="tool-card">
+
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📄</div>
+            <h3>Select Images to Convert</h3>
+            <p>Drag and drop images here or choose files from your device.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="browseBtn">Choose Images</button>
+            <p>Supported: JPG, JPEG, PNG and WebP | Maximum 20 MB per image</p>
+        </div>
+
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" multiple>
+
+        <div class="toolbar">
+            <strong id="imageCount">Selected Images (0)</strong>
+            <div class="toolbar-actions">
+                <button type="button" class="btn btn-light" id="addMoreBtn">+ Add More</button>
+                <button type="button" class="btn btn-danger" id="clearBtn">Clear All</button>
+            </div>
+        </div>
+
+        <div id="imageList" class="image-list">
+            <div class="empty" id="emptyMessage" style="grid-column:1/-1">
+                No images selected yet.
+            </div>
+        </div>
+
+        <section class="settings">
+            <h2>PDF Settings</h2>
+
+            <div class="settings-grid">
+
+                <div class="field">
+                    <label for="pageSize">PDF Page Size</label>
+                    <select id="pageSize">
+                        <option value="A4">A4</option>
+                        <option value="A3">A3</option>
+                        <option value="A5">A5</option>
+                        <option value="LETTER">Letter</option>
+                        <option value="LEGAL">Legal</option>
+                        <option value="ORIGINAL">Original Image Size</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="orientation">Page Orientation</label>
+                    <select id="orientation">
+                        <option value="auto">Auto (Fit Image)</option>
+                        <option value="portrait">Portrait</option>
+                        <option value="landscape">Landscape</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="margin">Page Margin</label>
+                    <select id="margin">
+                        <option value="0">No Margin</option>
+                        <option value="10" selected>Small (10 mm)</option>
+                        <option value="15">Medium (15 mm)</option>
+                        <option value="20">Large (20 mm)</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="fitMode">Image Fit</label>
+                    <select id="fitMode">
+                        <option value="contain">Fit Image (No Crop)</option>
+                        <option value="cover">Fill Page (Crop)</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <label class="check-row">
+                <input type="checkbox" id="oneImagePerPage" checked>
+                Put each image on a separate PDF page
+            </label>
+
+            <div class="output-row">
+                <div class="field">
+                    <label for="pdfName">PDF File Name</label>
+                    <input type="text" id="pdfName" value="ToolSahayak-Images">
+                </div>
+                <button type="button" class="btn btn-light" id="resetBtn">Reset Settings</button>
+            </div>
+        </section>
+
+        <div class="generate-area">
+            <button type="button" class="btn btn-success" id="convertBtn" disabled>
+                Convert to PDF & Download
+            </button>
+
+            <div class="progress-wrap" id="progressWrap">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="status" id="status"></div>
+        </div>
+
+    </section>
+
+    <section class="info-section">
+        <h2>How to Convert Images to PDF?</h2>
+        <ul>
+            <li>Select or drag multiple images into the upload area.</li>
+            <li>Arrange images in your preferred order.</li>
+            <li>Select page size, orientation and margin.</li>
+            <li>Enter your preferred PDF file name.</li>
+            <li>Click Convert to PDF & Download.</li>
+        </ul>
+    </section>
+
+    <section class="info-section">
+        <h2>About Image to PDF Converter</h2>
+        <p>ToolSahayak Image to PDF Converter is a free browser-based tool that helps you combine multiple images into a single PDF file. It supports JPG, JPEG, PNG and WebP images.</p>
+        <p>Your images are processed in your browser. They are not uploaded to the ToolSahayak server by this tool. PDF creation requires a working internet connection to load the PDF library.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 ToolSahayak. All Rights Reserved.</p>
+    <br>
+    <a href="../about.html">About Us</a> |
+    <a href="../contact.html">Contact</a> |
+    <a href="../privacy-policy.html">Privacy Policy</a> |
+    <a href="../disclaimer.html">Disclaimer</a>
+</footer>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const uploadArea = document.getElementById("uploadArea");
+const browseBtn = document.getElementById("browseBtn");
+const addMoreBtn = document.getElementById("addMoreBtn");
+const clearBtn = document.getElementById("clearBtn");
+const imageList = document.getElementById("imageList");
+const imageCount = document.getElementById("imageCount");
+const convertBtn = document.getElementById("convertBtn");
+const statusBox = document.getElementById("status");
+const progressWrap = document.getElementById("progressWrap");
+const progressBar = document.getElementById("progressBar");
+
+let images = [];
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
+const MAX_TOTAL_SIZE = 100 * 1024 * 1024;
+const MAX_IMAGES = 100;
+
+function showStatus(message, type="info"){
+    statusBox.textContent = message;
+    statusBox.className = "status " + type;
+}
+
+function formatSize(bytes){
+    if(bytes < 1024 * 1024){
+        return (bytes / 1024).toFixed(1) + " KB";
+    }
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+function openFilePicker(){
+    fileInput.click();
+}
+
+browseBtn.addEventListener("click", openFilePicker);
+addMoreBtn.addEventListener("click", openFilePicker);
+
+fileInput.addEventListener("change", function(){
+    addFiles(Array.from(this.files || []));
+    this.value = "";
+});
+
+uploadArea.addEventListener("click", function(event){
+    if(event.target.closest("button")) return;
+    openFilePicker();
+});
+
+["dragenter","dragover"].forEach(eventName => {
+    uploadArea.addEventListener(eventName, event => {
+        event.preventDefault();
+        uploadArea.classList.add("dragover");
+    });
+});
+
+["dragleave","drop"].forEach(eventName => {
+    uploadArea.addEventListener(eventName, event => {
+        event.preventDefault();
+        uploadArea.classList.remove("dragover");
+    });
+});
+
+uploadArea.addEventListener("drop", event => {
+    addFiles(Array.from(event.dataTransfer.files || []));
+});
+
+function addFiles(files){
+    let added = 0;
+    let rejected = [];
+
+    for(const file of files){
+        if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+            rejected.push(file.name + ": unsupported format");
+            continue;
+        }
+
+        if(file.size > MAX_FILE_SIZE){
+            rejected.push(file.name + ": exceeds 20 MB");
+            continue;
+        }
+
+        if(images.length >= MAX_IMAGES){
+            rejected.push("Maximum 100 images allowed");
+            break;
+        }
+
+        if(images.some(item => item.file.name === file.name && item.file.size === file.size)){
+            rejected.push(file.name + ": already added");
+            continue;
+        }
+
+        const totalSize = images.reduce((sum,item) => sum + item.file.size,0);
+
+        if(totalSize + file.size > MAX_TOTAL_SIZE){
+            rejected.push(file.name + ": total upload limit is 100 MB");
+            continue;
+        }
+
+        const imageItem = {
+            id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random(),
+            file,
+            url: URL.createObjectURL(file)
+        };
+
+        images.push(imageItem);
+        added++;
+    }
+
+    renderImages();
+
+    if(added > 0){
+        showStatus(added + " image(s) added successfully.", "success");
+    }else if(rejected.length){
+        showStatus(rejected.join(" | "), "error");
+    }
+
+    if(rejected.length && added > 0){
+        showStatus(added + " image(s) added. Some files were skipped: " + rejected.join(" | "), "info");
+    }
+}
+
+function renderImages(){
+    imageList.innerHTML = "";
+
+    imageCount.textContent = "Selected Images (" + images.length + ")";
+
+    convertBtn.disabled = images.length === 0;
+
+    if(images.length === 0){
+        imageList.innerHTML = '<div class="empty" style="grid-column:1/-1">No images selected yet.</div>';
+        return;
+    }
+
+    images.forEach((item,index) => {
+        const card = document.createElement("div");
+        card.className = "image-item";
+
+        const preview = document.createElement("div");
+        preview.className = "image-preview";
+
+        const img = document.createElement("img");
+        img.src = item.url;
+        img.alt = item.file.name;
+        preview.appendChild(img);
+
+        const info = document.createElement("div");
+        info.className = "image-info";
+
+        const name = document.createElement("div");
+        name.className = "image-name";
+        name.textContent = (index + 1) + ". " + item.file.name;
+        name.title = item.file.name;
+
+        const size = document.createElement("div");
+        size.className = "image-size";
+        size.textContent = formatSize(item.file.size);
+
+        const actions = document.createElement("div");
+        actions.className = "image-actions";
+
+        const up = document.createElement("button");
+        up.type = "button";
+        up.textContent = "↑";
+        up.title = "Move Up";
+        up.disabled = index === 0;
+        up.addEventListener("click",() => moveImage(index,-1));
+
+        const down = document.createElement("button");
+        down.type = "button";
+        down.textContent = "↓";
+        down.title = "Move Down";
+        down.disabled = index === images.length - 1;
+        down.addEventListener("click",() => moveImage(index,1));
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "Remove";
+        remove.className = "remove";
+        remove.addEventListener("click",() => removeImage(index));
+
+        actions.append(up,down,remove);
+        info.append(name,size,actions);
+        card.append(preview,info);
+        imageList.appendChild(card);
+    });
+}
+
+function moveImage(index,direction){
+    const newIndex = index + direction;
+
+    if(newIndex < 0 || newIndex >= images.length) return;
+
+    [images[index],images[newIndex]] = [images[newIndex],images[index]];
+    renderImages();
+}
+
+function removeImage(index){
+    URL.revokeObjectURL(images[index].url);
+    images.splice(index,1);
+    renderImages();
+}
+
+clearBtn.addEventListener("click",function(){
+    images.forEach(item => URL.revokeObjectURL(item.url));
+    images = [];
+    renderImages();
+    statusBox.className = "status";
+    progressWrap.style.display = "none";
+});
+
+document.getElementById("resetBtn").addEventListener("click",function(){
+    document.getElementById("pageSize").value = "A4";
+    document.getElementById("orientation").value = "auto";
+    document.getElementById("margin").value = "10";
+    document.getElementById("fitMode").value = "contain";
+    document.getElementById("oneImagePerPage").checked = true;
+    document.getElementById("pdfName").value = "ToolSahayak-Images";
+});
+
+function getPageDimensions(size,orientation){
+    const sizes = {
+        A4:[595.28,841.89],
+        A3:[841.89,1190.55],
+        A5:[419.53,595.28],
+        LETTER:[612,792],
+        LEGAL:[612,1008]
+    };
+
+    if(size === "ORIGINAL") return null;
+
+    let [width,height] = sizes[size] || sizes.A4;
+
+    if(orientation === "landscape"){
+        if(height > width) [width,height] = [height,width];
+    }else if(orientation === "portrait"){
+        if(width > height) [width,height] = [height,width];
+    }
+
+    return [width,height];
+}
+
+function loadImage(url){
+    return new Promise((resolve,reject) => {
+        const img = new Image();
+
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error("Could not read an image."));
+
+        img.src = url;
+    });
+}
+
+async function prepareImage(file){
+    const url = URL.createObjectURL(file);
+
+    try{
+        const img = await loadImage(url);
+
+        if(!img.naturalWidth || !img.naturalHeight){
+            throw new Error("Invalid image dimensions.");
+        }
+
+        const isPng = file.type === "image/png";
+
+        if(isPng){
+            const bytes = await file.arrayBuffer();
+            return {
+                type:"png",
+                bytes,
+                width:img.naturalWidth,
+                height:img.naturalHeight
+            };
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(img,0,0);
+
+        const blob = await new Promise(resolve => {
+            canvas.toBlob(resolve,"image/jpeg",0.92);
+        });
+
+        if(!blob) throw new Error("Image conversion failed.");
+
+        return {
+            type:"jpg",
+            bytes:await blob.arrayBuffer(),
+            width:img.naturalWidth,
+            height:img.naturalHeight
+        };
+
+    }finally{
+        URL.revokeObjectURL(url);
+    }
+}
+
+function drawImageOnPage(page,embeddedImage,imageWidth,imageHeight,margin,fitMode){
+    const pageWidth = page.getWidth();
+    const pageHeight = page.getHeight();
+
+    const availableWidth = Math.max(1,pageWidth - margin * 2);
+    const availableHeight = Math.max(1,pageHeight - margin * 2);
+
+    const scale = fitMode === "cover"
+        ? Math.max(availableWidth/imageWidth,availableHeight/imageHeight)
+        : Math.min(availableWidth/imageWidth,availableHeight/imageHeight);
+
+    const drawWidth = imageWidth * scale;
+    const drawHeight = imageHeight * scale;
+
+    const x = (pageWidth - drawWidth) / 2;
+    const y = (pageHeight - drawHeight) / 2;
+
+    if(fitMode === "cover"){
+        page.pushOperators(
+            PDFLib.pushGraphicsState(),
+            PDFLib.rectangle(margin,margin,availableWidth,availableHeight),
+            PDFLib.clip(),
+            PDFLib.endPath()
+        );
+
+        page.drawImage(embeddedImage,{
+            x,y,width:drawWidth,height:drawHeight
+        });
+
+        page.pushOperators(PDFLib.popGraphicsState());
+    }else{
+        page.drawImage(embeddedImage,{
+            x,y,width:drawWidth,height:drawHeight
+        });
+    }
+}
+
+convertBtn.addEventListener("click",async function(){
+    if(images.length === 0){
+        showStatus("Please select at least one image.","error");
+        return;
+    }
+
+    if(!window.PDFLib){
+        showStatus("PDF library could not load. Please check your internet connection and refresh the page.","error");
+        return;
+    }
+
+    convertBtn.disabled = true;
+    progressWrap.style.display = "block";
+    progressBar.style.width = "0%";
+
+    try{
+        showStatus("Preparing PDF...","info");
+
+        const { PDFDocument } = PDFLib;
+        const pdfDoc = await PDFDocument.create();
+
+        const pageSize = document.getElementById("pageSize").value;
+        const orientation = document.getElementById("orientation").value;
+        const marginMm = Number(document.getElementById("margin").value);
+        const margin = marginMm * 72 / 25.4;
+        const fitMode = document.getElementById("fitMode").value;
+        const onePerPage = document.getElementById("oneImagePerPage").checked;
+
+        let page = null;
+        let groupWidth = 0;
+        let groupHeight = 0;
+
+        for(let i=0;i<images.length;i++){
+            showStatus("Processing image " + (i+1) + " of " + images.length + "...","info");
+
+            const prepared = await prepareImage(images[i].file);
+
+            const embedded = prepared.type === "png"
+                ? await pdfDoc.embedPng(prepared.bytes)
+                : await pdfDoc.embedJpg(prepared.bytes);
+
+            let dimensions;
+
+            if(pageSize === "ORIGINAL"){
+                dimensions = [
+                    prepared.width * 72 / 96,
+                    prepared.height * 72 / 96
+                ];
+            }else{
+                dimensions = getPageDimensions(pageSize,orientation);
+            }
+
+            let width = dimensions[0];
+            let height = dimensions[1];
+
+            if(pageSize === "ORIGINAL" && orientation === "landscape" && height > width){
+                [width,height] = [height,width];
+            }
+
+            if(pageSize === "ORIGINAL" && orientation === "portrait" && width > height){
+                [width,height] = [height,width];
+            }
+
+            if(!onePerPage && page){
+                if(width !== groupWidth || height !== groupHeight){
+                    page = null;
+                }
+            }
+
+            if(onePerPage || !page){
+                page = pdfDoc.addPage([width,height]);
+                groupWidth = width;
+                groupHeight = height;
+            }
+
+            drawImageOnPage(
+                page,
+                embedded,
+                prepared.width * 72 / 96,
+                prepared.height * 72 / 96,
+                margin,
+                fitMode
+            );
+
+            progressBar.style.width = Math.round(((i+1)/images.length)*85) + "%";
+        }
+
+        showStatus("Generating PDF file...","info");
+
+        const pdfBytes = await pdfDoc.save();
+
+        const blob = new Blob([pdfBytes],{type:"application/pdf"});
+
+        let fileName = document.getElementById("pdfName").value.trim();
+
+        if(!fileName) fileName = "ToolSahayak-Images";
+
+        fileName = fileName.replace(/[\\/:*?"<>|]/g,"-");
+
+        if(!fileName.toLowerCase().endsWith(".pdf")){
+            fileName += ".pdf";
+        }
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url),10000);
+
+        progressBar.style.width = "100%";
+        showStatus("Success! Your PDF has been generated and downloaded.","success");
+
+    }catch(error){
+        console.error("Image to PDF Error:",error);
+        showStatus("PDF creation failed: " + (error.message || "Please try again."),"error");
+    }finally{
+        convertBtn.disabled = images.length === 0;
+    }
+});
+
+renderImages();
+</script>
+
+</body>
+</html>
