@@ -468,13 +468,33 @@ clearBtn.addEventListener("click", function() {
 downloadBtn.addEventListener("click", function() {
     if (!hasDrawing) return;
 
+    // Create a new transparent canvas
+    const exportCanvas = document.createElement("canvas");
+
+    exportCanvas.width = canvas.width;
+    exportCanvas.height = canvas.height;
+
+    const exportCtx = exportCanvas.getContext("2d");
+
+    // Keep background transparent and copy signature
+    exportCtx.clearRect(
+        0,
+        0,
+        exportCanvas.width,
+        exportCanvas.height
+    );
+
+    exportCtx.drawImage(canvas, 0, 0);
+
+    // Download transparent PNG
     const link = document.createElement("a");
 
     link.download = "ToolSahayak-Signature.png";
-    link.href = canvas.toDataURL("image/png");
+    link.href = exportCanvas.toDataURL("image/png");
 
     link.click();
 });
+
 
 setupCanvas();
 </script>
