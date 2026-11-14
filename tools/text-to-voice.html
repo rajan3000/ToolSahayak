@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free AI Text to Speech Converter - ToolSahayak</title>
+<meta name="description" content="Convert English text into natural AI speech online for free. Choose male and female voices, adjust speed, preview audio and download MP3 or WAV files.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/text-to-voice.html">
+<link rel="icon" href="../assets/images/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free AI Text to Speech Converter - ToolSahayak">
+<meta property="og:description" content="Convert text into natural AI speech and download MP3 or WAV audio online.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/text-to-voice.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f4f7fb;
+    color: #263445;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5eaf1;
+    padding: 17px 20px;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo {
+    color: #174ea6;
+    font-size: 23px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav a {
+    color: #526174;
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 0 16px;
+}
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.page-heading h1 {
+    color: #172b4d;
+    font-size: 30px;
+    margin: 0 0 10px;
+}
+
+.page-heading p {
+    color: #68778a;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.tool-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(25, 45, 75, 0.05);
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+    color: #263445;
+}
+
+textarea {
+    width: 100%;
+    min-height: 190px;
+    resize: vertical;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    outline: none;
+}
+
+textarea:focus,
+select:focus {
+    border-color: #174ea6;
+    box-shadow: 0 0 0 3px rgba(23, 78, 166, 0.1);
+}
+
+.text-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+    color: #718096;
+    font-size: 12px;
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 23px;
+}
+
+.setting-item select {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0 12px;
+    background: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.speed-box {
+    margin-top: 20px;
+}
+
+.speed-heading {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: #174ea6;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.primary-btn {
+    background: #174ea6;
+    color: white;
+    flex: 1;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: #103b82;
+}
+
+.secondary-btn {
+    background: #edf2f7;
+    color: #344256;
+}
+
+.download-btn {
+    background: #16834a;
+    color: white;
+    flex: 1;
+}
+
+.download-btn:hover:not(:disabled) {
+    background: #116b3b;
+}
+
+.status-box {
+    margin-top: 22px;
+    padding: 14px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #526174;
+}
+
+.progress-track {
+    width: 100%;
+    height: 7px;
+    background: #dce4ef;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #174ea6;
+    transition: width 0.2s;
+}
+
+.audio-section {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid #e5eaf1;
+}
+
+.audio-section h2 {
+    font-size: 18px;
+    margin: 0 0 15px;
+    color: #172b4d;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.download-row {
+    display: flex;
+    gap: 12px;
+}
+
+.note {
+    background: #fff8e6;
+    border: 1px solid #f4dfaa;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 22px;
+    font-size: 13px;
+    color: #795b18;
+    line-height: 1.6;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.feature {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 17px;
+    text-align: center;
+}
+
+.feature strong {
+    display: block;
+    color: #174ea6;
+    margin-bottom: 7px;
+}
+
+.feature span {
+    color: #718096;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: #718096;
+    font-size: 13px;
+}
+
+footer a {
+    color: #174ea6;
+    text-decoration: none;
+}
+
+@media(max-width: 600px) {
+    .header-inner {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 0 7px;
+    }
+
+    .page-heading h1 {
+        font-size: 24px;
+    }
+
+    .tool-card {
+        padding: 17px;
+    }
+
+    .settings,
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons,
+    .download-row {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="../index.html" class="logo">ToolSahayak</a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="page-heading">
+        <h1>Free AI Text to Speech Converter</h1>
+        <p>Convert your English text into natural-sounding AI voice and download audio in MP3 or WAV format.</p>
+    </div>
+
+    <section class="tool-card">
+
+        <label for="textInput">Enter Your Text</label>
+
+        <textarea
+            id="textInput"
+            maxlength="5000"
+            placeholder="Type or paste your only English text here..."
+        ></textarea>
+
+        <div class="text-info">
+            <span>Maximum 5,000 characters</span>
+            <span id="charCount">0 / 5000</span>
+        </div>
+
+        <div class="settings">
+
+            <div class="setting-item">
+                <label for="voiceSelect">Select AI Voice</label>
+                <select id="voiceSelect">
+                    <optgroup label="Female Voices">
+                        <option value="af_heart">Heart - Female</option>
+                        <option value="af_bella">Bella - Female</option>
+                        <option value="af_nova">Nova - Female</option>
+                        <option value="af_sarah">Sarah - Female</option>
+                        <option value="af_sky">Sky - Female</option>
+                        <option value="bf_emma">Emma - British Female</option>
+                        <option value="bf_isabella">Isabella - British Female</option>
+                    </optgroup>
+
+                    <optgroup label="Male Voices">
+                        <option value="am_adam">Adam - Male</option>
+                        <option value="am_michael">Michael - Male</option>
+                        <option value="am_echo">Echo - Male</option>
+                        <option value="bm_george">George - British Male</option>
+                        <option value="bm_lewis">Lewis - British Male</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label for="formatSelect">Download Format</label>
+                <select id="formatSelect">
+                    <option value="mp3">MP3 Audio</option>
+                    <option value="wav">WAV Audio</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="speed-box">
+            <div class="speed-heading">
+                <label for="speedRange">Speech Speed</label>
+                <span id="speedValue">1.0x</span>
+            </div>
+
+            <input
+                type="range"
+                id="speedRange"
+                min="0.7"
+                max="1.3"
+                step="0.1"
+                value="1"
+            >
+        </div>
+
+        <div class="buttons">
+            <button type="button" class="primary-btn" id="generateBtn">
+                Generate AI Voice
+            </button>
+
+            <button type="button" class="secondary-btn" id="clearBtn">
+                Clear
+            </button>
+        </div>
+
+        <div class="status-box" id="statusBox" role="status" aria-live="polite">
+            Ready. Enter your English text and click Generate AI Voice.
+            <div class="progress-track">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="audio-section" id="audioSection" hidden>
+            <h2>Your Generated Audio</h2>
+
+            <audio id="audioPlayer" controls></audio>
+
+            <div class="download-row">
+                <button type="button" class="download-btn" id="downloadBtn">
+                    Download Audio
+                </button>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Important:</strong> This version supports English text only.
+            The AI model and required libraries are loaded from online sources.
+            Your text is processed in your browser; it is not uploaded to a
+            ToolSahayak server. Keep an internet connection while loading the model.
+        </div>
+
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <strong>AI Voice</strong>
+            <span>Natural-sounding English speech generation.</span>
+        </div>
+
+        <div class="feature">
+            <strong>MP3 & WAV</strong>
+            <span>Download your generated audio in two formats.</span>
+        </div>
+
+        <div class="feature">
+            <strong>Browser Based</strong>
+            <span>Audio generation runs locally in your browser.</span>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 <a href="../index.html">ToolSahayak</a>. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
+
+<script type="module">
+import { KokoroTTS } from "https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/+esm";
+
+const MODEL_ID = "onnx-community/Kokoro-82M-v1.0-ONNX";
+
+const textInput = document.getElementById("textInput");
+const voiceSelect = document.getElementById("voiceSelect");
+const formatSelect = document.getElementById("formatSelect");
+const speedRange = document.getElementById("speedRange");
+const speedValue = document.getElementById("speedValue");
+const charCount = document.getElementById("charCount");
+const generateBtn = document.getElementById("generateBtn");
+const clearBtn = document.getElementById("clearBtn");
+const statusBox = document.getElementById("statusBox");
+const progressBar = document.getElementById("progressBar");
+const audioSection = document.getElementById("audioSection");
+const audioPlayer = document.getElementById("audioPlayer");
+const downloadBtn = document.getElementById("downloadBtn");
+
+let model = null;
+let isGenerating = false;
+let audioUrl = null;
+let downloadUrl = null;
+let downloadName = "";
+
+textInput.addEventListener("input", () => {
+    charCount.textContent = `${textInput.value.length} / 5000`;
+});
+
+speedRange.addEventListener("input", () => {
+    speedValue.textContent = `${Number(speedRange.value).toFixed(1)}x`;
+});
+
+function setStatus(message, progress = null) {
+    statusBox.firstChild.textContent = message;
+
+    if (progress !== null) {
+        progressBar.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+    }
+}
+
+function releaseAudio() {
+    if (audioUrl) {
+        URL.revokeObjectURL(audioUrl);
+        audioUrl = null;
+    }
+
+    if (downloadUrl) {
+        URL.revokeObjectURL(downloadUrl);
+        downloadUrl = null;
+    }
+
+    audioPlayer.pause();
+    audioPlayer.removeAttribute("src");
+    audioPlayer.load();
+
+    audioSection.hidden = true;
+}
+
+function splitText(text, maxLength = 350) {
+    const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+    const chunks = [];
+    let current = "";
+
+    for (const sentence of sentences) {
+        const part = sentence.trim();
+
+        if (!part) continue;
+
+        if (part.length > maxLength) {
+            if (current) {
+                chunks.push(current);
+                current = "";
+            }
+
+            const words = part.split(/\s+/);
+            let piece = "";
+
+            for (const word of words) {
+                if ((piece + " " + word).trim().length > maxLength) {
+                    if (piece) chunks.push(piece);
+                    piece = word;
+                } else {
+                    piece = (piece + " " + word).trim();
+                }
+            }
+
+            if (piece) current = piece;
+
+            continue;
+        }
+
+        if ((current + " " + part).trim().length > maxLength) {
+            if (current) chunks.push(current);
+            current = part;
+        } else {
+            current = (current + " " + part).trim();
+        }
+    }
+
+    if (current) chunks.push(current);
+
+    return chunks;
+}
+
+async function loadModel() {
+    if (model) return model;
+
+    setStatus("Loading AI model. First-time download may take several minutes...", 5);
+
+    model = await KokoroTTS.from_pretrained(MODEL_ID, {
+        dtype: "q8",
+        device: "wasm",
+        progress_callback: (progress) => {
+            if (progress && typeof progress.progress === "number") {
+                const percent = Math.round(progress.progress);
+                setStatus(
+                    "Downloading AI model. Please wait...",
+                    Math.max(5, Math.min(95, percent))
+                );
+            }
+        }
+    });
+
+    setStatus("AI model loaded successfully.", 100);
+
+    return model;
+}
+
+function joinAudioChunks(chunks) {
+    const totalLength = chunks.reduce(
+        (total, chunk) => total + chunk.length,
+        0
+    );
+
+    const combined = new Float32Array(totalLength);
+
+    let offset = 0;
+
+    for (const chunk of chunks) {
+        combined.set(chunk, offset);
+        offset += chunk.length;
+    }
+
+    return combined;
+}
+
+function makeWavBlob(samples, sampleRate) {
+    const buffer = new ArrayBuffer(44 + samples.length * 2);
+    const view = new DataView(buffer);
+
+    function writeString(offset, value) {
+        for (let i = 0; i < value.length; i++) {
+            view.setUint8(offset + i, value.charCodeAt(i));
+        }
+    }
+
+    writeString(0, "RIFF");
+    view.setUint32(4, 36 + samples.length * 2, true);
+    writeString(8, "WAVE");
+    writeString(12, "fmt ");
+    view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true);
+    view.setUint16(22, 1, true);
+    view.setUint32(24, sampleRate, true);
+    view.setUint32(28, sampleRate * 2, true);
+    view.setUint16(32, 2, true);
+    view.setUint16(34, 16, true);
+    writeString(36, "data");
+    view.setUint32(40, samples.length * 2, true);
+
+    let offset = 44;
+
+    for (let i = 0; i < samples.length; i++) {
+        const sample = Math.max(-1, Math.min(1, samples[i]));
+        const value = sample < 0
+            ? sample * 32768
+            : sample * 32767;
+
+        view.setInt16(offset, value, true);
+        offset += 2;
+    }
+
+    return new Blob([buffer], { type: "audio/wav" });
+}
+
+function makeMp3Blob(samples, sampleRate) {
+    if (!window.lamejs || !window.lamejs.Mp3Encoder) {
+        throw new Error(
+            "MP3 encoder could not be loaded. Please check your internet connection or select WAV format."
+        );
+    }
+
+    const encoder = new window.lamejs.Mp3Encoder(1, sampleRate, 128);
+    const blockSize = 1152;
+    const mp3Parts = [];
+
+    for (let i = 0; i < samples.length; i += blockSize) {
+        const block = samples.subarray(
+            i,
+            Math.min(i + blockSize, samples.length)
+        );
+
+        const pcm = new Int16Array(block.length);
+
+        for (let j = 0; j < block.length; j++) {
+            const sample = Math.max(-1, Math.min(1, block[j]));
+
+            pcm[j] = sample < 0
+                ? sample * 32768
+                : sample * 32767;
+        }
+
+        const encoded = encoder.encodeBuffer(pcm);
+
+        if (encoded.length) {
+            mp3Parts.push(new Uint8Array(encoded));
+        }
+    }
+
+    const finalBuffer = encoder.flush();
+
+    if (finalBuffer.length) {
+        mp3Parts.push(new Uint8Array(finalBuffer));
+    }
+
+    if (!mp3Parts.length) {
+        throw new Error("MP3 encoding failed.");
+    }
+
+    return new Blob(mp3Parts, { type: "audio/mpeg" });
+}
+
+function prepareDownload(blob, format) {
+    if (audioUrl) URL.revokeObjectURL(audioUrl);
+    if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+
+    audioUrl = URL.createObjectURL(blob);
+    downloadUrl = audioUrl;
+
+    const extension = format === "mp3" ? "mp3" : "wav";
+
+    downloadName = `toolsahayak-voice-${Date.now()}.${extension}`;
+
+    audioPlayer.src = audioUrl;
+    audioSection.hidden = false;
+}
+
+async function generateSpeech() {
+    if (isGenerating) return;
+
+    const text = textInput.value.trim();
+
+    if (!text) {
+        alert("Please enter some English text first.");
+        textInput.focus();
+        return;
+    }
+
+    if (/[\u0900-\u097F]/.test(text)) {
+        alert(
+            "This AI model currently supports English text only. Please enter English text."
+        );
+        return;
+    }
+
+    isGenerating = true;
+    generateBtn.disabled = true;
+    clearBtn.disabled = true;
+
+    releaseAudio();
+
+    try {
+        const tts = await loadModel();
+
+        const chunks = splitText(text);
+
+        if (!chunks.length) {
+            throw new Error("No valid text was found.");
+        }
+
+        const audioParts = [];
+        let sampleRate = null;
+
+        for (let i = 0; i < chunks.length; i++) {
+            setStatus(
+                `Generating voice: Part ${i + 1} of ${chunks.length}...`,
+                ((i + 1) / chunks.length) * 90
+            );
+
+            const result = await tts.generate(chunks[i], {
+                voice: voiceSelect.value,
+                speed: Number(speedRange.value)
+            });
+
+            const samples = result?.audio;
+            const currentRate = result?.sampling_rate;
+
+            if (!samples || !samples.length || !currentRate) {
+                throw new Error(
+                    "The AI model returned empty audio. Please try again."
+                );
+            }
+
+            if (sampleRate !== null && sampleRate !== currentRate) {
+                throw new Error("Audio sample rates did not match.");
+            }
+
+            sampleRate = currentRate;
+            audioParts.push(samples);
+        }
+
+        const combinedAudio = joinAudioChunks(audioParts);
+
+        if (!combinedAudio.length) {
+            throw new Error("No audio was generated.");
+        }
+
+        setStatus("Preparing your downloadable audio...", 95);
+
+        const format = formatSelect.value;
+
+        let blob;
+
+        if (format === "mp3") {
+            blob = makeMp3Blob(combinedAudio, sampleRate);
+        } else {
+            blob = makeWavBlob(combinedAudio, sampleRate);
+        }
+
+        prepareDownload(blob, format);
+
+        setStatus(
+            "Success! Your AI voice is ready. Preview or download your audio.",
+            100
+        );
+
+    } catch (error) {
+        console.error("Text to Speech Error:", error);
+
+        const message = error?.message || "An unexpected error occurred.";
+
+        setStatus(`Error: ${message}`);
+
+        alert(
+            "Voice generation failed:\n\n" +
+            message +
+            "\n\nPlease check your internet connection and try again. You can also try WAV format."
+        );
+
+    } finally {
+        isGenerating = false;
+        generateBtn.disabled = false;
+        clearBtn.disabled = false;
+    }
+}
+
+generateBtn.addEventListener("click", generateSpeech);
+
+downloadBtn.addEventListener("click", () => {
+    if (!downloadUrl) return;
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = downloadName;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+});
+
+clearBtn.addEventListener("click", () => {
+    if (isGenerating) return;
+
+    textInput.value = "";
+    charCount.textContent = "0 / 5000";
+
+    releaseAudio();
+
+    progressBar.style.width = "0%";
+    setStatus("Ready. Enter your English text and click Generate AI Voice.");
+});
+
+window.addEventListener("beforeunload", () => {
+    if (audioUrl) URL.revokeObjectURL(audioUrl);
+    if (downloadUrl && downloadUrl !== audioUrl) {
+        URL.revokeObjectURL(downloadUrl);
+    }
+});
+</script>
+
+</body>
+</html>
