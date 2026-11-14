@@ -1,0 +1,1166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Invoice Generator Online - ToolSahayak</title>
+<meta name="description" content="Create professional GST invoices online for free with ToolSahayak. Add customer details, products, GST, discounts and download your invoice as PDF.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/invoice-generator.html">
+<link rel="icon" href="../assets/images/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Invoice Generator Online - ToolSahayak">
+<meta property="og:description" content="Create professional invoices online with GST calculation and PDF download.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/invoice-generator.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Invoice Generator Online - ToolSahayak">
+<meta name="twitter:description" content="Create professional GST invoices online for free.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free Invoice Generator",
+  "url": "https://toolsahayak.netlify.app/tools/invoice-generator.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "description": "Create professional invoices with GST calculation and PDF download."
+}
+</script>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fa;
+    color: #263445;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 18px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.header h1 {
+    font-size: 27px;
+    color: #173b70;
+}
+
+.header p {
+    color: #718096;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 11px 17px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: #174ea6;
+    color: white;
+}
+
+.secondary-btn {
+    background: #e8edf5;
+    color: #263445;
+}
+
+.danger-btn {
+    background: #fff0f0;
+    color: #c0392b;
+}
+
+button:hover {
+    opacity: .88;
+}
+
+.invoice-card {
+    background: white;
+    border: 1px solid #e3e8f0;
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: 0 3px 14px rgba(0,0,0,.04);
+}
+
+.section {
+    margin-bottom: 28px;
+}
+
+.section-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #173b70;
+    border-bottom: 1px solid #e6eaf0;
+    padding-bottom: 10px;
+    margin-bottom: 17px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #526174;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #d9e0ea;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #263445;
+    background: #fff;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #174ea6;
+    box-shadow: 0 0 0 2px rgba(23,78,166,.08);
+}
+
+textarea {
+    min-height: 75px;
+    resize: vertical;
+}
+
+.invoice-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid #174ea6;
+    margin-bottom: 25px;
+}
+
+.invoice-heading h2 {
+    font-size: 29px;
+    color: #174ea6;
+    letter-spacing: 1px;
+}
+
+.invoice-heading p {
+    color: #7b8795;
+    font-size: 13px;
+}
+
+.invoice-meta {
+    text-align: right;
+    font-size: 13px;
+    color: #526174;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+.items-table th {
+    background: #f0f4fa;
+    color: #34445b;
+    font-size: 12px;
+    text-align: left;
+    padding: 11px 8px;
+    border-bottom: 1px solid #dce3ed;
+}
+
+.items-table td {
+    padding: 8px 5px;
+    border-bottom: 1px solid #edf0f4;
+    vertical-align: middle;
+}
+
+.items-table input {
+    padding: 9px 7px;
+    min-width: 65px;
+    font-size: 13px;
+}
+
+.items-table .item-name {
+    min-width: 150px;
+}
+
+.items-table .amount-cell {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 8px;
+}
+
+.items-table button {
+    padding: 7px 10px;
+}
+
+.add-item {
+    margin-top: 13px;
+}
+
+.tax-settings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.summary-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.summary {
+    width: 100%;
+    max-width: 390px;
+    border: 1px solid #e3e8f0;
+    border-radius: 8px;
+    padding: 17px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.summary-row.total {
+    font-size: 19px;
+    font-weight: 700;
+    color: #174ea6;
+    border-bottom: none;
+    padding-top: 15px;
+}
+
+.summary-row.discount {
+    color: #18804a;
+}
+
+.amount-words {
+    margin-top: 15px;
+    padding: 12px;
+    background: #f4f7fb;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #526174;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.signature {
+    text-align: right;
+    padding-top: 30px;
+}
+
+.signature-line {
+    border-top: 1px solid #8793a3;
+    display: inline-block;
+    padding-top: 8px;
+    min-width: 190px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.note {
+    color: #7b8795;
+    font-size: 12px;
+    margin-top: 18px;
+    text-align: center;
+}
+
+.site-footer {
+    text-align: center;
+    color: #7b8795;
+    font-size: 13px;
+    padding: 25px 10px;
+}
+
+.site-footer a {
+    color: #174ea6;
+    text-decoration: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media(max-width:650px) {
+    .container {
+        margin: 18px auto;
+        padding: 0 10px;
+    }
+
+    .invoice-card {
+        padding: 17px 13px;
+    }
+
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .grid, .tax-settings, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .invoice-heading h2 {
+        font-size: 23px;
+    }
+
+    .toolbar {
+        width: 100%;
+    }
+
+    .toolbar button {
+        flex: 1;
+    }
+
+    .summary-area {
+        justify-content: stretch;
+    }
+
+    .summary {
+        max-width: none;
+    }
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body {
+        background: white;
+        color: #222;
+        font-size: 11px;
+    }
+
+    .container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header, .toolbar, .screen-only, .site-footer {
+        display: none !important;
+    }
+
+    .invoice-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .section {
+        margin-bottom: 17px;
+        break-inside: avoid;
+    }
+
+    .items-table {
+        min-width: 0;
+    }
+
+    .items-table th, .items-table td {
+        padding: 6px 4px;
+        font-size: 10px;
+    }
+
+    .items-table input {
+        border: none;
+        padding: 2px;
+        font-size: 10px;
+        color: #222;
+        background: transparent;
+    }
+
+    .items-table .remove-col, .items-table .add-col {
+        display: none !important;
+    }
+
+    input, select, textarea {
+        border: none;
+        padding: 2px 0;
+        box-shadow: none !important;
+        appearance: none;
+        color: #222;
+        background: transparent;
+        font-size: 11px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .summary {
+        border: 1px solid #ddd;
+    }
+
+    .invoice-heading {
+        border-bottom: 2px solid #174ea6;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>Invoice Generator</h1>
+            <p>Create a professional GST invoice and download it as PDF.</p>
+        </div>
+
+        <div class="toolbar">
+            <button class="secondary-btn" type="button" onclick="saveDraft()">Save Draft</button>
+            <button class="secondary-btn" type="button" onclick="loadDraft()">Load Draft</button>
+            <button class="primary-btn" type="button" onclick="downloadPDF()">Download PDF</button>
+            <button class="danger-btn" type="button" onclick="resetInvoice()">Reset</button>
+        </div>
+    </div>
+
+    <main class="invoice-card" id="invoice">
+
+        <div class="invoice-heading">
+            <div>
+                <h2>INVOICE</h2>
+                <p>Professional Tax Invoice</p>
+            </div>
+            <div class="invoice-meta">
+                <strong>Invoice No:</strong> <span id="headingInvoiceNo">INV-001</span><br>
+                <strong>Date:</strong> <span id="headingDate"></span>
+            </div>
+        </div>
+
+        <section class="section">
+            <h3 class="section-title">Invoice Details</h3>
+
+            <div class="grid">
+                <div class="field">
+                    <label for="invoiceNo">Invoice Number *</label>
+                    <input id="invoiceNo" type="text" value="INV-001" placeholder="INV-001">
+                </div>
+
+                <div class="field">
+                    <label for="invoiceDate">Invoice Date *</label>
+                    <input id="invoiceDate" type="date">
+                </div>
+
+                <div class="field">
+                    <label for="dueDate">Due Date</label>
+                    <input id="dueDate" type="date">
+                </div>
+
+                <div class="field">
+                    <label for="placeSupply">Place of Supply</label>
+                    <input id="placeSupply" type="text" placeholder="State name">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Seller Details</h3>
+
+            <div class="grid">
+                <div class="field">
+                    <label for="sellerName">Business / Seller Name *</label>
+                    <input id="sellerName" type="text" placeholder="Your business name">
+                </div>
+
+                <div class="field">
+                    <label for="sellerGST">GSTIN</label>
+                    <input id="sellerGST" type="text" maxlength="15" placeholder="15-digit GSTIN">
+                </div>
+
+                <div class="field full">
+                    <label for="sellerAddress">Business Address</label>
+                    <textarea id="sellerAddress" placeholder="Complete business address"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="sellerPhone">Phone Number</label>
+                    <input id="sellerPhone" type="tel" placeholder="Phone number">
+                </div>
+
+                <div class="field">
+                    <label for="sellerEmail">Email Address</label>
+                    <input id="sellerEmail" type="email" placeholder="Email address">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Bill To / Customer Details</h3>
+
+            <div class="grid">
+                <div class="field">
+                    <label for="customerName">Customer Name *</label>
+                    <input id="customerName" type="text" placeholder="Customer name">
+                </div>
+
+                <div class="field">
+                    <label for="customerGST">Customer GSTIN</label>
+                    <input id="customerGST" type="text" maxlength="15" placeholder="Customer GSTIN">
+                </div>
+
+                <div class="field full">
+                    <label for="customerAddress">Customer Address</label>
+                    <textarea id="customerAddress" placeholder="Customer billing address"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="customerPhone">Phone Number</label>
+                    <input id="customerPhone" type="tel" placeholder="Customer phone">
+                </div>
+
+                <div class="field">
+                    <label for="customerEmail">Email Address</label>
+                    <input id="customerEmail" type="email" placeholder="Customer email">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Invoice Items</h3>
+
+            <div class="table-wrap">
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th style="width:22%">Description</th>
+                            <th>HSN/SAC</th>
+                            <th>Qty</th>
+                            <th>Unit</th>
+                            <th>Rate (₹)</th>
+                            <th>Discount %</th>
+                            <th>GST %</th>
+                            <th>Amount (₹)</th>
+                            <th class="remove-col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody"></tbody>
+                </table>
+            </div>
+
+            <button class="secondary-btn add-item screen-only" type="button" onclick="addItem()">+ Add Item</button>
+
+            <div class="tax-settings screen-only">
+                <div class="field">
+                    <label for="taxType">GST Type</label>
+                    <select id="taxType">
+                        <option value="intra">Intra-State (CGST + SGST)</option>
+                        <option value="inter">Inter-State (IGST)</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="invoiceDiscount">Additional Invoice Discount (₹)</label>
+                    <input id="invoiceDiscount" type="number" min="0" step="0.01" value="0">
+                </div>
+
+                <div class="field">
+                    <label for="otherCharges">Other Charges (₹)</label>
+                    <input id="otherCharges" type="number" min="0" step="0.01" value="0">
+                </div>
+
+                <div class="field">
+                    <label for="roundOff">Round Off</label>
+                    <select id="roundOff">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="summary-area">
+                <div class="summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <strong id="subtotal">₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row discount">
+                        <span>Item Discount</span>
+                        <strong id="itemDiscount">- ₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Invoice Discount</span>
+                        <strong id="invoiceDiscountDisplay">- ₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Taxable Amount</span>
+                        <strong id="taxableAmount">₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row" id="cgstLine">
+                        <span>CGST</span>
+                        <strong id="cgstAmount">₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row" id="sgstLine">
+                        <span>SGST</span>
+                        <strong id="sgstAmount">₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row" id="igstLine" hidden>
+                        <span>IGST</span>
+                        <strong id="igstAmount">₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Other Charges</span>
+                        <strong id="otherChargesDisplay">₹0.00</strong>
+                    </div>
+
+                    <div class="summary-row total">
+                        <span>Grand Total</span>
+                        <strong id="grandTotal">₹0.00</strong>
+                    </div>
+
+                    <div class="amount-words">
+                        <strong>Amount in Words:</strong>
+                        <div id="amountWords">Zero Rupees Only</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Payment Details</h3>
+
+            <div class="grid">
+                <div class="field">
+                    <label for="paymentMode">Payment Mode</label>
+                    <select id="paymentMode">
+                        <option value="">Select payment mode</option>
+                        <option>Bank Transfer</option>
+                        <option>UPI</option>
+                        <option>Cash</option>
+                        <option>Cheque</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="bankName">Bank Name</label>
+                    <input id="bankName" type="text" placeholder="Bank name">
+                </div>
+
+                <div class="field">
+                    <label for="accountNo">Account Number</label>
+                    <input id="accountNo" type="text" placeholder="Account number">
+                </div>
+
+                <div class="field">
+                    <label for="ifsc">IFSC Code</label>
+                    <input id="ifsc" type="text" placeholder="IFSC code">
+                </div>
+
+                <div class="field full">
+                    <label for="upiId">UPI ID</label>
+                    <input id="upiId" type="text" placeholder="example@upi">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Additional Information</h3>
+
+            <div class="grid">
+                <div class="field full">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" placeholder="Additional notes for the customer"></textarea>
+                </div>
+
+                <div class="field full">
+                    <label for="terms">Terms & Conditions</label>
+                    <textarea id="terms" placeholder="Payment terms and conditions"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="authorizedName">Authorized Person</label>
+                    <input id="authorizedName" type="text" placeholder="Name">
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-grid">
+            <div>
+                <strong>Thank you for your business!</strong>
+                <p class="note" style="text-align:left">This is a computer-generated invoice.</p>
+            </div>
+
+            <div class="signature">
+                <div class="signature-line">
+                    Authorized Signatory
+                </div>
+                <div id="signatoryDisplay" style="font-size:12px;margin-top:5px"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="toolbar" style="justify-content:center;margin-top:20px">
+        <button class="primary-btn" type="button" onclick="downloadPDF()">Download PDF / Print</button>
+        <button class="secondary-btn" type="button" onclick="saveDraft()">Save Draft</button>
+    </div>
+
+    <div class="site-footer">
+        <a href="../index.html">Home</a> |
+        <a href="../about.html">About Us</a> |
+        <a href="../contact.html">Contact Us</a> |
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <p style="margin-top:8px">© <span id="year"></span> ToolSahayak. All Rights Reserved.</p>
+    </div>
+
+</div>
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+
+const money = value => "₹" + (Number(value) || 0).toLocaleString("en-IN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+});
+
+function numberValue(value) {
+    const n = Number(value);
+    return Number.isFinite(n) && n > 0 ? n : 0;
+}
+
+function addItem(data = {}) {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td><input class="item-name" type="text" placeholder="Item description"></td>
+        <td><input type="text" class="hsn" placeholder="HSN"></td>
+        <td><input type="number" class="qty" min="0" step="any" value="1"></td>
+        <td><input type="text" class="unit" value="Nos"></td>
+        <td><input type="number" class="rate" min="0" step="any" value="0"></td>
+        <td><input type="number" class="discount" min="0" max="100" step="any" value="0"></td>
+        <td><input type="number" class="gst" min="0" max="100" step="any" value="18"></td>
+        <td class="amount-cell">₹0.00</td>
+        <td class="remove-col"><button class="danger-btn" type="button">×</button></td>
+    `;
+
+    const fields = row.querySelectorAll("input");
+
+    if (data.values) {
+        fields.forEach((field, index) => {
+            field.value = data.values[index] ?? field.value;
+        });
+    }
+
+    row.querySelector(".remove-col button").addEventListener("click", () => {
+        row.remove();
+        calculate();
+    });
+
+    row.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", calculate);
+    });
+
+    $("itemsBody").appendChild(row);
+    calculate();
+}
+
+function getItems() {
+    return [...$("itemsBody").querySelectorAll("tr")].map(row => {
+        const get = selector => row.querySelector(selector).value;
+
+        const qty = numberValue(get(".qty"));
+        const rate = numberValue(get(".rate"));
+        const discount = Math.min(100, numberValue(get(".discount")));
+        const gst = Math.min(100, numberValue(get(".gst")));
+
+        const gross = qty * rate;
+        const discountAmount = gross * discount / 100;
+        const taxable = gross - discountAmount;
+        const tax = taxable * gst / 100;
+
+        return {
+            row,
+            description: get(".item-name"),
+            hsn: get(".hsn"),
+            qty,
+            unit: get(".unit"),
+            rate,
+            discount,
+            gst,
+            gross,
+            discountAmount,
+            taxable,
+            tax,
+            total: taxable + tax
+        };
+    });
+}
+
+function numberToWords(amount) {
+    const ones = [
+        "", "One", "Two", "Three", "Four", "Five", "Six",
+        "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
+        "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+        "Seventeen", "Eighteen", "Nineteen"
+    ];
+
+    const tens = [
+        "", "", "Twenty", "Thirty", "Forty", "Fifty",
+        "Sixty", "Seventy", "Eighty", "Ninety"
+    ];
+
+    function belowThousand(n) {
+        let result = "";
+
+        if (n >= 100) {
+            result += ones[Math.floor(n / 100)] + " Hundred ";
+            n %= 100;
+        }
+
+        if (n >= 20) {
+            result += tens[Math.floor(n / 10)] + " ";
+            n %= 10;
+        }
+
+        if (n > 0) result += ones[n] + " ";
+
+        return result.trim();
+    }
+
+    function convert(n) {
+        if (n === 0) return "Zero";
+
+        const parts = [
+            [10000000, "Crore"],
+            [100000, "Lakh"],
+            [1000, "Thousand"],
+            [1, ""]
+        ];
+
+        let result = "";
+
+        for (const [value, label] of parts) {
+            if (n >= value) {
+                const chunk = Math.floor(n / value);
+                result += belowThousand(chunk) + " " + label + " ";
+                n %= value;
+            }
+        }
+
+        return result.trim();
+    }
+
+    const safeAmount = Math.max(0, Number(amount) || 0);
+    const rupees = Math.floor(safeAmount);
+    const paise = Math.round((safeAmount - rupees) * 100);
+
+    let result = convert(rupees) + " Rupees";
+
+    if (paise > 0) {
+        result += " and " + convert(paise) + " Paise";
+    }
+
+    return result + " Only";
+}
+
+function calculate() {
+    const items = getItems();
+
+    let subtotal = 0;
+    let itemDiscount = 0;
+    let taxableBeforeInvoiceDiscount = 0;
+    let taxBeforeInvoiceDiscount = 0;
+
+    items.forEach(item => {
+        subtotal += item.gross;
+        itemDiscount += item.discountAmount;
+        taxableBeforeInvoiceDiscount += item.taxable;
+        taxBeforeInvoiceDiscount += item.tax;
+
+        item.row.querySelector(".amount-cell").textContent = money(item.total);
+    });
+
+    const invoiceDiscount = Math.min(
+        taxableBeforeInvoiceDiscount,
+        numberValue($("invoiceDiscount").value)
+    );
+
+    const factor = taxableBeforeInvoiceDiscount > 0
+        ? (taxableBeforeInvoiceDiscount - invoiceDiscount) / taxableBeforeInvoiceDiscount
+        : 0;
+
+    const taxable = taxableBeforeInvoiceDiscount - invoiceDiscount;
+    const tax = taxBeforeInvoiceDiscount * factor;
+
+    const inter = $("taxType").value === "inter";
+    const cgst = inter ? 0 : tax / 2;
+    const sgst = inter ? 0 : tax / 2;
+    const igst = inter ? tax : 0;
+
+    const otherCharges = numberValue($("otherCharges").value);
+    let total = taxable + tax + otherCharges;
+
+    if ($("roundOff").value === "yes") {
+        total = Math.round(total);
+    }
+
+    $("subtotal").textContent = money(subtotal);
+    $("itemDiscount").textContent = "- " + money(itemDiscount);
+    $("invoiceDiscountDisplay").textContent = "- " + money(invoiceDiscount);
+    $("taxableAmount").textContent = money(taxable);
+    $("cgstAmount").textContent = money(cgst);
+    $("sgstAmount").textContent = money(sgst);
+    $("igstAmount").textContent = money(igst);
+    $("otherChargesDisplay").textContent = money(otherCharges);
+    $("grandTotal").textContent = money(total);
+    $("amountWords").textContent = numberToWords(total);
+
+    $("cgstLine").hidden = inter;
+    $("sgstLine").hidden = inter;
+    $("igstLine").hidden = !inter;
+
+    $("headingInvoiceNo").textContent = $("invoiceNo").value || "—";
+    $("headingDate").textContent = $("invoiceDate").value || "—";
+    $("signatoryDisplay").textContent = $("authorizedName").value;
+
+    return total;
+}
+
+function validateBeforePrint() {
+    calculate();
+
+    if (!$("invoiceNo").value.trim()) {
+        alert("Please enter Invoice Number.");
+        $("invoiceNo").focus();
+        return false;
+    }
+
+    if (!$("invoiceDate").value) {
+        alert("Please select Invoice Date.");
+        $("invoiceDate").focus();
+        return false;
+    }
+
+    if (!$("sellerName").value.trim()) {
+        alert("Please enter Seller Name.");
+        $("sellerName").focus();
+        return false;
+    }
+
+    if (!$("customerName").value.trim()) {
+        alert("Please enter Customer Name.");
+        $("customerName").focus();
+        return false;
+    }
+
+    if (getItems().length === 0) {
+        alert("Please add at least one invoice item.");
+        return false;
+    }
+
+    if ($("dueDate").value && $("dueDate").value < $("invoiceDate").value) {
+        alert("Due Date cannot be earlier than Invoice Date.");
+        $("dueDate").focus();
+        return false;
+    }
+
+    const gstFields = [$("sellerGST"), $("customerGST")];
+
+    for (const field of gstFields) {
+        const value = field.value.trim();
+
+        if (value && !/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/i.test(value)) {
+            alert("Please enter a valid 15-character GSTIN format.");
+            field.focus();
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function downloadPDF() {
+    if (!validateBeforePrint()) return;
+    window.print();
+}
+
+function getDraftData() {
+    const fields = [
+        "invoiceNo", "invoiceDate", "dueDate", "placeSupply",
+        "sellerName", "sellerGST", "sellerAddress", "sellerPhone",
+        "sellerEmail", "customerName", "customerGST",
+        "customerAddress", "customerPhone", "customerEmail",
+        "taxType", "invoiceDiscount", "otherCharges", "roundOff",
+        "paymentMode", "bankName", "accountNo", "ifsc", "upiId",
+        "notes", "terms", "authorizedName"
+    ];
+
+    const values = {};
+
+    fields.forEach(id => values[id] = $(id).value);
+
+    values.items = [...$("itemsBody").querySelectorAll("tr")].map(row =>
+        [...row.querySelectorAll("input")].map(input => input.value)
+    );
+
+    return values;
+}
+
+function saveDraft() {
+    try {
+        localStorage.setItem("toolsahayak_invoice_draft", JSON.stringify(getDraftData()));
+        alert("Invoice draft saved successfully in this browser.");
+    } catch (error) {
+        alert("Unable to save draft. Browser storage may be full or unavailable.");
+    }
+}
+
+function loadDraft() {
+    try {
+        const saved = localStorage.getItem("toolsahayak_invoice_draft");
+
+        if (!saved) {
+            alert("No saved invoice draft found.");
+            return;
+        }
+
+        const data = JSON.parse(saved);
+
+        Object.keys(data).forEach(id => {
+            if (id !== "items" && $(id)) {
+                $(id).value = data[id] ?? "";
+            }
+        });
+
+        $("itemsBody").innerHTML = "";
+
+        if (Array.isArray(data.items) && data.items.length) {
+            data.items.forEach(values => addItem({ values }));
+        } else {
+            addItem();
+        }
+
+        calculate();
+        alert("Invoice draft loaded successfully.");
+    } catch (error) {
+        alert("Unable to load the saved draft.");
+    }
+}
+
+function resetInvoice() {
+    if (!confirm("Are you sure you want to reset the invoice?")) return;
+
+    const fields = [
+        "invoiceNo", "invoiceDate", "dueDate", "placeSupply",
+        "sellerName", "sellerGST", "sellerAddress", "sellerPhone",
+        "sellerEmail", "customerName", "customerGST",
+        "customerAddress", "customerPhone", "customerEmail",
+        "paymentMode", "bankName", "accountNo", "ifsc", "upiId",
+        "notes", "terms", "authorizedName"
+    ];
+
+    fields.forEach(id => $(id).value = "");
+
+    $("invoiceNo").value = "INV-001";
+    $("taxType").value = "intra";
+    $("invoiceDiscount").value = "0";
+    $("otherCharges").value = "0";
+    $("roundOff").value = "yes";
+
+    $("itemsBody").innerHTML = "";
+    addItem();
+    setTodayDate();
+    calculate();
+}
+
+function setTodayDate() {
+    const today = new Date();
+    const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+        .toISOString().split("T")[0];
+
+    $("invoiceDate").value = localDate;
+}
+
+document.querySelectorAll("#invoice input, #invoice select, #invoice textarea")
+    .forEach(field => {
+        field.addEventListener("input", calculate);
+        field.addEventListener("change", calculate);
+    });
+
+$("taxType").addEventListener("change", calculate);
+
+$("year").textContent = new Date().getFullYear();
+
+setTodayDate();
+addItem();
+calculate();
+</script>
+
+</body>
+</html>
