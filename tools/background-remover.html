@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free AI Background Remover Online - ToolSahayak</title>
+<meta name="description" content="Remove image backgrounds online for free using our AI Background Remover. Upload JPG, PNG or WebP images, preview transparent backgrounds and download PNG images.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
+
+<link rel="canonical" href="https://toolsahayak.netlify.app/tools/background-remover.html">
+<link rel="icon" href="../assets/images/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free AI Background Remover - ToolSahayak">
+<meta property="og:description" content="Remove image backgrounds online and download transparent PNG images for free.">
+<meta property="og:url" content="https://toolsahayak.netlify.app/tools/background-remover.html">
+<meta property="og:site_name" content="ToolSahayak">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free AI Background Remover - ToolSahayak">
+<meta name="twitter:description" content="Remove image backgrounds online and download transparent PNG images.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Background Remover",
+  "url": "https://toolsahayak.netlify.app/tools/background-remover.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "description": "Free online AI image background remover with transparent PNG download."
+}
+</script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #263445;
+    line-height: 1.6;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #e5eaf1;
+    padding: 16px 20px;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    color: #174ea6;
+    font-size: 21px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nav a:last-child {
+    color: #526174;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1050px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.hero h1 {
+    color: #173b70;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.hero p {
+    color: #718096;
+    font-size: 15px;
+}
+
+.tool-card {
+    background: white;
+    border: 1px solid #e3e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.035);
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 230px;
+    padding: 30px 20px;
+    border: 2px dashed #b7c8df;
+    border-radius: 12px;
+    background: #f8faff;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+    border: 2px dashed #174ea6;
+    background: #eef4ff;
+}
+
+.upload-icon {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.upload-area .upload-btn {
+    display: inline-block;
+    background: #174ea6;
+    color: #ffffff;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+.upload-area h2 {
+    color: #173b70;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.upload-area p {
+    width: 100%;
+    color: #718096;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.upload-btn {
+    display: inline-block;
+    background: #174ea6;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#message {
+    display: none;
+    margin-top: 15px;
+    padding: 11px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+#message.info {
+    display: block;
+    background: #edf4ff;
+    color: #174ea6;
+}
+
+#message.error {
+    display: block;
+    background: #fff0f0;
+    color: #c0392b;
+}
+
+#message.success {
+    display: block;
+    background: #edf9f1;
+    color: #18804a;
+}
+
+.progress-area {
+    display: none;
+    margin-top: 18px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 7px;
+    color: #526174;
+}
+
+.progress-track {
+    height: 9px;
+    border-radius: 20px;
+    background: #e7edf5;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #174ea6;
+    transition: width .2s;
+}
+
+.workspace {
+    display: none;
+    margin-top: 25px;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.preview-box {
+    border: 1px solid #e3e8f0;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.preview-title {
+    padding: 11px 14px;
+    background: #f3f6fa;
+    font-weight: 700;
+    font-size: 14px;
+    color: #34445b;
+    border-bottom: 1px solid #e3e8f0;
+}
+
+.image-area {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background-color: #fff;
+    background-image:
+        linear-gradient(45deg, #e7eaf0 25%, transparent 25%),
+        linear-gradient(-45deg, #e7eaf0 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e7eaf0 75%),
+        linear-gradient(-45deg, transparent 75%, #e7eaf0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+}
+
+.image-area img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.result-image {
+    background-color: transparent;
+}
+
+.controls {
+    display: none;
+    margin-top: 23px;
+    padding: 18px;
+    border: 1px solid #e3e8f0;
+    border-radius: 9px;
+    background: #fbfcfe;
+}
+
+.controls h3 {
+    color: #173b70;
+    font-size: 16px;
+    margin-bottom: 13px;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.control-row label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.control-row select {
+    padding: 9px;
+    border: 1px solid #d9e0ea;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+#customColor {
+    width: 43px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    opacity: .88;
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.primary-btn {
+    background: #174ea6;
+    color: white;
+}
+
+.secondary-btn {
+    background: #e9eef6;
+    color: #34445b;
+}
+
+.success-btn {
+    background: #16834b;
+    color: white;
+}
+
+.section {
+    margin-top: 30px;
+    background: white;
+    border: 1px solid #e5eaf1;
+    border-radius: 10px;
+    padding: 23px;
+}
+
+.section h2 {
+    color: #173b70;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.section p {
+    color: #657386;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.section ul {
+    padding-left: 21px;
+    color: #657386;
+    font-size: 14px;
+}
+
+.section li {
+    margin: 6px 0;
+}
+
+footer {
+    text-align: center;
+    color: #7b8795;
+    padding: 25px 15px;
+    font-size: 13px;
+}
+
+footer a {
+    color: #174ea6;
+    text-decoration: none;
+}
+
+@media(max-width:650px) {
+    .container {
+        margin: 23px auto;
+        padding: 0 12px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .tool-card {
+        padding: 15px;
+    }
+
+    .preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-area {
+        height: 260px;
+    }
+
+    .action-buttons button {
+        flex: 1;
+    }
+
+    .section {
+        padding: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="nav">
+        <a href="../index.html" class="logo">ToolSahayak</a>
+        <a href="../index.html">← Back to Home</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <h1>AI Image Background Remover</h1>
+        <p>Remove image backgrounds automatically and download transparent PNG images for free.</p>
+    </section>
+
+    <section class="tool-card">
+
+        <label class="upload-area" id="dropArea" for="imageInput">
+            <div class="upload-icon">🖼️</div>
+            <h2>Upload Your Image</h2>
+            <p>Drag and drop your image here or browse from your device</p>
+            <span class="upload-btn">Choose Image</span>
+            <p style="margin-top:12px">Supported: JPG, JPEG, PNG, WebP | Maximum 10 MB</p>
+        </label>
+
+        <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp">
+
+        <div id="message"></div>
+
+        <div class="progress-area" id="progressArea">
+            <div class="progress-text">
+                <span id="progressLabel">Preparing image...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="workspace" id="workspace">
+
+            <div class="preview-grid">
+
+                <div class="preview-box">
+                    <div class="preview-title">Original Image</div>
+                    <div class="image-area">
+                        <img id="originalPreview" alt="Original uploaded image">
+                    </div>
+                </div>
+
+                <div class="preview-box">
+                    <div class="preview-title">Background Removed</div>
+                    <div class="image-area result-image" id="resultArea">
+                        <img id="resultPreview" alt="Background removed image">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="controls" id="controls">
+                <h3>Background Settings</h3>
+
+                <div class="control-row">
+                    <label for="backgroundMode">Background:</label>
+
+                    <select id="backgroundMode">
+                        <option value="transparent">Transparent</option>
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="custom">Custom Colour</option>
+                    </select>
+
+                    <input type="color" id="customColor" value="#ffffff" title="Choose background colour">
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="success-btn" id="downloadBtn" disabled>Download PNG</button>
+                <button class="secondary-btn" id="replaceBtn">Replace Image</button>
+                <button class="secondary-btn" id="resetBtn">Reset</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+        <h2>How to Remove Image Background?</h2>
+        <ul>
+            <li>Upload a JPG, PNG or WebP image.</li>
+            <li>Wait while AI automatically detects and removes the background.</li>
+            <li>Preview the original and edited image.</li>
+            <li>Choose transparent, white, black or a custom background colour.</li>
+            <li>Click Download PNG to save your image.</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Features of AI Background Remover</h2>
+        <ul>
+            <li>Automatic AI-powered background removal.</li>
+            <li>Transparent PNG image download.</li>
+            <li>Custom background colour options.</li>
+            <li>Original and edited image comparison.</li>
+            <li>Simple and mobile-friendly interface.</li>
+            <li>No account or registration required.</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Frequently Asked Questions</h2>
+
+        <p><strong>1. Is this background remover free?</strong><br>
+        Yes. You can use this tool without creating an account.</p>
+
+        <p><strong>2. Which image formats are supported?</strong><br>
+        JPG, JPEG, PNG and WebP images are supported.</p>
+
+        <p><strong>3. Can I download an image with a transparent background?</strong><br>
+        Yes. Select Transparent and download the image in PNG format.</p>
+
+        <p><strong>4. Does the tool work on mobile?</strong><br>
+        Yes. The interface supports mobile, tablet and desktop screens.</p>
+
+        <p><strong>5. Does background removal require internet?</strong><br>
+        Yes. The AI engine and its model files are loaded from a content delivery network.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>
+        <a href="../index.html">Home</a> |
+        <a href="../about.html">About Us</a> |
+        <a href="../contact.html">Contact Us</a> |
+        <a href="../privacy-policy.html">Privacy Policy</a> |
+        <a href="../disclaimer.html">Disclaimer</a>
+    </p>
+    <p style="margin-top:8px">© <span id="year"></span> ToolSahayak. All Rights Reserved.</p>
+</footer>
+
+<script type="module">
+const $ = id => document.getElementById(id);
+
+let originalFile = null;
+let originalURL = null;
+let resultBlob = null;
+let resultURL = null;
+let originalImage = null;
+let removeBackgroundFunction = null;
+let processing = false;
+
+const MAX_SIZE = 10 * 1024 * 1024;
+
+function showMessage(message, type = "info") {
+    $("message").textContent = message;
+    $("message").className = type;
+}
+
+function clearMessage() {
+    $("message").textContent = "";
+    $("message").className = "";
+}
+
+function setProgress(percent, label) {
+    $("progressArea").style.display = "block";
+    $("progressBar").style.width = percent + "%";
+    $("progressPercent").textContent = percent + "%";
+    $("progressLabel").textContent = label;
+}
+
+function hideProgress() {
+    $("progressArea").style.display = "none";
+}
+
+function releaseURL(url) {
+    if (url) URL.revokeObjectURL(url);
+}
+
+function clearResult() {
+    releaseURL(resultURL);
+    resultURL = null;
+    resultBlob = null;
+    originalImage = null;
+    $("resultPreview").removeAttribute("src");
+    $("downloadBtn").disabled = true;
+    $("controls").style.display = "none";
+}
+
+function clearWorkspace() {
+    releaseURL(originalURL);
+    originalURL = null;
+    originalFile = null;
+    clearResult();
+
+    $("originalPreview").removeAttribute("src");
+    $("workspace").style.display = "none";
+    $("imageInput").value = "";
+    hideProgress();
+    clearMessage();
+}
+
+async function loadAI() {
+    if (removeBackgroundFunction) return removeBackgroundFunction;
+
+    showMessage("Loading AI background removal engine. First load may take some time...", "info");
+
+    const module = await import(
+        "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm"
+    );
+
+    removeBackgroundFunction = module.removeBackground;
+
+    return removeBackgroundFunction;
+}
+
+async function processImage(file) {
+    if (processing) return;
+
+    if (!file || !["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+        showMessage("Please upload a valid JPG, PNG or WebP image.", "error");
+        return;
+    }
+
+    if (file.size > MAX_SIZE) {
+        showMessage("Image size must be 10 MB or less.", "error");
+        return;
+    }
+
+    if (!file.size) {
+        showMessage("The selected image is empty.", "error");
+        return;
+    }
+
+    processing = true;
+    $("downloadBtn").disabled = true;
+    $("workspace").style.display = "block";
+    $("controls").style.display = "none";
+
+    clearResult();
+    releaseURL(originalURL);
+
+    originalFile = file;
+    originalURL = URL.createObjectURL(file);
+
+    $("originalPreview").src = originalURL;
+    $("imageInput").value = "";
+
+    showMessage("Your image is being processed. Please wait...", "info");
+    setProgress(0, "Loading AI engine...");
+
+    try {
+        const removeBackground = await loadAI();
+
+        setProgress(5, "Preparing image...");
+
+        const blob = await removeBackground(file, {
+            progress: (key, current, total) => {
+                if (total > 0) {
+                    const percent = Math.min(
+                        95,
+                        Math.max(5, Math.round((current / total) * 90))
+                    );
+
+                    setProgress(percent, "Removing background...");
+                }
+            }
+        });
+
+        if (!(blob instanceof Blob) || blob.size === 0) {
+            throw new Error("The AI engine returned an empty image.");
+        }
+
+        resultBlob = blob;
+        resultURL = URL.createObjectURL(blob);
+
+        $("resultPreview").src = resultURL;
+        $("controls").style.display = "block";
+        $("downloadBtn").disabled = false;
+
+        setProgress(100, "Background removed successfully!");
+
+        showMessage(
+            "Background removed successfully! Choose a background style and download your image.",
+            "success"
+        );
+
+    } catch (error) {
+        console.error("Background removal error:", error);
+
+        clearResult();
+        hideProgress();
+
+        showMessage(
+            "Background removal failed. Please check your internet connection and try again. If the issue continues, try another image.",
+            "error"
+        );
+
+    } finally {
+        processing = false;
+    }
+}
+
+function renderDownload() {
+    return new Promise((resolve, reject) => {
+        if (!resultBlob) {
+            reject(new Error("No processed image available."));
+            return;
+        }
+
+        const image = new Image();
+
+        image.onload = () => {
+            try {
+                const canvas = document.createElement("canvas");
+                canvas.width = image.naturalWidth;
+                canvas.height = image.naturalHeight;
+
+                const ctx = canvas.getContext("2d");
+
+                const mode = $("backgroundMode").value;
+
+                if (mode === "white") {
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                } else if (mode === "black") {
+                    ctx.fillStyle = "#000000";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                } else if (mode === "custom") {
+                    ctx.fillStyle = $("customColor").value;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+
+                ctx.drawImage(image, 0, 0);
+
+                canvas.toBlob(blob => {
+                    if (blob) resolve(blob);
+                    else reject(new Error("Unable to create PNG image."));
+                }, "image/png");
+
+            } catch (error) {
+                reject(error);
+            }
+        };
+
+        image.onerror = () => reject(new Error("Unable to read processed image."));
+        image.src = resultURL;
+    });
+}
+
+async function downloadImage() {
+    if (!resultBlob) return;
+
+    const button = $("downloadBtn");
+    button.disabled = true;
+    button.textContent = "Preparing...";
+
+    try {
+        const blob = await renderDownload();
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "toolsahayak-background-removed.png";
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+        showMessage("Your PNG image has been downloaded.", "success");
+
+    } catch (error) {
+        console.error(error);
+        showMessage("Unable to download image. Please try again.", "error");
+
+    } finally {
+        button.disabled = false;
+        button.textContent = "Download PNG";
+    }
+}
+
+$("imageInput").addEventListener("change", event => {
+    const file = event.target.files[0];
+    if (file) processImage(file);
+});
+
+$("dropArea").addEventListener("dragover", event => {
+    event.preventDefault();
+    $("dropArea").classList.add("dragover");
+});
+
+$("dropArea").addEventListener("dragleave", () => {
+    $("dropArea").classList.remove("dragover");
+});
+
+$("dropArea").addEventListener("drop", event => {
+    event.preventDefault();
+    $("dropArea").classList.remove("dragover");
+
+    const file = event.dataTransfer.files[0];
+    if (file) processImage(file);
+});
+
+$("downloadBtn").addEventListener("click", downloadImage);
+
+$("replaceBtn").addEventListener("click", () => {
+    if (processing) return;
+    $("imageInput").click();
+});
+
+$("resetBtn").addEventListener("click", () => {
+    if (processing) return;
+    clearWorkspace();
+});
+
+$("backgroundMode").addEventListener("change", () => {
+    const mode = $("backgroundMode").value;
+    $("customColor").style.display = mode === "custom" ? "inline-block" : "none";
+
+    const area = $("resultArea");
+
+    if (mode === "transparent") {
+        area.style.backgroundColor = "transparent";
+    } else if (mode === "white") {
+        area.style.backgroundColor = "#ffffff";
+    } else if (mode === "black") {
+        area.style.backgroundColor = "#000000";
+    } else {
+        area.style.backgroundColor = $("customColor").value;
+    }
+});
+
+$("customColor").addEventListener("input", () => {
+    if ($("backgroundMode").value === "custom") {
+        $("resultArea").style.backgroundColor = $("customColor").value;
+    }
+});
+
+$("customColor").style.display = "none";
+$("year").textContent = new Date().getFullYear();
+
+window.addEventListener("beforeunload", () => {
+    releaseURL(originalURL);
+    releaseURL(resultURL);
+});
+</script>
+
+</body>
+</html>
