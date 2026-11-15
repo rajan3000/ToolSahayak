@@ -1,10 +1,10 @@
-# ToolSahayak – Free Online Tools Platform
+# Toolaxa – Free Online Tools Platform
 
-ToolSahayak is a free online tools platform designed to provide useful calculators, image utilities, educational tools and business utilities in one place.
+Toolaxa is a free online tools platform designed to provide useful calculators, image utilities, educational tools and business utilities in one place.
 
 Our goal is to make everyday online tasks simple, fast and accessible for users in India and around the world.
 
-**Live Website:** https://toolsahayak.netlify.app/
+**Live Website:** https://toolaxa.com/
 
 ---
 
@@ -59,7 +59,7 @@ Our goal is to make everyday online tasks simple, fast and accessible for users 
 ## Project Structure
 
 ```text
-ToolSahayak/
+Toolaxa/
 │
 ├── index.html
 ├── about.html
@@ -116,9 +116,9 @@ The website includes the following SEO elements:
 - Robots.txt
 - Structured heading hierarchy
 
-**Sitemap:** https://toolsahayak.netlify.app/sitemap.xml
+**Sitemap:** https://toolaxa.com/sitemap.xml
 
-**Robots:** https://toolsahayak.netlify.app/robots.txt
+**Robots:** https://toolaxa.com/robots.txt
 
 ---
 
@@ -126,11 +126,11 @@ The website includes the following SEO elements:
 
 The website is hosted on Netlify.
 
-**Live URL:** https://toolsahayak.netlify.app/
+**Live URL:** https://toolaxa.com/
 
 To publish website updates:
 
-1. Open the ToolSahayak project.
+1. Open the Toolaxa project.
 2. Save the updated files.
 3. Deploy the project to Netlify.
 4. Open the live website.
@@ -148,7 +148,7 @@ For feedback, questions or technical support:
 
 ## Project Information
 
-**Project Name:** ToolSahayak
+**Project Name:** Toolaxa
 
 **Category:** Free Online Tools Platform
 
@@ -162,8 +162,8 @@ For feedback, questions or technical support:
 
 ## Disclaimer
 
-ToolSahayak provides online utilities for general informational and practical use. Calculator results are estimates and should be independently verified where accuracy is important.
+Toolaxa provides online utilities for general informational and practical use. Calculator results are estimates and should be independently verified where accuracy is important.
 
 ---
 
-© 2026 ToolSahayak. All Rights Reserved.
+© 2026 Toolaxa. All Rights Reserved.
