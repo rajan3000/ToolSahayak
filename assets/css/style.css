@@ -463,3 +463,24 @@ a {
     }
 
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logo-image {
+    width: 225px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.footer-brand-logo{
+    display: block;
+    background: white;
+    width: 255px;
+    height: 60px;
+    border-radius: 10px;
+}
