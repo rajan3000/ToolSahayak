@@ -2,491 +2,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Image to Text - Hindi & English OCR Online | Toolaxa</title>
-<meta name="description" content="Extract Hindi and English text from images using Toolaxa free OCR tool. Take photos directly, upload multiple images, copy text and download TXT files.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://toolaxa.com/tools/image-to-text.html">
-<link rel="icon" href="../assets/images/favicon.png">
-<meta name="theme-color" content="#e5322d">
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-05KPNRM3X5');
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #252525;
-    line-height: 1.6;
-}
-
-header {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 15px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    text-decoration: none;
-    font-size: 27px;
-    font-weight: 800;
-    color: #e5322d;
-}
-
-.logo span {
-    color: #333;
-}
-
-.back-link {
-    color: #444;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.container {
-    max-width: 1050px;
-    margin: 35px auto;
-    padding: 0 18px;
-}
-
-.page-heading {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.page-heading h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
-.page-heading p {
-    color: #666;
-    font-size: 15px;
-}
-
-.language-tag {
-    display: inline-block;
-    margin-top: 12px;
-    background: #fff0ef;
-    color: #d52c27;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.main-card {
-    background: #fff;
-    border: 1px solid #e8e8e8;
-    border-radius: 14px;
-    padding: 25px;
-    box-shadow: 0 3px 15px rgba(0,0,0,.04);
-}
-
-.upload-area {
-    border: 2px dashed #d9d9d9;
-    border-radius: 12px;
-    padding: 35px 15px;
-    text-align: center;
-    background: #fffafa;
-    transition: .2s;
-}
-
-.upload-area.dragover {
-    border-color: #e5322d;
-    background: #fff0ef;
-}
-
-.upload-icon {
-    font-size: 45px;
-    margin-bottom: 8px;
-}
-
-.upload-area h2 {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.upload-area p {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 17px;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.btn {
-    border: none;
-    padding: 11px 17px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    transition: .2s;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-primary {
-    background: #e5322d;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background: #c92722;
-}
-
-.btn-secondary {
-    background: #f0f0f0;
-    color: #333;
-}
-
-.btn-secondary:hover {
-    background: #e3e3e3;
-}
-
-.btn-success {
-    background: #16834a;
-    color: #fff;
-}
-
-.btn-success:hover {
-    background: #106b3b;
-}
-
-.btn:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-}
-
-.upload-actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.small-note {
-    margin-top: 12px;
-    font-size: 12px;
-    color: #888;
-}
-
-.toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 22px 0;
-}
-
-.toolbar .btn {
-    flex: 1;
-    min-width: 140px;
-}
-
-.status {
-    display: none;
-    background: #fff7e6;
-    color: #805600;
-    padding: 12px 14px;
-    border-radius: 8px;
-    margin: 15px 0;
-    font-size: 14px;
-    overflow-wrap: anywhere;
-}
-
-.status.error {
-    background: #fff0ef;
-    color: #b42318;
-}
-
-.status.success {
-    background: #eaf8ef;
-    color: #176b39;
-}
-
-.progress-wrap {
-    display: none;
-    margin: 18px 0;
-}
-
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 13px;
-    margin-bottom: 7px;
-    color: #555;
-}
-
-.progress-track {
-    width: 100%;
-    height: 9px;
-    background: #eee;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background: #e5322d;
-    transition: width .2s;
-}
-
-.section-title {
-    font-size: 19px;
-    margin: 25px 0 13px;
-}
-
-.image-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 15px;
-}
-
-.image-card {
-    border: 1px solid #e5e5e5;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-    min-width: 0;
-}
-
-.preview {
-    height: 155px;
-    background: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.image-details {
-    padding: 12px;
-}
-
-.image-name {
-    font-size: 13px;
-    font-weight: bold;
-    overflow-wrap: anywhere;
-    margin-bottom: 5px;
-}
-
-.image-status {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 9px;
-}
-
-.image-card .btn {
-    padding: 7px 10px;
-    font-size: 12px;
-}
-
-.result-card {
-    margin-top: 20px;
-    border: 1px solid #e4e4e4;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.result-header {
-    padding: 12px 15px;
-    background: #fafafa;
-    border-bottom: 1px solid #e5e5e5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.result-header strong {
-    font-size: 14px;
-    overflow-wrap: anywhere;
-}
-
-.result-meta {
-    font-size: 12px;
-    color: #777;
-}
-
-.result-content {
-    padding: 15px;
-}
-
-.result-content textarea {
-    width: 100%;
-    min-height: 180px;
-    resize: vertical;
-    padding: 13px;
-    border: 1px solid #ddd;
-    border-radius: 7px;
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    outline: none;
-}
-
-.result-content textarea:focus {
-    border-color: #e5322d;
-}
-
-.result-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-.result-actions .btn {
-    padding: 8px 13px;
-    font-size: 12px;
-}
-
-.alternative-results {
-    margin-top: 15px;
-    border-top: 1px solid #eee;
-    padding-top: 12px;
-}
-
-.alternative-results summary {
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: bold;
-    color: #444;
-}
-
-.alternative-item {
-    background: #fafafa;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 12px;
-    margin-top: 10px;
-}
-
-.alternative-item p {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 7px;
-}
-
-.alternative-item pre {
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.7;
-    max-height: 250px;
-    overflow: auto;
-}
-
-.alternative-item button {
-    margin-top: 9px;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 25px;
-    color: #888;
-    background: #fafafa;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.info-section {
-    background: #fff;
-    padding: 22px;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    margin-top: 22px;
-}
-
-.info-section h2 {
-    font-size: 19px;
-    margin-bottom: 10px;
-}
-
-.info-section p,
-.info-section li {
-    font-size: 14px;
-    color: #666;
-}
-
-.info-section ul {
-    padding-left: 20px;
-}
-
-footer {
-    background: #fff;
-    border-top: 1px solid #eee;
-    padding: 23px 15px;
-    text-align: center;
-    margin-top: 40px;
-    color: #777;
-    font-size: 13px;
-}
-
-footer a {
-    color: #555;
-    text-decoration: none;
-    margin: 0 8px;
-}
-
-@media(max-width: 600px) {
-    .page-heading h1 {
-        font-size: 25px;
-    }
-
-    .main-card {
-        padding: 15px;
-    }
-
-    .upload-area {
-        padding: 28px 10px;
-    }
-
-    .toolbar .btn {
-        min-width: 100%;
-    }
-
-    header {
-        padding: 13px 4%;
-    }
-
-    .upload-actions .btn {
-        width: 100%;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image to Text - Hindi & English OCR Online | Toolaxa</title>
+    <meta name="description" content="Extract Hindi and English text from images online with Toolaxa Image to Text OCR. Upload multiple photos, copy extracted text and download as TXT for free.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolaxa.com/tools/image-to-text.html">
+    <link rel="icon" href="../assets/images/favicon.png">
+    <meta name="theme-color" content="#e5322d">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            color: #252525;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 27px;
+            font-weight: 800;
+            color: #e5322d;
+        }
+
+        .logo span {
+            color: #333;
+        }
+
+        .back-link {
+            color: #444;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 0 18px;
+        }
+
+        .page-heading {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .page-heading p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .language-tag {
+            display: inline-block;
+            margin-top: 12px;
+            background: #fff0ef;
+            color: #d52c27;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .main-card {
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 14px;
+            padding: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,.04);
+        }
+
+        .upload-area {
+            border: 2px dashed #d9d9d9;
+            border-radius: 12px;
+            padding: 38px 15px;
+            text-align: center;
+            background: #fffafa;
+            transition: .2s;
+        }
+
+        .upload-area.dragover {
+            border-color: #e5322d;
+            background: #fff0ef;
+        }
+
+        .upload-icon {
+            font-size: 45px;
+            margin-bottom: 8px;
+        }
+
+        .upload-area h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .upload-area p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .btn {
+            border: none;
+            padding: 11px 19px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #e5322d;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #c92722;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e3e3e3;
+        }
+
+        .btn-success {
+            background: #16834a;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background: #106b3b;
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .upload-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .small-note {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 22px 0;
+        }
+
+        .toolbar .btn {
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .status {
+            display: none;
+            background: #fff7e6;
+            color: #805600;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .status.error {
+            background: #fff0ef;
+            color: #b42318;
+        }
+
+        .status.success {
+            background: #eaf8ef;
+            color: #176b39;
+        }
+
+        .progress-wrap {
+            display: none;
+            margin: 18px 0;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 7px;
+            color: #555;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 9px;
+            background: #eee;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #e5322d;
+            transition: width .2s;
+        }
+
+        .section-title {
+            font-size: 19px;
+            margin: 25px 0 13px;
+        }
+
+        .image-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .image-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .preview {
+            height: 155px;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .image-details {
+            padding: 12px;
+        }
+
+        .image-name {
+            font-size: 13px;
+            font-weight: bold;
+            word-break: break-word;
+            margin-bottom: 5px;
+        }
+
+        .image-status {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 9px;
+        }
+
+        .image-card .btn {
+            padding: 7px 10px;
+            font-size: 12px;
+        }
+
+        .result-card {
+            margin-top: 20px;
+            border: 1px solid #e4e4e4;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .result-header {
+            padding: 12px 15px;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .result-header strong {
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .result-content {
+            padding: 15px;
+        }
+
+        .result-content textarea {
+            width: 100%;
+            min-height: 160px;
+            resize: vertical;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            outline: none;
+        }
+
+        .result-content textarea:focus {
+            border-color: #e5322d;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .result-actions .btn {
+            padding: 8px 13px;
+            font-size: 12px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 25px;
+            color: #888;
+            background: #fafafa;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .info-section {
+            background: #fff;
+            padding: 22px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            margin-top: 22px;
+        }
+
+        .info-section h2 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .info-section p,
+        .info-section li {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .info-section ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            background: #fff;
+            border-top: 1px solid #eee;
+            padding: 23px 15px;
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #555;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        @media(max-width: 600px) {
+            .page-heading h1 {
+                font-size: 25px;
+            }
+
+            .main-card {
+                padding: 15px;
+            }
+
+            .upload-area {
+                padding: 28px 10px;
+            }
+
+            .toolbar .btn {
+                min-width: 100%;
+            }
+
+            header {
+                padding: 13px 4%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -500,7 +447,7 @@ footer a {
 
     <div class="page-heading">
         <h1>Image to Text (Hindi OCR)</h1>
-        <p>Extract Hindi and English text from images and photos.</p>
+        <p>Extract Hindi and English text from images instantly.</p>
         <span class="language-tag">हिंदी + English Supported</span>
     </div>
 
@@ -508,53 +455,28 @@ footer a {
 
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">📄</div>
-            <h2>Upload or Capture Images</h2>
-            <p>Choose images, take a photo or paste an image.</p>
+            <h2>Upload Your Images</h2>
+            <p>Select one or multiple images to extract text.</p>
 
             <div class="upload-actions">
-
-                <label for="imageInput" class="btn btn-primary">
-                    Choose Images
-                </label>
-
-                <label for="cameraInput" class="btn btn-success">
-                    📷 Take Photo
-                </label>
-
-                <button class="btn btn-secondary" id="pasteButton" type="button">
-                    Paste Image
-                </button>
-
+                <label for="imageInput" class="btn btn-primary">Choose Images</label>
+                <button class="btn btn-secondary" id="pasteButton" type="button">Paste Image</button>
             </div>
 
-            <input
-                type="file"
-                id="imageInput"
-                accept="image/*"
-                multiple
-            >
-
-            <input
-                type="file"
-                id="cameraInput"
-                accept="image/*"
-                capture="environment"
-            >
+            <input type="file" id="imageInput" accept="image/*" multiple>
 
             <div class="small-note">
-                Supports JPG, JPEG, PNG, WEBP and other browser-supported image formats.
-                Multiple images can be selected from your gallery.
+                Supported: JPG, JPEG, PNG, WEBP, BMP and other browser-supported image formats
             </div>
         </div>
 
-        <div class="status" id="status" role="status"></div>
+        <div class="status" id="status"></div>
 
         <div class="progress-wrap" id="progressWrap">
             <div class="progress-info">
                 <span id="progressLabel">Preparing OCR...</span>
                 <span id="progressPercent">0%</span>
             </div>
-
             <div class="progress-track">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
@@ -563,27 +485,24 @@ footer a {
         <h3 class="section-title">Uploaded Images</h3>
 
         <div class="image-list" id="imageList">
-            <div class="empty-state">No images selected yet.</div>
+            <div class="empty-state" id="emptyImages">
+                No images selected yet.
+            </div>
         </div>
 
         <div class="toolbar">
-
             <button class="btn btn-primary" id="extractButton" disabled>
                 Extract Text from All Images
             </button>
-
             <button class="btn btn-success" id="copyAllButton" disabled>
                 Copy All Text
             </button>
-
             <button class="btn btn-secondary" id="downloadAllButton" disabled>
                 Download All TXT
             </button>
-
             <button class="btn btn-secondary" id="clearButton" disabled>
                 Clear All
             </button>
-
         </div>
 
         <h3 class="section-title">Extracted Text</h3>
@@ -599,33 +518,23 @@ footer a {
     <section class="info-section">
         <h2>How to Convert Image to Text?</h2>
         <ul>
-            <li>Choose Images from your device or click Take Photo.</li>
-            <li>You can upload multiple images together.</li>
+            <li>Click Choose Images or drag and drop your photos.</li>
+            <li>You can select multiple images at once.</li>
             <li>Click Extract Text from All Images.</li>
-            <li>OCR will process original and enhanced image versions.</li>
-            <li>Review the main result and alternative OCR results.</li>
+            <li>Review and edit the extracted Hindi or English text.</li>
             <li>Copy individual text or copy all extracted text.</li>
-            <li>Download the extracted text as a TXT file.</li>
+            <li>Download all extracted text in a TXT file.</li>
         </ul>
     </section>
 
     <section class="info-section">
         <h2>About Hindi OCR</h2>
         <p>
-            OCR stands for Optical Character Recognition. It converts text visible
-            in images into editable text. This tool supports Hindi and English.
-            Recognition quality depends on image resolution, lighting, text clarity,
-            font style and document condition. Printed text generally gives better
-            results than handwritten text.
-        </p>
-    </section>
-
-    <section class="info-section">
-        <h2>Privacy</h2>
-        <p>
-            Image processing is performed in your browser using the OCR library.
-            Images are not intentionally uploaded to a Toolaxa server by this page.
-            The OCR engine may download its language data from the Tesseract CDN.
+            OCR stands for Optical Character Recognition. It helps convert text
+            visible in images into editable text. This tool supports Hindi and
+            English OCR. Results depend on image quality, font clarity, lighting
+            and handwriting style. Printed text generally gives better results
+            than handwritten text.
         </p>
     </section>
 
@@ -639,1079 +548,486 @@ footer a {
         <a href="../contact.html">Contact Us</a>
         <a href="../disclaimer.html">Disclaimer</a>
     </p>
-
     <p style="margin-top:10px;">© 2026 Toolaxa. All Rights Reserved.</p>
     <p>Powered By Mr. Rajan</p>
 </footer>
 
 <script>
-"use strict";
+    const imageInput = document.getElementById("imageInput");
+    const uploadArea = document.getElementById("uploadArea");
+    const imageList = document.getElementById("imageList");
+    const results = document.getElementById("results");
 
-/* =====================================
-   HTML ELEMENTS
-===================================== */
+    const extractButton = document.getElementById("extractButton");
+    const copyAllButton = document.getElementById("copyAllButton");
+    const downloadAllButton = document.getElementById("downloadAllButton");
+    const clearButton = document.getElementById("clearButton");
+    const pasteButton = document.getElementById("pasteButton");
 
-const imageInput = document.getElementById("imageInput");
-const cameraInput = document.getElementById("cameraInput");
-const uploadArea = document.getElementById("uploadArea");
+    const statusBox = document.getElementById("status");
+    const progressWrap = document.getElementById("progressWrap");
+    const progressBar = document.getElementById("progressBar");
+    const progressLabel = document.getElementById("progressLabel");
+    const progressPercent = document.getElementById("progressPercent");
 
-const imageList = document.getElementById("imageList");
-const results = document.getElementById("results");
+    let imageItems = [];
+    let worker = null;
+    let isProcessing = false;
 
-const extractButton = document.getElementById("extractButton");
-const copyAllButton = document.getElementById("copyAllButton");
-const downloadAllButton = document.getElementById("downloadAllButton");
-const clearButton = document.getElementById("clearButton");
-const pasteButton = document.getElementById("pasteButton");
-
-const statusBox = document.getElementById("status");
-const progressWrap = document.getElementById("progressWrap");
-const progressBar = document.getElementById("progressBar");
-const progressLabel = document.getElementById("progressLabel");
-const progressPercent = document.getElementById("progressPercent");
-
-/* =====================================
-   GLOBAL VARIABLES
-===================================== */
-
-let imageItems = [];
-let worker = null;
-let isProcessing = false;
-
-/* =====================================
-   STATUS
-===================================== */
-
-function showStatus(message, type = "") {
-    statusBox.textContent = message;
-    statusBox.className = "status" + (type ? " " + type : "");
-    statusBox.style.display = "block";
-}
-
-function hideStatus() {
-    statusBox.style.display = "none";
-}
-
-/* =====================================
-   BUTTON CONTROL
-===================================== */
-
-function updateButtons() {
-
-    const hasImages = imageItems.length > 0;
-
-    const hasResults = imageItems.some(item =>
-        item.text.trim().length > 0
-    );
-
-    extractButton.disabled = !hasImages || isProcessing;
-    copyAllButton.disabled = !hasResults;
-    downloadAllButton.disabled = !hasResults;
-    clearButton.disabled = !hasImages || isProcessing;
-
-    pasteButton.disabled = isProcessing;
-    imageInput.disabled = isProcessing;
-    cameraInput.disabled = isProcessing;
-}
-
-/* =====================================
-   FILE SIZE
-===================================== */
-
-function formatSize(bytes) {
-
-    if (bytes < 1024 * 1024) {
-        return (bytes / 1024).toFixed(1) + " KB";
+    function showStatus(message, type = "") {
+        statusBox.textContent = message;
+        statusBox.className = "status" + (type ? " " + type : "");
+        statusBox.style.display = "block";
     }
 
-    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
-}
-
-/* =====================================
-   ADD IMAGES
-===================================== */
-
-function addImages(files) {
-
-    const validFiles = Array.from(files).filter(file =>
-        file.type.startsWith("image/")
-    );
-
-    if (!validFiles.length) {
-        showStatus("Please select valid image files.", "error");
-        return;
+    function hideStatus() {
+        statusBox.style.display = "none";
     }
 
-    let added = 0;
+    function updateButtons() {
+        const hasImages = imageItems.length > 0;
+        const hasResults = imageItems.some(item => item.text.trim());
 
-    validFiles.forEach(file => {
+        extractButton.disabled = !hasImages || isProcessing;
+        copyAllButton.disabled = !hasResults;
+        downloadAllButton.disabled = !hasResults;
+        clearButton.disabled = !hasImages || isProcessing;
+        pasteButton.disabled = isProcessing;
+    }
 
-        const duplicate = imageItems.some(item =>
-            item.file.name === file.name &&
-            item.file.size === file.size &&
-            item.file.lastModified === file.lastModified
+    function formatSize(bytes) {
+        if (bytes < 1024 * 1024) {
+            return (bytes / 1024).toFixed(1) + " KB";
+        }
+        return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+    }
+
+    function addImages(files) {
+        const validFiles = Array.from(files).filter(file =>
+            file.type.startsWith("image/")
         );
 
-        if (duplicate) return;
-
-        imageItems.push({
-
-            id: crypto.randomUUID
-                ? crypto.randomUUID()
-                : Date.now() + "-" + Math.random(),
-
-            file: file,
-            url: URL.createObjectURL(file),
-
-            text: "",
-            confidence: null,
-            alternatives: [],
-
-            state: "Ready"
-        });
-
-        added++;
-    });
-
-    renderImages();
-    renderResults();
-    updateButtons();
-
-    if (added > 0) {
-        showStatus(added + " image(s) added successfully.", "success");
-    } else {
-        showStatus("These images are already added.", "error");
-    }
-}
-
-/* =====================================
-   RENDER IMAGE LIST
-===================================== */
-
-function renderImages() {
-
-    imageList.innerHTML = "";
-
-    if (!imageItems.length) {
-
-        imageList.innerHTML =
-            '<div class="empty-state">No images selected yet.</div>';
-
-        return;
-    }
-
-    imageItems.forEach(item => {
-
-        const card = document.createElement("div");
-        card.className = "image-card";
-
-        const preview = document.createElement("div");
-        preview.className = "preview";
-
-        const img = document.createElement("img");
-        img.src = item.url;
-        img.alt = item.file.name;
-
-        preview.appendChild(img);
-
-        const details = document.createElement("div");
-        details.className = "image-details";
-
-        const name = document.createElement("div");
-        name.className = "image-name";
-        name.textContent = item.file.name;
-
-        const info = document.createElement("div");
-        info.className = "image-status";
-
-        info.textContent =
-            item.state + " • " + formatSize(item.file.size);
-
-        const remove = document.createElement("button");
-        remove.className = "btn btn-secondary";
-        remove.textContent = "Remove";
-        remove.type = "button";
-        remove.disabled = isProcessing;
-
-        remove.addEventListener("click", () => {
-            removeImage(item.id);
-        });
-
-        details.append(name, info, remove);
-        card.append(preview, details);
-
-        imageList.appendChild(card);
-    });
-}
-
-/* =====================================
-   REMOVE IMAGE
-===================================== */
-
-function removeImage(id) {
-
-    if (isProcessing) return;
-
-    const item = imageItems.find(img => img.id === id);
-
-    if (item) {
-        URL.revokeObjectURL(item.url);
-    }
-
-    imageItems = imageItems.filter(img => img.id !== id);
-
-    renderImages();
-    renderResults();
-    updateButtons();
-
-    hideStatus();
-}
-
-/* =====================================
-   RENDER OCR RESULTS
-===================================== */
-
-function renderResults() {
-
-    results.innerHTML = "";
-
-    const completed = imageItems.filter(item =>
-        item.text.trim().length > 0
-    );
-
-    if (!completed.length) {
-
-        results.innerHTML =
-            '<div class="empty-state">Extracted text will appear here.</div>';
-
-        return;
-    }
-
-    completed.forEach(item => {
-
-        const card = document.createElement("div");
-        card.className = "result-card";
-
-        const header = document.createElement("div");
-        header.className = "result-header";
-
-        const title = document.createElement("strong");
-        title.textContent = item.file.name;
-
-        const meta = document.createElement("span");
-        meta.className = "result-meta";
-
-        meta.textContent =
-            item.text.length + " characters | Confidence estimate: " +
-            Math.round(item.confidence || 0) + "%";
-
-        header.append(title, meta);
-
-        const content = document.createElement("div");
-        content.className = "result-content";
-
-        const textarea = document.createElement("textarea");
-        textarea.value = item.text;
-        textarea.setAttribute(
-            "aria-label",
-            "Extracted text from " + item.file.name
-        );
-
-        textarea.placeholder = "Extracted text...";
-
-        textarea.addEventListener("input", () => {
-
-            item.text = textarea.value;
-
-            meta.textContent =
-                item.text.length + " characters | Confidence estimate: " +
-                Math.round(item.confidence || 0) + "%";
-
-            updateButtons();
-        });
-
-        const actions = document.createElement("div");
-        actions.className = "result-actions";
-
-        const copyButton = document.createElement("button");
-        copyButton.className = "btn btn-primary";
-        copyButton.textContent = "Copy Text";
-        copyButton.type = "button";
-
-        copyButton.addEventListener("click", () => {
-            copyText(item.text);
-        });
-
-        const downloadButton = document.createElement("button");
-        downloadButton.className = "btn btn-secondary";
-        downloadButton.textContent = "Download TXT";
-        downloadButton.type = "button";
-
-        downloadButton.addEventListener("click", () => {
-
-            downloadText(
-                item.text,
-                safeFileName(item.file.name) + ".txt"
-            );
-        });
-
-        actions.append(copyButton, downloadButton);
-        content.append(textarea, actions);
-
-        /* ALTERNATIVE OCR RESULTS */
-
-        if (item.alternatives && item.alternatives.length > 0) {
-
-            const alternativeBox = document.createElement("details");
-            alternativeBox.className = "alternative-results";
-
-            const summary = document.createElement("summary");
-
-            summary.textContent =
-                "View Alternative OCR Results (" +
-                item.alternatives.length + ")";
-
-            alternativeBox.appendChild(summary);
-
-            item.alternatives.forEach((alternative, index) => {
-
-                const alternativeItem = document.createElement("div");
-                alternativeItem.className = "alternative-item";
-
-                const info = document.createElement("p");
-
-                info.textContent =
-                    alternative.variant + " | " +
-                    alternative.mode + " | Confidence: " +
-                    Math.round(alternative.confidence) + "%";
-
-                const pre = document.createElement("pre");
-                pre.textContent = alternative.text;
-
-                const useButton = document.createElement("button");
-                useButton.className = "btn btn-secondary";
-                useButton.textContent = "Use This Result";
-                useButton.type = "button";
-
-                useButton.addEventListener("click", () => {
-
-                    item.text = alternative.text;
-                    item.confidence = alternative.confidence;
-
-                    renderResults();
-                    updateButtons();
-
-                    showStatus(
-                        "Alternative OCR result selected.",
-                        "success"
-                    );
-                });
-
-                alternativeItem.append(info, pre, useButton);
-                alternativeBox.appendChild(alternativeItem);
-            });
-
-            content.appendChild(alternativeBox);
-        }
-
-        card.append(header, content);
-        results.appendChild(card);
-    });
-}
-
-/* =====================================
-   SAFE FILE NAME
-===================================== */
-
-function safeFileName(name) {
-
-    return name
-        .replace(/\.[^/.]+$/, "")
-        .replace(/[<>:"/\\|?*]/g, "_");
-}
-
-/* =====================================
-   COPY TEXT
-===================================== */
-
-async function copyText(text) {
-
-    if (!text) return;
-
-    try {
-
-        await navigator.clipboard.writeText(text);
-
-        showStatus("Text copied successfully.", "success");
-
-    } catch (error) {
-
-        const temp = document.createElement("textarea");
-
-        temp.value = text;
-
-        document.body.appendChild(temp);
-
-        temp.select();
-
-        try {
-
-            const copied = document.execCommand("copy");
-
-            if (copied) {
-                showStatus("Text copied successfully.", "success");
-            } else {
-                showStatus("Unable to copy. Please copy manually.", "error");
-            }
-
-        } catch (e) {
-
-            showStatus("Unable to copy. Please copy manually.", "error");
-        }
-
-        temp.remove();
-    }
-}
-
-/* =====================================
-   GET ALL TEXT
-===================================== */
-
-function getAllText() {
-
-    return imageItems
-        .filter(item => item.text.trim())
-        .map(item =>
-            "===== " + item.file.name + " =====\n\n" +
-            item.text.trim()
-        )
-        .join("\n\n\n");
-}
-
-/* =====================================
-   DOWNLOAD TXT
-===================================== */
-
-function downloadText(text, filename) {
-
-    const blob = new Blob(["\uFEFF" + text], {
-        type: "text/plain;charset=utf-8"
-    });
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = filename;
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-/* =====================================
-   IMAGE ENHANCEMENT
-===================================== */
-
-async function createEnhancedImages(file) {
-
-    const bitmap = await createImageBitmap(file);
-
-    const originalWidth = bitmap.width;
-    const originalHeight = bitmap.height;
-
-    const maxDimension = Math.max(originalWidth, originalHeight);
-
-    const scale = Math.min(
-        Math.max(1, 2400 / maxDimension),
-        4000 / maxDimension
-    );
-
-    const width = Math.round(originalWidth * scale);
-    const height = Math.round(originalHeight * scale);
-
-    const baseCanvas = document.createElement("canvas");
-
-    baseCanvas.width = width;
-    baseCanvas.height = height;
-
-    const baseContext = baseCanvas.getContext("2d", {
-        willReadFrequently: true
-    });
-
-    baseContext.imageSmoothingEnabled = true;
-    baseContext.imageSmoothingQuality = "high";
-
-    baseContext.drawImage(bitmap, 0, 0, width, height);
-
-    bitmap.close();
-
-    const sourceData = baseContext.getImageData(
-        0, 0, width, height
-    );
-
-    const pixels = width * height;
-
-    const grayValues = new Uint8Array(pixels);
-    const histogram = new Array(256).fill(0);
-
-    for (let i = 0; i < pixels; i++) {
-
-        const index = i * 4;
-
-        const r = sourceData.data[index];
-        const g = sourceData.data[index + 1];
-        const b = sourceData.data[index + 2];
-
-        const gray = Math.round(
-            0.299 * r + 0.587 * g + 0.114 * b
-        );
-
-        grayValues[i] = gray;
-        histogram[gray]++;
-    }
-
-    /* OTSU THRESHOLD */
-
-    let totalSum = 0;
-
-    for (let i = 0; i < 256; i++) {
-        totalSum += i * histogram[i];
-    }
-
-    let backgroundWeight = 0;
-    let backgroundSum = 0;
-    let maximumVariance = 0;
-    let threshold = 150;
-
-    for (let i = 0; i < 256; i++) {
-
-        backgroundWeight += histogram[i];
-
-        if (backgroundWeight === 0) continue;
-
-        const foregroundWeight = pixels - backgroundWeight;
-
-        if (foregroundWeight === 0) break;
-
-        backgroundSum += i * histogram[i];
-
-        const backgroundMean =
-            backgroundSum / backgroundWeight;
-
-        const foregroundMean =
-            (totalSum - backgroundSum) / foregroundWeight;
-
-        const variance =
-            backgroundWeight *
-            foregroundWeight *
-            Math.pow(backgroundMean - foregroundMean, 2);
-
-        if (variance > maximumVariance) {
-
-            maximumVariance = variance;
-            threshold = i;
-        }
-    }
-
-    /* CREATE ENHANCED CANVAS */
-
-    const enhancedCanvas = document.createElement("canvas");
-
-    enhancedCanvas.width = width;
-    enhancedCanvas.height = height;
-
-    const enhancedContext = enhancedCanvas.getContext("2d");
-
-    const enhancedData = enhancedContext.createImageData(
-        width, height
-    );
-
-    /* CREATE BINARY CANVAS */
-
-    const binaryCanvas = document.createElement("canvas");
-
-    binaryCanvas.width = width;
-    binaryCanvas.height = height;
-
-    const binaryContext = binaryCanvas.getContext("2d");
-
-    const binaryData = binaryContext.createImageData(
-        width, height
-    );
-
-    for (let i = 0; i < pixels; i++) {
-
-        const index = i * 4;
-
-        const gray = grayValues[i];
-
-        const enhanced = Math.max(
-            0,
-            Math.min(255, (gray - 128) * 1.35 + 128)
-        );
-
-        enhancedData.data[index] = enhanced;
-        enhancedData.data[index + 1] = enhanced;
-        enhancedData.data[index + 2] = enhanced;
-        enhancedData.data[index + 3] = 255;
-
-        const binary = gray > threshold ? 255 : 0;
-
-        binaryData.data[index] = binary;
-        binaryData.data[index + 1] = binary;
-        binaryData.data[index + 2] = binary;
-        binaryData.data[index + 3] = 255;
-    }
-
-    enhancedContext.putImageData(enhancedData, 0, 0);
-    binaryContext.putImageData(binaryData, 0, 0);
-
-    return [
-        {
-            name: "Upscaled Original",
-            canvas: baseCanvas
-        },
-        {
-            name: "Enhanced Grayscale",
-            canvas: enhancedCanvas
-        },
-        {
-            name: "High Contrast",
-            canvas: binaryCanvas
-        }
-    ];
-}
-
-/* =====================================
-   OCR WORKER
-===================================== */
-
-async function getOCRWorker() {
-
-    if (worker) return worker;
-
-    progressLabel.textContent =
-        "Loading Hindi + English OCR engine...";
-
-    worker = await Tesseract.createWorker(
-        "hin+eng",
-        1,
-        {
-            logger: message => {
-
-                if (message.status) {
-
-                    progressLabel.textContent =
-                        "OCR Engine: " + message.status;
-                }
-            }
-        }
-    );
-
-    await worker.setParameters({
-
-        preserve_interword_spaces: "1",
-        user_defined_dpi: "300"
-
-    });
-
-    return worker;
-}
-
-/* =====================================
-   MULTIPLE OCR ATTEMPTS
-===================================== */
-
-async function recognizeWithPasses(ocrWorker, canvas) {
-
-    const modes = [
-        {
-            name: "Automatic Page Layout",
-            value: "3"
-        },
-        {
-            name: "Single Text Block",
-            value: "6"
-        }
-    ];
-
-    const attempts = [];
-
-    for (const mode of modes) {
-
-        await ocrWorker.setParameters({
-
-            tessedit_pageseg_mode: mode.value,
-            preserve_interword_spaces: "1"
-
-        });
-
-        const result = await ocrWorker.recognize(canvas);
-
-        const text = (result.data.text || "").trim();
-
-        if (text) {
-
-            const confidence =
-                Number(result.data.confidence) || 0;
-
-            attempts.push({
-
-                text: text,
-                confidence: confidence,
-                mode: mode.name
-
-            });
-        }
-    }
-
-    return attempts;
-}
-
-/* =====================================
-   PROCESS ALL IMAGES
-===================================== */
-
-async function extractAll() {
-
-    if (isProcessing || !imageItems.length) return;
-
-    if (typeof Tesseract === "undefined") {
-
-        showStatus(
-            "OCR library could not load. Check your internet connection and refresh the page.",
-            "error"
-        );
-
-        return;
-    }
-
-    isProcessing = true;
-
-    hideStatus();
-    updateButtons();
-    renderImages();
-
-    progressWrap.style.display = "block";
-
-    progressBar.style.width = "0%";
-    progressPercent.textContent = "0%";
-
-    let successCount = 0;
-
-    const total = imageItems.length;
-
-    try {
-
-        const ocrWorker = await getOCRWorker();
-
-        for (let index = 0; index < total; index++) {
-
-            const item = imageItems[index];
-
-            item.state = "Enhancing image...";
-
-            renderImages();
-
-            progressLabel.textContent =
-                "Enhancing image " + (index + 1) +
-                " of " + total;
-
-            const variants = await createEnhancedImages(
-                item.file
-            );
-
-            let allAttempts = [];
-
-            /*
-               3 image variants x 2 OCR modes
-               = 6 OCR attempts per image
-            */
-
-            for (let v = 0; v < variants.length; v++) {
-
-                progressLabel.textContent =
-                    "Image " + (index + 1) + "/" + total +
-                    " | OCR pass " + (v + 1) + "/3";
-
-                const attempts = await recognizeWithPasses(
-                    ocrWorker,
-                    variants[v].canvas
-                );
-
-                attempts.forEach(attempt => {
-
-                    attempt.variant = variants[v].name;
-
-                });
-
-                allAttempts = allAttempts.concat(attempts);
-
-                const progress = Math.round(
-                    (
-                        (index + (v + 1) / variants.length) /
-                        total
-                    ) * 100
-                );
-
-                progressBar.style.width = progress + "%";
-                progressPercent.textContent = progress + "%";
-            }
-
-            /*
-               Keep every non-empty attempt for review.
-               Select the highest-confidence result as primary.
-            */
-
-            allAttempts.sort((a, b) =>
-                b.confidence - a.confidence
-            );
-
-            const best = allAttempts[0];
-
-            if (best) {
-
-                item.text = best.text;
-                item.confidence = best.confidence;
-
-                item.alternatives = allAttempts
-                    .filter(attempt => attempt !== best);
-
-                item.state = "Completed";
-
-                successCount++;
-
-            } else {
-
-                item.text = "";
-                item.confidence = null;
-                item.alternatives = [];
-
-                item.state = "No text detected";
-            }
-
-            renderImages();
-            renderResults();
-            updateButtons();
-
-            const overall = Math.round(
-                ((index + 1) / total) * 100
-            );
-
-            progressBar.style.width = overall + "%";
-            progressPercent.textContent = overall + "%";
-        }
-
-        if (successCount === total) {
-
-            showStatus(
-                "All images processed. Please review the main and alternative OCR results.",
-                "success"
-            );
-
-        } else {
-
-            showStatus(
-                successCount + " of " + total +
-                " images produced text. Check images with no detected text.",
-                "success"
-            );
-        }
-
-    } catch (error) {
-
-        console.error("OCR Error:", error);
-
-        showStatus(
-            "OCR processing failed. Check your internet connection and refresh the page.",
-            "error"
-        );
-
-    } finally {
-
-        isProcessing = false;
-
-        renderImages();
-        updateButtons();
-
-        progressLabel.textContent = "Processing completed";
-    }
-}
-
-/* =====================================
-   IMAGE INPUT EVENTS
-===================================== */
-
-imageInput.addEventListener("change", event => {
-
-    addImages(event.target.files);
-
-    imageInput.value = "";
-});
-
-cameraInput.addEventListener("change", event => {
-
-    addImages(event.target.files);
-
-    cameraInput.value = "";
-});
-
-/* =====================================
-   BUTTON EVENTS
-===================================== */
-
-extractButton.addEventListener("click", extractAll);
-
-copyAllButton.addEventListener("click", () => {
-
-    const text = getAllText();
-
-    if (text) copyText(text);
-});
-
-downloadAllButton.addEventListener("click", () => {
-
-    const text = getAllText();
-
-    if (text) {
-
-        downloadText(
-            text,
-            "Toolaxa-Extracted-Text.txt"
-        );
-    }
-});
-
-clearButton.addEventListener("click", () => {
-
-    if (isProcessing) return;
-
-    imageItems.forEach(item => {
-
-        URL.revokeObjectURL(item.url);
-
-    });
-
-    imageItems = [];
-
-    renderImages();
-    renderResults();
-    updateButtons();
-
-    progressWrap.style.display = "none";
-
-    hideStatus();
-});
-
-/* =====================================
-   PASTE IMAGE
-===================================== */
-
-pasteButton.addEventListener("click", async () => {
-
-    try {
-
-        if (
-            !navigator.clipboard ||
-            !navigator.clipboard.read
-        ) {
-
-            showStatus(
-                "Clipboard image access is not supported. Use Choose Images.",
-                "error"
-            );
-
+        if (!validFiles.length) {
+            showStatus("Please select valid image files.", "error");
             return;
         }
 
-        const clipboardItems =
-            await navigator.clipboard.read();
+        let added = 0;
 
-        const pastedFiles = [];
+        validFiles.forEach(file => {
+            const duplicate = imageItems.some(item =>
+                item.file.name === file.name &&
+                item.file.size === file.size &&
+                item.file.lastModified === file.lastModified
+            );
 
-        for (const clipboardItem of clipboardItems) {
+            if (duplicate) return;
 
-            for (const type of clipboardItem.types) {
+            const item = {
+                id: (crypto.randomUUID ? crypto.randomUUID() :
+                    Date.now() + "-" + Math.random()),
+                file: file,
+                url: URL.createObjectURL(file),
+                text: "",
+                state: "Ready"
+            };
 
-                if (type.startsWith("image/")) {
+            imageItems.push(item);
+            added++;
+        });
 
-                    const blob =
-                        await clipboardItem.getType(type);
+        renderImages();
+        renderResults();
+        updateButtons();
 
-                    pastedFiles.push(
-                        new File(
-                            [blob],
-                            "pasted-image-" + Date.now() + ".png",
-                            {
-                                type: blob.type || "image/png"
-                            }
-                        )
-                    );
+        if (added) {
+            showStatus(added + " image(s) added successfully.", "success");
+        } else {
+            showStatus("These images are already added.", "error");
+        }
+
+        imageInput.value = "";
+    }
+
+    function renderImages() {
+        imageList.innerHTML = "";
+
+        if (!imageItems.length) {
+            imageList.innerHTML =
+                '<div class="empty-state">No images selected yet.</div>';
+            return;
+        }
+
+        imageItems.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "image-card";
+
+            const preview = document.createElement("div");
+            preview.className = "preview";
+
+            const img = document.createElement("img");
+            img.src = item.url;
+            img.alt = item.file.name;
+            preview.appendChild(img);
+
+            const details = document.createElement("div");
+            details.className = "image-details";
+
+            const name = document.createElement("div");
+            name.className = "image-name";
+            name.textContent = item.file.name;
+
+            const info = document.createElement("div");
+            info.className = "image-status";
+            info.textContent = item.state + " • " + formatSize(item.file.size);
+
+            const remove = document.createElement("button");
+            remove.className = "btn btn-secondary";
+            remove.textContent = "Remove";
+            remove.type = "button";
+            remove.disabled = isProcessing;
+
+            remove.addEventListener("click", () => {
+                removeImage(item.id);
+            });
+
+            details.append(name, info, remove);
+            card.append(preview, details);
+            imageList.appendChild(card);
+        });
+    }
+
+    function removeImage(id) {
+        if (isProcessing) return;
+
+        const item = imageItems.find(img => img.id === id);
+
+        if (item) {
+            URL.revokeObjectURL(item.url);
+        }
+
+        imageItems = imageItems.filter(img => img.id !== id);
+
+        renderImages();
+        renderResults();
+        updateButtons();
+        hideStatus();
+    }
+
+    function renderResults() {
+        results.innerHTML = "";
+
+        const completed = imageItems.filter(item => item.text.trim());
+
+        if (!completed.length) {
+            results.innerHTML =
+                '<div class="empty-state">Extracted text will appear here.</div>';
+            return;
+        }
+
+        completed.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "result-card";
+
+            const header = document.createElement("div");
+            header.className = "result-header";
+
+            const title = document.createElement("strong");
+            title.textContent = item.file.name;
+
+            const count = document.createElement("span");
+            count.style.fontSize = "12px";
+            count.style.color = "#777";
+            count.textContent = item.text.length + " characters";
+
+            header.append(title, count);
+
+            const content = document.createElement("div");
+            content.className = "result-content";
+
+            const textarea = document.createElement("textarea");
+            textarea.value = item.text;
+            textarea.setAttribute("aria-label", "Extracted text from " + item.file.name);
+            textarea.placeholder = "Extracted text...";
+
+            textarea.addEventListener("input", () => {
+                item.text = textarea.value;
+                count.textContent = item.text.length + " characters";
+                updateButtons();
+            });
+
+            const actions = document.createElement("div");
+            actions.className = "result-actions";
+
+            const copy = document.createElement("button");
+            copy.className = "btn btn-primary";
+            copy.textContent = "Copy Text";
+            copy.type = "button";
+            copy.addEventListener("click", () => {
+                copyText(item.text);
+            });
+
+            const download = document.createElement("button");
+            download.className = "btn btn-secondary";
+            download.textContent = "Download TXT";
+            download.type = "button";
+            download.addEventListener("click", () => {
+                downloadText(item.text, safeFileName(item.file.name) + ".txt");
+            });
+
+            actions.append(copy, download);
+            content.append(textarea, actions);
+            card.append(header, content);
+            results.appendChild(card);
+        });
+    }
+
+    function safeFileName(name) {
+        return name.replace(/\.[^/.]+$/, "").replace(/[<>:"/\\|?*]/g, "_");
+    }
+
+    async function copyText(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+            showStatus("Text copied successfully.", "success");
+        } catch (error) {
+            const temp = document.createElement("textarea");
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+
+            try {
+                document.execCommand("copy");
+                showStatus("Text copied successfully.", "success");
+            } catch (e) {
+                showStatus("Unable to copy. Please select and copy manually.", "error");
+            }
+
+            temp.remove();
+        }
+    }
+
+    function getAllText() {
+        return imageItems
+            .filter(item => item.text.trim())
+            .map(item => "===== " + item.file.name + " =====\n\n" + item.text.trim())
+            .join("\n\n\n");
+    }
+
+    function downloadText(text, filename) {
+        const blob = new Blob(["\uFEFF" + text], {
+            type: "text/plain;charset=utf-8"
+        });
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        URL.revokeObjectURL(url);
+    }
+
+    async function getOCRWorker() {
+        if (worker) return worker;
+
+        progressLabel.textContent = "Loading Hindi + English OCR...";
+        progressWrap.style.display = "block";
+
+        worker = await Tesseract.createWorker("hin+eng", 1, {
+            logger: message => {
+                if (message.status) {
+                    progressLabel.textContent =
+                        "OCR Engine: " + message.status;
+
+                    if (typeof message.progress === "number") {
+                        const percent = Math.round(message.progress * 100);
+                        progressBar.style.width = percent + "%";
+                        progressPercent.textContent = percent + "%";
+                    }
                 }
             }
+        });
+
+        return worker;
+    }
+
+    async function extractAll() {
+        if (isProcessing || !imageItems.length) return;
+
+        if (typeof Tesseract === "undefined") {
+            showStatus("OCR library could not load. Please check your internet connection and refresh the page.", "error");
+            return;
         }
 
-        if (pastedFiles.length) {
+        isProcessing = true;
+        hideStatus();
+        updateButtons();
+        renderImages();
 
-            addImages(pastedFiles);
+        progressWrap.style.display = "block";
+        progressBar.style.width = "0%";
+        progressPercent.textContent = "0%";
 
-        } else {
+        let currentIndex = 0;
+        let successCount = 0;
 
+        try {
+            const ocrWorker = await getOCRWorker();
+
+            const total = imageItems.length;
+
+            for (const item of imageItems) {
+                currentIndex++;
+
+                progressLabel.textContent =
+                    "Processing image " + currentIndex + " of " + total;
+
+                progressBar.style.width =
+                    Math.round(((currentIndex - 1) / total) * 100) + "%";
+
+                progressPercent.textContent =
+                    Math.round(((currentIndex - 1) / total) * 100) + "%";
+
+                item.state = "Processing...";
+                renderImages();
+
+                try {
+                    const result = await ocrWorker.recognize(item.file);
+                    item.text = result.data.text || "";
+                    item.state = item.text.trim() ? "Completed" : "No text found";
+
+                    if (item.text.trim()) successCount++;
+
+                } catch (error) {
+                    item.state = "Failed";
+                    console.error("OCR error:", error);
+                }
+
+                renderImages();
+                renderResults();
+                updateButtons();
+
+                const overall = Math.round((currentIndex / total) * 100);
+                progressBar.style.width = overall + "%";
+                progressPercent.textContent = overall + "%";
+            }
+
+            renderResults();
+            updateButtons();
+
+            if (successCount === total) {
+                showStatus("All images processed successfully!", "success");
+            } else {
+                showStatus(
+                    successCount + " of " + total +
+                    " images processed with text. Check image quality or retry failed images.",
+                    "success"
+                );
+            }
+
+        } catch (error) {
+            console.error(error);
             showStatus(
-                "No image found in clipboard. Copy an image first.",
+                "OCR could not start. Please refresh the page and check your internet connection.",
                 "error"
             );
+        } finally {
+            isProcessing = false;
+            renderImages();
+            updateButtons();
+            progressLabel.textContent = "Processing completed";
         }
-
-    } catch (error) {
-
-        showStatus(
-            "Clipboard permission denied. Please use Choose Images.",
-            "error"
-        );
     }
-});
 
-/* =====================================
-   DRAG AND DROP
-===================================== */
+    imageInput.addEventListener("change", event => {
+        addImages(event.target.files);
+    });
 
-uploadArea.addEventListener("dragover", event => {
+    extractButton.addEventListener("click", extractAll);
 
-    event.preventDefault();
+    copyAllButton.addEventListener("click", () => {
+        const text = getAllText();
+        if (text) copyText(text);
+    });
 
-    uploadArea.classList.add("dragover");
-});
+    downloadAllButton.addEventListener("click", () => {
+        const text = getAllText();
+        if (text) downloadText(text, "Toolaxa-Extracted-Text.txt");
+    });
 
-uploadArea.addEventListener("dragleave", () => {
+    clearButton.addEventListener("click", async () => {
+        if (isProcessing) return;
 
-    uploadArea.classList.remove("dragover");
-});
+        imageItems.forEach(item => URL.revokeObjectURL(item.url));
+        imageItems = [];
 
-uploadArea.addEventListener("drop", event => {
+        renderImages();
+        renderResults();
+        updateButtons();
 
-    event.preventDefault();
+        progressWrap.style.display = "none";
+        hideStatus();
+    });
 
-    uploadArea.classList.remove("dragover");
+    pasteButton.addEventListener("click", async () => {
+        try {
+            if (!navigator.clipboard || !navigator.clipboard.read) {
+                showStatus("Clipboard image access is not supported in this browser. Please use Choose Images.", "error");
+                return;
+            }
 
-    if (!isProcessing) {
+            const clipboardItems = await navigator.clipboard.read();
+            const pastedFiles = [];
 
-        addImages(event.dataTransfer.files);
-    }
-});
+            for (const clipboardItem of clipboardItems) {
+                for (const type of clipboardItem.types) {
+                    if (type.startsWith("image/")) {
+                        const blob = await clipboardItem.getType(type);
+                        pastedFiles.push(new File(
+                            [blob],
+                            "pasted-image-" + Date.now() + ".png",
+                            { type: blob.type || "image/png" }
+                        ));
+                    }
+                }
+            }
 
-/* =====================================
-   INITIALIZE
-===================================== */
+            if (pastedFiles.length) {
+                addImages(pastedFiles);
+            } else {
+                showStatus("No image found in clipboard. Copy an image first.", "error");
+            }
 
-renderImages();
-renderResults();
-updateButtons();
+        } catch (error) {
+            showStatus("Clipboard permission denied. Please use Choose Images.", "error");
+        }
+    });
 
+    uploadArea.addEventListener("dragover", event => {
+        event.preventDefault();
+        uploadArea.classList.add("dragover");
+    });
+
+    uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+    });
+
+    uploadArea.addEventListener("drop", event => {
+        event.preventDefault();
+        uploadArea.classList.remove("dragover");
+
+        if (!isProcessing) {
+            addImages(event.dataTransfer.files);
+        }
+    });
+
+    renderImages();
+    renderResults();
+    updateButtons();
 </script>
 
 </body>
