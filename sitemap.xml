@@ -124,6 +124,12 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://toolaxa.com/tools/image-to-text.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+
     <!-- PDF Tools -->
     <url>
         <loc>https://toolaxa.com/tools/merge-pdf.html</loc>
