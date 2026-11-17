@@ -178,7 +178,7 @@ a {
 .section {
     max-width: 1200px;
     margin: auto;
-    padding: 18px 18px;
+    padding: 10px 10px;
 }
 
 .light-section {
@@ -188,7 +188,7 @@ a {
 
 .section-heading {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .section-label {
@@ -234,14 +234,13 @@ a {
 }
 
 .tool-icon {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
     font-size: 27px;
-    margin-bottom: 17px;
 }
 
 .purple {
@@ -265,21 +264,22 @@ a {
 }
 
 .tool-card h3 {
-    font-size: 19px;
-    margin-bottom: 8px;
+    font-size: 13px;
+    margin-bottom: 0px;
     color: #172554;
 }
 
 .tool-card p {
     color: #64748b;
     font-size: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 0px;
 }
 
 .tool-link {
     color: #4f46e5;
     font-size: 14px;
     font-weight: 700;
+    margin-left: 220px;
 }
 
 .coming-soon {
@@ -329,8 +329,8 @@ a {
     margin: auto;
     display: flex;
     justify-content: space-between;
-    gap: 30px;
-    padding-bottom: 30px;
+    gap: 10px;
+    padding-bottom: 0px;
 }
 
 .footer-brand p {
@@ -342,7 +342,7 @@ a {
 .footer-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
 }
 
 .footer-links a {
@@ -356,7 +356,7 @@ a {
 
 .copyright {
     border-top: 1px solid #334155;
-    padding-top: 20px;
+    padding-top: 10px;
     text-align: center;
     color: #cbd5e1;
     font-size: 13px;
@@ -401,7 +401,7 @@ a {
     }
 
     .tool-card {
-        padding: 18px;
+        padding: 5px;
     }
 
     .features-grid {
@@ -425,7 +425,7 @@ a {
     }
 
     .section {
-        padding: 50px 15px;
+        padding: 0px 15px;
     }
 
     .section-heading h2 {
@@ -442,7 +442,7 @@ a {
     }
 
     .tool-card h3 {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .tool-card p {
@@ -450,8 +450,8 @@ a {
     }
 
     .tool-icon {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         font-size: 23px;
     }
 
@@ -485,3 +485,64 @@ a {
     height: 60px;
     border-radius: 10px;
 }
+
+
+/* =========================================
+   TOOLAXA RESPONSIVE TOOL CARDS
+   Desktop: 3 Cards
+   Mobile: 1 Card
+========================================= */
+
+/* Desktop and Laptop */
+@media (min-width: 769px) {
+    #popular .tools-grid,
+    #image-tools .tools-grid,
+    #calculators .tools-grid,
+    #education-science .tools-grid,
+    #pdf-tools .tools-grid,
+    #quotation-invoice .tools-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Tablet and Mobile */
+@media (max-width: 768px) {
+    #popular .tools-grid,
+    #image-tools .tools-grid,
+    #calculators .tools-grid,
+    #education-science .tools-grid,
+    #pdf-tools .tools-grid,
+    #quotation-invoice .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #popular .tool-card,
+    #image-tools .tool-card,
+    #calculators .tool-card,
+    #education-science .tool-card,
+    #pdf-tools .tool-card,
+    #quotation-invoice .tool-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    #popular .tool-card h3,
+    #image-tools .tool-card h3,
+    #calculators .tool-card h3,
+    #education-science .tool-card h3,
+    #pdf-tools .tool-card h3,
+    #quotation-invoice .tool-card h3 {
+        font-size: 13px;
+    }
+
+    #popular .tool-card p,
+    #image-tools .tool-card p,
+    #calculators .tool-card p,
+    #education-science .tool-card p,
+    #pdf-tools .tool-card p,
+    #quotation-invoice .tool-card p {
+        font-size: 14px;
+    }
+}
+
