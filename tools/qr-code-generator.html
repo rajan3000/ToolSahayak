@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free QR Code Generator - Toolaxa</title>
+    <meta name="description" content="Create free QR codes for websites, WhatsApp, UPI payments and contacts. Generate multiple QR codes, download PNG images and print multiple copies with Toolaxa.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolaxa.com/tools/qr-code-generator.html">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <meta property="og:title" content="Free QR Code Generator - Toolaxa">
+    <meta property="og:description" content="Create QR codes for websites, WhatsApp, UPI and contacts.">
+    <meta property="og:url" content="https://toolaxa.com/tools/qr-code-generator.html">
+    <meta property="og:type" content="website">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            color: #202b45;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .panel {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+        }
+
+        .panel h2 {
+            font-size: 21px;
+            color: #202b45;
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 14px 0 6px;
+            color: #334155;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            background: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #6255e7;
+            box-shadow: 0 0 0 2px rgba(98,85,231,0.10);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .type-tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+            margin-bottom: 18px;
+        }
+
+        .type-btn {
+            padding: 11px 8px;
+            background: #f1f3f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .type-btn.active {
+            background: #eeeaff;
+            color: #5140db;
+            border-color: #7868ed;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 13px 18px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: #5545dc;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            background: #4233c4;
+        }
+
+        .btn-secondary {
+            background: #eef0f6;
+            color: #334155;
+        }
+
+        .btn-green {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .result-panel {
+            text-align: center;
+            min-height: 350px;
+        }
+
+        #qrcode {
+            display: inline-block;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin: 15px auto;
+            min-height: 0;
+        }
+
+        #qrcode:empty {
+            display: none;
+        }
+
+        #qrcode img, #qrcode canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .placeholder {
+            padding: 45px 10px;
+            color: #94a3b8;
+        }
+
+        .placeholder .symbol {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .result-actions .btn {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .bulk-panel {
+            margin-top: 22px;
+        }
+
+        .bulk-note {
+            background: #f1f5ff;
+            color: #475569;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .qr-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .qr-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            min-width: 0;
+        }
+
+        .qr-item canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .qr-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .qr-item h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .qr-item button {
+            margin-top: 9px;
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        .copy-count {
+            max-width: 150px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .status {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #dc2626;
+            text-align: center;
+        }
+
+        .info {
+            margin-top: 25px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .info h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media(max-width: 760px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 26px;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .qr-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 420px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 12px;
+                margin: 18px auto;
+            }
+
+            .type-tabs {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printArea, #printArea * {
+                visibility: visible;
+            }
+
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                padding: 10px;
+            }
+
+            .print-qr {
+                text-align: center;
+                padding: 10px;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .print-qr img, .print-qr canvas {
+                width: 140px !important;
+                height: 140px !important;
+            }
+
+            .print-qr p {
+                font-size: 11px;
+                overflow-wrap: anywhere;
+            }
+        }
+
+
+            /* Toolaxa Logo */
+            .toolaxa-logo {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+
+            .toolaxa-logo img {
+                display: block;
+                width: 220px;
+                max-width: 75%;
+                height: auto;
+                object-fit: contain;
+            }
+
+            @media (max-width: 480px) {
+                .toolaxa-logo img {
+                    width: 175px;
+                }
+            }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    
+<header class="page-header">
+    <a href="../index.html" class="toolaxa-logo">
+        <img
+            src="../assets/images/toolaxa-logo.png"
+            alt="Toolaxa - Free Online Tools"
+            width="220"
+            height="70"
+        >
+    </a>
+
+    <h1>QR Code Generator</h1>
+    <p>Create QR Codes for Website, WhatsApp, UPI Payment and Contacts</p>
+</header>
+
+
+    <div class="main-grid">
+
+        <!-- INPUT PANEL -->
+        <section class="panel">
+            <h2>Create Your QR Code</h2>
+
+            <div class="type-tabs">
+                <button class="type-btn active" data-type="website">🌐 Website</button>
+                <button class="type-btn" data-type="whatsapp">💬 WhatsApp</button>
+                <button class="type-btn" data-type="upi">₹ UPI Payment</button>
+                <button class="type-btn" data-type="contact">👤 Contact</button>
+            </div>
+
+            <!-- WEBSITE -->
+            <div class="form-section active" id="websiteForm">
+                <label>Website URL</label>
+                <input type="url" id="websiteUrl" placeholder="https://example.com">
+            </div>
+
+            <!-- WHATSAPP -->
+            <div class="form-section" id="whatsappForm">
+                <label>WhatsApp Mobile Number</label>
+                <input type="tel" id="waNumber" placeholder="919876543210">
+                <small>Enter country code + number, without + or spaces.</small>
+
+                <label>Pre-filled Message (Optional)</label>
+                <textarea id="waMessage" placeholder="Hello! I want more information."></textarea>
+            </div>
+
+            <!-- UPI -->
+            <div class="form-section" id="upiForm">
+                <label>UPI ID / VPA</label>
+                <input type="text" id="upiId" placeholder="yourname@upi">
+
+                <label>Payee Name</label>
+                <input type="text" id="upiName" placeholder="Your Name">
+
+                <div class="form-row">
+                    <div>
+                        <label>Amount (Optional)</label>
+                        <input type="number" id="upiAmount" placeholder="100" min="0" step="0.01">
+                    </div>
+                    <div>
+                        <label>Currency</label>
+                        <input type="text" value="INR" disabled>
+                    </div>
+                </div>
+
+                <label>Payment Note (Optional)</label>
+                <input type="text" id="upiNote" placeholder="Payment for service">
+            </div>
+
+            <!-- CONTACT -->
+            <div class="form-section" id="contactForm">
+                <label>Full Name</label>
+                <input type="text" id="contactName" placeholder="Your Name">
+
+                <label>Mobile Number</label>
+                <input type="tel" id="contactPhone" placeholder="+919876543210">
+
+                <label>Email (Optional)</label>
+                <input type="email" id="contactEmail" placeholder="you@example.com">
+
+                <label>Organization (Optional)</label>
+                <input type="text" id="contactOrg" placeholder="Company Name">
+
+                <label>Address (Optional)</label>
+                <textarea id="contactAddress" placeholder="Your address"></textarea>
+            </div>
+
+            <hr style="margin:20px 0;border:0;border-top:1px solid #e2e8f0;">
+
+            <h2>QR Design Settings</h2>
+
+            <div class="form-row">
+                <div>
+                    <label>QR Size</label>
+                    <select id="qrSize">
+                        <option value="200">200 x 200</option>
+                        <option value="300" selected>300 x 300</option>
+                        <option value="400">400 x 400</option>
+                        <option value="500">500 x 500</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Copies to Print</label>
+                    <input class="copy-count" type="number" id="copies" value="1" min="1" max="100">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label>QR Color</label>
+                    <input type="color" id="qrColor" value="#000000">
+                </div>
+                <div>
+                    <label>Background Color</label>
+                    <input type="color" id="bgColor" value="#ffffff">
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="generateBtn">Generate QR Code</button>
+
+            <div class="status" id="status"></div>
+        </section>
+
+        <!-- RESULT PANEL -->
+        <section class="panel result-panel">
+            <h2>Your QR Code</h2>
+
+            <div class="placeholder" id="placeholder">
+                <div class="symbol">▦</div>
+                <p>Your QR Code will appear here.</p>
+            </div>
+
+            <div id="qrcode"></div>
+
+            <div class="result-actions">
+                <button class="btn btn-green" id="downloadBtn" disabled>Download PNG</button>
+                <button class="btn btn-secondary" id="printBtn" disabled>Print Copies</button>
+            </div>
+
+            <p style="font-size:12px;color:#94a3b8;margin-top:15px;">
+                Scan the QR code using your mobile camera.
+            </p>
+        </section>
+
+    </div>
+
+    <!-- BULK QR GENERATOR -->
+    <section class="panel bulk-panel">
+        <h2>Multiple QR Code Generator</h2>
+
+        <div class="bulk-note">
+            Enter multiple URLs or text values, one per line. Each line creates a separate QR Code.
+        </div>
+
+        <label>Multiple URLs / Text (One per line)</label>
+        <textarea id="bulkInput" rows="5" placeholder="https://google.com&#10;https://toolaxa.com&#10;Hello Toolaxa"></textarea>
+
+        <button class="btn btn-primary" id="bulkGenerateBtn">Generate Multiple QR Codes</button>
+
+        <div class="status" id="bulkStatus"></div>
+
+        <div id="bulkResults" class="qr-list"></div>
+
+        <div class="result-actions hidden" id="bulkActions">
+            <button class="btn btn-green" id="downloadAllBtn">Download All PNG</button>
+            <button class="btn btn-secondary" id="printAllBtn">Print All QR Codes</button>
+        </div>
+    </section>
+
+    <section class="info">
+        <h2>About QR Code Generator</h2>
+        <p>Toolaxa's free QR Code Generator helps you create QR codes for websites, WhatsApp messages, UPI payments and contact information.</p>
+        <p>You can generate multiple QR codes, download them as PNG images and print multiple copies.</p>
+        <p>QR generation happens in your browser using a QR code library. No account is required.</p>
+    </section>
+
+</div>
+
+<div id="printArea" class="hidden"></div>
+
+<footer>
+    © 2026 Toolaxa. All Rights Reserved.
+</footer>
+
+<script>
+    let currentType = "website";
+    let currentQRData = "";
+    let bulkQRData = [];
+
+    const qrcodeBox = document.getElementById("qrcode");
+    const placeholder = document.getElementById("placeholder");
+    const statusBox = document.getElementById("status");
+
+    // TYPE SWITCHING
+    document.querySelectorAll(".type-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll(".type-btn").forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+            currentType = button.dataset.type;
+
+            document.querySelectorAll(".form-section").forEach(section => {
+                section.classList.remove("active");
+            });
+
+            document.getElementById(currentType + "Form").classList.add("active");
+            statusBox.textContent = "";
+        });
+    });
+
+    // GET QR CONTENT
+    function getQRData() {
+        let data = "";
+
+        if (currentType === "website") {
+            const url = document.getElementById("websiteUrl").value.trim();
+
+            if (!url) throw new Error("Please enter a website URL.");
+
+            let parsed;
+            try {
+                parsed = new URL(url);
+            } catch {
+                throw new Error("Please enter a valid website URL.");
+            }
+
+            if (!["http:", "https:"].includes(parsed.protocol)) {
+                throw new Error("Only HTTP and HTTPS website URLs are supported.");
+            }
+
+            data = parsed.href;
+        }
+
+        else if (currentType === "whatsapp") {
+            const number = document.getElementById("waNumber").value.replace(/\D/g, "");
+            const message = document.getElementById("waMessage").value.trim();
+
+            if (!number || number.length < 8 || number.length > 15) {
+                throw new Error("Please enter a valid WhatsApp number with country code.");
+            }
+
+            data = "https://wa.me/" + number;
+
+            if (message) {
+                data += "?text=" + encodeURIComponent(message);
+            }
+        }
+
+        else if (currentType === "upi") {
+            const id = document.getElementById("upiId").value.trim();
+            const name = document.getElementById("upiName").value.trim();
+            const amount = document.getElementById("upiAmount").value.trim();
+            const note = document.getElementById("upiNote").value.trim();
+
+            if (!id || !/^[^@\s]+@[^@\s]+$/.test(id)) {
+                throw new Error("Please enter a valid UPI ID.");
+            }
+
+            if (amount && (!Number.isFinite(Number(amount)) || Number(amount) <= 0)) {
+                throw new Error("Please enter a valid payment amount.");
+            }
+
+            const params = new URLSearchParams();
+            params.set("pa", id);
+            if (name) params.set("pn", name);
+            if (amount) {
+                params.set("am", Number(amount).toFixed(2));
+                params.set("cu", "INR");
+            }
+            if (note) params.set("tn", note);
+
+            data = "upi://pay?" + params.toString();
+        }
+
+        else if (currentType === "contact") {
+            const name = document.getElementById("contactName").value.trim();
+            const phone = document.getElementById("contactPhone").value.trim();
+            const email = document.getElementById("contactEmail").value.trim();
+            const org = document.getElementById("contactOrg").value.trim();
+            const address = document.getElementById("contactAddress").value.trim();
+
+            if (!name) throw new Error("Please enter the contact name.");
+            if (!phone && !email) {
+                throw new Error("Enter at least a mobile number or email.");
+            }
+
+            const escapeVCard = value => value
+                .replace(/\\/g, "\\\\")
+                .replace(/\n/g, "\\n")
+                .replace(/;/g, "\\;")
+                .replace(/,/g, "\\,");
+
+            const lines = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                "FN:" + escapeVCard(name)
+            ];
+
+            if (phone) lines.push("TEL;TYPE=CELL:" + escapeVCard(phone));
+            if (email) lines.push("EMAIL:" + escapeVCard(email));
+            if (org) lines.push("ORG:" + escapeVCard(org));
+            if (address) lines.push("ADR;TYPE=HOME:;;" + escapeVCard(address) + ";;;;");
+
+            lines.push("END:VCARD");
+            data = lines.join("\r\n");
+        }
+
+        return data;
+    }
+
+    function getQRSettings() {
+        return {
+            size: Number(document.getElementById("qrSize").value),
+            color: document.getElementById("qrColor").value,
+            background: document.getElementById("bgColor").value
+        };
+    }
+
+    function createQR(element, data, settings) {
+        element.innerHTML = "";
+
+        new QRCode(element, {
+            text: data,
+            width: settings.size,
+            height: settings.size,
+            colorDark: settings.color,
+            colorLight: settings.background,
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+
+    function getQRImage(element) {
+        const canvas = element.querySelector("canvas");
+        if (canvas) return canvas.toDataURL("image/png");
+
+        const img = element.querySelector("img");
+        if (img) return img.src;
+
+        return null;
+    }
+
+    function downloadImage(dataUrl, filename) {
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    }
+
+    // GENERATE SINGLE QR
+    document.getElementById("generateBtn").addEventListener("click", () => {
+        try {
+            if (typeof QRCode === "undefined") {
+                throw new Error("QR library could not load. Check your internet connection.");
+            }
+
+            currentQRData = getQRData();
+            const settings = getQRSettings();
+
+            createQR(qrcodeBox, currentQRData, settings);
+
+            placeholder.classList.add("hidden");
+
+            document.getElementById("downloadBtn").disabled = false;
+            document.getElementById("printBtn").disabled = false;
+
+            statusBox.style.color = "#16a34a";
+            statusBox.textContent = "QR Code generated successfully!";
+        } catch (error) {
+            statusBox.style.color = "#dc2626";
+            statusBox.textContent = error.message;
+        }
+    });
+
+    // DOWNLOAD SINGLE
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+        const image = getQRImage(qrcodeBox);
+        if (image) downloadImage(image, "toolaxa-qr-code.png");
+    });
+
+    // PRINT SINGLE WITH COPIES
+    document.getElementById("printBtn").addEventListener("click", () => {
+        const copies = Number(document.getElementById("copies").value);
+
+        if (!Number.isInteger(copies) || copies < 1 || copies > 100) {
+            statusBox.textContent = "Copies must be between 1 and 100.";
+            statusBox.style.color = "#dc2626";
+            return;
+        }
+
+        const printArea = document.getElementById("printArea");
+        printArea.innerHTML = "";
+
+        const image = getQRImage(qrcodeBox);
+        if (!image) return;
+
+        for (let i = 0; i < copies; i++) {
+            const card = document.createElement("div");
+            card.className = "print-qr";
+
+            const img = document.createElement("img");
+            img.src = image;
+            img.alt = "QR Code";
+
+            const text = document.createElement("p");
+            text.textContent = "Toolaxa QR Code";
+
+            card.append(img, text);
+            printArea.appendChild(card);
+        }
+
+        window.print();
+    });
+
+    // BULK GENERATOR
+    document.getElementById("bulkGenerateBtn").addEventListener("click", () => {
+        const input = document.getElementById("bulkInput").value.trim();
+        const bulkStatus = document.getElementById("bulkStatus");
+        const results = document.getElementById("bulkResults");
+
+        results.innerHTML = "";
+        bulkQRData = [];
+
+        if (typeof QRCode === "undefined") {
+            bulkStatus.textContent = "QR library could not load. Check your internet connection.";
+            return;
+        }
+
+        if (!input) {
+            bulkStatus.textContent = "Please enter at least one URL or text.";
+            return;
+        }
+
+        const lines = input.split(/\r?\n/).map(v => v.trim()).filter(Boolean);
+
+        if (lines.length > 50) {
+            bulkStatus.textContent = "Maximum 50 QR codes can be generated at a time.";
+            return;
+        }
+
+        const settings = getQRSettings();
+
+        lines.forEach((line, index) => {
+            const item = document.createElement("div");
+            item.className = "qr-item";
+
+            const title = document.createElement("h3");
+            title.textContent = "QR Code " + (index + 1);
+
+            const preview = document.createElement("div");
+            preview.style.display = "flex";
+            preview.style.justifyContent = "center";
+            preview.style.overflow = "hidden";
+
+            const caption = document.createElement("p");
+            caption.style.fontSize = "12px";
+            caption.style.color = "#64748b";
+            caption.style.overflowWrap = "anywhere";
+            caption.textContent = line.length > 80 ? line.slice(0, 80) + "..." : line;
+
+            const downloadButton = document.createElement("button");
+            downloadButton.className = "btn btn-green";
+            downloadButton.textContent = "Download PNG";
+
+            createQR(preview, line, settings);
+
+            item.append(title, preview, caption, downloadButton);
+            results.appendChild(item);
+
+            bulkQRData.push({
+                data: line,
+                element: preview,
+                title: "toolaxa-qr-" + (index + 1) + ".png"
+            });
+
+            downloadButton.addEventListener("click", () => {
+                const image = getQRImage(preview);
+                if (image) downloadImage(image, "toolaxa-qr-" + (index + 1) + ".png");
+            });
+        });
+
+        bulkStatus.style.color = "#16a34a";
+        bulkStatus.textContent = lines.length + " QR Codes generated successfully!";
+        document.getElementById("bulkActions").classList.remove("hidden");
+    });
+
+    // DOWNLOAD ALL
+    document.getElementById("downloadAllBtn").addEventListener("click", async () => {
+        for (let i = 0; i < bulkQRData.length; i++) {
+            const image = getQRImage(bulkQRData[i].element);
+            if (image) {
+                downloadImage(image, bulkQRData[i].title);
+                await new Promise(resolve => setTimeout(resolve, 250));
+            }
+        }
+    });
+
+    // PRINT ALL
+    document.getElementById("printAllBtn").addEventListener("click", () => {
+        const printArea = document.getElementById("printArea");
+        printArea.innerHTML = "";
+
+        bulkQRData.forEach((item, index) => {
+            const image = getQRImage(item.element);
+            if (!image) return;
+
+            const card = document.createElement("div");
+            card.className = "print-qr";
+
+            const img = document.createElement("img");
+            img.src = image;
+            img.alt = "QR Code " + (index + 1);
+
+            const text = document.createElement("p");
+            text.textContent = "QR Code " + (index + 1) + ": " + item.data;
+
+            card.append(img, text);
+            printArea.appendChild(card);
+        });
+
+        window.print();
+    });
+
+</script>
+
+</body>
+</html>
