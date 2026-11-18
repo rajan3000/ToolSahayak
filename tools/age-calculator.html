@@ -1,272 +1,496 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Analytics - Toolaxa -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+<title>Free Age Calculator Online - Calculate Your Exact Age | Toolaxa</title>
 
-        gtag('config', 'G-05KPNRM3X5');
-    </script>
+<meta name="description" content="Use Toolaxa's free Age Calculator to calculate your exact age in years, months, days, weeks and total days. Select date of birth and calculate age as of any date.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#174ea6">
 
-    <title>Free Age Calculator Online - Calculate Your Exact Age | Toolaxa</title>
+<link rel="canonical" href="https://toolaxa.com/tools/age-calculator.html">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
 
-    <meta name="description" content="Use Toolaxa's free Age Calculator to calculate your exact age in years, months, days, weeks and total days. Find your next birthday and days remaining instantly.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Age Calculator Online - Toolaxa">
+<meta property="og:description" content="Calculate your exact age in years, months, days and weeks with our free online Age Calculator.">
+<meta property="og:url" content="https://toolaxa.com/tools/age-calculator.html">
+<meta property="og:site_name" content="Toolaxa">
 
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#174ea6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Age Calculator - Toolaxa">
+<meta name="twitter:description" content="Calculate your exact age in years, months, days and weeks online.">
 
-    <link rel="canonical" href="https://toolaxa.com/tools/age-calculator.html">
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-
-    <!-- Open Graph SEO -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Free Age Calculator Online - Toolaxa">
-    <meta property="og:description" content="Calculate your exact age in years, months, days and weeks with our free online Age Calculator.">
-    <meta property="og:url" content="https://toolaxa.com/tools/age-calculator.html">
-    <meta property="og:site_name" content="Toolaxa">
-
-    <!-- Twitter SEO -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Free Age Calculator - Toolaxa">
-    <meta name="twitter:description" content="Calculate your exact age in years, months, days and weeks online.">
-
-  <style>
-    
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f5ff;
-      color: #172044;
-    }
-    header {
-      background: white;
-      padding: 18px 6%;
-      box-shadow: 0 2px 10px #00000012;
-    }
-    header a {
-      color: #3025d9;
-      font-size: 23px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .container {
-      width: min(650px, 92%);
-      margin: 45px auto;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 5px 25px #20206015;
-    }
-    h1 { text-align: center; margin-top: 0; }
-    .subtitle { text-align: center; color: #68708a; }
-    label { display: block; margin: 25px 0 9px; font-weight: bold; }
-    input {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #c9cce5;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 20px;
-      background: #3928e8;
-      color: white;
-      border: 0;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover { background: #2419bd; }
-    #result {
-      display: none;
-      margin-top: 25px;
-      padding: 22px;
-      background: #edfff2;
-      border: 1px solid #bce8c7;
-      border-radius: 10px;
-      text-align: center;
-    }
-    #result h2 { color: #16843a; margin-top: 0; }
-    .age { font-size: 25px; font-weight: bold; margin: 12px 0; }
-    .details { line-height: 1.9; color: #35405c; }
-    #error { color: #d62828; margin-top: 15px; text-align: center; }
-    footer { text-align: center; padding: 20px; color: #777; }
-    @media(max-width: 500px) {
-      .card { padding: 22px 17px; }
-      .container { margin: 25px auto; }
-    }
-  </style>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Age Calculator",
-      "url": "https://toolaxa.com/tools/age-calculator.html",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Any",
-      "description": "Free online Age Calculator to calculate exact age in years, months, days and weeks.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    }
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-05KPNRM3X5');
 </script>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f5ff;
+  color:#172044;
+}
+
+header{
+  background:white;
+  padding:15px 6%;
+  box-shadow:0 2px 10px #00000012;
+}
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#174ea6;
+  font-size:24px;
+  font-weight:bold;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.logo-icon{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#174ea6;
+  color:white;
+}
+
+.back-link{
+  color:#174ea6;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.container{
+  width:min(650px,92%);
+  margin:40px auto;
+}
+
+.card{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 5px 25px #20206015;
+}
+
+h1{
+  text-align:center;
+  margin-top:0;
+  color:#172044;
+}
+
+.subtitle{
+  text-align:center;
+  color:#68708a;
+  margin-bottom:25px;
+}
+
+.date-field{
+  margin-top:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:9px;
+  font-weight:bold;
+  font-size:15px;
+}
+
+input[type="date"]{
+  width:100%;
+  padding:13px;
+  border:1px solid #c9cce5;
+  border-radius:8px;
+  font-size:16px;
+  color:#172044;
+  background:white;
+}
+
+input:focus{
+  outline:none;
+  border-color:#3928e8;
+  box-shadow:0 0 0 3px #3928e81a;
+}
+
+.hint{
+  font-size:12px;
+  color:#68708a;
+  margin-top:6px;
+}
+
+.button-group{
+  display:flex;
+  gap:10px;
+  margin-top:22px;
+}
+
+button{
+  flex:1;
+  padding:14px;
+  background:#3928e8;
+  color:white;
+  border:0;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#2419bd;
+}
+
+.reset-btn{
+  background:#e9edf7;
+  color:#273451;
+}
+
+.reset-btn:hover{
+  background:#dce3f1;
+}
+
+#result{
+  display:none;
+  margin-top:25px;
+  padding:22px;
+  background:#edfff2;
+  border:1px solid #bce8c7;
+  border-radius:10px;
+  text-align:center;
+}
+
+#result h2{
+  color:#16843a;
+  margin-top:0;
+}
+
+.age{
+  font-size:25px;
+  font-weight:bold;
+  margin:12px 0;
+  color:#172044;
+}
+
+.details{
+  line-height:2;
+  color:#35405c;
+  font-size:14px;
+  text-align:left;
+  margin-top:15px;
+  border-top:1px solid #ccebd3;
+  padding-top:12px;
+}
+
+.details strong{
+  color:#172044;
+}
+
+#error{
+  color:#d62828;
+  margin-top:15px;
+  text-align:center;
+  font-size:14px;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:#777;
+  font-size:13px;
+}
+
+@media(max-width:500px){
+  .card{
+    padding:22px 17px;
+  }
+
+  .container{
+    margin:25px auto;
+  }
+
+  .age{
+    font-size:21px;
+  }
+
+  .button-group{
+    flex-direction:column;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Age Calculator",
+  "url":"https://toolaxa.com/tools/age-calculator.html",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Any",
+  "description":"Free online Age Calculator to calculate exact age in years, months, days and weeks.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"INR"
+  }
+}
+</script>
 </head>
 
 <body>
 
 <header>
-  <a href="../index.html">🟪 Toolaxa</a>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-icon">T</span>
+      Toolaxa
+    </a>
+    <a href="../index.html" class="back-link">← Back to Home</a>
+  </div>
 </header>
 
 <main class="container">
-  <section class="card">
-    <h1>🎂 Age Calculator</h1>
-    <p class="subtitle">Calculate your exact age in years, months and days.</p>
 
-    <label for="dob">Enter Your Date of Birth:</label>
+<section class="card">
+
+  <h1>🎂 Age Calculator</h1>
+
+  <p class="subtitle">
+    Calculate your exact age in years, months and days.
+  </p>
+
+  <div class="date-field">
+    <label for="dob">Date of Birth:</label>
     <input type="date" id="dob">
+    <p class="hint">Select your date of birth.</p>
+  </div>
 
-    <button onclick="calculateAge()">Calculate Age</button>
+  <div class="date-field">
+    <label for="asOfDate">Calculate Age As Of:</label>
+    <input type="date" id="asOfDate">
+    <p class="hint">Select today's date or any other date to calculate your age.</p>
+  </div>
 
-    <p id="error"></p>
+  <div class="button-group">
+    <button type="button" onclick="calculateAge()">Calculate Age</button>
+    <button type="button" class="reset-btn" onclick="resetCalculator()">Reset</button>
+  </div>
 
-    <div id="result">
-      <h2>Your Age Is</h2>
-      <div class="age" id="ageText"></div>
-      <div class="details" id="details"></div>
-    </div>
-  </section>
+  <p id="error" role="alert"></p>
+
+  <div id="result" aria-live="polite">
+    <h2>Your Age Is</h2>
+
+    <div class="age" id="ageText"></div>
+
+    <div class="details" id="details"></div>
+  </div>
+
+</section>
+
 </main>
 
-<footer>© 2026 Toolaxa. All Rights Reserved.</footer>
+<footer>
+  © 2026 Toolaxa. All Rights Reserved. Powered by Mr. Rajan.
+</footer>
 
 <script>
-  const dobInput = document.getElementById("dob");
+const dobInput = document.getElementById("dob");
+const asOfInput = document.getElementById("asOfDate");
 
-  function dateString(date) {
-    const d = date.getDate().toString().padStart(2, "0");
-    const m = (date.getMonth() + 1).toString().padStart(2, "0");
-    const y = date.getFullYear();
-    return `${d}-${m}-${y}`;
+function getLocalDateString(date){
+  const year = date.getFullYear();
+  const month = String(date.getMonth()+1).padStart(2,"0");
+  const day = String(date.getDate()).padStart(2,"0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function parseDate(value){
+  if(!value) return null;
+
+  const parts = value.split("-").map(Number);
+  const year = parts[0];
+  const month = parts[1];
+  const day = parts[2];
+
+  const date = new Date(year,month-1,day);
+  date.setHours(0,0,0,0);
+
+  if(
+    date.getFullYear()!==year ||
+    date.getMonth()!==month-1 ||
+    date.getDate()!==day
+  ){
+    return null;
   }
 
-  function daysBetween(start, end) {
-    const utcStart = Date.UTC(
-      start.getFullYear(), start.getMonth(), start.getDate()
+  return date;
+}
+
+function dateString(date){
+  const d = String(date.getDate()).padStart(2,"0");
+  const m = String(date.getMonth()+1).padStart(2,"0");
+  const y = date.getFullYear();
+
+  return `${d}-${m}-${y}`;
+}
+
+function daysBetween(start,end){
+  const utcStart = Date.UTC(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate()
+  );
+
+  const utcEnd = Date.UTC(
+    end.getFullYear(),
+    end.getMonth(),
+    end.getDate()
+  );
+
+  return Math.round((utcEnd-utcStart)/86400000);
+}
+
+function calculateAge(){
+
+  const error = document.getElementById("error");
+  const result = document.getElementById("result");
+
+  error.textContent="";
+  result.style.display="none";
+
+  if(!dobInput.value){
+    error.textContent="Please select your Date of Birth.";
+    return;
+  }
+
+  if(!asOfInput.value){
+    error.textContent="Please select the Calculate Age As Of date.";
+    return;
+  }
+
+  const dob = parseDate(dobInput.value);
+  const asOf = parseDate(asOfInput.value);
+
+  if(!dob || !asOf){
+    error.textContent="Please select valid dates.";
+    return;
+  }
+
+  if(asOf<dob){
+    error.textContent="Calculate Age As Of date cannot be before Date of Birth.";
+    return;
+  }
+
+  const birthYear = dob.getFullYear();
+  const birthMonth = dob.getMonth();
+  const birthDay = dob.getDate();
+
+  let years = asOf.getFullYear()-birthYear;
+  let months = asOf.getMonth()-birthMonth;
+  let days = asOf.getDate()-birthDay;
+
+  if(days<0){
+    months--;
+
+    const previousMonth = new Date(
+      asOf.getFullYear(),
+      asOf.getMonth(),
+      0
     );
-    const utcEnd = Date.UTC(
-      end.getFullYear(), end.getMonth(), end.getDate()
-    );
-    return Math.floor((utcEnd - utcStart) / 86400000);
+
+    days += previousMonth.getDate();
   }
 
-  function calculateAge() {
-    const error = document.getElementById("error");
-    const result = document.getElementById("result");
-    error.textContent = "";
-    result.style.display = "none";
-
-    if (!dobInput.value) {
-      error.textContent = "Please enter your date of birth.";
-      return;
-    }
-
-    const [year, month, day] = dobInput.value.split("-").map(Number);
-    const dob = new Date(year, month - 1, day);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    if (
-      dob.getFullYear() !== year ||
-      dob.getMonth() !== month - 1 ||
-      dob.getDate() !== day
-    ) {
-      error.textContent = "Please enter a valid date.";
-      return;
-    }
-
-    if (dob > today) {
-      error.textContent = "Date of birth cannot be in the future.";
-      return;
-    }
-
-    let years = today.getFullYear() - year;
-    let months = today.getMonth() - (month - 1);
-    let days = today.getDate() - day;
-
-    if (days < 0) {
-      months--;
-      const previousMonthDays = new Date(
-        today.getFullYear(), today.getMonth(), 0
-      ).getDate();
-      days += previousMonthDays;
-    }
-
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-
-    const totalDays = daysBetween(dob, today);
-    const totalWeeks = Math.floor(totalDays / 7);
-    const birthDay = dob.toLocaleDateString("en-IN", {
-      weekday: "long"
-    });
-
-    // For 29 February birthdays, use 28 February in non-leap years.
-    function nextBirthdayDate(targetYear) {
-      if (month === 2 && day === 29) {
-        const isLeap = new Date(targetYear, 1, 29).getMonth() === 1;
-        return new Date(targetYear, 1, isLeap ? 29 : 28);
-      }
-      return new Date(targetYear, month - 1, day);
-    }
-
-    let nextBirthday = nextBirthdayDate(today.getFullYear());
-    if (nextBirthday < today) {
-      nextBirthday = nextBirthdayDate(today.getFullYear() + 1);
-    }
-
-    const daysLeft = daysBetween(today, nextBirthday);
-
-    document.getElementById("ageText").textContent =
-      `${years} Years, ${months} Months, ${days} Days`;
-
-    document.getElementById("details").innerHTML = `
-      <strong>Date of Birth:</strong> ${dateString(dob)}<br>
-      <strong>Birth Day:</strong> ${birthDay}<br>
-      <strong>Total Days:</strong> ${totalDays.toLocaleString("en-IN")}<br>
-      <strong>Total Weeks:</strong> ${totalWeeks.toLocaleString("en-IN")}<br>
-      <strong>Next Birthday:</strong> ${dateString(nextBirthday)}<br>
-      <strong>Days Until Birthday:</strong> ${daysLeft}
-    `;
-
-    result.style.display = "block";
+  if(months<0){
+    years--;
+    months+=12;
   }
 
-  const today = new Date();
-const localToday = 
-  `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  const totalDays = daysBetween(dob,asOf);
+  const totalWeeks = Math.floor(totalDays/7);
+  const remainingDays = totalDays%7;
 
-dobInput.max = localToday;
+  const birthDayName = dob.toLocaleDateString("en-IN",{
+    weekday:"long"
+  });
+
+  const asOfDayName = asOf.toLocaleDateString("en-IN",{
+    weekday:"long"
+  });
+
+  document.getElementById("ageText").textContent =
+    `${years} Years, ${months} Months, ${days} Days`;
+
+  const details = document.getElementById("details");
+
+  details.innerHTML="";
+
+  const rows = [
+    ["Date of Birth",dateString(dob)],
+    ["Birth Day",birthDayName],
+    ["Calculate Age As Of",dateString(asOf)],
+    ["Selected Date Day",asOfDayName],
+    ["Total Years",years.toLocaleString("en-IN")],
+    ["Total Months",(years*12+months).toLocaleString("en-IN")],
+    ["Total Weeks",totalWeeks.toLocaleString("en-IN")],
+    ["Extra Days After Weeks",remainingDays],
+    ["Total Days",totalDays.toLocaleString("en-IN")]
+  ];
+
+  rows.forEach(([label,value])=>{
+    const row=document.createElement("div");
+    const strong=document.createElement("strong");
+    strong.textContent=label+": ";
+    row.appendChild(strong);
+    row.appendChild(document.createTextNode(value));
+    details.appendChild(row);
+  });
+
+  result.style.display="block";
+  result.scrollIntoView({
+    behavior:"smooth",
+    block:"nearest"
+  });
+}
+
+function resetCalculator(){
+  dobInput.value="";
+  asOfInput.value=getLocalDateString(new Date());
+
+  document.getElementById("error").textContent="";
+  document.getElementById("result").style.display="none";
+}
+
+// Set maximum date of birth and default calculation date.
+const today = getLocalDateString(new Date());
+
+dobInput.max=today;
+asOfInput.value=today;
+
+// Recalculate only when user clicks Calculate Age.
 </script>
 
 </body>
