@@ -8,11 +8,10 @@
 
     <!-- Google Analytics - Toolaxa -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
-        <script>
+    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-05KPNRM3X5');
     </script>
 
@@ -21,10 +20,9 @@
     <meta name="description" content="Read the Toolaxa Disclaimer covering calculator estimates, financial information, image tools, digital signatures and website usage.">
 
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#174ea6">
+    <meta name="theme-color" content="#1764df">
 
     <link rel="canonical" href="https://toolaxa.com/disclaimer.html">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <meta property="og:type" content="website">
@@ -38,212 +36,829 @@
     <meta name="twitter:description" content="Read important information about Toolaxa website tools and services.">
 
     <style>
-    
-        .disclaimer-container {
-            max-width: 950px;
-            margin: 45px auto;
-            padding: 0 20px;
+
+        /* =========================
+           GLOBAL RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+            line-height: 1.7;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .disclaimer-header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #e7edf6;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .disclaimer-nav {
+            max-width: 1200px;
+            min-height: 76px;
+            margin: auto;
+            padding: 12px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* LOGO */
+
+        .disclaimer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #101828;
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .disclaimer-logo-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #1764df;
+            color: #ffffff;
+
+            border-radius: 12px;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .disclaimer-logo-highlight {
+            color: #1764df;
+        }
+
+        /* BACK BUTTON */
+
+        .disclaimer-back-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            background: #1764df;
+            color: #ffffff;
+
+            padding: 11px 20px;
+            border-radius: 9px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: all 0.25s ease;
+        }
+
+        .disclaimer-back-btn:hover {
+            background: #104bb4;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .disclaimer-main {
+            flex: 1;
+            width: 100%;
+            max-width: 1050px;
+
+            margin: 0 auto;
+            padding: 45px 25px 60px;
+        }
+
+        /* HERO SECTION */
+
+        .disclaimer-hero {
+            text-align: center;
+            padding: 50px 25px;
+
+            background: linear-gradient(
+                135deg,
+                #e9f2ff,
+                #f5f9ff
+            );
+
+            border: 1px solid #e0eaff;
+            border-radius: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .disclaimer-label {
+            display: inline-block;
+
+            background: #dceaff;
+            color: #1764df;
+
+            padding: 6px 15px;
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+        .disclaimer-hero h1 {
+            color: #1764df;
+            font-size: 40px;
+            line-height: 1.25;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .disclaimer-hero p {
+            color: #526078;
+            font-size: 16px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* =========================
+           DISCLAIMER CARD
+        ========================= */
 
         .disclaimer-card {
-            background: #fff;
+            width: 100%;
+            background: #ffffff;
+
             padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            border-radius: 14px;
+
+            border: 1px solid #e9edf4;
+
+            box-shadow: 0 4px 15px rgba(20,50,100,0.04);
         }
 
-        .disclaimer-card h1 {
-            color: #2563eb;
-            margin-bottom: 10px;
-        }
-
-        .disclaimer-card h2 {
-            color: #1e293b;
-            font-size: 21px;
-            margin-top: 28px;
-            margin-bottom: 10px;
-        }
-
-        .disclaimer-card p,
-        .disclaimer-card li {
-            color: #475569;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .disclaimer-card ul {
-            padding-left: 22px;
-        }
+        /* UPDATED DATE */
 
         .updated-date {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .home-link {
             display: inline-block;
-            margin-top: 25px;
-            padding: 11px 22px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
+
+            padding: 8px 13px;
+            margin-bottom: 25px;
+
+            background: #f0f6ff;
             border-radius: 7px;
+
+            color: #526078;
+            font-size: 13px;
         }
 
-        .home-link:hover {
-            background: #1d4ed8;
+        /* INTRO */
+
+        .disclaimer-intro {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.9;
+
+            padding-bottom: 23px;
+            margin-bottom: 10px;
+
+            border-bottom: 1px solid #edf1f7;
         }
 
-        @media (max-width: 600px) {
-            .disclaimer-container {
-                margin: 25px auto;
-                padding: 0 12px;
+        /* CONTENT SECTIONS */
+
+        .disclaimer-section {
+            margin-top: 27px;
+        }
+
+        .disclaimer-section h2 {
+            color: #1764df;
+            font-size: 21px;
+            font-weight: 750;
+
+            margin-bottom: 12px;
+            padding-bottom: 9px;
+
+            border-bottom: 2px solid #edf3ff;
+        }
+
+        .disclaimer-section p {
+            color: #586477;
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+
+        .disclaimer-section ul {
+            padding-left: 24px;
+            margin: 12px 0 16px;
+        }
+
+        .disclaimer-section li {
+            color: #586477;
+            font-size: 15px;
+            line-height: 1.9;
+            padding-left: 5px;
+            margin-bottom: 5px;
+        }
+
+        .disclaimer-section li::marker {
+            color: #1764df;
+        }
+
+        /* EMAIL LINK */
+
+        .disclaimer-email {
+            color: #1764df;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .disclaimer-email:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           BOTTOM HOME BUTTON
+        ========================= */
+
+        .disclaimer-bottom {
+            text-align: center;
+            padding: 25px 0 5px;
+        }
+
+        .disclaimer-home-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+
+            padding: 13px 24px;
+
+            background: #1764df;
+            color: #ffffff;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 750;
+
+            transition: 0.25s;
+        }
+
+        .disclaimer-home-btn:hover {
+            background: #104bb4;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .disclaimer-footer {
+            width: 100%;
+            background: #111d34;
+            color: #ffffff;
+            margin-top: auto;
+        }
+
+        .disclaimer-footer-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 24px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .disclaimer-footer-brand {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .disclaimer-footer-brand span {
+            color: #60a5fa;
+        }
+
+        .disclaimer-footer-inner p {
+            color: #b9c5d8;
+            font-size: 12px;
+        }
+
+        .disclaimer-footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+
+        .disclaimer-footer-links a {
+            color: #d8e2f2;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .disclaimer-footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .disclaimer-copyright {
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.12);
+
+            padding: 15px 20px;
+
+            color: #b9c5d8;
+            font-size: 12px;
+        }
+
+        /* =========================
+           TABLET RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .disclaimer-nav {
+                min-height: 68px;
+                padding: 10px 18px;
+            }
+
+            .disclaimer-logo {
+                font-size: 23px;
+            }
+
+            .disclaimer-logo-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 22px;
+            }
+
+            .disclaimer-main {
+                padding: 30px 18px 45px;
+            }
+
+            .disclaimer-hero {
+                padding: 40px 20px;
+            }
+
+            .disclaimer-hero h1 {
+                font-size: 33px;
             }
 
             .disclaimer-card {
-                padding: 22px 17px;
+                padding: 27px 23px;
             }
 
-            .disclaimer-card h1 {
-                font-size: 26px;
+            .disclaimer-footer-inner {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .disclaimer-card h2 {
-                font-size: 19px;
+            .disclaimer-footer-links {
+                justify-content: center;
             }
         }
-    
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .disclaimer-nav {
+                padding: 10px 13px;
+                gap: 8px;
+            }
+
+            .disclaimer-logo {
+                font-size: 20px;
+                gap: 7px;
+            }
+
+            .disclaimer-logo-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 19px;
+                border-radius: 9px;
+            }
+
+            .disclaimer-back-btn {
+                padding: 9px 11px;
+                font-size: 11px;
+                gap: 4px;
+            }
+
+            .disclaimer-main {
+                padding: 23px 13px 35px;
+            }
+
+            .disclaimer-hero {
+                padding: 35px 16px;
+                border-radius: 13px;
+                margin-bottom: 20px;
+            }
+
+            .disclaimer-hero h1 {
+                font-size: 29px;
+            }
+
+            .disclaimer-hero p {
+                font-size: 13px;
+            }
+
+            .disclaimer-card {
+                padding: 21px 17px;
+                border-radius: 11px;
+            }
+
+            .updated-date {
+                font-size: 11px;
+                margin-bottom: 20px;
+            }
+
+            .disclaimer-intro {
+                font-size: 13px;
+            }
+
+            .disclaimer-section {
+                margin-top: 23px;
+            }
+
+            .disclaimer-section h2 {
+                font-size: 18px;
+            }
+
+            .disclaimer-section p,
+            .disclaimer-section li {
+                font-size: 13px;
+            }
+
+            .disclaimer-section ul {
+                padding-left: 19px;
+            }
+
+            .disclaimer-footer-inner {
+                padding: 22px 15px;
+            }
+
+            .disclaimer-footer-links {
+                gap: 10px 14px;
+            }
+
+            .disclaimer-footer-links a {
+                font-size: 11px;
+            }
+
+            .disclaimer-copyright {
+                font-size: 10px;
+            }
+        }
+
+        /* REDUCED MOTION */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+
     </style>
+
 </head>
 
 <body>
 
-    <div class="disclaimer-container">
-        <div class="disclaimer-card">
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="disclaimer-header">
+
+        <div class="disclaimer-nav">
+
+            <a href="index.html" class="disclaimer-logo">
+
+                <span class="disclaimer-logo-icon">T</span>
+
+                <span>
+                    Tool<span class="disclaimer-logo-highlight">axa</span>
+                </span>
+
+            </a>
+
+            <a href="index.html" class="disclaimer-back-btn">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="disclaimer-main">
+
+        <!-- HERO -->
+
+        <section class="disclaimer-hero">
+
+            <span class="disclaimer-label">
+                IMPORTANT INFORMATION
+            </span>
 
             <h1>Disclaimer</h1>
+
+            <p>
+                Please read the following information carefully
+                before using Toolaxa online tools and services.
+            </p>
+
+        </section>
+
+
+        <!-- DISCLAIMER CONTENT -->
+
+        <article class="disclaimer-card">
 
             <p class="updated-date">
                 Last Updated: 12 November 2026
             </p>
 
-            <p>
+
+            <p class="disclaimer-intro">
                 Welcome to Toolaxa. The information and tools provided
                 on this website are intended for general informational and
                 personal use. By using this website, you agree to the terms
                 mentioned in this Disclaimer.
             </p>
 
-            <h2>1. General Information</h2>
 
-            <p>
-                Toolaxa provides online utilities such as Age Calculator,
-                EMI Calculator, SIP Calculator, GST Calculator, Image
-                Compressor, Photo Resizer and Signature Maker.
-            </p>
+            <!-- SECTION 1 -->
 
-            <p>
-                We try to keep our tools accurate and useful. However,
-                we do not guarantee that every result will always be
-                completely accurate, error-free or suitable for every
-                individual situation.
-            </p>
+            <section class="disclaimer-section">
 
-            <h2>2. No Financial or Investment Advice</h2>
+                <h2>1. General Information</h2>
 
-            <p>
-                The EMI, SIP and GST calculators provide estimates based
-                on the information entered by users.
-            </p>
+                <p>
+                    Toolaxa provides online utilities such as Age Calculator,
+                    EMI Calculator, SIP Calculator, GST Calculator, Image
+                    Compressor, Photo Resizer and Signature Maker.
+                </p>
 
-            <ul>
-                <li>EMI results may differ from the final amount charged by a bank or lender.</li>
-                <li>SIP returns are estimates and are not guaranteed.</li>
-                <li>Mutual fund investments are subject to market risks.</li>
-                <li>GST calculations should be verified according to applicable tax rules.</li>
-            </ul>
+                <p>
+                    We try to keep our tools accurate and useful. However,
+                    we do not guarantee that every result will always be
+                    completely accurate, error-free or suitable for every
+                    individual situation.
+                </p>
 
-            <p>
-                Toolaxa does not provide financial, investment, tax
-                or legal advice. Please consult a qualified professional
-                before making important financial or tax-related decisions.
-            </p>
+            </section>
 
-            <h2>3. Calculator Accuracy</h2>
 
-            <p>
-                Calculator results depend on the values and information
-                entered by users. Please verify important calculations
-                independently before using them for financial, business
-                or official purposes.
-            </p>
+            <!-- SECTION 2 -->
 
-            <h2>4. Image Tools and Signature Maker</h2>
+            <section class="disclaimer-section">
 
-            <p>
-                Our Image Compressor, Photo Resizer and Signature Maker
-                are designed to help users process images and create
-                digital signatures.
-            </p>
+                <h2>2. No Financial or Investment Advice</h2>
 
-            <ul>
-                <li>Output quality may vary depending on the original file, browser and device.</li>
-                <li>Always keep a backup of important original files.</li>
-                <li>Users are responsible for having the necessary rights to use uploaded images.</li>
-                <li>A digital signature created using our tool may not qualify as a legally valid electronic signature for every purpose.</li>
-            </ul>
+                <p>
+                    The EMI, SIP and GST calculators provide estimates based
+                    on the information entered by users.
+                </p>
 
-            <p>
-                Do not use shared or untrusted devices to process sensitive
-                documents or signatures.
-            </p>
+                <ul>
+                    <li>EMI results may differ from the final amount charged by a bank or lender.</li>
+                    <li>SIP returns are estimates and are not guaranteed.</li>
+                    <li>Mutual fund investments are subject to market risks.</li>
+                    <li>GST calculations should be verified according to applicable tax rules.</li>
+                </ul>
 
-            <h2>5. Third-Party Websites</h2>
+                <p>
+                    Toolaxa does not provide financial, investment, tax
+                    or legal advice. Please consult a qualified professional
+                    before making important financial or tax-related decisions.
+                </p>
 
-            <p>
-                Toolaxa may contain links to third-party websites or
-                services. We do not control and are not responsible for
-                their content, privacy policies or practices.
-            </p>
+            </section>
 
-            <h2>6. Limitation of Liability</h2>
 
-            <p>
-                To the extent permitted by applicable law, Toolaxa
-                will not be responsible for losses or damages arising
-                from the use of, or reliance on, information or results
-                provided by this website.
-            </p>
+            <!-- SECTION 3 -->
 
-            <h2>7. Changes to This Disclaimer</h2>
+            <section class="disclaimer-section">
 
-            <p>
-                We may update this Disclaimer from time to time.
-                Any changes will be published on this page with an
-                updated revision date.
-            </p>
+                <h2>3. Calculator Accuracy</h2>
 
-            <h2>8. Contact Us</h2>
+                <p>
+                    Calculator results depend on the values and information
+                    entered by users. Please verify important calculations
+                    independently before using them for financial, business
+                    or official purposes.
+                </p>
 
-            <p>
-                If you have any questions about this Disclaimer,
-                please contact us:
-            </p>
+            </section>
 
-            <p>
-                <strong>Email:</strong>
-                <a href="mailto:officecare.support@gmail.com">
-                    officecare.support@gmail.com
-                </a>
-            </p>
 
-            <a href="index.html" class="home-link">
-                ← Back to Home
+            <!-- SECTION 4 -->
+
+            <section class="disclaimer-section">
+
+                <h2>4. Image Tools and Signature Maker</h2>
+
+                <p>
+                    Our Image Compressor, Photo Resizer and Signature Maker
+                    are designed to help users process images and create
+                    digital signatures.
+                </p>
+
+                <ul>
+                    <li>Output quality may vary depending on the original file, browser and device.</li>
+                    <li>Always keep a backup of important original files.</li>
+                    <li>Users are responsible for having the necessary rights to use uploaded images.</li>
+                    <li>A digital signature created using our tool may not qualify as a legally valid electronic signature for every purpose.</li>
+                </ul>
+
+                <p>
+                    Do not use shared or untrusted devices to process sensitive
+                    documents or signatures.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 5 -->
+
+            <section class="disclaimer-section">
+
+                <h2>5. Third-Party Websites</h2>
+
+                <p>
+                    Toolaxa may contain links to third-party websites or
+                    services. We do not control and are not responsible for
+                    their content, privacy policies or practices.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 6 -->
+
+            <section class="disclaimer-section">
+
+                <h2>6. Limitation of Liability</h2>
+
+                <p>
+                    To the extent permitted by applicable law, Toolaxa
+                    will not be responsible for losses or damages arising
+                    from the use of, or reliance on, information or results
+                    provided by this website.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 7 -->
+
+            <section class="disclaimer-section">
+
+                <h2>7. Changes to This Disclaimer</h2>
+
+                <p>
+                    We may update this Disclaimer from time to time.
+                    Any changes will be published on this page with an
+                    updated revision date.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 8 -->
+
+            <section class="disclaimer-section">
+
+                <h2>8. Contact Us</h2>
+
+                <p>
+                    If you have any questions about this Disclaimer,
+                    please contact us:
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+
+                    <a
+                        class="disclaimer-email"
+                        href="mailto:officecare.support@gmail.com">
+
+                        officecare.support@gmail.com
+
+                    </a>
+                </p>
+
+            </section>
+
+        </article>
+
+
+        <!-- BACK TO HOME -->
+
+        <div class="disclaimer-bottom">
+
+            <a href="index.html" class="disclaimer-home-btn">
+                ← Back to Toolaxa Homepage
             </a>
 
         </div>
-    </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="disclaimer-footer">
+
+        <div class="disclaimer-footer-inner">
+
+            <div>
+
+                <div class="disclaimer-footer-brand">
+                    Tool<span>axa</span>
+                </div>
+
+                <p>
+                    Your Everyday Online Tools, All in One Place.
+                </p>
+
+            </div>
+
+
+            <nav class="disclaimer-footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About Us</a>
+
+                <a href="contact.html">Contact Us</a>
+
+                <a href="privacy-policy.html">Privacy Policy</a>
+
+                <a href="disclaimer.html">Disclaimer</a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="disclaimer-copyright">
+
+            © 2026 Toolaxa. All Rights Reserved. Powered by Mr. Rajan.
+
+        </div>
+
+    </footer>
 
 </body>
 </html>

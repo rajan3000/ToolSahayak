@@ -2,18 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Analytics - Toolaxa -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
-        <script>
+    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-05KPNRM3X5');
     </script>
 
@@ -23,10 +21,9 @@
         content="Read the Toolaxa Privacy Policy to understand how we handle personal information, image processing, cookies, third-party services and user privacy.">
 
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#174ea6">
+    <meta name="theme-color" content="#1764df">
 
     <link rel="canonical" href="https://toolaxa.com/privacy-policy.html">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <meta property="og:type" content="website">
@@ -40,112 +37,559 @@
     <meta name="twitter:description" content="Read how Toolaxa handles information and protects user privacy.">
 
     <style>
-        .privacy-container {
-            max-width: 950px;
-            margin: 45px auto;
-            padding: 20px;
+
+        /* =========================
+           GLOBAL RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+            line-height: 1.7;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .privacy-header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #e7edf6;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .privacy-nav {
+            max-width: 1200px;
+            min-height: 76px;
+            margin: auto;
+            padding: 12px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* LOGO */
+
+        .privacy-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #101828;
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .privacy-logo-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #1764df;
+            color: #ffffff;
+
+            border-radius: 12px;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .privacy-logo-highlight {
+            color: #1764df;
+        }
+
+        /* BACK BUTTON */
+
+        .privacy-back-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            background: #1764df;
+            color: #ffffff;
+
+            padding: 11px 20px;
+            border-radius: 9px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: all 0.25s ease;
+        }
+
+        .privacy-back-btn:hover {
+            background: #104bb4;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .privacy-main {
+            flex: 1;
+            width: 100%;
+            max-width: 1050px;
+
+            margin: 0 auto;
+            padding: 45px 25px 60px;
+        }
+
+        /* HERO */
 
         .privacy-hero {
             text-align: center;
-            padding: 40px 20px;
-            background: #eff6ff;
-            border-radius: 14px;
+            padding: 50px 25px;
+
+            background: linear-gradient(
+                135deg,
+                #e9f2ff,
+                #f5f9ff
+            );
+
+            border: 1px solid #e0eaff;
+            border-radius: 18px;
+
             margin-bottom: 30px;
         }
 
+        .privacy-label {
+            display: inline-block;
+
+            background: #dceaff;
+            color: #1764df;
+
+            padding: 6px 15px;
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
         .privacy-hero h1 {
-            color: #2563eb;
+            color: #1764df;
+            font-size: 40px;
+            line-height: 1.25;
             margin-bottom: 12px;
+            font-weight: 800;
         }
 
-        .privacy-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        .privacy-hero p {
+            color: #526078;
+            font-size: 16px;
+            max-width: 650px;
+            margin: auto;
         }
 
-        .privacy-card h2 {
-            color: #2563eb;
+        .privacy-updated {
+            display: inline-block;
+            margin-top: 18px !important;
+
+            background: #ffffff;
+            padding: 7px 15px;
+            border-radius: 7px;
+
+            font-size: 13px !important;
+            color: #64748b !important;
+        }
+
+        /* =========================
+           PRIVACY CONTENT
+        ========================= */
+
+        .privacy-content {
+            width: 100%;
+            background: #ffffff;
+
+            padding: 35px;
+            border-radius: 14px;
+
+            border: 1px solid #e9edf4;
+
+            box-shadow: 0 4px 15px rgba(20,50,100,0.04);
+        }
+
+        .privacy-section {
+            margin-bottom: 27px;
+        }
+
+        .privacy-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacy-section h2 {
+            color: #1764df;
             font-size: 21px;
+            font-weight: 750;
+
+            margin-bottom: 12px;
+            padding-bottom: 9px;
+
+            border-bottom: 2px solid #edf3ff;
+        }
+
+        .privacy-section p {
+            color: #586477;
+            font-size: 15px;
+            line-height: 1.9;
             margin-bottom: 12px;
         }
 
-        .privacy-card p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 10px;
+        .privacy-section ul {
+            padding-left: 24px;
+            margin: 12px 0 16px;
         }
 
-        .privacy-card ul {
-            padding-left: 22px;
-            color: #555;
+        .privacy-section li {
+            color: #586477;
+            font-size: 15px;
             line-height: 1.9;
+            padding-left: 5px;
+            margin-bottom: 5px;
         }
 
-        .privacy-card a {
-            color: #2563eb;
-            text-decoration: none;
+        .privacy-section li::marker {
+            color: #1764df;
         }
 
-        .privacy-card a:hover {
+        /* EMAIL LINK */
+
+        .privacy-email {
+            color: #1764df;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .privacy-email:hover {
             text-decoration: underline;
         }
 
-        .back-home {
-            display: inline-block;
-            margin: 20px 0;
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: bold;
+        /* =========================
+           BACK HOME
+        ========================= */
+
+        .privacy-bottom {
+            text-align: center;
+            padding: 25px 0 5px;
         }
 
-        .last-updated {
-            color: #64748b;
+        .privacy-home-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+
+            padding: 13px 24px;
+
+            background: #1764df;
+            color: #ffffff;
+
+            border-radius: 10px;
+
             font-size: 14px;
-            margin-top: 12px;
+            font-weight: 750;
+
+            transition: 0.25s;
         }
 
-        @media (max-width: 600px) {
-            .privacy-container {
-                margin: 20px auto;
-                padding: 12px;
+        .privacy-home-btn:hover {
+            background: #104bb4;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .privacy-footer {
+            width: 100%;
+            background: #111d34;
+            color: #ffffff;
+            margin-top: auto;
+        }
+
+        .privacy-footer-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 24px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .privacy-footer-brand {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .privacy-footer-brand span {
+            color: #60a5fa;
+        }
+
+        .privacy-footer-inner p {
+            color: #b9c5d8;
+            font-size: 12px;
+        }
+
+        .privacy-footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+
+        .privacy-footer-links a {
+            color: #d8e2f2;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .privacy-footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .privacy-copyright {
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.12);
+
+            padding: 15px 20px;
+
+            color: #b9c5d8;
+            font-size: 12px;
+        }
+
+        /* =========================
+           TABLET RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .privacy-nav {
+                min-height: 68px;
+                padding: 10px 18px;
             }
 
-            .privacy-card {
-                padding: 18px;
+            .privacy-logo {
+                font-size: 23px;
             }
 
-            .privacy-card h2 {
+            .privacy-logo-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 22px;
+            }
+
+            .privacy-main {
+                padding: 30px 18px 45px;
+            }
+
+            .privacy-hero {
+                padding: 40px 20px;
+            }
+
+            .privacy-hero h1 {
+                font-size: 33px;
+            }
+
+            .privacy-content {
+                padding: 27px 23px;
+            }
+
+            .privacy-footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .privacy-footer-links {
+                justify-content: center;
+            }
+        }
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .privacy-nav {
+                padding: 10px 13px;
+                gap: 8px;
+            }
+
+            .privacy-logo {
+                font-size: 20px;
+                gap: 7px;
+            }
+
+            .privacy-logo-icon {
+                width: 34px;
+                height: 34px;
                 font-size: 19px;
+                border-radius: 9px;
+            }
+
+            .privacy-back-btn {
+                padding: 9px 11px;
+                font-size: 11px;
+                gap: 4px;
+            }
+
+            .privacy-main {
+                padding: 23px 13px 35px;
+            }
+
+            .privacy-hero {
+                padding: 35px 16px;
+                border-radius: 13px;
+                margin-bottom: 20px;
+            }
+
+            .privacy-hero h1 {
+                font-size: 29px;
+            }
+
+            .privacy-hero p {
+                font-size: 13px;
+            }
+
+            .privacy-content {
+                padding: 21px 17px;
+                border-radius: 11px;
+            }
+
+            .privacy-section {
+                margin-bottom: 23px;
+            }
+
+            .privacy-section h2 {
+                font-size: 18px;
+            }
+
+            .privacy-section p,
+            .privacy-section li {
+                font-size: 13px;
+            }
+
+            .privacy-section ul {
+                padding-left: 19px;
+            }
+
+            .privacy-updated {
+                font-size: 11px !important;
+            }
+
+            .privacy-footer-inner {
+                padding: 22px 15px;
+            }
+
+            .privacy-footer-links {
+                gap: 10px 14px;
+            }
+
+            .privacy-footer-links a {
+                font-size: 11px;
+            }
+
+            .privacy-copyright {
+                font-size: 10px;
             }
         }
-    </style>
-</head>
 
+        /* REDUCED MOTION */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+
+    </style>
+
+</head>
 
 <body>
 
-    <header class="header">
-        <div class="nav-container">
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-            <a href="index.html" class="logo">
-                <span class="logo-icon">T</span>
-                <span>Tool<span class="logo-highlight">Sahayak</span></span>
+    <header class="privacy-header">
+
+        <div class="privacy-nav">
+
+            <a href="index.html" class="privacy-logo">
+
+                <span class="privacy-logo-icon">T</span>
+
+                <span>
+                    Tool<span class="privacy-logo-highlight">axa</span>
+                </span>
+
             </a>
 
-            <a href="index.html" class="back-home">
+            <a href="index.html" class="privacy-back-btn">
                 ← Back to Home
             </a>
 
         </div>
+
     </header>
 
-    <main class="privacy-container">
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="privacy-main">
+
+        <!-- HERO -->
 
         <section class="privacy-hero">
+
+            <span class="privacy-label">
+                YOUR PRIVACY MATTERS
+            </span>
+
             <h1>Privacy Policy</h1>
 
             <p>
@@ -153,211 +597,327 @@
                 handles information when you use our website.
             </p>
 
-            <p class="last-updated">
+            <p class="privacy-updated">
                 Last Updated: 12 November 2026
             </p>
+
         </section>
 
-        <section class="privacy-card">
-            <h2>1. Introduction</h2>
 
-            <p>
-                Welcome to Toolaxa. This Privacy Policy explains
-                how information may be collected, used and protected
-                when you visit or use our website.
-            </p>
+        <!-- PRIVACY CONTENT -->
 
-            <p>
-                By using Toolaxa, you acknowledge this Privacy
-                Policy. Please do not use the website if you do not
-                agree with its terms.
-            </p>
-        </section>
+        <article class="privacy-content">
 
-        <section class="privacy-card">
-            <h2>2. Information We Collect</h2>
 
-            <p>
-                Toolaxa does not currently require users to
-                create an account to use its basic tools.
-            </p>
+            <!-- SECTION 1 -->
 
-            <p>
-                When you contact us by email, we may receive
-                information such as your name, email address
-                and the contents of your message.
-            </p>
+            <section class="privacy-section">
 
-            <p>
-                Our hosting provider or other technical services
-                may process standard technical information,
-                such as browser details, IP address and server logs,
-                depending on the services configured.
-            </p>
-        </section>
+                <h2>1. Introduction</h2>
 
-        <section class="privacy-card">
-            <h2>3. Image and Signature Tools</h2>
+                <p>
+                    Welcome to Toolaxa. This Privacy Policy explains
+                    how information may be collected, used and protected
+                    when you visit or use our website.
+                </p>
 
-            <p>
-                Our Image Compressor, Photo Resizer and Signature
-                Maker are designed to process files directly
-                within your browser.
-            </p>
+                <p>
+                    By using Toolaxa, you acknowledge this Privacy
+                    Policy. Please do not use the website if you do not
+                    agree with its terms.
+                </p>
 
-            <p>
-                These tools do not intentionally upload your
-                selected images or signatures to our server
-                during normal local processing.
-            </p>
+            </section>
 
-            <p>
-                Please remember that downloaded files are saved
-                on your own device. We recommend avoiding
-                sensitive personal documents on devices you
-                do not trust.
-            </p>
-        </section>
 
-        <section class="privacy-card">
-            <h2>4. Cookies and Similar Technologies</h2>
+            <!-- SECTION 2 -->
 
-            <p>
-                Cookies are small files that websites may store
-                in your browser.
-            </p>
+            <section class="privacy-section">
 
-            <p>
-                Toolaxa may use cookies or similar technologies
-                in the future for website functionality, analytics,
-                advertising and performance measurement.
-            </p>
+                <h2>2. Information We Collect</h2>
 
-            <p>
-                If such services are introduced, this policy
-                will be updated to describe their use.
-            </p>
-        </section>
+                <p>
+                    Toolaxa does not currently require users to
+                    create an account to use its basic tools.
+                </p>
 
-        <section class="privacy-card">
-            <h2>5. Third-Party Services and Advertising</h2>
+                <p>
+                    When you contact us by email, we may receive
+                    information such as your name, email address
+                    and the contents of your message.
+                </p>
 
-            <p>
-                Toolaxa may use third-party services such as
-                website hosting, analytics providers and advertising
-                partners in the future.
-            </p>
+                <p>
+                    Our hosting provider or other technical services
+                    may process standard technical information,
+                    such as browser details, IP address and server logs,
+                    depending on the services configured.
+                </p>
 
-            <p>
-                If Google AdSense or other advertising services
-                are enabled, third-party vendors may use cookies
-                or similar technologies to display or measure
-                advertisements.
-            </p>
+            </section>
 
-            <p>
-                These third-party services operate under their
-                own privacy policies and terms.
-            </p>
-        </section>
 
-        <section class="privacy-card">
-            <h2>6. How We Use Information</h2>
+            <!-- SECTION 3 -->
 
-            <p>
-                Information received by Toolaxa may be used
-                for purposes such as:
-            </p>
+            <section class="privacy-section">
 
-            <ul>
-                <li>Responding to user questions and feedback.</li>
-                <li>Maintaining and improving website functionality.</li>
-                <li>Identifying technical problems.</li>
-                <li>Protecting the website against misuse.</li>
-                <li>Complying with applicable legal requirements.</li>
-            </ul>
-        </section>
+                <h2>3. Image and Signature Tools</h2>
 
-        <section class="privacy-card">
-            <h2>7. Data Security</h2>
+                <p>
+                    Our Image Compressor, Photo Resizer and Signature
+                    Maker are designed to process files directly
+                    within your browser.
+                </p>
 
-            <p>
-                We aim to use reasonable measures to protect
-                information handled through our website.
-                However, no method of internet transmission
-                or electronic storage is completely secure.
-            </p>
-        </section>
+                <p>
+                    These tools do not intentionally upload your
+                    selected images or signatures to our server
+                    during normal local processing.
+                </p>
 
-        <section class="privacy-card">
-            <h2>8. Children's Privacy</h2>
+                <p>
+                    Please remember that downloaded files are saved
+                    on your own device. We recommend avoiding
+                    sensitive personal documents on devices you
+                    do not trust.
+                </p>
 
-            <p>
-                Toolaxa is a general-purpose website.
-                We do not knowingly collect personal information
-                from children for the purpose of creating user
-                accounts.
-            </p>
+            </section>
 
-            <p>
-                Parents or guardians can contact us if they
-                believe a child has provided personal information
-                through our website.
-            </p>
-        </section>
 
-        <section class="privacy-card">
-            <h2>9. Your Privacy Rights</h2>
+            <!-- SECTION 4 -->
 
-            <p>
-                Depending on applicable laws, you may have
-                rights to request access to, correction or
-                deletion of personal information that we hold.
-            </p>
+            <section class="privacy-section">
 
-            <p>
-                To make a privacy-related request, please
-                contact us using the email address below.
-            </p>
-        </section>
+                <h2>4. Cookies and Similar Technologies</h2>
 
-        <section class="privacy-card">
-            <h2>10. Changes to This Privacy Policy</h2>
+                <p>
+                    Cookies are small files that websites may store
+                    in your browser.
+                </p>
 
-            <p>
-                We may update this Privacy Policy when our
-                website, services or legal requirements change.
-                Any updated version will be published on
-                this page with a revised update date.
-            </p>
-        </section>
+                <p>
+                    Toolaxa may use cookies or similar technologies
+                    in the future for website functionality, analytics,
+                    advertising and performance measurement.
+                </p>
 
-        <section class="privacy-card">
-            <h2>11. Contact Us</h2>
+                <p>
+                    If such services are introduced, this policy
+                    will be updated to describe their use.
+                </p>
 
-            <p>
-                If you have questions about this Privacy Policy
-                or how your information is handled, contact us:
-            </p>
+            </section>
 
-            <p>
-                <strong>Email:</strong>
-                <a href="mailto:officecare.support@gmail.com">
-                    officecare.support@gmail.com
-                </a>
-            </p>
-        </section>
 
-        <a href="index.html" class="back-home">
-            ← Back to Toolaxa Homepage
-        </a>
+            <!-- SECTION 5 -->
+
+            <section class="privacy-section">
+
+                <h2>5. Third-Party Services and Advertising</h2>
+
+                <p>
+                    Toolaxa may use third-party services such as
+                    website hosting, analytics providers and advertising
+                    partners in the future.
+                </p>
+
+                <p>
+                    If Google AdSense or other advertising services
+                    are enabled, third-party vendors may use cookies
+                    or similar technologies to display or measure
+                    advertisements.
+                </p>
+
+                <p>
+                    These third-party services operate under their
+                    own privacy policies and terms.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 6 -->
+
+            <section class="privacy-section">
+
+                <h2>6. How We Use Information</h2>
+
+                <p>
+                    Information received by Toolaxa may be used
+                    for purposes such as:
+                </p>
+
+                <ul>
+                    <li>Responding to user questions and feedback.</li>
+                    <li>Maintaining and improving website functionality.</li>
+                    <li>Identifying technical problems.</li>
+                    <li>Protecting the website against misuse.</li>
+                    <li>Complying with applicable legal requirements.</li>
+                </ul>
+
+            </section>
+
+
+            <!-- SECTION 7 -->
+
+            <section class="privacy-section">
+
+                <h2>7. Data Security</h2>
+
+                <p>
+                    We aim to use reasonable measures to protect
+                    information handled through our website.
+                    However, no method of internet transmission
+                    or electronic storage is completely secure.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 8 -->
+
+            <section class="privacy-section">
+
+                <h2>8. Children's Privacy</h2>
+
+                <p>
+                    Toolaxa is a general-purpose website.
+                    We do not knowingly collect personal information
+                    from children for the purpose of creating user
+                    accounts.
+                </p>
+
+                <p>
+                    Parents or guardians can contact us if they
+                    believe a child has provided personal information
+                    through our website.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 9 -->
+
+            <section class="privacy-section">
+
+                <h2>9. Your Privacy Rights</h2>
+
+                <p>
+                    Depending on applicable laws, you may have
+                    rights to request access to, correction or
+                    deletion of personal information that we hold.
+                </p>
+
+                <p>
+                    To make a privacy-related request, please
+                    contact us using the email address below.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 10 -->
+
+            <section class="privacy-section">
+
+                <h2>10. Changes to This Privacy Policy</h2>
+
+                <p>
+                    We may update this Privacy Policy when our
+                    website, services or legal requirements change.
+                    Any updated version will be published on
+                    this page with a revised update date.
+                </p>
+
+            </section>
+
+
+            <!-- SECTION 11 -->
+
+            <section class="privacy-section">
+
+                <h2>11. Contact Us</h2>
+
+                <p>
+                    If you have questions about this Privacy Policy
+                    or how your information is handled, contact us:
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+
+                    <a
+                        class="privacy-email"
+                        href="mailto:officecare.support@gmail.com">
+
+                        officecare.support@gmail.com
+
+                    </a>
+                </p>
+
+            </section>
+
+        </article>
+
+
+        <!-- BACK TO HOME -->
+
+        <div class="privacy-bottom">
+
+            <a href="index.html" class="privacy-home-btn">
+                ← Back to Toolaxa Homepage
+            </a>
+
+        </div>
 
     </main>
 
-    <footer class="footer">
-        <div class="copyright">
-            © 2026 Toolaxa. All Rights Reserved.
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="privacy-footer">
+
+        <div class="privacy-footer-inner">
+
+            <div>
+
+                <div class="privacy-footer-brand">
+                    Tool<span>axa</span>
+                </div>
+
+                <p>
+                    Your Everyday Online Tools, All in One Place.
+                </p>
+
+            </div>
+
+
+            <nav class="privacy-footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About Us</a>
+
+                <a href="contact.html">Contact Us</a>
+
+                <a href="privacy-policy.html">Privacy Policy</a>
+
+                <a href="disclaimer.html">Disclaimer</a>
+
+            </nav>
+
         </div>
+
+
+        <div class="privacy-copyright">
+
+            © 2026 Toolaxa. All Rights Reserved. Powered by Mr. Rajan.
+
+        </div>
+
     </footer>
 
 </body>
