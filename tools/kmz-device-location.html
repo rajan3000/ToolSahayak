@@ -1,0 +1,1923 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KMZ Device Location Generator - Free GPS Mapping Tool | Toolaxa</title>
+
+<meta name="description" content="Free online KMZ Device Location Generator by Toolaxa. Mark GPS locations, manage CCTV cameras, RFID readers, UHF antennas and other devices. Export KMZ, KML, CSV and JSON files.">
+<meta name="keywords" content="KMZ generator, device location generator, GPS location mapper, KML generator, Google Earth KMZ, CCTV location map, RFID location mapping, free GPS tool">
+<meta name="author" content="Toolaxa">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#123b68">
+
+<!-- REPLACE WITH YOUR ACTUAL WEBSITE URL -->
+<link rel="canonical" href="https://YOUR-DOMAIN.com/tools/kmz-device-location.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="KMZ Device Location Generator | Toolaxa">
+<meta property="og:description" content="Mark device GPS locations and export KMZ, KML, CSV and JSON files for Google Earth.">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/tools/kmz-device-location.html">
+<meta property="og:site_name" content="Toolaxa">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/assets/tools/kmz-device-location.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KMZ Device Location Generator | Toolaxa">
+<meta name="twitter:description" content="Free online GPS device mapping and KMZ export tool.">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.com/assets/tools/kmz-device-location.png">
+
+<!-- Optional Google Search Console verification -->
+<!-- Add your verification code below after registering your website -->
+<!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE"> -->
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "KMZ Device Location Generator",
+  "url": "https://YOUR-DOMAIN.com/tools/kmz-device-location.html",
+  "description": "Free online tool to mark GPS device locations and export KMZ, KML, CSV and JSON files.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript and an internet connection for map libraries.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Toolaxa",
+    "url": "https://YOUR-DOMAIN.com/"
+  }
+}
+</script>
+
+<!-- Leaflet Map CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+:root {
+  --primary: #174b7a;
+  --primary-dark: #103657;
+  --blue: #2563eb;
+  --green: #15803d;
+  --red: #dc2626;
+  --orange: #ea580c;
+  --bg: #f3f6fb;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --shadow: 0 3px 14px rgba(15, 23, 42, .06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.top-header {
+  background: linear-gradient(120deg, #103657, #174b7a);
+  color: white;
+  padding: 15px 20px;
+}
+
+.header-inner {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 47px;
+  height: 47px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.brand-tagline {
+  font-size: 11px;
+  color: #dbeafe;
+}
+
+.header-tool {
+  text-align: right;
+}
+
+.header-tool strong {
+  display: block;
+  font-size: 18px;
+}
+
+.header-tool span {
+  font-size: 12px;
+  color: #dbeafe;
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+}
+
+.intro {
+  margin-bottom: 18px;
+}
+
+.intro h1 {
+  margin: 0 0 7px;
+  color: var(--primary-dark);
+  font-size: 25px;
+}
+
+.intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+  margin-bottom: 18px;
+}
+
+.stat {
+  background: white;
+  padding: 17px;
+  border-radius: 11px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--blue);
+}
+
+.stat strong {
+  display: block;
+  font-size: 25px;
+  color: var(--primary-dark);
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 19px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin: 0 0 13px;
+  color: var(--primary-dark);
+}
+
+.card h3 {
+  font-size: 15px;
+  color: var(--primary);
+  margin: 15px 0 10px;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.field {
+  margin-bottom: 13px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: white;
+  color: var(--text);
+  outline: none;
+  font-size: 14px;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px #2563eb18;
+}
+
+textarea {
+  resize: vertical;
+}
+
+#map {
+  width: 100%;
+  height: 440px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  z-index: 1;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.btn {
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .15s;
+}
+
+.btn:hover {
+  filter: brightness(.93);
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.primary { background: var(--blue); color: white; }
+.success { background: var(--green); color: white; }
+.danger { background: var(--red); color: white; }
+.secondary { background: #e2e8f0; color: #1e293b; }
+.dark { background: var(--primary-dark); color: white; }
+.orange { background: var(--orange); color: white; }
+
+#status {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 7px;
+  padding: 11px;
+  font-size: 13px;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+.status-error {
+  background: #fef2f2 !important;
+  color: #b91c1c !important;
+}
+
+.status-success {
+  background: #f0fdf4 !important;
+  color: #166534 !important;
+}
+
+.table-toolbar {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 900px;
+}
+
+th, td {
+  padding: 11px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+th {
+  background: #eff6ff;
+  color: var(--primary-dark);
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+td .btn {
+  padding: 6px 9px;
+  margin: 2px;
+  font-size: 11px;
+}
+
+.badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 4px 7px;
+  border-radius: 20px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.help-item {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.help-item strong {
+  color: var(--primary);
+  display: block;
+  margin-bottom: 5px;
+}
+
+footer {
+  background: #103657;
+  color: white;
+  text-align: center;
+  padding: 22px 15px;
+  font-size: 12px;
+}
+
+footer a {
+  color: #bfdbfe;
+  text-decoration: none;
+}
+
+.device-pin {
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid white;
+  background: #2563eb;
+  box-shadow: 0 2px 7px #0005;
+}
+
+.device-pin span {
+  display: block;
+  transform: rotate(45deg);
+  color: white;
+  text-align: center;
+  line-height: 24px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+@media(max-width: 760px) {
+  .container { padding: 12px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; }
+  .table-toolbar { grid-template-columns: 1fr; }
+  .help-grid { grid-template-columns: 1fr; }
+  #map { height: 350px; }
+  .intro h1 { font-size: 21px; }
+  .header-tool { text-align: left; }
+  .header-inner { align-items: flex-start; }
+  .card { padding: 14px; }
+}
+
+@media print {
+  body { background: white; }
+  .top-header, footer, .no-print, #map,
+  #deviceFormCard, #mapCard, #exportCard,
+  .actions, .table-toolbar, .btn {
+    display: none !important;
+  }
+  .container { max-width: 100%; padding: 0; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  table { min-width: 100%; }
+  th, td { font-size: 10px; padding: 6px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-header">
+  <div class="header-inner">
+
+    <div class="brand">
+      <!-- Built-in Toolaxa SVG Logo -->
+      <svg class="brand-logo" viewBox="0 0 100 100" role="img" aria-label="Toolaxa logo">
+        <rect x="3" y="3" width="94" height="94" rx="23" fill="#ffffff"/>
+        <path d="M50 13 C36 13 25 24 25 39 C25 57 50 83 50 83 C50 83 75 57 75 39 C75 24 64 13 50 13Z" fill="#2563eb"/>
+        <circle cx="50" cy="39" r="12" fill="#ffffff"/>
+        <path d="M40 65 L47 72 L62 54" fill="none" stroke="#16a34a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <div>
+        <div class="brand-name">Toolaxa</div>
+        <div class="brand-tagline">Smart Tools. Simple Solutions.</div>
+      </div>
+    </div>
+
+    <div class="header-tool">
+      <strong>KMZ Device Location Generator</strong>
+      <span>GPS Mapping & Google Earth Export Tool</span>
+    </div>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="intro">
+    <h1>KMZ Device Location Generator</h1>
+    <p>
+      Add device locations on the map, manage site and lane details,
+      and export your locations to Google Earth KMZ and KML files.
+    </p>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="stats">
+    <div class="stat">
+      <strong id="totalDevices">0</strong>
+      <span>Total Devices</span>
+    </div>
+    <div class="stat">
+      <strong id="totalSites">0</strong>
+      <span>Total Sites</span>
+    </div>
+    <div class="stat">
+      <strong id="totalTypes">0</strong>
+      <span>Device Types</span>
+    </div>
+    <div class="stat">
+      <strong id="gpsCount">0</strong>
+      <span>Valid GPS Locations</span>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="card" id="mapCard">
+    <h2>1. Select Device Location</h2>
+    <p class="hint">
+      Click on the map to select a location. You can also capture your
+      current GPS location or enter coordinates manually.
+    </p>
+
+    <div id="map" aria-label="Interactive device location map"></div>
+
+    <div class="actions">
+      <button type="button" class="btn success" onclick="getGPS()">
+        📍 Capture Current GPS
+      </button>
+      <button type="button" class="btn secondary" onclick="resetMap()">
+        Reset Map
+      </button>
+      <button type="button" class="btn secondary" onclick="fitAllDevices()">
+        Show All Devices
+      </button>
+      <button type="button" class="btn secondary" onclick="locateCoordinates()">
+        Find Coordinates
+      </button>
+    </div>
+
+    <div id="status" role="status" aria-live="polite">
+      Ready. Select a point on the map or capture your GPS location.
+    </div>
+    <p class="hint" id="gpsAccuracy"></p>
+  </section>
+
+  <!-- Device Form -->
+  <section class="card" id="deviceFormCard">
+    <h2>2. Add / Update Device Details</h2>
+
+    <form id="deviceForm">
+      <input type="hidden" id="editIndex" value="-1">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="deviceName">Device Name *</label>
+          <input id="deviceName" maxlength="100"
+            placeholder="Example: CCTV Camera Lane 01" required>
+        </div>
+
+        <div class="field">
+          <label for="deviceId">Device ID</label>
+          <input id="deviceId" maxlength="60"
+            placeholder="Example: CCTV-001">
+        </div>
+
+        <div class="field">
+          <label for="deviceType">Device Type *</label>
+          <select id="deviceType" required>
+            <option value="">Select Device Type</option>
+            <option>CCTV Camera</option>
+            <option>ANPR Camera</option>
+            <option>AVC Camera</option>
+            <option>RFID Reader</option>
+            <option>UHF Antenna</option>
+            <option>VMS Display</option>
+            <option>ECB</option>
+            <option>UPS</option>
+            <option>WIM Sensor</option>
+            <option>Traffic Signal</option>
+            <option>Network Switch</option>
+            <option>OFC Joint</option>
+            <option>Router</option>
+            <option>Server</option>
+            <option>Barrier</option>
+            <option>Loop Detector</option>
+            <option>TMCS</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="siteName">Site / Toll Plaza *</label>
+          <input id="siteName" maxlength="100"
+            placeholder="Example: Varwade Toll Plaza" required>
+        </div>
+
+        <div class="field">
+          <label for="laneName">Lane / Location</label>
+          <input id="laneName" maxlength="60"
+            placeholder="Example: Lane 01 / Main Gate">
+        </div>
+
+        <div class="field">
+          <label for="latitude">Latitude *</label>
+          <input id="latitude" type="number" step="any"
+            placeholder="Example: 17.8500000" required>
+        </div>
+
+        <div class="field">
+          <label for="longitude">Longitude *</label>
+          <input id="longitude" type="number" step="any"
+            placeholder="Example: 75.0000000" required>
+        </div>
+
+        <div class="field">
+          <label for="deviceStatus">Device Status</label>
+          <select id="deviceStatus">
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Under Maintenance</option>
+            <option>Proposed</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="field">
+        <label for="remarks">Description / Remarks</label>
+        <textarea id="remarks" rows="3" maxlength="1000"
+          placeholder="Enter device details, installation information or remarks"></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn primary" id="saveBtn">
+          + Add Device
+        </button>
+        <button type="button" class="btn secondary" onclick="clearForm()">
+          Clear Form
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Device List -->
+  <section class="card" id="deviceListCard">
+    <h2>3. Device Location List</h2>
+
+    <div class="table-toolbar no-print">
+      <input id="searchInput" placeholder="Search name, ID, site, lane..."
+        oninput="renderTable()">
+
+      <select id="filterType" onchange="renderTable()">
+        <option value="">All Device Types</option>
+      </select>
+
+      <select id="filterSite" onchange="renderTable()">
+        <option value="">All Sites</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sr.</th>
+            <th>Device Name</th>
+            <th>Device ID</th>
+            <th>Type</th>
+            <th>Site</th>
+            <th>Lane</th>
+            <th>Status</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th class="no-print">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="deviceTable">
+          <tr><td colspan="10" class="empty">No devices added yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="hint" id="resultCount">Showing 0 devices.</p>
+  </section>
+
+  <!-- Export -->
+  <section class="card" id="exportCard">
+    <h2>4. Export, Import & Backup</h2>
+    <p class="hint">
+      Export your device data for Google Earth, Excel-compatible CSV,
+      or create a JSON backup. Import your previous JSON or CSV data.
+    </p>
+
+    <h3>Export Files</h3>
+    <div class="actions">
+      <button type="button" class="btn success" onclick="exportKMZ()">
+        🌍 Download KMZ
+      </button>
+      <button type="button" class="btn primary" onclick="exportKML()">
+        Download KML
+      </button>
+      <button type="button" class="btn dark" onclick="exportCSV()">
+        Export CSV
+      </button>
+      <button type="button" class="btn secondary" onclick="exportJSON()">
+        Backup JSON
+      </button>
+      <button type="button" class="btn secondary" onclick="printReport()">
+        Print Report
+      </button>
+    </div>
+
+    <h3>Import Files</h3>
+    <div class="actions">
+      <button type="button" class="btn secondary"
+        onclick="document.getElementById('jsonFile').click()">
+        Import JSON Backup
+      </button>
+
+      <button type="button" class="btn secondary"
+        onclick="document.getElementById('csvFile').click()">
+        Import CSV
+      </button>
+
+      <input type="file" id="jsonFile" accept=".json,application/json"
+        hidden onchange="importJSON(event)">
+
+      <input type="file" id="csvFile" accept=".csv,text/csv"
+        hidden onchange="importCSV(event)">
+    </div>
+
+    <h3>Other Actions</h3>
+    <div class="actions">
+      <button type="button" class="btn secondary" onclick="openGoogleEarthHelp()">
+        Google Earth Help
+      </button>
+      <button type="button" class="btn secondary" onclick="openMapHelp()">
+        Google Maps Help
+      </button>
+      <button type="button" class="btn danger" onclick="deleteAll()">
+        Delete All Devices
+      </button>
+    </div>
+
+    <p class="hint">
+      Your records are saved in this browser using local storage.
+      Export a JSON backup regularly. Clearing browser data may remove
+      locally saved records.
+    </p>
+  </section>
+
+  <!-- Instructions / SEO Content -->
+  <section class="card">
+    <h2>5. How to Use KMZ Device Location Generator</h2>
+
+    <div class="help-grid">
+      <div class="help-item">
+        <strong>1. Select Location</strong>
+        <p class="hint">Click on the map or use the GPS button to capture device coordinates.</p>
+      </div>
+
+      <div class="help-item">
+        <strong>2. Enter Device Details</strong>
+        <p class="hint">Enter the device name, ID, type, site, lane and other information.</p>
+      </div>
+
+      <div class="help-item">
+        <strong>3. Save Device</strong>
+        <p class="hint">Click Add Device. Your device will appear in the table and on the map.</p>
+      </div>
+
+      <div class="help-item">
+        <strong>4. Export KMZ</strong>
+        <p class="hint">Download the KMZ file and open it in Google Earth to view device locations.</p>
+      </div>
+    </div>
+
+    <h3>What is a KMZ File?</h3>
+    <p class="hint">
+      KMZ is a compressed file format used by Google Earth. It contains
+      geographic information in KML format, including points, names and
+      descriptions. This tool helps you create a device location map
+      without manually preparing KML files.
+    </p>
+
+    <h3>Supported Device Examples</h3>
+    <p class="hint">
+      CCTV cameras, ANPR cameras, RFID readers, UHF antennas, VMS displays,
+      Electronic Control Boxes (ECB), UPS systems, WIM sensors, traffic
+      signals, network switches, routers, servers, barriers and other
+      infrastructure equipment.
+    </p>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <p><strong>Is this KMZ generator free?</strong></p>
+    <p class="hint">Yes. The tool can be used free in your browser. Map tiles and external libraries require an internet connection.</p>
+
+    <p><strong>Can I open the exported KMZ file in Google Earth?</strong></p>
+    <p class="hint">Yes. Download the KMZ file and open it in Google Earth or Google Earth Pro.</p>
+
+    <p><strong>Where is my device data saved?</strong></p>
+    <p class="hint">Device records are saved in your browser's local storage on the current device and browser.</p>
+
+    <p><strong>Can I export device locations to Excel?</strong></p>
+    <p class="hint">Use Export CSV. The CSV file can be opened in Microsoft Excel and other spreadsheet applications.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div>
+    <strong>Toolaxa</strong> | Smart Tools. Simple Solutions.
+  </div>
+  <div style="margin-top:6px">
+    KMZ Device Location Generator
+  </div>
+  <div style="margin-top:6px">
+    <a href="/">Home</a>
+    &nbsp; | &nbsp;
+    <a href="/about-us.html">About Us</a>
+    &nbsp; | &nbsp;
+    <a href="/contact-us.html">Contact</a>
+    &nbsp; | &nbsp;
+    <a href="/privacy-policy.html">Privacy Policy</a>
+  </div>
+  <div style="margin-top:10px">
+    © <span id="currentYear"></span> Toolaxa. All rights reserved.
+  </div>
+</footer>
+
+<!-- Libraries -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+"use strict";
+
+/* =========================================
+   1. APPLICATION SETTINGS
+========================================= */
+
+const STORAGE_KEY = "Toolaxa_kmz_device_data_v2";
+
+const DEFAULT_MAP_CENTER = [20.5937, 78.9629];
+const DEFAULT_MAP_ZOOM = 5;
+
+let devices = [];
+let markers = [];
+let selectedMarker = null;
+let map = null;
+
+const $ = id => document.getElementById(id);
+
+function setStatus(message, type = "normal") {
+  const box = $("status");
+  box.textContent = message;
+  box.className = "";
+
+  if (type === "error") box.classList.add("status-error");
+  if (type === "success") box.classList.add("status-success");
+}
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function escapeXML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;"
+  })[char]);
+}
+
+function safeFileName(value) {
+  return String(value || "Device_Locations")
+    .trim()
+    .replace(/[\\/:*?"<>|]+/g, "_")
+    .replace(/\s+/g, "_")
+    .slice(0, 80) || "Device_Locations";
+}
+
+function validCoordinates(lat, lng) {
+  return Number.isFinite(lat) &&
+    Number.isFinite(lng) &&
+    lat >= -90 && lat <= 90 &&
+    lng >= -180 && lng <= 180;
+}
+
+/* =========================================
+   2. LOAD AND SAVE DATA
+========================================= */
+
+function loadData() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+    if (Array.isArray(saved)) {
+      devices = saved
+        .map(normalizeDevice)
+        .filter(Boolean);
+    }
+  } catch (error) {
+    console.error("Storage load error:", error);
+    devices = [];
+  }
+}
+
+function normalizeDevice(d) {
+  if (!d || typeof d !== "object") return null;
+
+  const lat = Number(d.lat);
+  const lng = Number(d.lng);
+
+  if (!d.name || !validCoordinates(lat, lng)) return null;
+
+  return {
+    name: String(d.name).trim(),
+    id: String(d.id || "").trim(),
+    type: String(d.type || "Other"),
+    site: String(d.site || ""),
+    lane: String(d.lane || ""),
+    status: String(d.status || "Active"),
+    lat,
+    lng,
+    remarks: String(d.remarks || ""),
+    accuracy: d.accuracy === null || d.accuracy === undefined
+      ? null : Number(d.accuracy),
+    date: d.date || new Date().toISOString()
+  };
+}
+
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(devices));
+    return true;
+  } catch (error) {
+    console.error("Storage save error:", error);
+    alert("Unable to save data. Browser storage may be full. Please export a backup.");
+    return false;
+  }
+}
+
+/* =========================================
+   3. MAP INITIALIZATION
+========================================= */
+
+function initializeMap() {
+  if (typeof L === "undefined") {
+    setStatus("Map library could not load. Please check your internet connection.", "error");
+    return;
+  }
+
+  map = L.map("map").setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  map.on("click", event => {
+    setLocation(event.latlng.lat, event.latlng.lng);
+    setStatus("Map location selected successfully.", "success");
+  });
+
+  setTimeout(() => map.invalidateSize(), 300);
+}
+
+function setLocation(lat, lng) {
+  lat = Number(lat);
+  lng = Number(lng);
+
+  if (!validCoordinates(lat, lng)) {
+    setStatus("Invalid latitude or longitude.", "error");
+    return;
+  }
+
+  $("latitude").value = lat.toFixed(7);
+  $("longitude").value = lng.toFixed(7);
+
+  if (selectedMarker && map) {
+    map.removeLayer(selectedMarker);
+  }
+
+  if (map) {
+    selectedMarker = L.marker([lat, lng]).addTo(map);
+    selectedMarker.bindPopup("Selected Device Location").openPopup();
+  }
+}
+
+function resetMap() {
+  if (!map) return;
+  map.setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
+}
+
+function fitAllDevices() {
+  if (!map) return;
+
+  if (devices.length === 0) {
+    resetMap();
+    setStatus("No saved device locations available.");
+    return;
+  }
+
+  const bounds = L.latLngBounds(
+    devices.map(d => [d.lat, d.lng])
+  );
+
+  map.fitBounds(bounds, { padding: [35, 35], maxZoom: 17 });
+}
+
+function locateCoordinates() {
+  const lat = parseFloat($("latitude").value);
+  const lng = parseFloat($("longitude").value);
+
+  if (!validCoordinates(lat, lng)) {
+    alert("Please enter valid latitude and longitude first.");
+    return;
+  }
+
+  setLocation(lat, lng);
+  map.setView([lat, lng], 17);
+}
+
+/* =========================================
+   4. GPS LOCATION
+========================================= */
+
+function getGPS() {
+  if (!navigator.geolocation) {
+    alert("GPS is not supported by this browser.");
+    return;
+  }
+
+  setStatus("Getting your current GPS location...");
+
+  $("gpsAccuracy").textContent = "";
+
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      const accuracy = position.coords.accuracy;
+
+      setLocation(lat, lng);
+
+      if (map) map.setView([lat, lng], 18);
+
+      $("gpsAccuracy").textContent =
+        "GPS Accuracy: approximately " + Math.round(accuracy) + " metres.";
+
+      setStatus("GPS location captured successfully.", "success");
+
+      // Keep accuracy in the form's temporary data.
+      window.lastGPSAccuracy = accuracy;
+    },
+    error => {
+      let message = error.message || "Unable to get GPS location.";
+
+      if (error.code === 1) message = "Location permission denied. Please allow location access.";
+      if (error.code === 2) message = "GPS position is unavailable.";
+      if (error.code === 3) message = "GPS request timed out. Please try again.";
+
+      setStatus(message, "error");
+      alert(message + " Use HTTPS or localhost and enable location permission.");
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 0
+    }
+  );
+}
+
+/* =========================================
+   5. DEVICE FORM
+========================================= */
+
+$("deviceForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = $("deviceName").value.trim();
+  const id = $("deviceId").value.trim();
+  const type = $("deviceType").value;
+  const site = $("siteName").value.trim();
+  const lane = $("laneName").value.trim();
+  const status = $("deviceStatus").value;
+  const lat = parseFloat($("latitude").value);
+  const lng = parseFloat($("longitude").value);
+  const remarks = $("remarks").value.trim();
+
+  if (!name || !type || !site) {
+    alert("Please enter device name, device type and site name.");
+    return;
+  }
+
+  if (!validCoordinates(lat, lng)) {
+    alert("Please enter valid latitude and longitude.");
+    return;
+  }
+
+  const editIndex = parseInt($("editIndex").value, 10);
+
+  // Duplicate ID warning, excluding the current edited record.
+  if (id) {
+    const duplicate = devices.findIndex((d, i) =>
+      d.id.toLowerCase() === id.toLowerCase() && i !== editIndex
+    );
+
+    if (duplicate !== -1) {
+      if (!confirm("This Device ID already exists. Do you want to save it anyway?")) {
+        return;
+      }
+    }
+  }
+
+  const device = {
+    name,
+    id,
+    type,
+    site,
+    lane,
+    status,
+    lat,
+    lng,
+    remarks,
+    accuracy: window.lastGPSAccuracy || null,
+    date: new Date().toISOString()
+  };
+
+  if (editIndex >= 0 && editIndex < devices.length) {
+    devices[editIndex] = device;
+    setStatus("Device information updated successfully.", "success");
+  } else {
+    devices.push(device);
+    setStatus("New device location added successfully.", "success");
+  }
+
+  saveData();
+  clearForm(false);
+  renderAll();
+});
+
+function clearForm(removeMarker = true) {
+  $("deviceForm").reset();
+  $("editIndex").value = "-1";
+  $("saveBtn").textContent = "+ Add Device";
+  $("gpsAccuracy").textContent = "";
+  window.lastGPSAccuracy = null;
+
+  if (removeMarker && selectedMarker && map) {
+    map.removeLayer(selectedMarker);
+    selectedMarker = null;
+  }
+}
+
+/* =========================================
+   6. EDIT AND DELETE
+========================================= */
+
+function editDevice(index) {
+  const d = devices[index];
+  if (!d) return;
+
+  $("deviceName").value = d.name;
+  $("deviceId").value = d.id;
+  $("deviceType").value = d.type;
+  $("siteName").value = d.site;
+  $("laneName").value = d.lane;
+  $("deviceStatus").value = d.status;
+  $("latitude").value = d.lat;
+  $("longitude").value = d.lng;
+  $("remarks").value = d.remarks;
+
+  $("editIndex").value = index;
+  $("saveBtn").textContent = "Update Device";
+
+  setLocation(d.lat, d.lng);
+
+  if (map) map.setView([d.lat, d.lng], 17);
+
+  $("deviceFormCard").scrollIntoView({ behavior: "smooth" });
+  setStatus("Editing: " + d.name);
+}
+
+function deleteDevice(index) {
+  const d = devices[index];
+  if (!d) return;
+
+  if (!confirm('Delete "' + d.name + '"?')) return;
+
+  devices.splice(index, 1);
+  saveData();
+  renderAll();
+  setStatus("Device deleted successfully.", "success");
+}
+
+function showDevice(index) {
+  const d = devices[index];
+  if (!d || !map) return;
+
+  map.setView([d.lat, d.lng], 18);
+
+  const marker = markers[index];
+
+  if (marker) marker.openPopup();
+
+  $("mapCard").scrollIntoView({ behavior: "smooth" });
+}
+
+/* =========================================
+   7. TABLE AND FILTERS
+========================================= */
+
+function updateFilters() {
+  const typeSelect = $("filterType");
+  const siteSelect = $("filterSite");
+
+  const oldType = typeSelect.value;
+  const oldSite = siteSelect.value;
+
+  const types = [...new Set(devices.map(d => d.type).filter(Boolean))].sort();
+  const sites = [...new Set(devices.map(d => d.site).filter(Boolean))].sort();
+
+  typeSelect.innerHTML = '<option value="">All Device Types</option>';
+  siteSelect.innerHTML = '<option value="">All Sites</option>';
+
+  types.forEach(type => {
+    const option = document.createElement("option");
+    option.value = type;
+    option.textContent = type;
+    typeSelect.appendChild(option);
+  });
+
+  sites.forEach(site => {
+    const option = document.createElement("option");
+    option.value = site;
+    option.textContent = site;
+    siteSelect.appendChild(option);
+  });
+
+  typeSelect.value = types.includes(oldType) ? oldType : "";
+  siteSelect.value = sites.includes(oldSite) ? oldSite : "";
+}
+
+function getFilteredDevices() {
+  const query = $("searchInput").value.trim().toLowerCase();
+  const type = $("filterType").value;
+  const site = $("filterSite").value;
+
+  return devices
+    .map((device, index) => ({ ...device, originalIndex: index }))
+    .filter(d => {
+      const searchText = [
+        d.name, d.id, d.type, d.site, d.lane, d.status, d.remarks
+      ].join(" ").toLowerCase();
+
+      return (!query || searchText.includes(query)) &&
+        (!type || d.type === type) &&
+        (!site || d.site === site);
+    });
+}
+
+function renderTable() {
+  const tbody = $("deviceTable");
+  const filtered = getFilteredDevices();
+
+  tbody.innerHTML = "";
+
+  if (filtered.length === 0) {
+    tbody.innerHTML =
+      '<tr><td colspan="10" class="empty">No matching devices found.</td></tr>';
+    $("resultCount").textContent = "Showing 0 devices.";
+    return;
+  }
+
+  filtered.forEach((d, sr) => {
+    const tr = document.createElement("tr");
+
+    const values = [
+      sr + 1,
+      d.name,
+      d.id || "-",
+      d.type,
+      d.site,
+      d.lane || "-",
+      d.status,
+      d.lat.toFixed(7),
+      d.lng.toFixed(7)
+    ];
+
+    values.forEach((value, i) => {
+      const td = document.createElement("td");
+
+      if (i === 6) {
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = value;
+        td.appendChild(badge);
+      } else {
+        td.textContent = value;
+      }
+
+      tr.appendChild(td);
+    });
+
+    const action = document.createElement("td");
+    action.className = "no-print";
+
+    const mapButton = makeActionButton("Map", "success", () =>
+      showDevice(d.originalIndex)
+    );
+
+    const editButton = makeActionButton("Edit", "primary", () =>
+      editDevice(d.originalIndex)
+    );
+
+    const deleteButton = makeActionButton("Delete", "danger", () =>
+      deleteDevice(d.originalIndex)
+    );
+
+    action.append(mapButton, editButton, deleteButton);
+    tr.appendChild(action);
+    tbody.appendChild(tr);
+  });
+
+  $("resultCount").textContent =
+    "Showing " + filtered.length + " of " + devices.length + " devices.";
+}
+
+function makeActionButton(label, className, callback) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "btn " + className;
+  button.textContent = label;
+  button.addEventListener("click", callback);
+  return button;
+}
+
+/* =========================================
+   8. MAP MARKERS
+========================================= */
+
+function getMarkerColor(type) {
+  const colors = {
+    "CCTV Camera": "#2563eb",
+    "ANPR Camera": "#7c3aed",
+    "AVC Camera": "#9333ea",
+    "RFID Reader": "#0891b2",
+    "UHF Antenna": "#0d9488",
+    "VMS Display": "#ea580c",
+    "ECB": "#475569",
+    "UPS": "#ca8a04",
+    "WIM Sensor": "#16a34a",
+    "Traffic Signal": "#dc2626",
+    "Network Switch": "#4f46e5",
+    "Server": "#334155"
+  };
+
+  return colors[type] || "#2563eb";
+}
+
+function createDeviceIcon(type) {
+  const color = getMarkerColor(type);
+
+  return L.divIcon({
+    className: "",
+    html:
+      '<div class="device-pin" style="background:' + color + '">' +
+      '<span>●</span></div>',
+    iconSize: [28, 28],
+    iconAnchor: [14, 28],
+    popupAnchor: [0, -27]
+  });
+}
+
+function renderMarkers() {
+  if (!map) return;
+
+  markers.forEach(marker => map.removeLayer(marker));
+  markers = [];
+
+  devices.forEach(d => {
+    const marker = L.marker([d.lat, d.lng], {
+      icon: createDeviceIcon(d.type)
+    }).addTo(map);
+
+    const popup = `
+      <div style="min-width:180px">
+        <strong>${escapeHTML(d.name)}</strong><br>
+        Type: ${escapeHTML(d.type)}<br>
+        ID: ${escapeHTML(d.id || "-")}<br>
+        Site: ${escapeHTML(d.site || "-")}<br>
+        Lane: ${escapeHTML(d.lane || "-")}<br>
+        Status: ${escapeHTML(d.status || "-")}<br>
+        Latitude: ${d.lat.toFixed(7)}<br>
+        Longitude: ${d.lng.toFixed(7)}<br>
+        <a href="https://www.google.com/maps?q=${d.lat},${d.lng}"
+           target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+    `;
+
+    marker.bindPopup(popup);
+    markers.push(marker);
+  });
+}
+
+/* =========================================
+   9. DASHBOARD
+========================================= */
+
+function renderDashboard() {
+  $("totalDevices").textContent = devices.length;
+
+  $("totalSites").textContent =
+    new Set(devices.map(d => d.site).filter(Boolean)).size;
+
+  $("totalTypes").textContent =
+    new Set(devices.map(d => d.type).filter(Boolean)).size;
+
+  $("gpsCount").textContent =
+    devices.filter(d => validCoordinates(d.lat, d.lng)).length;
+}
+
+function renderAll() {
+  updateFilters();
+  renderTable();
+  renderMarkers();
+  renderDashboard();
+}
+
+/* =========================================
+   10. DOWNLOAD HELPER
+========================================= */
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+function downloadText(content, filename, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  downloadBlob(blob, filename);
+}
+
+/* =========================================
+   11. GENERATE KML
+========================================= */
+
+function generateKML() {
+  if (!devices.length) return "";
+
+  const siteGroups = {};
+
+  devices.forEach(d => {
+    const site = d.site || "Other Locations";
+    if (!siteGroups[site]) siteGroups[site] = [];
+    siteGroups[site].push(d);
+  });
+
+  let folders = "";
+
+  Object.entries(siteGroups).forEach(([site, siteDevices]) => {
+    let placemarks = "";
+
+    siteDevices.forEach(d => {
+      const description = [
+        "Device ID: " + d.id,
+        "Device Type: " + d.type,
+        "Site: " + d.site,
+        "Lane: " + d.lane,
+        "Status: " + d.status,
+        "Latitude: " + d.lat,
+        "Longitude: " + d.lng,
+        "Remarks: " + d.remarks
+      ].join("\n");
+
+      const styleId = "style_" +
+        d.type.toLowerCase().replace(/[^a-z0-9]+/g, "_");
+
+      placemarks += `
+        <Placemark>
+          <name>${escapeXML(d.name)}</name>
+          <description>${escapeXML(description)}</description>
+          <styleUrl>#${styleId}</styleUrl>
+          <ExtendedData>
+            <Data name="DeviceID"><value>${escapeXML(d.id)}</value></Data>
+            <Data name="DeviceType"><value>${escapeXML(d.type)}</value></Data>
+            <Data name="Site"><value>${escapeXML(d.site)}</value></Data>
+            <Data name="Lane"><value>${escapeXML(d.lane)}</value></Data>
+            <Data name="Status"><value>${escapeXML(d.status)}</value></Data>
+            <Data name="Remarks"><value>${escapeXML(d.remarks)}</value></Data>
+          </ExtendedData>
+          <Point>
+            <altitudeMode>clampToGround</altitudeMode>
+            <coordinates>${d.lng},${d.lat},0</coordinates>
+          </Point>
+        </Placemark>
+      `;
+    });
+
+    folders += `
+      <Folder>
+        <name>${escapeXML(site)}</name>
+        ${placemarks}
+      </Folder>
+    `;
+  });
+
+  const uniqueTypes = [...new Set(devices.map(d => d.type))];
+
+  let styles = "";
+
+  uniqueTypes.forEach(type => {
+    const styleId = "style_" +
+      type.toLowerCase().replace(/[^a-z0-9]+/g, "_");
+
+    styles += `
+      <Style id="${styleId}">
+        <IconStyle>
+          <scale>1.1</scale>
+          <Icon>
+            <href>https://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+          </Icon>
+        </IconStyle>
+        <LabelStyle><scale>0.9</scale></LabelStyle>
+      </Style>
+    `;
+  });
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+  <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document>
+      <name>Toolaxa Device Location Map</name>
+      <description>Device GPS Locations generated using Toolaxa KMZ Generator</description>
+      ${styles}
+      ${folders}
+    </Document>
+  </kml>`;
+}
+
+/* =========================================
+   12. EXPORT KML
+========================================= */
+
+function exportKML() {
+  if (!devices.length) {
+    alert("Please add at least one device.");
+    return;
+  }
+
+  downloadText(
+    generateKML(),
+    "Device_Locations.kml",
+    "application/vnd.google-earth.kml+xml;charset=utf-8"
+  );
+
+  setStatus("KML file downloaded successfully.", "success");
+}
+
+/* =========================================
+   13. EXPORT KMZ
+========================================= */
+
+async function exportKMZ() {
+  if (!devices.length) {
+    alert("Please add at least one device.");
+    return;
+  }
+
+  if (typeof JSZip === "undefined") {
+    alert("KMZ library could not load. Please check your internet connection.");
+    return;
+  }
+
+  try {
+    setStatus("Generating KMZ file...");
+
+    const zip = new JSZip();
+    zip.file("doc.kml", generateKML());
+
+    const blob = await zip.generateAsync({
+      type: "blob",
+      compression: "DEFLATE",
+      compressionOptions: { level: 6 }
+    });
+
+    downloadBlob(blob, "Device_Locations.kmz");
+
+    setStatus("KMZ generated successfully. Open it in Google Earth.", "success");
+  } catch (error) {
+    console.error(error);
+    setStatus("KMZ generation failed: " + error.message, "error");
+    alert("KMZ generation failed. Please try again.");
+  }
+}
+
+/* =========================================
+   14. EXPORT CSV
+========================================= */
+
+function csvEscape(value) {
+  return '"' + String(value ?? "").replace(/"/g, '""') + '"';
+}
+
+function exportCSV() {
+  if (!devices.length) {
+    alert("No device data available.");
+    return;
+  }
+
+  const headers = [
+    "Device Name",
+    "Device ID",
+    "Device Type",
+    "Site",
+    "Lane",
+    "Status",
+    "Latitude",
+    "Longitude",
+    "GPS Accuracy",
+    "Remarks"
+  ];
+
+  const rows = devices.map(d => [
+    d.name, d.id, d.type, d.site, d.lane,
+    d.status, d.lat, d.lng, d.accuracy ?? "", d.remarks
+  ]);
+
+  const csv = [headers, ...rows]
+    .map(row => row.map(csvEscape).join(","))
+    .join("\r\n");
+
+  downloadText("\uFEFF" + csv, "Device_Locations.csv", "text/csv;charset=utf-8");
+
+  setStatus("CSV file downloaded successfully.", "success");
+}
+
+/* =========================================
+   15. JSON BACKUP
+========================================= */
+
+function exportJSON() {
+  if (!devices.length) {
+    alert("No device data available to back up.");
+    return;
+  }
+
+  downloadText(
+    JSON.stringify(devices, null, 2),
+    "Device_Locations_Backup.json",
+    "application/json;charset=utf-8"
+  );
+
+  setStatus("JSON backup downloaded successfully.", "success");
+}
+
+/* =========================================
+   16. IMPORT JSON
+========================================= */
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+    try {
+      const imported = JSON.parse(reader.result);
+
+      if (!Array.isArray(imported)) {
+        throw new Error("Invalid JSON format. Expected an array.");
+      }
+
+      const valid = imported.map(normalizeDevice).filter(Boolean);
+
+      if (valid.length !== imported.length) {
+        if (!confirm(
+          "Some records are invalid and will be skipped. " +
+          valid.length + " valid records were found. Continue?"
+        )) return;
+      } else if (!confirm(
+        "Import " + valid.length +
+        " devices? Existing data will be replaced."
+      )) {
+        return;
+      }
+
+      devices = valid;
+      saveData();
+      clearForm();
+      renderAll();
+
+      setStatus(valid.length + " device records imported successfully.", "success");
+      alert("Import completed successfully.");
+    } catch (error) {
+      alert("Unable to import JSON: " + error.message);
+    } finally {
+      event.target.value = "";
+    }
+  };
+
+  reader.onerror = function() {
+    alert("Unable to read the selected file.");
+    event.target.value = "";
+  };
+
+  reader.readAsText(file);
+}
+
+/* =========================================
+   17. CSV PARSER AND IMPORT
+========================================= */
+
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let value = "";
+  let quoted = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const next = text[i + 1];
+
+    if (char === '"' && quoted && next === '"') {
+      value += '"';
+      i++;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === "," && !quoted) {
+      row.push(value);
+      value = "";
+    } else if ((char === "\n" || char === "\r") && !quoted) {
+      if (char === "\r" && next === "\n") i++;
+      row.push(value);
+      if (row.some(cell => cell.trim() !== "")) rows.push(row);
+      row = [];
+      value = "";
+    } else {
+      value += char;
+    }
+  }
+
+  row.push(value);
+  if (row.some(cell => cell.trim() !== "")) rows.push(row);
+
+  return rows;
+}
+
+function importCSV(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+    try {
+      const rows = parseCSV(String(reader.result).replace(/^\uFEFF/, ""));
+
+      if (rows.length < 2) {
+        throw new Error("CSV file has no device records.");
+      }
+
+      const headers = rows[0].map(h => h.trim().toLowerCase());
+
+      function getColumn(record, possibleNames) {
+        for (const name of possibleNames) {
+          const index = headers.indexOf(name.toLowerCase());
+          if (index !== -1) return record[index] ?? "";
+        }
+        return "";
+      }
+
+      const imported = rows.slice(1).map(record => normalizeDevice({
+        name: getColumn(record, ["device name", "name"]),
+        id: getColumn(record, ["device id", "id"]),
+        type: getColumn(record, ["device type", "type"]),
+        site: getColumn(record, ["site", "site name", "location"]),
+        lane: getColumn(record, ["lane", "lane name"]),
+        status: getColumn(record, ["status", "device status"]) || "Active",
+        lat: getColumn(record, ["latitude", "lat"]),
+        lng: getColumn(record, ["longitude", "lng", "long"]),
+        remarks: getColumn(record, ["remarks", "description"]),
+        accuracy: getColumn(record, ["gps accuracy", "accuracy"])
+      })).filter(Boolean);
+
+      if (!imported.length) {
+        throw new Error("No valid device records found. Check CSV column names.");
+      }
+
+      if (!confirm(
+        "Import " + imported.length +
+        " valid devices? Existing data will be replaced."
+      )) return;
+
+      devices = imported;
+      saveData();
+      clearForm();
+      renderAll();
+
+      setStatus(imported.length + " CSV records imported successfully.", "success");
+      alert("CSV import completed successfully.");
+    } catch (error) {
+      alert("CSV import failed: " + error.message);
+    } finally {
+      event.target.value = "";
+    }
+  };
+
+  reader.onerror = function() {
+    alert("Unable to read the selected CSV file.");
+    event.target.value = "";
+  };
+
+  reader.readAsText(file);
+}
+
+/* =========================================
+   18. PRINT REPORT
+========================================= */
+
+function printReport() {
+  if (!devices.length) {
+    alert("No device records available to print.");
+    return;
+  }
+
+  window.print();
+}
+
+/* =========================================
+   19. DELETE ALL
+========================================= */
+
+function deleteAll() {
+  if (!devices.length) return;
+
+  if (!confirm(
+    "Are you sure you want to delete ALL device locations? " +
+    "This action cannot be undone. Export a backup first if required."
+  )) return;
+
+  devices = [];
+  saveData();
+  clearForm();
+  renderAll();
+
+  setStatus("All device records deleted.", "success");
+}
+
+/* =========================================
+   20. GOOGLE MAPS LINKS
+========================================= */
+
+function openGoogleEarthHelp() {
+  window.open(
+    "https://earth.google.com/web/",
+    "_blank",
+    "noopener"
+  );
+}
+
+function openMapHelp() {
+  window.open(
+    "https://www.google.com/maps",
+    "_blank",
+    "noopener"
+  );
+}
+
+/* =========================================
+   21. START APPLICATION
+========================================= */
+
+function initializeApp() {
+  $("currentYear").textContent = new Date().getFullYear();
+
+  loadData();
+  initializeMap();
+  renderAll();
+
+  setStatus(
+    "Ready. Add a device by selecting a location on the map.",
+    "success"
+  );
+}
+
+initializeApp();
+
+</script>
+
+</body>
+</html>
