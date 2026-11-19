@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics - Toolaxa -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+<title>Free Unit Converter Online - Length, Weight, Temperature | Toolaxa</title>
+<meta name="description" content="Convert units online for free with Toolaxa Unit Converter. Convert length, weight, temperature, area, volume, speed, time, data storage and pressure instantly.">
+<meta name="keywords" content="unit converter, online unit converter, length converter, weight converter, temperature converter, area converter, volume converter, speed converter, time converter, data converter, free conversion calculator">
+<meta name="author" content="Toolaxa">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563eb">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Online Unit Converter - Toolaxa">
+<meta property="og:description" content="Convert length, weight, temperature, volume, speed and more with Toolaxa's free online unit converter.">
+<meta property="og:site_name" content="Toolaxa">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unit Converter - Toolaxa">
+<meta name="twitter:description" content="Free online unit conversion tool with multiple categories.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Toolaxa Unit Converter",
+  "description": "Free online unit converter for length, weight, temperature, area, volume, speed, time, data storage and pressure.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  }
+}
+</script>
+
+<style>
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg: #f5f7fb;
+    --text: #172033;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --soft-blue: #eff6ff;
+    --shadow: 0 8px 30px rgba(15, 23, 42, .05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+/* HEADER */
+
+.header {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--primary);
+}
+
+.logo span {
+    color: var(--text);
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 42px 15px 27px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 13px;
+    border-radius: 30px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(28px, 5vw, 39px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* MAIN CONVERTER */
+
+.converter-card {
+    max-width: 850px;
+    margin: 0 auto 30px;
+    padding: 27px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.section-heading {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 17px;
+}
+
+.field {
+    margin-bottom: 19px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 750;
+    margin-bottom: 7px;
+}
+
+.field select,
+.field input {
+    width: 100%;
+    height: 49px;
+    padding: 0 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: white;
+    color: var(--text);
+    outline: none;
+}
+
+.field select:focus,
+.field input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .10);
+}
+
+.category-select {
+    background: var(--soft-blue) !important;
+    border-color: #bfdbfe !important;
+    font-weight: 700;
+}
+
+.conversion-grid {
+    display: grid;
+    grid-template-columns: 1fr 55px 1fr;
+    gap: 13px;
+    align-items: end;
+}
+
+.swap-wrap {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 23px;
+}
+
+.swap-btn {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--primary);
+    font-size: 21px;
+    font-weight: 800;
+    transition: .2s;
+}
+
+.swap-btn:hover {
+    background: var(--soft-blue);
+    transform: rotate(180deg);
+}
+
+.result-box {
+    min-height: 115px;
+    padding: 17px;
+    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    border-radius: 11px;
+    margin-top: 5px;
+}
+
+.result-label {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.result-value {
+    font-size: clamp(23px, 4vw, 32px);
+    font-weight: 900;
+    color: #1d4ed8;
+    overflow-wrap: anywhere;
+    line-height: 1.3;
+}
+
+.result-unit {
+    color: #475569;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.result-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.btn {
+    min-height: 44px;
+    border-radius: 9px;
+    padding: 10px 17px;
+    font-weight: 750;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+}
+
+.btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+
+.error {
+    display: none;
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-top: 13px;
+}
+
+/* QUICK EXAMPLES */
+
+.quick-section {
+    max-width: 850px;
+    margin: 0 auto 30px;
+}
+
+.quick-heading {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 13px;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.quick-item {
+    text-align: left;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 11px;
+    padding: 14px;
+    transition: .2s;
+}
+
+.quick-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.quick-item strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.quick-item span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* CONTENT */
+
+.content {
+    max-width: 850px;
+    margin: 0 auto 32px;
+    padding: 27px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+}
+
+.content h2 {
+    font-size: 21px;
+    margin-bottom: 11px;
+}
+
+.content h3 {
+    font-size: 16px;
+    margin: 21px 0 7px;
+}
+
+.content p,
+.content li {
+    font-size: 14px;
+    color: #526176;
+}
+
+.content ul {
+    padding-left: 21px;
+}
+
+.content li {
+    margin-bottom: 7px;
+}
+
+.content code {
+    background: #f1f5f9;
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: #1d4ed8;
+}
+
+.faq-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item h3 {
+    margin: 0 0 6px;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 24px 15px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer a {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 650px) {
+    .navbar {
+        min-height: 62px;
+    }
+
+    .hero {
+        padding-top: 32px;
+    }
+
+    .converter-card,
+    .content {
+        padding: 19px;
+        border-radius: 13px;
+    }
+
+    .conversion-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .swap-wrap {
+        padding: 0 0 15px;
+        align-items: center;
+    }
+
+    .swap-btn {
+        transform: rotate(90deg);
+    }
+
+    .swap-btn:hover {
+        transform: rotate(270deg);
+    }
+
+    .quick-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .quick-section {
+        width: 92%;
+    }
+}
+
+@media(max-width: 360px) {
+    .quick-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container navbar">
+        <a href="/" class="logo" aria-label="Toolaxa Home">
+            Tool<span>axa</span>
+        </a>
+        <a href="/" class="nav-link">← Back to Home</a>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <span class="tag">FREE ONLINE UTILITY TOOL</span>
+    <h1>Unit Converter</h1>
+    <p>
+        Convert different units quickly and accurately.
+        Choose a category, enter a value and get your result instantly.
+    </p>
+</section>
+
+<section class="converter-card container" aria-label="Unit converter">
+
+    <h2 class="section-heading">Convert Units</h2>
+
+    <div class="field">
+        <label for="category">Select Conversion Category</label>
+        <select id="category" class="category-select">
+            <option value="length">📏 Length</option>
+            <option value="weight">⚖️ Weight & Mass</option>
+            <option value="temperature">🌡️ Temperature</option>
+            <option value="area">▦ Area</option>
+            <option value="volume">🧪 Volume</option>
+            <option value="speed">🚀 Speed</option>
+            <option value="time">⏱️ Time</option>
+            <option value="data">💾 Data Storage</option>
+            <option value="pressure">🔵 Pressure</option>
+        </select>
+    </div>
+
+    <div class="conversion-grid">
+
+        <div class="field">
+            <label for="fromValue">Enter Value</label>
+            <input
+                type="number"
+                id="fromValue"
+                value="1"
+                step="any"
+                inputmode="decimal"
+                placeholder="Enter number"
+            >
+
+            <div style="height:10px"></div>
+
+            <label for="fromUnit">From Unit</label>
+            <select id="fromUnit"></select>
+        </div>
+
+        <div class="swap-wrap">
+            <button class="swap-btn" id="swapBtn" type="button"
+                    title="Swap units" aria-label="Swap units">
+                ⇄
+            </button>
+        </div>
+
+        <div class="field">
+            <label for="toUnit">To Unit</label>
+            <select id="toUnit"></select>
+
+            <div style="height:10px"></div>
+
+            <div class="result-box" aria-live="polite">
+                <div class="result-label">Converted Result</div>
+                <div class="result-value" id="resultValue">1</div>
+                <div class="result-unit" id="resultUnit">Meter (m)</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="error" id="error" role="alert"></div>
+
+    <div class="result-actions">
+        <button class="btn btn-primary" id="copyBtn" type="button">
+            Copy Result
+        </button>
+        <button class="btn" id="resetBtn" type="button">
+            Reset
+        </button>
+    </div>
+
+    <p style="font-size:12px;color:#64748b;margin-top:13px">
+        Note: Currency conversion is not included because exchange rates
+        change continuously. This tool uses fixed standard unit definitions.
+    </p>
+
+</section>
+
+<section class="quick-section container">
+    <h2 class="quick-heading">Popular Conversions</h2>
+
+    <div class="quick-grid">
+        <button class="quick-item" data-category="length"
+                data-from="Kilometer" data-to="Mile" data-value="5">
+            <strong>KM to Miles</strong>
+            <span>5 km → miles</span>
+        </button>
+
+        <button class="quick-item" data-category="weight"
+                data-from="Kilogram" data-to="Pound" data-value="70">
+            <strong>KG to Pounds</strong>
+            <span>70 kg → lbs</span>
+        </button>
+
+        <button class="quick-item" data-category="temperature"
+                data-from="Celsius" data-to="Fahrenheit" data-value="37">
+            <strong>°C to °F</strong>
+            <span>37°C → Fahrenheit</span>
+        </button>
+
+        <button class="quick-item" data-category="length"
+                data-from="Meter" data-to="Foot" data-value="10">
+            <strong>Meter to Feet</strong>
+            <span>10 m → feet</span>
+        </button>
+
+        <button class="quick-item" data-category="volume"
+                data-from="Liter" data-to="US Gallon" data-value="10">
+            <strong>Liter to Gallon</strong>
+            <span>10 L → US gallons</span>
+        </button>
+
+        <button class="quick-item" data-category="data"
+                data-from="Gigabyte" data-to="Megabyte" data-value="1">
+            <strong>GB to MB</strong>
+            <span>1 GB → MB</span>
+        </button>
+    </div>
+</section>
+
+<section class="content container">
+
+    <h2>About Unit Converter</h2>
+
+    <p>
+        A unit converter helps you convert measurements from one unit
+        to another. Toolaxa's free online unit converter supports
+        common measurement categories for everyday, educational and
+        professional use.
+    </p>
+
+    <h3>Available Conversion Categories</h3>
+
+    <ul>
+        <li><strong>Length:</strong> Millimeter, centimeter, meter, kilometer, inch, foot, yard and mile.</li>
+        <li><strong>Weight:</strong> Milligram, gram, kilogram, metric tonne, ounce and pound.</li>
+        <li><strong>Temperature:</strong> Celsius, Fahrenheit and Kelvin.</li>
+        <li><strong>Area:</strong> Square meter, square kilometer, hectare, acre and square foot.</li>
+        <li><strong>Volume:</strong> Milliliter, liter, cubic meter, US gallon, US quart and US cup.</li>
+        <li><strong>Speed:</strong> Meter/second, kilometer/hour, mile/hour, knot and foot/second.</li>
+        <li><strong>Time:</strong> Millisecond, second, minute, hour, day, week and year.</li>
+        <li><strong>Data Storage:</strong> Bit, byte, decimal KB/MB/GB/TB and binary KiB/MiB/GiB/TiB.</li>
+        <li><strong>Pressure:</strong> Pascal, kilopascal, bar, atmosphere, PSI and mmHg.</li>
+    </ul>
+
+    <h3>How to Use the Unit Converter?</h3>
+
+    <ul>
+        <li>Select the conversion category.</li>
+        <li>Enter the value you want to convert.</li>
+        <li>Select the original unit and target unit.</li>
+        <li>Your converted result appears automatically.</li>
+        <li>Use the swap button to reverse the units.</li>
+        <li>Click Copy Result to copy the conversion.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <div class="faq-item">
+        <h3>1. Is Toolaxa Unit Converter free?</h3>
+        <p>Yes. It is free to use without registration or subscription.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>2. Does the converter work on mobile?</h3>
+        <p>Yes. The interface is responsive and works on mobile phones, tablets and desktop devices.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>3. Can I convert Celsius to Fahrenheit?</h3>
+        <p>Yes. Select Temperature, choose Celsius as the original unit and Fahrenheit as the target unit.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>4. Does this tool need an internet connection?</h3>
+        <p>After the page has loaded, conversions are calculated directly in your browser and do not need an internet connection.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>5. Does it support currency conversion?</h3>
+        <p>No. Currency rates change frequently. A separate live currency converter is more suitable for exchange rates.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>6. Are the conversion results rounded?</h3>
+        <p>Results are displayed with suitable decimal precision. Very large or very small values may be shown in scientific notation.</p>
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+    <p>
+        © <span id="year"></span>
+        <a href="/">Toolaxa</a>. All Rights Reserved.
+    </p>
+    <p style="margin-top:5px">
+        Free Online Tools to Make Your Life Easier.
+    </p>
+</footer>
+
+<script>
+"use strict";
+
+/*
+  Conversion factors:
+  Each unit is converted to a common base unit.
+  Temperature uses a separate formula.
+*/
+
+const units = {
+
+    length: {
+        base: "Meter",
+        items: {
+            "Millimeter": { factor: 0.001, symbol: "mm" },
+            "Centimeter": { factor: 0.01, symbol: "cm" },
+            "Meter": { factor: 1, symbol: "m" },
+            "Kilometer": { factor: 1000, symbol: "km" },
+            "Inch": { factor: 0.0254, symbol: "in" },
+            "Foot": { factor: 0.3048, symbol: "ft" },
+            "Yard": { factor: 0.9144, symbol: "yd" },
+            "Mile": { factor: 1609.344, symbol: "mi" },
+            "Nautical Mile": { factor: 1852, symbol: "nmi" }
+        }
+    },
+
+    weight: {
+        base: "Kilogram",
+        items: {
+            "Milligram": { factor: 0.000001, symbol: "mg" },
+            "Gram": { factor: 0.001, symbol: "g" },
+            "Kilogram": { factor: 1, symbol: "kg" },
+            "Metric Tonne": { factor: 1000, symbol: "t" },
+            "Ounce": { factor: 0.028349523125, symbol: "oz" },
+            "Pound": { factor: 0.45359237, symbol: "lb" },
+            "Stone": { factor: 6.35029318, symbol: "st" }
+        }
+    },
+
+    temperature: {
+        special: true,
+        items: {
+            "Celsius": { symbol: "°C" },
+            "Fahrenheit": { symbol: "°F" },
+            "Kelvin": { symbol: "K" }
+        }
+    },
+
+    area: {
+        base: "Square Meter",
+        items: {
+            "Square Millimeter": { factor: 0.000001, symbol: "mm²" },
+            "Square Centimeter": { factor: 0.0001, symbol: "cm²" },
+            "Square Meter": { factor: 1, symbol: "m²" },
+            "Square Kilometer": { factor: 1000000, symbol: "km²" },
+            "Hectare": { factor: 10000, symbol: "ha" },
+            "Acre": { factor: 4046.8564224, symbol: "ac" },
+            "Square Inch": { factor: 0.00064516, symbol: "in²" },
+            "Square Foot": { factor: 0.09290304, symbol: "ft²" },
+            "Square Yard": { factor: 0.83612736, symbol: "yd²" }
+        }
+    },
+
+    volume: {
+        base: "Liter",
+        items: {
+            "Milliliter": { factor: 0.001, symbol: "mL" },
+            "Liter": { factor: 1, symbol: "L" },
+            "Cubic Meter": { factor: 1000, symbol: "m³" },
+            "Cubic Centimeter": { factor: 0.001, symbol: "cm³" },
+            "US Gallon": { factor: 3.785411784, symbol: "US gal" },
+            "US Quart": { factor: 0.946352946, symbol: "US qt" },
+            "US Pint": { factor: 0.473176473, symbol: "US pt" },
+            "US Cup": { factor: 0.2365882365, symbol: "US cup" },
+            "US Fluid Ounce": { factor: 0.0295735295625, symbol: "US fl oz" },
+            "Imperial Gallon": { factor: 4.54609, symbol: "Imp gal" }
+        }
+    },
+
+    speed: {
+        base: "Meter per Second",
+        items: {
+            "Meter per Second": { factor: 1, symbol: "m/s" },
+            "Kilometer per Hour": { factor: 1 / 3.6, symbol: "km/h" },
+            "Mile per Hour": { factor: 0.44704, symbol: "mph" },
+            "Foot per Second": { factor: 0.3048, symbol: "ft/s" },
+            "Knot": { factor: 0.514444444444, symbol: "kn" }
+        }
+    },
+
+    time: {
+        base: "Second",
+        items: {
+            "Millisecond": { factor: 0.001, symbol: "ms" },
+            "Second": { factor: 1, symbol: "sec" },
+            "Minute": { factor: 60, symbol: "min" },
+            "Hour": { factor: 3600, symbol: "hr" },
+            "Day": { factor: 86400, symbol: "day" },
+            "Week": { factor: 604800, symbol: "week" },
+            "Year (365 days)": { factor: 31536000, symbol: "year" }
+        }
+    },
+
+    data: {
+        base: "Byte",
+        items: {
+            "Bit": { factor: 0.125, symbol: "bit" },
+            "Byte": { factor: 1, symbol: "B" },
+            "Kilobyte": { factor: 1000, symbol: "KB" },
+            "Megabyte": { factor: 1000000, symbol: "MB" },
+            "Gigabyte": { factor: 1000000000, symbol: "GB" },
+            "Terabyte": { factor: 1000000000000, symbol: "TB" },
+            "Kibibyte": { factor: 1024, symbol: "KiB" },
+            "Mebibyte": { factor: 1048576, symbol: "MiB" },
+            "Gibibyte": { factor: 1073741824, symbol: "GiB" },
+            "Tebibyte": { factor: 1099511627776, symbol: "TiB" }
+        }
+    },
+
+    pressure: {
+        base: "Pascal",
+        items: {
+            "Pascal": { factor: 1, symbol: "Pa" },
+            "Kilopascal": { factor: 1000, symbol: "kPa" },
+            "Bar": { factor: 100000, symbol: "bar" },
+            "Millibar": { factor: 100, symbol: "mbar" },
+            "Atmosphere": { factor: 101325, symbol: "atm" },
+            "PSI": { factor: 6894.757293168, symbol: "psi" },
+            "mmHg": { factor: 133.322387415, symbol: "mmHg" },
+            "Torr": { factor: 101325 / 760, symbol: "Torr" }
+        }
+    }
+};
+
+const $ = id => document.getElementById(id);
+
+const category = $("category");
+const fromValue = $("fromValue");
+const fromUnit = $("fromUnit");
+const toUnit = $("toUnit");
+const resultValue = $("resultValue");
+const resultUnit = $("resultUnit");
+const errorBox = $("error");
+
+$("year").textContent = new Date().getFullYear();
+
+function populateUnits(keepSelection = false) {
+
+    const key = category.value;
+    const data = units[key];
+
+    const previousFrom = keepSelection ? fromUnit.value : "";
+    const previousTo = keepSelection ? toUnit.value : "";
+
+    fromUnit.innerHTML = "";
+    toUnit.innerHTML = "";
+
+    Object.entries(data.items).forEach(([name, details]) => {
+
+        const option1 = document.createElement("option");
+        option1.value = name;
+        option1.textContent = name + " (" + details.symbol + ")";
+
+        const option2 = option1.cloneNode(true);
+
+        fromUnit.appendChild(option1);
+        toUnit.appendChild(option2);
+    });
+
+    const names = Object.keys(data.items);
+
+    fromUnit.value = names.includes(previousFrom)
+        ? previousFrom
+        : names[0];
+
+    toUnit.value = names.includes(previousTo)
+        ? previousTo
+        : (names[1] || names[0]);
+
+    errorBox.style.display = "none";
+    convert();
+}
+
+function temperatureToBase(value, unit) {
+
+    if (unit === "Celsius") return value;
+
+    if (unit === "Fahrenheit") {
+        return (value - 32) * 5 / 9;
+    }
+
+    if (unit === "Kelvin") {
+        return value - 273.15;
+    }
+
+    return value;
+}
+
+function temperatureFromBase(value, unit) {
+
+    if (unit === "Celsius") return value;
+
+    if (unit === "Fahrenheit") {
+        return (value * 9 / 5) + 32;
+    }
+
+    if (unit === "Kelvin") {
+        return value + 273.15;
+    }
+
+    return value;
+}
+
+function formatNumber(value) {
+
+    if (!Number.isFinite(value)) return "Invalid result";
+
+    if (Object.is(value, -0)) value = 0;
+
+    const absolute = Math.abs(value);
+
+    if (absolute !== 0 && (absolute >= 1e12 || absolute < 1e-7)) {
+        return value.toExponential(6);
+    }
+
+    return new Intl.NumberFormat("en-IN", {
+        maximumFractionDigits: 10,
+        useGrouping: true
+    }).format(value);
+}
+
+function convert() {
+
+    errorBox.style.display = "none";
+
+    const rawValue = fromValue.value.trim();
+
+    if (rawValue === "") {
+        resultValue.textContent = "—";
+        resultUnit.textContent = units[category.value].items[toUnit.value].symbol;
+        return;
+    }
+
+    const value = Number(rawValue);
+
+    if (!Number.isFinite(value)) {
+        showError("Please enter a valid number.");
+        return;
+    }
+
+    const key = category.value;
+    const data = units[key];
+
+    const source = fromUnit.value;
+    const target = toUnit.value;
+
+    let baseValue;
+    let finalValue;
+
+    if (data.special) {
+
+        baseValue = temperatureToBase(value, source);
+        finalValue = temperatureFromBase(baseValue, target);
+
+        if (key === "temperature" && source === "Kelvin" && value < 0) {
+            showError("Kelvin temperature cannot be below absolute zero (0 K).");
+            resultValue.textContent = "—";
+            return;
+        }
+
+        if (key === "temperature" && target === "Kelvin" && finalValue < 0) {
+            showError("Temperature cannot be below absolute zero (0 K).");
+            resultValue.textContent = "—";
+            return;
+        }
+
+    } else {
+
+        baseValue = value * data.items[source].factor;
+        finalValue = baseValue / data.items[target].factor;
+    }
+
+    if (!Number.isFinite(finalValue)) {
+        showError("The result is too large to display.");
+        resultValue.textContent = "—";
+        return;
+    }
+
+    resultValue.textContent = formatNumber(finalValue);
+    resultUnit.textContent = data.items[target].symbol;
+}
+
+function showError(message) {
+    errorBox.textContent = message;
+    errorBox.style.display = "block";
+}
+
+category.addEventListener("change", () => populateUnits());
+
+fromValue.addEventListener("input", convert);
+fromUnit.addEventListener("change", convert);
+toUnit.addEventListener("change", convert);
+
+$("swapBtn").addEventListener("click", function() {
+
+    const oldFrom = fromUnit.value;
+    const oldTo = toUnit.value;
+
+    fromUnit.value = oldTo;
+    toUnit.value = oldFrom;
+
+    convert();
+});
+
+$("copyBtn").addEventListener("click", async function() {
+
+    const raw = fromValue.value.trim();
+
+    if (raw === "" || resultValue.textContent === "—") {
+        showError("Please enter a valid value before copying.");
+        return;
+    }
+
+    const data = units[category.value];
+
+    const text =
+        "Toolaxa - Unit Converter\n" +
+        "Category: " + category.options[category.selectedIndex].text + "\n" +
+        "From: " + raw + " " + data.items[fromUnit.value].symbol + "\n" +
+        "To: " + resultValue.textContent + " " + data.items[toUnit.value].symbol;
+
+    try {
+
+        await navigator.clipboard.writeText(text);
+        $("copyBtn").textContent = "Copied ✓";
+
+    } catch (error) {
+
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        const copied = document.execCommand("copy");
+        textarea.remove();
+
+        $("copyBtn").textContent = copied ? "Copied ✓" : "Copy Failed";
+    }
+
+    setTimeout(() => {
+        $("copyBtn").textContent = "Copy Result";
+    }, 1800);
+});
+
+$("resetBtn").addEventListener("click", function() {
+
+    category.value = "length";
+    fromValue.value = "1";
+
+    populateUnits();
+
+    $("copyBtn").textContent = "Copy Result";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+/* Popular conversion shortcuts */
+
+document.querySelectorAll(".quick-item").forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        category.value = this.dataset.category;
+        populateUnits();
+
+        fromUnit.value = this.dataset.from;
+        toUnit.value = this.dataset.to;
+        fromValue.value = this.dataset.value;
+
+        convert();
+
+        $("converter-card");
+
+        document.querySelector(".converter-card").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+});
+
+/* Enter key support */
+
+fromValue.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") convert();
+});
+
+/* Initial setup */
+
+populateUnits();
+
+</script>
+
+</body>
+</html>

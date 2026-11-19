@@ -59,6 +59,11 @@
     </url>
 
     <url>
+        <loc>https://toolaxa.com/tools/bmi-calculator.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://toolaxa.com/tools/sip-calculator.html</loc>
         <priority>0.8</priority>
     </url>
@@ -161,5 +166,16 @@
         <loc>https://toolaxa.com/tools/text-to-voice.html</loc>
         <priority>0.8</priority>
     </url>
+
+    <url>
+        <loc>https://toolaxa.com/tools/internet-speed-test.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolaxa.com/tools/id-card-maker.html</loc>
+        <priority>0.8</priority>
+    </url>
+    
 
 </urlset>
