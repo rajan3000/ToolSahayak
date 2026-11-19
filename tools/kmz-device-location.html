@@ -862,13 +862,6 @@ let markers = [];
 let selectedMarker = null;
 let map = null;
 
-// GPS tracking variables
-let gpsMarker = null;
-let accuracyCircle = null;
-let gpsWatchId = null;
-let gpsTimeout = null;
-let bestGPSAccuracy = Infinity;
-
 const $ = id => document.getElementById(id);
 
 function setStatus(message, type = "normal") {
@@ -975,14 +968,11 @@ function saveData() {
 
 function initializeMap() {
   if (typeof L === "undefined") {
-    setStatus("Map library could not load. Check your internet connection.", "error");
+    setStatus("Map library could not load. Please check your internet connection.", "error");
     return;
   }
 
-  map = L.map("map", {
-    zoomControl: true,
-    scrollWheelZoom: true
-  }).setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
+  map = L.map("map").setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -994,9 +984,7 @@ function initializeMap() {
     setStatus("Map location selected successfully.", "success");
   });
 
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 500);
+  setTimeout(() => map.invalidateSize(), 300);
 }
 
 function setLocation(lat, lng) {
@@ -1060,224 +1048,49 @@ function locateCoordinates() {
 ========================================= */
 
 function getGPS() {
-
   if (!navigator.geolocation) {
     alert("GPS is not supported by this browser.");
     return;
   }
 
-  if (!map) {
-    alert("Map is not ready. Please refresh the page.");
-    return;
-  }
+  setStatus("Getting your current GPS location...");
 
-  // Stop any previous GPS tracking
-  if (gpsWatchId !== null) {
-    navigator.geolocation.clearWatch(gpsWatchId);
-    gpsWatchId = null;
-  }
+  $("gpsAccuracy").textContent = "";
 
-  if (gpsTimeout !== null) {
-    clearTimeout(gpsTimeout);
-    gpsTimeout = null;
-  }
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      const accuracy = position.coords.accuracy;
 
-  bestGPSAccuracy = Infinity;
+      setLocation(lat, lng);
 
-  $("gpsAccuracy").textContent = "Searching for accurate GPS location...";
+      if (map) map.setView([lat, lng], 18);
 
-  setStatus("Getting GPS location. Please wait...");
+      $("gpsAccuracy").textContent =
+        "GPS Accuracy: approximately " + Math.round(accuracy) + " metres.";
 
-  const gpsButton = document.querySelector(
-    'button[onclick="getGPS()"]'
-  );
+      setStatus("GPS location captured successfully.", "success");
 
-  if (gpsButton) {
-    gpsButton.disabled = true;
-    gpsButton.textContent = "Getting GPS...";
-  }
+      // Keep accuracy in the form's temporary data.
+      window.lastGPSAccuracy = accuracy;
+    },
+    error => {
+      let message = error.message || "Unable to get GPS location.";
 
-  function finishGPS() {
+      if (error.code === 1) message = "Location permission denied. Please allow location access.";
+      if (error.code === 2) message = "GPS position is unavailable.";
+      if (error.code === 3) message = "GPS request timed out. Please try again.";
 
-    if (gpsWatchId !== null) {
-      navigator.geolocation.clearWatch(gpsWatchId);
-      gpsWatchId = null;
-    }
-
-    if (gpsTimeout !== null) {
-      clearTimeout(gpsTimeout);
-      gpsTimeout = null;
-    }
-
-    if (gpsButton) {
-      gpsButton.disabled = false;
-      gpsButton.textContent = "📍 Capture Current GPS";
-    }
-  }
-
-  function showGPSLocation(position) {
-
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    const accuracy = position.coords.accuracy;
-
-    if (!validCoordinates(lat, lng) || !Number.isFinite(accuracy)) {
-      return;
-    }
-
-    // Keep the most accurate GPS reading received.
-    if (accuracy >= bestGPSAccuracy) {
-      return;
-    }
-
-    bestGPSAccuracy = accuracy;
-
-    $("latitude").value = lat.toFixed(7);
-    $("longitude").value = lng.toFixed(7);
-
-    window.lastGPSAccuracy = accuracy;
-
-    // Remove previous GPS marker and accuracy circle.
-    if (gpsMarker) {
-      map.removeLayer(gpsMarker);
-    }
-
-    if (accuracyCircle) {
-      map.removeLayer(accuracyCircle);
-    }
-
-    // Draw GPS accuracy circle.
-    accuracyCircle = L.circle([lat, lng], {
-      radius: accuracy,
-      color: "#2563eb",
-      weight: 2,
-      opacity: 0.9,
-      fillColor: "#3b82f6",
-      fillOpacity: 0.15
-    }).addTo(map);
-
-    // Draw blue GPS location dot.
-    gpsMarker = L.circleMarker([lat, lng], {
-      radius: 9,
-      color: "#ffffff",
-      weight: 3,
-      fillColor: "#2563eb",
-      fillOpacity: 1
-    }).addTo(map);
-
-    gpsMarker.bindPopup(
-      "<strong>Your Current Location</strong><br>" +
-      "Latitude: " + lat.toFixed(7) + "<br>" +
-      "Longitude: " + lng.toFixed(7) + "<br>" +
-      "GPS Accuracy: ±" + Math.round(accuracy) + " metres"
-    );
-
-    // Automatically adjust zoom based on GPS accuracy.
-    let zoom;
-
-    if (accuracy <= 10) {
-      zoom = 18;
-    } else if (accuracy <= 20) {
-      zoom = 17;
-    } else if (accuracy <= 50) {
-      zoom = 16;
-    } else if (accuracy <= 100) {
-      zoom = 15;
-    } else if (accuracy <= 250) {
-      zoom = 14;
-    } else if (accuracy <= 500) {
-      zoom = 13;
-    } else if (accuracy <= 1000) {
-      zoom = 12;
-    } else {
-      zoom = 11;
-    }
-
-    // Ensure the map is properly rendered before moving.
-    map.invalidateSize();
-
-    map.setView([lat, lng], zoom, {
-      animate: true,
-      duration: 1
-    });
-
-    gpsMarker.openPopup();
-
-    $("gpsAccuracy").textContent =
-      "GPS Accuracy: ±" + Math.round(accuracy) +
-      " metres | Latitude: " + lat.toFixed(7) +
-      " | Longitude: " + lng.toFixed(7);
-
-    if (accuracy <= 15) {
-      setStatus(
-        "Excellent GPS reading received. Accuracy: ±" +
-        Math.round(accuracy) + " metres.",
-        "success"
-      );
-
-      finishGPS();
-    } else {
-      setStatus(
-        "GPS location updated. Searching for a more accurate reading..."
-      );
-    }
-  }
-
-  function gpsError(error) {
-
-    finishGPS();
-
-    let message = error.message || "Unable to get GPS location.";
-
-    if (error.code === 1) {
-      message = "Location permission denied. Please allow location access.";
-    }
-
-    if (error.code === 2) {
-      message = "GPS position is unavailable. Please check your device location settings.";
-    }
-
-    if (error.code === 3) {
-      message = "GPS request timed out. Please try again.";
-    }
-
-    setStatus(message, "error");
-    alert(message);
-  }
-
-  // Watch GPS continuously to get a better reading.
-  gpsWatchId = navigator.geolocation.watchPosition(
-    showGPSLocation,
-    gpsError,
+      setStatus(message, "error");
+      alert(message + " Use HTTPS or localhost and enable location permission.");
+    },
     {
       enableHighAccuracy: true,
       timeout: 20000,
       maximumAge: 0
     }
   );
-
-  // Stop searching after 30 seconds.
-  gpsTimeout = setTimeout(() => {
-
-    if (gpsWatchId !== null) {
-      finishGPS();
-
-      if (bestGPSAccuracy !== Infinity) {
-        setStatus(
-          "GPS captured. Final accuracy: ±" +
-          Math.round(bestGPSAccuracy) +
-          " metres. Better GPS signal may improve accuracy.",
-          "success"
-        );
-      } else {
-        setStatus(
-          "Unable to obtain GPS location. Please try again.",
-          "error"
-        );
-      }
-    }
-
-  }, 30000);
 }
 
 /* =========================================

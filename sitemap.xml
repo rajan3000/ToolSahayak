@@ -42,6 +42,11 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://toolaxa.com/tools/kmz-device-location.html</loc>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Calculator Tools -->
     <url>
         <loc>https://toolaxa.com/tools/age-calculator.html</loc>
