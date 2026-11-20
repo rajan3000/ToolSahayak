@@ -3,177 +3,192 @@
 
     <!-- Main Pages -->
     <url>
-        <loc>https://toolaxa.com/</loc>
+        <loc>https://toolaxa.com/</loc> <!--01-->
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/about.html</loc>
+        <loc>https://toolaxa.com/about.html</loc> <!--02-->
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/contact.html</loc>
+        <loc>https://toolaxa.com/contact.html</loc> <!--03-->
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/privacy-policy.html</loc>
+        <loc>https://toolaxa.com/privacy-policy.html</loc> <!--04-->
         <priority>0.4</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/disclaimer.html</loc>
+        <loc>https://toolaxa.com/disclaimer.html</loc> <!--05-->
         <priority>0.4</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/quotation-generator.html</loc>
+        <loc>https://toolaxa.com/tools/quotation-generator.html</loc> <!--06-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/invoice-generator.html</loc>
+        <loc>https://toolaxa.com/tools/invoice-generator.html</loc> <!--07-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/qr-code-generator.html</loc>
+        <loc>https://toolaxa.com/tools/qr-code-generator.html</loc> <!--08-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/kmz-device-location.html</loc>
+        <loc>https://toolaxa.com/tools/kmz-device-location.html</loc> <!--09-->
         <priority>0.8</priority>
     </url>
 
     <!-- Calculator Tools -->
     <url>
-        <loc>https://toolaxa.com/tools/age-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/age-calculator.html</loc> <!--10-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/emi-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/emi-calculator.html</loc> <!--11-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/bmi-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/bmi-calculator.html</loc> <!--12-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/sip-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/sip-calculator.html</loc> <!--13-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/gst-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/gst-calculator.html</loc> <!--14-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/scientific-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/scientific-calculator.html</loc> <!--15-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/speed-distance-time.html</loc>
+        <loc>https://toolaxa.com/tools/speed-distance-time.html</loc> <!--16-->
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/force-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/force-calculator.html</loc> <!--17-->
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/percentage-marks-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/percentage-marks-calculator.html</loc> <!--18-->
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/gpa-cgpa-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/gpa-cgpa-calculator.html</loc> <!--19-->
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/density-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/density-calculator.html</loc> <!--20-->
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/molar-mass-calculator.html</loc>
+        <loc>https://toolaxa.com/tools/molar-mass-calculator.html</loc> <!--21-->
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/temperature-converter.html</loc>
+        <loc>https://toolaxa.com/tools/temperature-converter.html</loc> <!--22-->
         <priority>0.7</priority>
     </url>
 
     <!-- Image Tools -->
     <url>
-        <loc>https://toolaxa.com/tools/image-compressor.html</loc>
+        <loc>https://toolaxa.com/tools/image-compressor.html</loc> <!--23-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/photo-resizer.html</loc>
+        <loc>https://toolaxa.com/tools/photo-resizer.html</loc> <!--24-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/signature-maker.html</loc>
+        <loc>https://toolaxa.com/tools/signature-maker.html</loc> <!--25-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/background-remover.html</loc>
+        <loc>https://toolaxa.com/tools/background-remover.html</loc> <!--26-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/passport-photo-maker.html</loc>
+        <loc>https://toolaxa.com/tools/passport-photo-maker.html</loc> <!--27-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/image-to-text.html</loc>
+        <loc>https://toolaxa.com/tools/image-to-text.html</loc> <!--28-->
         <priority>0.8</priority>
     </url>
 
 
     <!-- PDF Tools -->
     <url>
-        <loc>https://toolaxa.com/tools/merge-pdf.html</loc>
+        <loc>https://toolaxa.com/tools/merge-pdf.html</loc> <!--29-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/split-pdf.html</loc>
+        <loc>https://toolaxa.com/tools/split-pdf.html</loc> <!--30-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/image-to-pdf.html</loc>
+        <loc>https://toolaxa.com/tools/image-to-pdf.html</loc> <!--31-->
         <priority>0.8</priority>
     </url>
 
     <!-- Text Tools -->
     <url>
-        <loc>https://toolaxa.com/tools/text-to-voice.html</loc>
+        <loc>https://toolaxa.com/tools/text-to-voice.html</loc> <!--32-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/internet-speed-test.html</loc>
+        <loc>https://toolaxa.com/tools/internet-speed-test.html</loc> <!--33-->
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://toolaxa.com/tools/id-card-maker.html</loc>
+        <loc>https://toolaxa.com/tools/id-card-maker.html</loc> <!--34-->
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolaxa.com/tools/image-to-emoji.html</loc> <!--35-->
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolaxa.com/tools/image-to-icon.html</loc> <!--36-->
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://toolaxa.com/tools/text-to-icon.html</loc> <!--37-->
         <priority>0.8</priority>
     </url>
     

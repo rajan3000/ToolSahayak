@@ -1,6 +1,6 @@
 # Toolaxa – Free Online Tools Platform
 
-Toolaxa is a free online tools platform designed to provide useful calculators, image utilities, educational tools and business utilities in one place.
+Toolaxa is a free online tools platform designed to provide useful calculators, image utilities, PDF tools, educational tools and business utilities in one place.
 
 Our goal is to make everyday online tasks simple, fast and accessible for users in India and around the world.
 
@@ -8,15 +8,18 @@ Our goal is to make everyday online tasks simple, fast and accessible for users 
 
 ---
 
-## Features
+## Features & Available Tools
 
-### Calculators
+### 1. Business Tools
+- Quotation Generator
+- Invoice Generator
+
+### 2. Calculator Tools
 - Age Calculator
 - EMI Calculator
+- BMI Calculator
 - SIP Calculator
 - GST Calculator
-
-### Education & Science Tools
 - Scientific Calculator
 - Speed, Distance & Time Calculator
 - Force Calculator
@@ -26,18 +29,31 @@ Our goal is to make everyday online tasks simple, fast and accessible for users 
 - Molar Mass Calculator
 - Temperature Converter
 
-### Image Tools
+### 3. Image Tools
 - Image Compressor
 - Photo Resizer
 - Signature Maker
+- Background Remover
+- Passport Photo Maker
+- Image to Text Converter
+- Image to Emoji Converter
+- Image to Icon Converter
+- Text to Icon Maker
 
-### Business Tools
-- Online Quotation Generator
-- GST Calculation
-- Professional PDF Quotation
-- Multiple Quotation Templates
+### 4. PDF Tools
+- Merge PDF
+- Split PDF
+- Image to PDF Converter
 
-### Other Pages
+### 5. Other Online Tools
+- QR Code Generator
+- KMZ Device Location Tool
+- Text to Voice Converter
+- Internet Speed Test
+- ID Card Maker
+
+### 6. Website Pages
+- Home
 - About Us
 - Contact Us
 - Privacy Policy
@@ -66,20 +82,20 @@ Toolaxa/
 ├── contact.html
 ├── privacy-policy.html
 ├── disclaimer.html
-├── quotation-invoice.html
-│
 ├── sitemap.xml
 ├── robots.txt
-├── README.md
+├── README.txt
 │
 ├── tools/
+│   ├── quotation-generator.html
+│   ├── invoice-generator.html
+│   ├── qr-code-generator.html
+│   ├── kmz-device-location.html
 │   ├── age-calculator.html
 │   ├── emi-calculator.html
+│   ├── bmi-calculator.html
 │   ├── sip-calculator.html
 │   ├── gst-calculator.html
-│   ├── image-compressor.html
-│   ├── photo-resizer.html
-│   ├── signature-maker.html
 │   ├── scientific-calculator.html
 │   ├── speed-distance-time.html
 │   ├── force-calculator.html
@@ -87,7 +103,22 @@ Toolaxa/
 │   ├── gpa-cgpa-calculator.html
 │   ├── density-calculator.html
 │   ├── molar-mass-calculator.html
-│   └── temperature-converter.html
+│   ├── temperature-converter.html
+│   ├── image-compressor.html
+│   ├── photo-resizer.html
+│   ├── signature-maker.html
+│   ├── background-remover.html
+│   ├── passport-photo-maker.html
+│   ├── image-to-text.html
+│   ├── image-to-emoji.html
+│   ├── image-to-icon.html
+│   ├── text-to-icon.html
+│   ├── merge-pdf.html
+│   ├── split-pdf.html
+│   ├── image-to-pdf.html
+│   ├── text-to-voice.html
+│   ├── internet-speed-test.html
+│   └── id-card-maker.html
 │
 └── assets/
     ├── css/
@@ -99,6 +130,8 @@ Toolaxa/
     └── images/
         └── favicon.png
 ```
+
+*Note: The project structure is based on the URLs listed in sitemap.xml. Keep only the files and folders that actually exist in your project.*
 
 ---
 
@@ -115,6 +148,9 @@ The website includes the following SEO elements:
 - XML Sitemap
 - Robots.txt
 - Structured heading hierarchy
+- Search engine-friendly URLs
+
+**Website:** https://toolaxa.com/
 
 **Sitemap:** https://toolaxa.com/sitemap.xml
 
@@ -131,10 +167,11 @@ The website is hosted on Netlify.
 To publish website updates:
 
 1. Open the Toolaxa project.
-2. Save the updated files.
-3. Deploy the project to Netlify.
-4. Open the live website.
-5. Verify the updated pages and features.
+2. Update the required files.
+3. Save all changes.
+4. Deploy the project to Netlify.
+5. Open the live website.
+6. Verify the updated pages and tools.
 
 ---
 
@@ -154,7 +191,7 @@ For feedback, questions or technical support:
 
 **Target Audience:** India and Global Users
 
-**Status:** Active Development
+**Website Status:** Active Development
 
 **Powered By:** Mr. Rajan
 

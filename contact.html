@@ -6,39 +6,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Analytics - Toolaxa -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-05KPNRM3X5');
-    </script>
+    <!-- Primary SEO -->
+    <title>Contact Toolaxa | Customer Support & Office Address</title>
 
-    <title>Contact Toolaxa - Support, Feedback & Queries</title>
+    <meta name="description" content="Contact Toolaxa for customer support, feedback, technical assistance and general inquiries. Email officecare.support@gmail.com or visit our office address in Vasant Vihar, Solapur, Maharashtra, India.">
 
-    <meta name="description" content="Contact Toolaxa for support, questions, feedback or suggestions about our free online calculators, image tools and digital utilities.">
+    <meta name="keywords" content="Contact Toolaxa, Toolaxa customer support, Toolaxa email, Toolaxa office address, online tools support, technical support">
 
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#1764df">
+    <meta name="author" content="Mr. Rajan - Founder & CEO, Toolaxa">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#155eef">
 
     <link rel="canonical" href="https://toolaxa.com/contact.html">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
+    <!-- Open Graph SEO -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Contact Toolaxa - Get in Touch">
-    <meta property="og:description" content="Get in touch with Toolaxa for questions, support, feedback and suggestions.">
-    <meta property="og:url" content="https://toolaxa.com/contact.html">
     <meta property="og:site_name" content="Toolaxa">
+    <meta property="og:title" content="Contact Toolaxa - Get in Touch">
+    <meta property="og:description" content="Get in touch with Toolaxa for support, feedback, technical assistance and general inquiries.">
+    <meta property="og:url" content="https://toolaxa.com/contact.html">
 
+    <!-- Twitter SEO -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Contact Toolaxa">
-    <meta name="twitter:description" content="Contact Toolaxa for support, feedback and suggestions.">
+    <meta name="twitter:description" content="Contact Toolaxa for customer support, feedback and inquiries.">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+    <!-- Organization Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Toolaxa",
+        "url": "https://toolaxa.com/",
+        "email": "officecare.support@gmail.com",
+        "description": "Toolaxa is an independent digital platform offering useful online calculators, image tools and digital utilities.",
+        "founder": {
+            "@type": "Person",
+            "name": "Mr. Rajan",
+            "jobTitle": "Founder and CEO"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Greens Apartment, Vasant Vihar",
+            "addressLocality": "Solapur",
+            "addressRegion": "Maharashtra",
+            "postalCode": "413002",
+            "addressCountry": "IN"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "officecare.support@gmail.com",
+            "contactType": "customer support",
+            "availableLanguage": ["English", "Hindi"]
+        }
+    }
+    </script>
+
+    <!-- Contact Page Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Toolaxa",
+        "url": "https://toolaxa.com/contact.html",
+        "description": "Contact Toolaxa for support, feedback and general inquiries.",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Toolaxa",
+            "email": "officecare.support@gmail.com"
+        }
+    }
+    </script>
 
     <style>
 
         /* =========================
-           GLOBAL RESET
+           GLOBAL
         ========================= */
 
         * {
@@ -52,12 +110,11 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f8ff;
-            color: #172033;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f6f8fc;
+            color: #18243a;
             line-height: 1.7;
             min-height: 100vh;
-
             display: flex;
             flex-direction: column;
         }
@@ -66,255 +123,375 @@
             text-decoration: none;
         }
 
+        :root {
+            --primary: #155eef;
+            --primary-dark: #1048c7;
+            --secondary: #102344;
+            --muted: #64748b;
+            --border: #e5eaf2;
+            --white: #ffffff;
+            --light: #eff5ff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1160px;
+            margin: auto;
+            padding: 0 24px;
+        }
+
         /* =========================
            HEADER
         ========================= */
 
-        .contact-header {
-            width: 100%;
-            background: #ffffff;
-            border-bottom: 1px solid #e7edf6;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.04);
-
+        .header {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            background: rgba(255,255,255,.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .contact-nav {
+        .nav {
             max-width: 1200px;
             min-height: 76px;
             margin: auto;
             padding: 12px 25px;
-
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+            gap: 15px;
         }
 
-        /* LOGO */
-
-        .contact-logo {
+        .logo {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-
-            color: #101828;
+            color: var(--secondary);
             font-size: 27px;
-            font-weight: 800;
+            font-weight: 850;
             letter-spacing: -1px;
-            white-space: nowrap;
         }
 
-        .contact-logo-icon {
+        .logo-icon {
             width: 43px;
             height: 43px;
-
             display: flex;
-            justify-content: center;
             align-items: center;
-
-            background: #1764df;
-            color: #ffffff;
-
+            justify-content: center;
+            background: var(--primary);
+            color: white;
             border-radius: 12px;
             font-size: 25px;
             font-weight: 900;
         }
 
-        .contact-logo-highlight {
-            color: #1764df;
+        .logo-highlight {
+            color: var(--primary);
         }
 
-        /* BACK BUTTON */
-
-        .contact-back-btn {
+        .back-btn {
             display: inline-flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-
-            background: #1764df;
-            color: #ffffff;
-
-            padding: 11px 20px;
+            padding: 10px 19px;
+            background: var(--primary);
+            color: white;
             border-radius: 9px;
-
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-
-            transition: all 0.25s ease;
+            transition: .25s;
         }
 
-        .contact-back-btn:hover {
-            background: #104bb4;
+        .back-btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 75px 20px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #102344, #155eef);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,.06);
+        }
+
+        .hero::before {
+            width: 300px;
+            height: 300px;
+            top: -180px;
+            left: -70px;
+        }
+
+        .hero::after {
+            width: 350px;
+            height: 350px;
+            bottom: -250px;
+            right: -80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,.25);
+            background: rgba(255,255,255,.10);
+            color: #dceaff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 49px);
+            line-height: 1.2;
+            font-weight: 850;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #9ec5ff;
+        }
+
+        .hero p {
+            max-width: 620px;
+            margin: auto;
+            color: #dce7fa;
+            font-size: 15px;
+            line-height: 1.9;
         }
 
         /* =========================
            MAIN CONTENT
         ========================= */
 
-        .contact-main {
+        main {
             flex: 1;
-            width: 100%;
-            max-width: 950px;
-
-            margin: 0 auto;
-            padding: 45px 25px 60px;
         }
 
-        /* HERO SECTION */
+        .section {
+            padding: 60px 0;
+        }
 
-        .contact-hero {
+        .section-heading {
             text-align: center;
-            padding: 50px 25px;
-
-            background: linear-gradient(
-                135deg,
-                #e9f2ff,
-                #f5f9ff
-            );
-
-            border: 1px solid #e0eaff;
-            border-radius: 18px;
-
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .contact-label {
-            display: inline-block;
-
-            background: #dceaff;
-            color: #1764df;
-
-            padding: 6px 15px;
-            border-radius: 30px;
-
-            font-size: 12px;
+        .section-tag {
+            color: var(--primary);
+            font-size: 11px;
             font-weight: 800;
-            letter-spacing: 1px;
-
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
         }
 
-        .contact-hero h1 {
-            color: #1764df;
-            font-size: 40px;
-            line-height: 1.25;
-            margin-bottom: 12px;
+        .section-heading h2 {
+            color: var(--secondary);
+            font-size: 29px;
             font-weight: 800;
+            margin-bottom: 8px;
         }
 
-        .contact-hero p {
-            color: #526078;
-            font-size: 16px;
-            max-width: 600px;
-            margin: auto;
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
         }
 
         /* =========================
-           CONTACT CARDS
+           CONTACT INFORMATION
         ========================= */
 
-        .contact-card {
-            width: 100%;
-            background: #ffffff;
-
-            padding: 28px 30px;
-            border-radius: 14px;
-
-            margin-bottom: 22px;
-
-            border: 1px solid #e9edf4;
-
-            box-shadow: 0 4px 15px rgba(20,50,100,0.04);
-
-            transition: all 0.25s ease;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
         }
 
-        .contact-card:hover {
-            box-shadow: 0 8px 25px rgba(20,50,100,0.08);
-            transform: translateY(-2px);
+        .info-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 7px 25px rgba(15,35,70,.04);
+            transition: .3s;
         }
 
-        .contact-card h2 {
-            color: #1764df;
-            font-size: 21px;
-            font-weight: 750;
-
-            margin-bottom: 13px;
-            padding-bottom: 10px;
-
-            border-bottom: 2px solid #edf3ff;
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(15,35,70,.08);
+            border-color: #c6d9ff;
         }
 
-        .contact-card p {
-            color: #586477;
-            font-size: 15px;
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: #eaf1ff;
+            color: var(--primary);
+            font-size: 23px;
+            margin-bottom: 18px;
+        }
+
+        .info-card h2 {
+            color: var(--secondary);
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: var(--muted);
+            font-size: 13px;
             line-height: 1.9;
-            margin-bottom: 12px;
         }
 
-        /* =========================
-           EMAIL SUPPORT
-        ========================= */
-
-        .email-support-box {
-            margin-top: 20px;
-            padding: 20px;
-
-            background: #f2f7ff;
-            border: 1px solid #dceaff;
-            border-radius: 11px;
-        }
-
-        .email-support-title {
-            color: #172033;
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .email-link {
+        .info-link {
             display: inline-block;
-
-            color: #1764df;
-            font-size: 17px;
+            margin-top: 12px;
+            color: var(--primary);
+            font-size: 14px;
             font-weight: 750;
-
-            margin-top: 5px;
-
             overflow-wrap: anywhere;
-            transition: 0.2s;
         }
 
-        .email-link:hover {
-            color: #104bb4;
+        .info-link:hover {
+            color: var(--primary-dark);
             text-decoration: underline;
+        }
+
+        .address-text {
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-top: 5px;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 16px;
+            padding: 10px 15px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 750;
+            transition: .2s;
+        }
+
+        .map-btn:hover {
+            background: #dceaff;
         }
 
         /* =========================
            CONTACT FORM
         ========================= */
 
-        .contact-form {
-            margin-top: 22px;
-            width: 100%;
+        .form-section {
+            background: white;
+        }
+
+        .form-layout {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .form-info {
+            padding: 20px 0;
+        }
+
+        .form-info h2 {
+            color: var(--secondary);
+            font-size: 27px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .form-info p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .support-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            margin-top: 18px;
+            color: #475569;
+            font-size: 13px;
+        }
+
+        .support-check {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf1ff;
+            color: var(--primary);
+            border-radius: 7px;
+            font-weight: 800;
+        }
+
+        .form-card {
+            padding: 30px;
+            background: #f9fbff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .form-card h3 {
+            color: var(--secondary);
+            font-size: 21px;
+            margin-bottom: 7px;
+        }
+
+        .form-description {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 23px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 17px;
         }
 
         .contact-form label {
             display: block;
-
             color: #263449;
-            font-size: 14px;
-            font-weight: 700;
-
+            font-size: 13px;
+            font-weight: 750;
             margin-bottom: 7px;
         }
 
@@ -322,21 +499,15 @@
         .contact-form textarea {
             display: block;
             width: 100%;
-
-            padding: 13px 15px;
-
+            padding: 13px 14px;
+            background: white;
+            color: #18243a;
             border: 1px solid #d5deea;
-            border-radius: 8px;
-
-            background: #ffffff;
-            color: #172033;
-
-            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 9px;
+            font-family: inherit;
             font-size: 14px;
-
             outline: none;
-
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: .2s;
         }
 
         .contact-form input {
@@ -344,16 +515,15 @@
         }
 
         .contact-form textarea {
-            min-height: 150px;
+            min-height: 145px;
             resize: vertical;
             line-height: 1.7;
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: #1764df;
-
-            box-shadow: 0 0 0 3px rgba(23,100,223,0.10);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(21,94,239,.10);
         }
 
         .contact-form input::placeholder,
@@ -361,307 +531,352 @@
             color: #9aa6b8;
         }
 
-        /* SUBMIT BUTTON */
-
-        .contact-submit-btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 9px;
-
-            min-height: 47px;
-            padding: 12px 24px;
-
-            background: #1764df;
-            color: #ffffff;
-
+        .submit-btn {
+            width: 100%;
+            min-height: 49px;
             border: none;
             border-radius: 9px;
-
+            background: var(--primary);
+            color: white;
+            font-family: inherit;
             font-size: 14px;
             font-weight: 750;
-
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: .25s;
         }
 
-        .contact-submit-btn:hover {
-            background: #104bb4;
+        .submit-btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
         }
 
-        .contact-submit-btn:focus-visible {
+        .submit-btn:focus-visible {
             outline: 3px solid #93c5fd;
             outline-offset: 3px;
         }
 
-        /* FORM NOTE */
-
-        .contact-note {
-            margin-top: 20px;
-            padding: 15px;
-
-            background: #f0f6ff;
-            border-left: 4px solid #1764df;
-
-            color: #38557d;
+        .form-note {
+            margin-top: 16px;
+            padding: 13px;
+            background: #eff5ff;
+            border-left: 4px solid var(--primary);
             border-radius: 7px;
+            color: #38557d;
+            font-size: 12px;
+            line-height: 1.8;
+        }
 
-            font-size: 13px;
-            line-height: 1.7;
+        /* Honeypot - Spam protection */
+
+        .hp-field {
+            position: absolute !important;
+            left: -9999px !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
         }
 
         /* =========================
-           BOTTOM HOME BUTTON
+           OFFICE LOCATION
         ========================= */
 
-        .contact-bottom {
-            text-align: center;
-            padding: 15px 0 5px;
-        }
-
-        .contact-home-btn {
-            display: inline-flex;
-            justify-content: center;
+        .location-card {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 9px;
-
-            padding: 13px 24px;
-
-            background: #1764df;
-            color: #ffffff;
-
-            border-radius: 10px;
-
-            font-size: 14px;
-            font-weight: 750;
-
-            transition: 0.25s;
+            gap: 25px;
+            padding: 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
         }
 
-        .contact-home-btn:hover {
-            background: #104bb4;
-            transform: translateY(-2px);
+        .location-card h2 {
+            color: var(--secondary);
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .location-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .location-card a {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 19px;
+            border-radius: 9px;
+            background: var(--primary);
+            color: white;
+            font-size: 13px;
+            font-weight: 750;
+            transition: .2s;
+        }
+
+        .location-card a:hover {
+            background: var(--primary-dark);
+        }
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq-list {
+            max-width: 850px;
+            margin: auto;
+            display: grid;
+            gap: 13px;
+        }
+
+        .faq-item {
+            padding: 22px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .faq-item h3 {
+            color: var(--secondary);
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .faq-item p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
         }
 
         /* =========================
            FOOTER
         ========================= */
 
-        .contact-footer {
-            width: 100%;
-            background: #111d34;
-            color: #ffffff;
+        .footer {
+            background: #101d33;
+            color: white;
             margin-top: auto;
         }
 
-        .contact-footer-inner {
+        .footer-inner {
             max-width: 1200px;
             margin: auto;
-            padding: 24px 25px;
-
+            padding: 35px 25px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+            gap: 25px;
         }
 
-        .contact-footer-brand {
-            font-size: 18px;
-            font-weight: 800;
+        .footer-brand {
+            font-size: 23px;
+            font-weight: 850;
         }
 
-        .contact-footer-brand span {
+        .footer-brand span {
             color: #60a5fa;
         }
 
-        .contact-footer-inner p {
-            color: #b9c5d8;
+        .footer-description {
+            color: #b7c5dc;
             font-size: 12px;
+            margin-top: 5px;
         }
 
-        .contact-footer-links {
+        .footer-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px 20px;
+            gap: 12px 22px;
         }
 
-        .contact-footer-links a {
-            color: #d8e2f2;
+        .footer-links a {
+            color: #d1dced;
             font-size: 12px;
-            transition: 0.2s;
+            transition: .2s;
         }
 
-        .contact-footer-links a:hover {
-            color: #ffffff;
+        .footer-links a:hover {
+            color: white;
             text-decoration: underline;
         }
 
-        .contact-copyright {
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,.12);
+            padding: 17px 20px;
             text-align: center;
-
-            border-top: 1px solid rgba(255,255,255,0.12);
-
-            padding: 15px 20px;
-
-            color: #b9c5d8;
-            font-size: 12px;
+            color: #aebdd3;
+            font-size: 11px;
         }
 
         /* =========================
-           TABLET RESPONSIVE
+           RESPONSIVE
         ========================= */
 
-        @media (max-width: 768px) {
+        @media(max-width: 768px) {
 
-            .contact-nav {
-                min-height: 68px;
-                padding: 10px 18px;
+            .section {
+                padding: 45px 0;
             }
 
-            .contact-logo {
-                font-size: 23px;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
-            .contact-logo-icon {
-                width: 38px;
-                height: 38px;
-                font-size: 22px;
+            .form-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .contact-main {
-                padding: 30px 18px 45px;
+            .form-info {
+                padding: 0;
             }
 
-            .contact-hero {
-                padding: 40px 20px;
+            .location-card {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .contact-hero h1 {
-                font-size: 33px;
-            }
-
-            .contact-card {
-                padding: 23px;
-            }
-
-            .contact-footer-inner {
+            .footer-inner {
                 flex-direction: column;
                 text-align: center;
             }
 
-            .contact-footer-links {
+            .footer-links {
                 justify-content: center;
             }
         }
 
-        /* =========================
-           MOBILE RESPONSIVE
-        ========================= */
+        @media(max-width: 520px) {
 
-        @media (max-width: 480px) {
-
-            .contact-nav {
-                padding: 10px 13px;
-                gap: 8px;
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
             }
 
-            .contact-logo {
-                font-size: 20px;
+            .nav {
+                min-height: 65px;
+                padding: 10px 14px;
+            }
+
+            .logo {
+                font-size: 21px;
                 gap: 7px;
             }
 
-            .contact-logo-icon {
-                width: 34px;
-                height: 34px;
-                font-size: 19px;
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 21px;
                 border-radius: 9px;
             }
 
-            .contact-back-btn {
+            .back-btn {
                 padding: 9px 11px;
                 font-size: 11px;
-                gap: 4px;
             }
 
-            .contact-main {
-                padding: 23px 13px 35px;
+            .hero {
+                padding: 53px 17px 58px;
             }
 
-            .contact-hero {
-                padding: 35px 16px;
-                border-radius: 13px;
-                margin-bottom: 20px;
+            .hero h1 {
+                font-size: 34px;
             }
 
-            .contact-hero h1 {
-                font-size: 29px;
-            }
-
-            .contact-hero p {
+            .hero p {
                 font-size: 13px;
             }
 
-            .contact-card {
-                padding: 19px 17px;
-                margin-bottom: 15px;
-                border-radius: 11px;
+            .section {
+                padding: 38px 0;
             }
 
-            .contact-card h2 {
+            .section-heading {
+                margin-bottom: 25px;
+            }
+
+            .section-heading h2 {
+                font-size: 24px;
+            }
+
+            .section-heading p {
+                font-size: 13px;
+            }
+
+            .info-card {
+                padding: 22px;
+            }
+
+            .info-card h2 {
                 font-size: 18px;
             }
 
-            .contact-card p {
+            .info-card p,
+            .address-text {
                 font-size: 13px;
             }
 
-            .email-support-box {
-                padding: 15px;
+            .form-info h2 {
+                font-size: 23px;
             }
 
-            .email-link {
-                font-size: 15px;
+            .form-card {
+                padding: 20px 16px;
             }
 
-            .contact-form label {
-                font-size: 13px;
+            .form-card h3 {
+                font-size: 19px;
             }
 
             .contact-form input,
             .contact-form textarea {
                 font-size: 14px;
-                padding: 12px;
             }
 
-            .contact-submit-btn {
+            .location-card {
+                padding: 22px;
+            }
+
+            .location-card h2 {
+                font-size: 19px;
+            }
+
+            .location-card p {
+                font-size: 13px;
+            }
+
+            .location-card a {
                 width: 100%;
             }
 
-            .contact-note {
+            .faq-item {
+                padding: 18px;
+            }
+
+            .faq-item h3 {
+                font-size: 14px;
+            }
+
+            .faq-item p {
                 font-size: 12px;
             }
 
-            .contact-footer-inner {
-                padding: 22px 15px;
+            .footer-inner {
+                padding: 28px 15px;
             }
 
-            .contact-footer-links {
-                gap: 10px 14px;
+            .footer-links {
+                gap: 12px 15px;
             }
 
-            .contact-footer-links a {
-                font-size: 11px;
-            }
-
-            .contact-copyright {
+            .copyright {
                 font-size: 10px;
             }
         }
 
-        /* REDUCED MOTION */
-
-        @media (prefers-reduced-motion: reduce) {
+        @media(prefers-reduced-motion: reduce) {
             *,
             *::before,
             *::after {
@@ -676,81 +891,192 @@
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+    <!-- HEADER -->
 
-    <header class="contact-header">
+    <header class="header">
 
-        <div class="contact-nav">
+        <nav class="nav" aria-label="Main navigation">
 
-            <a href="index.html" class="contact-logo">
+            <a href="index.html" class="logo"
+               aria-label="Toolaxa Homepage">
 
-                <span class="contact-logo-icon">T</span>
+                <span class="logo-icon">T</span>
 
                 <span>
-                    Tool<span class="contact-logo-highlight">axa</span>
+                    Tool<span class="logo-highlight">axa</span>
                 </span>
 
             </a>
 
-            <a href="index.html" class="contact-back-btn">
+            <a href="index.html" class="back-btn">
                 ← Back to Home
             </a>
 
-        </div>
+        </nav>
 
     </header>
 
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
+    <main>
 
-    <main class="contact-main">
+        <!-- HERO -->
 
-        <!-- HERO SECTION -->
+        <section class="hero">
 
-        <section class="contact-hero">
+            <div class="hero-content">
 
-            <span class="contact-label">GET IN TOUCH</span>
+                <span class="hero-label">
+                    CONTACT TOOLAXA
+                </span>
 
-            <h1>Contact Us</h1>
+                <h1>
+                    Let's Start a <span>Conversation.</span>
+                </h1>
 
-            <p>
-                Have a question, suggestion or feedback?
-                Get in touch with the Toolaxa team.
-                We would be happy to hear from you.
-            </p>
+                <p>
+                    Have a question, need assistance or want
+                    to share your feedback? We are here to
+                    hear from you. Connect with Toolaxa
+                    for support and inquiries.
+                </p>
+
+            </div>
 
         </section>
 
 
-        <!-- EMAIL SUPPORT -->
+        <!-- CONTACT INFORMATION -->
 
-        <section class="contact-card">
+        <section class="section">
 
-            <h2>Get in Touch</h2>
+            <div class="container">
 
-            <p>
-                We welcome your questions, suggestions,
-                feedback and reports about any issues
-                you experience while using our tools.
-            </p>
+                <div class="section-heading">
 
-            <div class="email-support-box">
+                    <div class="section-tag">
+                        GET IN TOUCH
+                    </div>
 
-                <div class="email-support-title">
-                    Email Support
+                    <h2>Contact Information</h2>
+
+                    <p>
+                        Reach Toolaxa through our official
+                        email or office address.
+                    </p>
+
                 </div>
 
-                <a
-                    class="email-link"
-                    href="mailto:officecare.support@gmail.com">
 
-                    officecare.support@gmail.com
+                <div class="contact-grid">
 
-                </a>
+                    <!-- EMAIL -->
+
+                    <article class="info-card">
+
+                        <div class="info-icon"
+                             aria-hidden="true">✉</div>
+
+                        <h2>Email Support</h2>
+
+                        <p>
+                            For questions, technical issues,
+                            suggestions, feedback or general
+                            inquiries, contact our support email.
+                        </p>
+
+                        <a class="info-link"
+                           href="mailto:officecare.support@gmail.com">
+
+                            officecare.support@gmail.com
+
+                        </a>
+
+                    </article>
+
+
+                    <!-- ADDRESS -->
+
+                    <article class="info-card">
+
+                        <div class="info-icon"
+                             aria-hidden="true">📍</div>
+
+                        <h2>Our Office Address</h2>
+
+                        <div class="address-text">
+
+                            <strong>Greens Apartment</strong><br>
+
+                            Vasant Vihar,<br>
+
+                            Solapur, Maharashtra – 413002,<br>
+
+                            India.
+
+                        </div>
+
+                        <a class="map-btn"
+                           href="https://www.google.com/maps/search/?api=1&query=Greens+Apartment%2C+Vasant+Vihar%2C+Solapur%2C+Maharashtra+413002%2C+India"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            📍 View on Google Maps →
+
+                        </a>
+
+                    </article>
+
+
+                    <!-- GENERAL INQUIRIES -->
+
+                    <article class="info-card">
+
+                        <div class="info-icon"
+                             aria-hidden="true">💬</div>
+
+                        <h2>General Inquiries</h2>
+
+                        <p>
+                            Have ideas for new tools, suggestions
+                            for improvements or questions about
+                            our platform? We welcome your feedback.
+                        </p>
+
+                        <a href="mailto:officecare.support@gmail.com?subject=General%20Inquiry"
+                           class="info-link">
+
+                            Send an Inquiry →
+
+                        </a>
+
+                    </article>
+
+
+                    <!-- TECHNICAL SUPPORT -->
+
+                    <article class="info-card">
+
+                        <div class="info-icon"
+                             aria-hidden="true">⚙</div>
+
+                        <h2>Technical Support</h2>
+
+                        <p>
+                            Experiencing a problem with one of
+                            our online tools? Send us the tool
+                            name and a description of the issue.
+                        </p>
+
+                        <a href="mailto:officecare.support@gmail.com?subject=Technical%20Support"
+                           class="info-link">
+
+                            Request Support →
+
+                        </a>
+
+                    </article>
+
+                </div>
 
             </div>
 
@@ -759,145 +1085,368 @@
 
         <!-- CONTACT FORM -->
 
-        <section class="contact-card">
+        <section class="section form-section">
 
-            <h2>Send Us a Message</h2>
+            <div class="container">
 
-            <p>
-                Fill in the details below. Clicking the
-                button will open your default email
-                application with your message ready to send.
-            </p>
+                <div class="form-layout">
 
-            <form class="contact-form" id="contactForm">
+                    <div class="form-info">
 
-                <div class="form-group">
+                        <div class="section-tag">
+                            WE WOULD LOVE TO HEAR FROM YOU
+                        </div>
 
-                    <label for="name">
-                        Your Name
-                    </label>
+                        <h2>
+                            Send Us Your Message
+                        </h2>
 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your name"
-                        autocomplete="name"
-                        maxlength="100"
-                        required>
+                        <p>
+                            Your feedback helps us improve
+                            Toolaxa. Whether you have a
+                            question, suggestion or technical
+                            issue, feel free to contact us.
+                        </p>
+
+                        <div class="support-point">
+
+                            <span class="support-check">✓</span>
+
+                            <span>
+                                Questions about our online tools
+                                and services.
+                            </span>
+
+                        </div>
+
+                        <div class="support-point">
+
+                            <span class="support-check">✓</span>
+
+                            <span>
+                                Suggestions and feature requests.
+                            </span>
+
+                        </div>
+
+                        <div class="support-point">
+
+                            <span class="support-check">✓</span>
+
+                            <span>
+                                Feedback and technical issue reports.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <h3>Contact Form</h3>
+
+                        <p class="form-description">
+                            Fill in the details below to prepare
+                            your email message.
+                        </p>
+
+
+                        <form class="contact-form"
+                              id="contactForm">
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Your Name *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    maxlength="100"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address *
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    maxlength="254"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="subject">
+                                    Subject *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="subject"
+                                    placeholder="Enter message subject"
+                                    maxlength="150"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Your Message *
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Write your message here..."
+                                    maxlength="5000"
+                                    required></textarea>
+
+                            </div>
+
+
+                            <!-- HONEYPOT SPAM FIELD -->
+
+                            <div class="hp-field"
+                                 aria-hidden="true">
+
+                                <label for="website">
+                                    Leave this field empty
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="website"
+                                    name="website"
+                                    tabindex="-1"
+                                    autocomplete="off">
+
+                            </div>
+
+
+                            <button type="submit"
+                                    class="submit-btn">
+
+                                ✉ &nbsp; Prepare Email Message
+
+                            </button>
+
+                        </form>
+
+
+                        <div class="form-note">
+
+                            <strong>Important:</strong>
+                            This form opens your default email
+                            application with your message
+                            pre-filled. It does not directly
+                            submit or store messages on our
+                            website. You must send the email
+                            from your email application.
+
+                        </div>
+
+                    </div>
 
                 </div>
-
-
-                <div class="form-group">
-
-                    <label for="email">
-                        Your Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                        autocomplete="email"
-                        maxlength="254"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="subject">
-                        Subject
-                    </label>
-
-                    <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        placeholder="Enter subject"
-                        maxlength="150"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="message">
-                        Your Message
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Write your message here..."
-                        maxlength="5000"
-                        required></textarea>
-
-                </div>
-
-
-                <button type="submit" class="contact-submit-btn">
-
-                    <span>✉</span>
-                    Open Email to Send
-
-                </button>
-
-            </form>
-
-
-            <div class="contact-note">
-
-                <strong>Note:</strong>
-                This form opens your default email application.
-                It does not directly submit or store messages
-                on our website. Please send the email from
-                your email application to complete your request.
 
             </div>
 
         </section>
 
 
-        <!-- BACK TO HOME -->
+        <!-- OFFICE LOCATION -->
 
-        <div class="contact-bottom">
+        <section class="section">
 
-            <a href="index.html" class="contact-home-btn">
-                ← Back to Toolaxa Homepage
-            </a>
+            <div class="container">
 
-        </div>
+                <div class="location-card">
+
+                    <div>
+
+                        <div class="section-tag">
+                            OUR LOCATION
+                        </div>
+
+                        <h2>Find Toolaxa in Solapur</h2>
+
+                        <p>
+                            Greens Apartment, Vasant Vihar,
+                            Solapur, Maharashtra – 413002, India.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=Greens+Apartment%2C+Vasant+Vihar%2C+Solapur%2C+Maharashtra+413002%2C+India"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        Get Directions →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ -->
+
+        <section class="section form-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-tag">
+                        HELP & INFORMATION
+                    </div>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <p>
+                        Some useful information about
+                        contacting Toolaxa.
+                    </p>
+
+                </div>
+
+
+                <div class="faq-list">
+
+                    <article class="faq-item">
+
+                        <h3>
+                            1. How can I contact Toolaxa?
+                        </h3>
+
+                        <p>
+                            You can contact Toolaxa through
+                            our official email address:
+                            officecare.support@gmail.com.
+                            You can also use the contact form
+                            available on this page.
+                        </p>
+
+                    </article>
+
+
+                    <article class="faq-item">
+
+                        <h3>
+                            2. Can I report a technical issue?
+                        </h3>
+
+                        <p>
+                            Yes. Send an email describing
+                            the issue, the name of the tool
+                            and any relevant details to
+                            our official support email.
+                        </p>
+
+                    </article>
+
+
+                    <article class="faq-item">
+
+                        <h3>
+                            3. Can I suggest a new online tool?
+                        </h3>
+
+                        <p>
+                            Yes. We welcome suggestions
+                            and feature requests that can
+                            help improve the Toolaxa platform.
+                        </p>
+
+                    </article>
+
+
+                    <article class="faq-item">
+
+                        <h3>
+                            4. Does the contact form send
+                            messages automatically?
+                        </h3>
+
+                        <p>
+                            No. The contact form prepares
+                            a message in your default email
+                            application. You need to send
+                            the email manually.
+                        </p>
+
+                    </article>
+
+
+                    <article class="faq-item">
+
+                        <h3>
+                            5. Where is the Toolaxa office located?
+                        </h3>
+
+                        <p>
+                            Our listed office address is
+                            Greens Apartment, Vasant Vihar,
+                            Solapur, Maharashtra – 413002,
+                            India.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+    <!-- FOOTER -->
 
-    <footer class="contact-footer">
+    <footer class="footer">
 
-        <div class="contact-footer-inner">
+        <div class="footer-inner">
 
             <div>
 
-                <div class="contact-footer-brand">
+                <div class="footer-brand">
                     Tool<span>axa</span>
                 </div>
 
-                <p>
-                    Your Everyday Online Tools, All in One Place.
+                <p class="footer-description">
+                    Smart Digital Solutions. Simple Everyday Tools.
                 </p>
 
             </div>
 
 
-            <nav class="contact-footer-links">
+            <nav class="footer-links"
+                 aria-label="Footer navigation">
 
                 <a href="index.html">Home</a>
 
@@ -914,88 +1463,109 @@
         </div>
 
 
-        <div class="contact-copyright">
+        <div class="copyright">
 
-            © 2026 Toolaxa. All Rights Reserved. Powered by Mr. Rajan.
+            © 2026 Toolaxa. All Rights Reserved.
+            Powered by Mr. Rajan.
 
         </div>
 
     </footer>
 
 
-    <!-- =========================
-         CONTACT FORM JAVASCRIPT
-    ========================= -->
+    <!-- CONTACT FORM JAVASCRIPT -->
 
     <script>
 
-        const contactForm = document.getElementById("contactForm");
+        const contactForm =
+            document.getElementById("contactForm");
 
-        contactForm.addEventListener("submit", function(event) {
+        if (contactForm) {
 
-            event.preventDefault();
+            contactForm.addEventListener("submit", function(event) {
 
-            const name = document.getElementById("name").value.trim();
+                event.preventDefault();
 
-            const email = document.getElementById("email").value.trim();
+                const name =
+                    document.getElementById("name").value.trim();
 
-            const subject = document.getElementById("subject").value.trim();
+                const email =
+                    document.getElementById("email").value.trim();
 
-            const message = document.getElementById("message").value.trim();
+                const subject =
+                    document.getElementById("subject").value.trim();
 
+                const message =
+                    document.getElementById("message").value.trim();
 
-            // VALIDATION
-
-            if (!name || !email || !subject || !message) {
-
-                alert("Please fill in all fields.");
-
-                return;
-
-            }
-
-
-            // EMAIL RECIPIENT
-
-            const recipient = "officecare.support@gmail.com";
+                const honeypot =
+                    document.getElementById("website").value.trim();
 
 
-            // EMAIL SUBJECT
+                // Basic spam protection
 
-            const emailSubject = encodeURIComponent(
-                subject
-            );
-
-
-            // EMAIL BODY
-
-            const emailBody = encodeURIComponent(
-
-                "Name: " + name +
-
-                "\nEmail: " + email +
-
-                "\n\nMessage:\n" + message
-
-            );
+                if (honeypot !== "") {
+                    return;
+                }
 
 
-            // MAILTO LINK
+                // Form validation
 
-            const mailtoLink =
+                if (!name || !email || !subject || !message) {
 
-                "mailto:" + recipient +
+                    alert("Please fill in all required fields.");
 
-                "?subject=" + emailSubject +
+                    return;
+                }
 
-                "&body=" + emailBody;
+
+                if (name.length > 100 ||
+                    email.length > 254 ||
+                    subject.length > 150 ||
+                    message.length > 5000) {
+
+                    alert("Please check the maximum allowed length.");
+
+                    return;
+                }
 
 
-            // OPEN EMAIL APPLICATION
+                // Recipient
 
-            window.location.href = mailtoLink;
+                const recipient =
+                    "officecare.support@gmail.com";
 
-        });
+
+                // Email subject
+
+                const emailSubject =
+                    encodeURIComponent(subject);
+
+
+                // Email body
+
+                const emailBody =
+                    encodeURIComponent(
+                        "Name: " + name +
+                        "\nEmail: " + email +
+                        "\n\nMessage:\n" + message +
+                        "\n\nSent through Toolaxa Contact Page."
+                    );
+
+
+                // Open default email application
+
+                const mailtoLink =
+                    "mailto:" + recipient +
+                    "?subject=" + emailSubject +
+                    "&body=" + emailBody;
+
+
+                window.location.href = mailtoLink;
+
+            });
+
+        }
 
     </script>
 

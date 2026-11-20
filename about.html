@@ -1,42 +1,68 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Analytics - Toolaxa -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-05KPNRM3X5');
-    </script>
+    <!-- SEO -->
+    <title>About Us | Toolaxa - Free Online Tools & Digital Solutions</title>
 
-    <title>About Toolaxa - Free Online Tools Platform</title>
+    <meta name="description" content="Discover Toolaxa, an independent digital platform founded by Mr. Rajan. Explore free online calculators, image tools and smart digital utilities designed to simplify everyday tasks.">
 
-    <meta name="description" content="Discover Toolaxa, a platform offering free online calculators, image tools and useful digital utilities designed to make everyday tasks easier.">
+    <meta name="keywords" content="About Toolaxa, Toolaxa, online tools, free online calculators, image tools, digital utilities, Mr Rajan, Founder of Toolaxa">
 
+    <meta name="author" content="Mr. Rajan - Founder & CEO, Toolaxa">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#1764df">
+    <meta name="theme-color" content="#155eef">
 
     <link rel="canonical" href="https://toolaxa.com/about.html">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="About Toolaxa - Free Online Tools Platform">
-    <meta property="og:description" content="Learn about Toolaxa and our collection of free online calculators, image tools and digital utilities.">
+    <meta property="og:title" content="About Toolaxa | Smart Digital Solutions">
+    <meta property="og:description" content="Meet the vision behind Toolaxa. Discover our mission, technology and commitment to building useful online tools.">
     <meta property="og:url" content="https://toolaxa.com/about.html">
     <meta property="og:site_name" content="Toolaxa">
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="About Toolaxa">
-    <meta name="twitter:description" content="Learn more about Toolaxa, your everyday online tools platform.">
+    <meta name="twitter:description" content="Smart digital solutions and useful online tools for everyone.">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Toolaxa",
+        "url": "https://toolaxa.com/",
+        "description": "Toolaxa is an independent digital platform providing useful online calculators, image tools and digital utilities.",
+        "founder": {
+            "@type": "Person",
+            "name": "Mr. Rajan",
+            "jobTitle": "Founder & CEO, Lead Developer and Chief Engineer"
+        }
+    }
+    </script>
 
     <style>
+
         /* =========================
-           GLOBAL RESET
+           GLOBAL
         ========================= */
 
         * {
@@ -50,9 +76,9 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f8ff;
-            color: #172033;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f6f8fc;
+            color: #18243a;
             line-height: 1.7;
             min-height: 100vh;
             display: flex;
@@ -63,255 +89,545 @@
             text-decoration: none;
         }
 
+        :root {
+            --primary: #155eef;
+            --primary-dark: #1048c7;
+            --secondary: #102344;
+            --text: #18243a;
+            --muted: #64748b;
+            --border: #e5eaf2;
+            --white: #ffffff;
+            --light: #eff5ff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1160px;
+            margin: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
         /* =========================
            HEADER
         ========================= */
 
-        .about-header {
-            width: 100%;
-            background: #ffffff;
-            border-bottom: 1px solid #e7edf6;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+        .header {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .about-nav {
+        .nav {
             max-width: 1200px;
             min-height: 76px;
             margin: auto;
             padding: 12px 25px;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        /* LOGO */
-
-        .about-logo {
+        .logo {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            color: #101828;
+            color: var(--secondary);
             font-size: 27px;
-            font-weight: 800;
+            font-weight: 850;
             letter-spacing: -1px;
-            white-space: nowrap;
         }
 
-        .about-logo-icon {
+        .logo-icon {
             width: 43px;
             height: 43px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #1764df;
-            color: #ffffff;
             border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 25px;
             font-weight: 900;
         }
 
-        .about-logo-highlight {
-            color: #1764df;
+        .logo span:last-child span {
+            color: var(--primary);
         }
 
-        /* BACK BUTTON */
-
-        .about-back-btn {
+        .nav-btn {
             display: inline-flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-
-            background: #1764df;
-            color: #ffffff;
-
-            padding: 11px 20px;
+            padding: 10px 19px;
+            background: var(--primary);
+            color: white;
             border-radius: 9px;
-
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-
-            transition: all 0.25s ease;
+            transition: .25s;
         }
 
-        .about-back-btn:hover {
-            background: #104bb4;
+        .nav-btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
         }
 
         /* =========================
-           MAIN CONTENT
+           HERO
         ========================= */
 
-        .about-main {
-            flex: 1;
-            width: 100%;
-            max-width: 1050px;
-
-            margin: 0 auto;
-            padding: 45px 25px 60px;
-        }
-
-        /* HERO */
-
-        .about-hero {
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #102344, #155eef);
+            color: white;
             text-align: center;
-            padding: 55px 25px;
-
-            background: linear-gradient(
-                135deg,
-                #e9f2ff,
-                #f5f9ff
-            );
-
-            border: 1px solid #e0eaff;
-            border-radius: 18px;
-
-            margin-bottom: 30px;
+            padding: 85px 24px 90px;
         }
 
-        .about-label {
-            display: inline-block;
-            background: #dceaff;
-            color: #1764df;
-
-            padding: 6px 15px;
-            border-radius: 30px;
-
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-
-            margin-bottom: 15px;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.06);
+            top: -180px;
+            left: -80px;
         }
 
-        .about-hero h1 {
-            color: #1764df;
-            font-size: 40px;
-            line-height: 1.25;
-            margin-bottom: 12px;
-            font-weight: 800;
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.05);
+            bottom: -270px;
+            right: -100px;
         }
 
-        .about-hero p {
-            color: #526078;
-            font-size: 16px;
-            max-width: 600px;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
             margin: auto;
         }
 
-        /* CONTENT CARDS */
-
-        .about-content {
-            width: 100%;
-            background: #ffffff;
-
-            padding: 27px 30px;
-            border-radius: 14px;
-
-            margin-bottom: 20px;
-
-            border: 1px solid #e9edf4;
-
-            box-shadow: 0 4px 15px rgba(20,50,100,0.04);
-
-            transition: all 0.25s ease;
+        .hero-label {
+            display: inline-block;
+            padding: 7px 16px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 30px;
+            background: rgba(255,255,255,.10);
+            color: #dceaff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
         }
 
-        .about-content:hover {
-            box-shadow: 0 8px 25px rgba(20,50,100,0.08);
-            transform: translateY(-2px);
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.2;
+            font-weight: 850;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
         }
 
-        .about-content h2 {
-            color: #1764df;
-            font-size: 21px;
-            font-weight: 750;
-
-            margin-bottom: 12px;
-            padding-bottom: 9px;
-
-            border-bottom: 2px solid #edf3ff;
+        .hero h1 span {
+            color: #9ec5ff;
         }
 
-        .about-content p {
-            color: #586477;
-            font-size: 15px;
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 16px;
             line-height: 1.9;
+            color: #dce7fa;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            flex: 1;
+        }
+
+        .section {
+            padding: 65px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 38px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-size: 31px;
+            color: var(--secondary);
+            font-weight: 800;
+            letter-spacing: -.6px;
             margin-bottom: 10px;
         }
 
-        .about-content p:last-child {
+        .section-heading p {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           ABOUT INTRO
+        ========================= */
+
+        .intro-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 36px;
+            box-shadow: 0 8px 30px rgba(15,35,70,.04);
+        }
+
+        .intro-card h2 {
+            font-size: 23px;
+            color: var(--secondary);
+            margin-bottom: 14px;
+        }
+
+        .intro-card p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 13px;
+        }
+
+        .intro-card p:last-child {
             margin-bottom: 0;
         }
 
-        /* TOOLS LIST */
+        /* =========================
+           FOUNDER PROFILE
+        ========================= */
 
-        .about-content ul {
-            padding-left: 23px;
-            margin-top: 12px;
+        .founder-section {
+            background: white;
         }
 
-        .about-content ul li {
-            color: #586477;
-            font-size: 15px;
-            line-height: 2;
-            padding-left: 5px;
+        .founder-card {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 42px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            box-shadow: 0 12px 35px rgba(15,35,70,.06);
+            transition: .3s;
         }
 
-        .about-content ul li::marker {
-            color: #1764df;
+        .founder-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(15,35,70,.10);
         }
 
-        /* CONTACT LINK */
+        .founder-avatar {
+            flex-shrink: 0;
+            width: 145px;
+            height: 145px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #155eef, #78aaff);
+            color: white;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            border: 7px solid #eaf1ff;
+            box-shadow: 0 8px 25px rgba(21,94,239,.18);
+        }
 
-        .about-contact-link {
+        .founder-info {
+            flex: 1;
+        }
+
+        .founder-tag {
             display: inline-block;
-            margin-top: 12px;
+            background: #eaf1ff;
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
 
-            color: #1764df;
-            font-weight: 700;
+        .founder-info h2 {
+            color: var(--secondary);
+            font-size: 29px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .founder-info .designation {
+            color: var(--primary);
             font-size: 14px;
-
-            border-bottom: 1px solid #1764df;
+            font-weight: 750;
+            line-height: 1.8;
+            margin-bottom: 13px;
         }
 
-        .about-contact-link:hover {
-            color: #104bb4;
+        .founder-info p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
         }
 
-        /* BOTTOM HOME BUTTON */
+        .founder-divider {
+            width: 45px;
+            height: 3px;
+            border-radius: 5px;
+            background: var(--primary);
+            margin: 16px 0;
+        }
 
-        .about-bottom {
+        /* =========================
+           MISSION & VISION
+        ========================= */
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-4px);
+            border-color: #b7d0ff;
+            box-shadow: 0 12px 30px rgba(15,35,70,.06);
+        }
+
+        .mv-icon {
+            width: 49px;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--light);
+            font-size: 23px;
+            margin-bottom: 18px;
+        }
+
+        .mv-card h3 {
+            font-size: 19px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .mv-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* =========================
+           CORE VALUES
+        ========================= */
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .value-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 25px 20px;
             text-align: center;
-            padding: 20px 0 5px;
+            transition: .3s;
         }
 
-        .about-home-btn {
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(15,35,70,.06);
+        }
+
+        .value-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .value-card h3 {
+            font-size: 16px;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           WHAT WE OFFER
+        ========================= */
+
+        .tools-section {
+            background: white;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            background: #f8faff;
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .25s;
+        }
+
+        .tool-item:hover {
+            border-color: #b7d0ff;
+            background: #eff5ff;
+            transform: translateY(-3px);
+        }
+
+        .tool-icon {
+            width: 39px;
+            height: 39px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #e6efff;
+            font-size: 19px;
+        }
+
+        .tool-item span:last-child {
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           TECHNOLOGY
+        ========================= */
+
+        .technology-card {
+            background: linear-gradient(135deg, #102344, #193f78);
+            border-radius: 18px;
+            padding: 42px;
+            color: white;
+            text-align: center;
+        }
+
+        .technology-card h2 {
+            font-size: 26px;
+            margin-bottom: 13px;
+        }
+
+        .technology-card p {
+            color: #d4e2f8;
+            font-size: 14px;
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.9;
+        }
+
+        .tech-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .tech-points span {
+            padding: 8px 15px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 30px;
+            background: rgba(255,255,255,.08);
+            font-size: 12px;
+            color: #e5efff;
+        }
+
+        /* =========================
+           CONTACT CTA
+        ========================= */
+
+        .contact-card {
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 40px 25px;
+        }
+
+        .contact-card h2 {
+            color: var(--secondary);
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 23px;
+        }
+
+        .contact-btn {
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 9px;
-
-            padding: 13px 24px;
-            border-radius: 10px;
-
-            background: #1764df;
-            color: #ffffff;
-
-            font-size: 14px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 23px;
+            border-radius: 9px;
+            font-size: 13px;
             font-weight: 750;
-
-            transition: 0.25s;
+            transition: .25s;
         }
 
-        .about-home-btn:hover {
-            background: #104bb4;
+        .contact-btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
         }
 
@@ -319,361 +635,800 @@
            FOOTER
         ========================= */
 
-        .about-footer {
-            width: 100%;
-            background: #111d34;
-            color: #ffffff;
+        .footer {
+            background: #101d33;
+            color: white;
             margin-top: auto;
         }
 
-        .about-footer-inner {
+        .footer-inner {
             max-width: 1200px;
             margin: auto;
-            padding: 24px 25px;
-
+            padding: 35px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
-        .about-footer-brand {
-            font-size: 18px;
-            font-weight: 800;
+        .footer-brand {
+            font-size: 23px;
+            font-weight: 850;
+            letter-spacing: -.5px;
         }
 
-        .about-footer-brand span {
+        .footer-brand span {
             color: #60a5fa;
         }
 
-        .about-footer-inner p {
-            color: #b9c5d8;
+        .footer-description {
             font-size: 12px;
+            color: #b7c5dc;
+            margin-top: 5px;
         }
 
-        .about-footer-links {
+        .footer-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px 20px;
+            gap: 12px 22px;
         }
 
-        .about-footer-links a {
-            color: #d8e2f2;
+        .footer-links a {
+            color: #d1dced;
             font-size: 12px;
-            transition: 0.2s;
+            transition: .2s;
         }
 
-        .about-footer-links a:hover {
-            color: #ffffff;
+        .footer-links a:hover {
+            color: white;
             text-decoration: underline;
         }
 
-        .about-copyright {
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,.12);
+            padding: 17px 20px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.12);
-            padding: 15px 20px;
-            color: #b9c5d8;
-            font-size: 12px;
+            color: #aebdd3;
+            font-size: 11px;
         }
 
         /* =========================
-           TABLET RESPONSIVE
+           RESPONSIVE
         ========================= */
 
-        @media (max-width: 768px) {
+        @media(max-width: 768px) {
 
-            .about-nav {
-                min-height: 68px;
-                padding: 10px 18px;
+            .section {
+                padding: 48px 0;
             }
 
-            .about-logo {
-                font-size: 23px;
+            .hero {
+                padding: 65px 20px;
             }
 
-            .about-logo-icon {
-                width: 38px;
-                height: 38px;
-                font-size: 22px;
+            .founder-card {
+                padding: 30px 23px;
+                gap: 23px;
             }
 
-            .about-main {
-                padding: 30px 18px 45px;
+            .founder-avatar {
+                width: 115px;
+                height: 115px;
+                font-size: 38px;
             }
 
-            .about-hero {
-                padding: 40px 20px;
+            .founder-info h2 {
+                font-size: 24px;
             }
 
-            .about-hero h1 {
-                font-size: 33px;
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .about-content {
-                padding: 23px;
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .about-footer-inner {
+            .footer-inner {
                 flex-direction: column;
                 text-align: center;
             }
 
-            .about-footer-links {
+            .footer-links {
                 justify-content: center;
             }
         }
 
-        /* =========================
-           MOBILE RESPONSIVE
-        ========================= */
+        @media(max-width: 520px) {
 
-        @media (max-width: 480px) {
-
-            .about-nav {
-                padding: 10px 13px;
-                gap: 8px;
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
             }
 
-            .about-logo {
-                font-size: 20px;
+            .nav {
+                min-height: 65px;
+                padding: 10px 14px;
+            }
+
+            .logo {
+                font-size: 21px;
                 gap: 7px;
             }
 
-            .about-logo-icon {
-                width: 34px;
-                height: 34px;
-                font-size: 19px;
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 21px;
                 border-radius: 9px;
             }
 
-            .about-back-btn {
+            .nav-btn {
                 padding: 9px 11px;
                 font-size: 11px;
-                gap: 4px;
             }
 
-            .about-main {
-                padding: 23px 13px 35px;
+            .hero {
+                padding: 53px 17px 60px;
             }
 
-            .about-hero {
-                padding: 35px 16px;
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-heading {
+                margin-bottom: 25px;
+            }
+
+            .section-heading h2 {
+                font-size: 25px;
+            }
+
+            .section-heading p {
+                font-size: 13px;
+            }
+
+            .intro-card {
+                padding: 23px 19px;
                 border-radius: 13px;
-                margin-bottom: 20px;
             }
 
-            .about-hero h1 {
-                font-size: 29px;
+            .intro-card h2 {
+                font-size: 20px;
             }
 
-            .about-hero p {
+            .intro-card p {
                 font-size: 13px;
             }
 
-            .about-content {
-                padding: 19px 17px;
-                margin-bottom: 15px;
-                border-radius: 11px;
+            .founder-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 27px 20px;
+                gap: 15px;
             }
 
-            .about-content h2 {
-                font-size: 18px;
+            .founder-avatar {
+                width: 105px;
+                height: 105px;
+                font-size: 35px;
             }
 
-            .about-content p,
-            .about-content ul li {
+            .founder-info h2 {
+                font-size: 25px;
+            }
+
+            .founder-info p {
                 font-size: 13px;
             }
 
-            .about-content ul {
-                padding-left: 19px;
+            .founder-divider {
+                margin: 14px auto;
             }
 
-            .about-footer-inner {
-                padding: 22px 15px;
+            .mv-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
             }
 
-            .about-footer-links {
-                gap: 10px 14px;
+            .mv-card {
+                padding: 23px;
             }
 
-            .about-footer-links a {
-                font-size: 11px;
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
-            .about-copyright {
-                font-size: 10px;
+            .value-card {
+                padding: 20px 12px;
+            }
+
+            .value-card h3 {
+                font-size: 14px;
+            }
+
+            .value-card p {
+                font-size: 12px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .tool-item {
+                padding: 13px;
+            }
+
+            .technology-card {
+                padding: 30px 20px;
+            }
+
+            .technology-card h2 {
+                font-size: 22px;
+            }
+
+            .technology-card p {
+                font-size: 13px;
+            }
+
+            .contact-card {
+                padding: 30px 17px;
+            }
+
+            .contact-card h2 {
+                font-size: 21px;
+            }
+
+            .footer-inner {
+                padding: 28px 15px;
+            }
+
+            .footer-links {
+                gap: 12px 15px;
             }
         }
 
-        /* REDUCED MOTION */
-
-        @media (prefers-reduced-motion: reduce) {
+        @media(prefers-reduced-motion: reduce) {
             *,
             *::before,
             *::after {
                 scroll-behavior: auto !important;
                 transition: none !important;
+                animation: none !important;
             }
         }
 
     </style>
+
 </head>
 
 <body>
 
     <!-- HEADER -->
-    <header class="about-header">
-        <div class="about-nav">
 
-            <a href="index.html" class="about-logo">
-                <span class="about-logo-icon">T</span>
-                <span>
-                    Tool<span class="about-logo-highlight">axa</span>
-                </span>
+    <header class="header">
+
+        <nav class="nav">
+
+            <a href="index.html" class="logo" aria-label="Toolaxa Home">
+
+                <span class="logo-icon">T</span>
+
+                <span>Tool<span>axa</span></span>
+
             </a>
 
-            <a href="index.html" class="about-back-btn">
+            <a href="index.html" class="nav-btn">
                 ← Back to Home
             </a>
 
-        </div>
+        </nav>
+
     </header>
 
 
-    <!-- MAIN CONTENT -->
-    <main class="about-main">
+    <main>
 
         <!-- HERO -->
-        <section class="about-hero">
 
-            <span class="about-label">ABOUT US</span>
+        <section class="hero">
 
-            <h1>About Toolaxa</h1>
+            <div class="hero-content">
 
-            <p>
-                Your Everyday Online Tools, All in One Place.
-                Simple, Useful and Easy to Use.
-            </p>
+                <span class="hero-label">
+                    ABOUT TOOLAXA
+                </span>
+
+                <h1>
+                    Technology Made
+                    <span>Simple.</span>
+                </h1>
+
+                <p>
+                    We believe technology should make everyday life
+                    easier. Toolaxa brings useful digital tools
+                    together in one simple, accessible and
+                    user-friendly platform.
+                </p>
+
+            </div>
 
         </section>
 
 
         <!-- WHO WE ARE -->
-        <section class="about-content">
 
-            <h2>Who We Are</h2>
+        <section class="section">
 
-            <p>
-                Toolaxa is an online platform designed to make
-                everyday digital tasks easier. We bring useful online
-                tools together in one convenient place so users can
-                perform common tasks quickly and easily.
-            </p>
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-tag">
+                        OUR STORY
+                    </div>
+
+                    <h2>Who We Are</h2>
+
+                    <p>
+                        A digital platform built around simplicity,
+                        usefulness and innovation.
+                    </p>
+
+                </div>
+
+
+                <div class="intro-card">
+
+                    <h2>Welcome to Toolaxa</h2>
+
+                    <p>
+                        Toolaxa is an independent digital platform
+                        dedicated to making everyday digital tasks
+                        easier, faster and more convenient.
+                    </p>
+
+                    <p>
+                        Our platform brings together practical
+                        online calculators, image utilities and
+                        other digital tools that help users
+                        accomplish common tasks without unnecessary
+                        complexity.
+                    </p>
+
+                    <p>
+                        We continuously aim to improve our tools,
+                        user experience and technology to provide
+                        a reliable and accessible online experience
+                        across different devices.
+                    </p>
+
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- WHAT WE OFFER -->
-        <section class="about-content">
+        <!-- FOUNDER PROFILE -->
 
-            <h2>What We Offer</h2>
+        <section class="section founder-section">
 
-            <p>
-                Toolaxa currently provides the following tools:
-            </p>
+            <div class="container">
 
-            <ul>
-                <li>Age Calculator</li>
-                <li>EMI Calculator</li>
-                <li>SIP Calculator</li>
-                <li>GST Calculator</li>
-                <li>Image Compressor</li>
-                <li>Photo Resizer</li>
-                <li>Signature Maker</li>
-            </ul>
+                <div class="section-heading">
+
+                    <div class="section-tag">
+                        THE PERSON BEHIND TOOLAXA
+                    </div>
+
+                    <h2>Meet Our Founder</h2>
+
+                    <p>
+                        The vision and leadership behind
+                        the Toolaxa platform.
+                    </p>
+
+                </div>
+
+
+                <div class="founder-card">
+
+                    <div class="founder-avatar"
+                         role="img"
+                         aria-label="Mr. Rajan initials avatar">
+
+                        MR
+
+                    </div>
+
+
+                    <div class="founder-info">
+
+                        <span class="founder-tag">
+                            FOUNDER & LEADERSHIP
+                        </span>
+
+                        <h2>Mr. Rajan</h2>
+
+                        <div class="designation">
+
+                            Founder & CEO<br>
+
+                            Lead Developer & Chief Engineer
+
+                        </div>
+
+                        <div class="founder-divider"></div>
+
+                        <p>
+                            Leading the vision, development and
+                            technology behind Toolaxa, Mr. Rajan
+                            is committed to building practical,
+                            accessible and user-friendly digital
+                            solutions for everyone.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- OUR MISSION -->
-        <section class="about-content">
+        <!-- MISSION AND VISION -->
 
-            <h2>Our Mission</h2>
+        <section class="section">
 
-            <p>
-                Our mission is to provide simple, accessible and
-                helpful online tools that save users time and make
-                everyday digital activities easier.
-            </p>
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-tag">
+                        OUR PURPOSE
+                    </div>
+
+                    <h2>Mission & Vision</h2>
+
+                    <p>
+                        What drives us and where we want to go.
+                    </p>
+
+                </div>
+
+
+                <div class="mv-grid">
+
+                    <div class="mv-card">
+
+                        <div class="mv-icon">🎯</div>
+
+                        <h3>Our Mission</h3>
+
+                        <p>
+                            To provide simple, useful and accessible
+                            online tools that save time, reduce
+                            complexity and make everyday digital
+                            activities easier for everyone.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mv-card">
+
+                        <div class="mv-icon">🚀</div>
+
+                        <h3>Our Vision</h3>
+
+                        <p>
+                            To grow into a trusted digital platform
+                            where people can find practical,
+                            innovative and easy-to-use online
+                            solutions for their everyday needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- OUR APPROACH -->
-        <section class="about-content">
+        <!-- CORE VALUES -->
 
-            <h2>Our Approach</h2>
+        <section class="section founder-section">
 
-            <p>
-                We aim to offer a user-friendly experience across
-                desktop and mobile devices. Wherever possible,
-                our image and signature tools process files directly
-                in the user's browser instead of uploading them
-                to a server.
-            </p>
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-tag">
+                        WHAT WE BELIEVE IN
+                    </div>
+
+                    <h2>Our Core Values</h2>
+
+                    <p>
+                        The principles that guide our platform
+                        and development approach.
+                    </p>
+
+                </div>
+
+
+                <div class="values-grid">
+
+                    <div class="value-card">
+
+                        <div class="value-icon">💡</div>
+
+                        <h3>Simplicity</h3>
+
+                        <p>
+                            Making technology easy to understand
+                            and use.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value-card">
+
+                        <div class="value-icon">🔒</div>
+
+                        <h3>Privacy</h3>
+
+                        <p>
+                            Respecting user privacy and
+                            responsible data handling.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value-card">
+
+                        <div class="value-icon">⚡</div>
+
+                        <h3>Efficiency</h3>
+
+                        <p>
+                            Creating tools that help save
+                            time and effort.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value-card">
+
+                        <div class="value-icon">🛠️</div>
+
+                        <h3>Innovation</h3>
+
+                        <p>
+                            Continuously improving our
+                            technology and tools.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value-card">
+
+                        <div class="value-icon">📱</div>
+
+                        <h3>Accessibility</h3>
+
+                        <p>
+                            Building experiences for
+                            different devices and users.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value-card">
+
+                        <div class="value-icon">🤝</div>
+
+                        <h3>User First</h3>
+
+                        <p>
+                            Keeping user needs at the center
+                            of our decisions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OUR TOOLS -->
+
+        <section class="section tools-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-tag">
+                        OUR SERVICES
+                    </div>
+
+                    <h2>What We Offer</h2>
+
+                    <p>
+                        Practical digital utilities designed
+                        to simplify everyday tasks.
+                    </p>
+
+                </div>
+
+
+                <div class="tools-grid">
+
+                    <div class="tool-item">
+                        <span class="tool-icon">📅</span>
+                        <span>Age Calculator</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">💰</span>
+                        <span>EMI Calculator</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">📈</span>
+                        <span>SIP Calculator</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">🧾</span>
+                        <span>GST Calculator</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">🖼️</span>
+                        <span>Image Compressor</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">📐</span>
+                        <span>Photo Resizer</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">✍️</span>
+                        <span>Signature Maker</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">📄</span>
+                        <span>PDF Utilities</span>
+                    </div>
+
+                    <div class="tool-item">
+                        <span class="tool-icon">🔧</span>
+                        <span>Digital Utilities</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TECHNOLOGY APPROACH -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="technology-card">
+
+                    <h2>Built with Technology & Purpose</h2>
+
+                    <p>
+                        At Toolaxa, we focus on creating practical
+                        digital experiences through modern web
+                        technologies, responsive design and
+                        continuous improvement. Wherever possible,
+                        tools are designed to process files directly
+                        in the user's browser to reduce unnecessary
+                        uploads.
+                    </p>
+
+                    <div class="tech-points">
+
+                        <span>Responsive Design</span>
+
+                        <span>Modern Web Technologies</span>
+
+                        <span>User-Friendly Interface</span>
+
+                        <span>Privacy-Conscious Approach</span>
+
+                        <span>Continuous Improvement</span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
 
         <!-- CONTACT -->
-        <section class="about-content">
 
-            <h2>Contact Us</h2>
+        <section class="section">
 
-            <p>
-                Have a question, suggestion or feedback?
-                We would be happy to hear from you.
-            </p>
+            <div class="container">
 
-            <p>
-                Please visit our Contact Us page for communication
-                details.
-            </p>
+                <div class="contact-card">
 
-            <a href="contact.html" class="about-contact-link">
-                Visit Contact Us →
-            </a>
+                    <h2>Let's Connect</h2>
+
+                    <p>
+                        Have a question, suggestion or feedback?
+                        We would love to hear from you.
+                    </p>
+
+                    <a href="contact.html" class="contact-btn">
+                        Contact Toolaxa →
+                    </a>
+
+                </div>
+
+            </div>
 
         </section>
-
-
-        <!-- BACK TO HOME -->
-        <div class="about-bottom">
-
-            <a href="index.html" class="about-home-btn">
-                ← Back to Toolaxa Homepage
-            </a>
-
-        </div>
 
     </main>
 
 
     <!-- FOOTER -->
-    <footer class="about-footer">
 
-        <div class="about-footer-inner">
+    <footer class="footer">
+
+        <div class="footer-inner">
 
             <div>
-                <div class="about-footer-brand">
+
+                <div class="footer-brand">
                     Tool<span>axa</span>
                 </div>
 
-                <p>Your Everyday Online Tools, All in One Place.</p>
+                <p class="footer-description">
+                    Smart Digital Solutions. Simple Everyday Tools.
+                </p>
+
             </div>
 
-            <nav class="about-footer-links">
+
+            <nav class="footer-links"
+                 aria-label="Footer navigation">
 
                 <a href="index.html">Home</a>
 
@@ -689,11 +1444,16 @@
 
         </div>
 
-        <div class="about-copyright">
-            © 2026 Toolaxa. All Rights Reserved. Powered by Mr. Rajan.
+
+        <div class="copyright">
+
+            © 2026 Toolaxa. All Rights Reserved.
+            Powered by Mr. Rajan.
+
         </div>
 
     </footer>
+
 
 </body>
 </html>
