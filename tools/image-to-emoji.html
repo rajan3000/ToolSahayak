@@ -1,0 +1,1371 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics - Toolaxa -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+<title>Image to Emoji Converter Online Free - Toolaxa</title>
+<meta name="description" content="Convert any photo into beautiful emoji art and emoji grid online for free. Copy emoji art, download PNG, and create website-ready emoji images in 128, 256 and 512 pixel sizes.">
+<meta name="keywords" content="image to emoji converter, photo to emoji, emoji art generator, emoji mosaic maker, image to emoji online, emoji grid generator, photo emoji art, Toolaxa">
+<meta name="author" content="Toolaxa">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563eb">
+
+<link rel="canonical" href="https://YOUR-DOMAIN.com/tools/image-to-emoji.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image to Emoji Converter - Toolaxa">
+<meta property="og:description" content="Turn your photos into creative emoji art and download as PNG.">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/tools/image-to-emoji.html">
+<meta property="og:site_name" content="Toolaxa">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image to Emoji Converter - Toolaxa">
+<meta name="twitter:description" content="Create emoji art and emoji grid from your photos online.">
+
+<meta name="google-site-verification" content="YOUR-GOOGLE-SEARCH-CONSOLE-CODE">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image to Emoji Converter",
+  "url": "https://YOUR-DOMAIN.com/tools/image-to-emoji.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "description": "Convert images into emoji art and emoji grid. Copy emoji output and download standard-size PNG images.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Toolaxa"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --dark: #111827;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --bg: #f5f7fb;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 5%;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: -1px;
+}
+
+.brand span {
+  color: #111827;
+}
+
+.top-tag {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hero {
+  text-align: center;
+  padding: 35px 15px 25px;
+}
+
+.hero h1 {
+  font-size: clamp(25px, 4vw, 36px);
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: auto;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 16px 45px;
+  margin: auto;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 21px;
+  box-shadow: 0 5px 20px rgba(15,23,42,.035);
+  min-width: 0;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.section-title span {
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field {
+  margin-bottom: 17px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.field input[type="file"],
+.field select {
+  width: 100%;
+  border: 1px solid #dbe2ea;
+  border-radius: 9px;
+  padding: 11px;
+  font-size: 12px;
+  background: white;
+  color: #334155;
+}
+
+.field input[type="file"] {
+  background: #f8fafc;
+}
+
+.field select:focus {
+  outline: 2px solid #bfdbfe;
+  border-color: #2563eb;
+}
+
+/* PROFESSIONAL UPLOAD BOX */
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 190px;
+  padding: 28px 18px;
+  box-sizing: border-box;
+  border: 2px dashed #8b9cf7;
+  border-radius: 16px;
+  background: #f7f8ff;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.upload-box:hover,
+.upload-box.dragover {
+  border: 2px dashed #2563eb;
+  background: #eef2ff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .09);
+}
+
+.upload-box:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .14);
+}
+
+.upload-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 13px;
+  border: 1px solid #dbe3ff;
+  border-radius: 16px;
+  background: #e9edff;
+  font-size: 29px;
+  line-height: 1;
+}
+
+.upload-box strong {
+  display: block;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.upload-box small {
+  display: block;
+  color: #64748b;
+  margin-top: 7px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.upload-box input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.mode-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mode-option {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 8px;
+  background: white;
+  cursor: pointer;
+  text-align: center;
+  transition: .2s;
+}
+
+.mode-option.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.mode-option .mode-icon {
+  font-size: 23px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.mode-option strong {
+  font-size: 11px;
+}
+
+.mode-option small {
+  display: block;
+  font-size: 9px;
+  margin-top: 4px;
+  color: #64748b;
+}
+
+.range-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.range-row output {
+  color: #2563eb;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.helper {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-top: 7px;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 15px;
+  font-size: 12px;
+  font-weight: 800;
+  width: 100%;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.primary-btn:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.secondary-btn {
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: #dbeafe;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.action-grid button {
+  min-width: 0;
+}
+
+.preview-panel {
+  min-height: 520px;
+}
+
+.preview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.preview-heading h2 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.live-tag {
+  font-size: 10px;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 5px 9px;
+  border-radius: 30px;
+  font-weight: 800;
+}
+
+.canvas-stage {
+  background:
+    linear-gradient(45deg, #edf0f5 25%, transparent 25%),
+    linear-gradient(-45deg, #edf0f5 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #edf0f5 75%),
+    linear-gradient(-45deg, transparent 75%, #edf0f5 75%);
+  background-size: 18px 18px;
+  background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  min-height: 350px;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+#resultCanvas {
+  display: none;
+  max-width: 100%;
+  max-height: 520px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 5px 20px rgba(15,23,42,.12);
+  background: white;
+}
+
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  padding: 45px 15px;
+}
+
+.empty-state .empty-icon {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.empty-state strong {
+  display: block;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.empty-state p {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.preview-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #64748b;
+  font-size: 11px;
+  margin-top: 13px;
+}
+
+.status {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.notice {
+  margin-top: 17px;
+  padding: 11px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1e40af;
+  border-radius: 9px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.feature {
+  padding: 17px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.feature .icon {
+  font-size: 23px;
+}
+
+.feature strong {
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 5px;
+}
+
+.feature p {
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer {
+  background: white;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 22px 10px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer strong {
+  color: #2563eb;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background: #111827;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-size: 12px;
+  z-index: 9999;
+  transition: .3s;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+
+.toast.show {
+  transform: translate(-50%, 0);
+}
+
+@media(max-width: 850px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    min-height: auto;
+  }
+}
+
+@media(max-width: 520px) {
+  .upload-box {
+    min-height: 170px;
+    padding: 23px 12px;
+    border-radius: 14px;
+  }
+
+  .upload-box strong {
+    font-size: 13px;
+  }
+
+  .topbar {
+    padding: 13px 15px;
+  }
+
+  .top-tag {
+    font-size: 9px;
+  }
+
+  .hero {
+    padding: 27px 13px 20px;
+  }
+
+  .container {
+    padding: 0 10px 30px;
+  }
+
+  .panel {
+    padding: 15px 12px;
+  }
+
+  .canvas-stage {
+    min-height: 270px;
+    padding: 10px;
+  }
+
+  #resultCanvas {
+    max-height: 380px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">Tool<span>axa</span></div>
+  <div class="top-tag">FREE ONLINE IMAGE TOOLS</div>
+</header>
+
+<section class="hero">
+  <h1>Image to Emoji Converter</h1>
+  <p>Turn your favorite photos into creative emoji art and colorful emoji grids. Copy your emoji creation or download a high-quality PNG for your website.</p>
+</section>
+
+<main class="container">
+
+<div class="main-grid">
+
+<!-- SETTINGS -->
+<section class="panel">
+
+  <h2 class="section-title"><span>01</span> Upload Image</h2>
+
+  <label class="upload-box" for="imageUpload" aria-label="Upload an image">
+    <span class="upload-icon" aria-hidden="true">📸</span>
+    <strong>Click to Upload Your Image</strong>
+    <small>Drag &amp; drop your image here</small>
+    <small>JPG, PNG or WEBP · Maximum 10 MB</small>
+    <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/webp">
+  </label>
+
+  <p class="helper" id="fileInfo">Your image is processed in your browser. It is not uploaded to a server.</p>
+
+  <div style="height:18px"></div>
+
+  <h2 class="section-title"><span>02</span> Choose Conversion Style</h2>
+
+  <div class="mode-options">
+    <button type="button" class="mode-option active" data-mode="art">
+      <span class="mode-icon">😀</span>
+      <strong>Emoji Art</strong>
+      <small>Emoji character mosaic</small>
+    </button>
+
+    <button type="button" class="mode-option" data-mode="grid">
+      <span class="mode-icon">🟡</span>
+      <strong>Emoji Grid</strong>
+      <small>Color-based emoji tiles</small>
+    </button>
+  </div>
+
+  <div style="height:20px"></div>
+
+  <h2 class="section-title"><span>03</span> Customize Output</h2>
+
+  <div class="field">
+    <label for="outputSize">Website / Download Size</label>
+    <select id="outputSize">
+      <option value="128">128 × 128 px - Small Icon</option>
+      <option value="256" selected>256 × 256 px - Website Standard</option>
+      <option value="512">512 × 512 px - High Quality</option>
+    </select>
+    <p class="helper">Square PNG output. Your photo is fitted proportionally inside the canvas.</p>
+  </div>
+
+  <div class="field">
+    <div class="range-row">
+      <label for="density">Emoji Density</label>
+      <output id="densityValue">16</output>
+    </div>
+    <input type="range" id="density" min="6" max="32" value="16" step="1">
+    <p class="helper">Higher density creates smaller emoji characters and more detail.</p>
+  </div>
+
+  <div class="field">
+    <label for="emojiSet">Emoji Collection</label>
+    <select id="emojiSet">
+      <option value="faces">Smileys & Faces</option>
+      <option value="mixed" selected>Mixed Emojis</option>
+      <option value="nature">Nature & Objects</option>
+      <option value="hearts">Hearts & Symbols</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="backgroundColor">Background Color</label>
+    <input type="color" id="backgroundColor" value="#ffffff" style="width:100%;height:42px;border:1px solid #dbe2ea;border-radius:8px;padding:4px;background:white;">
+  </div>
+
+  <button class="primary-btn" id="generateBtn">✨ Generate Emoji Art</button>
+
+  <div class="action-grid">
+    <button class="secondary-btn" id="copyEmojiBtn" disabled>📋 Copy Emoji</button>
+    <button class="secondary-btn" id="downloadBtn" disabled>⬇ Download PNG</button>
+    <button class="secondary-btn" id="copyHtmlBtn" disabled style="grid-column:1/-1;">💻 Copy HTML Code</button>
+  </div>
+
+  <div class="notice">
+    <strong>Privacy:</strong> Image conversion happens locally in your browser. Your uploaded photo is not sent to Toolaxa or an external server.
+  </div>
+
+</section>
+
+<!-- PREVIEW -->
+<section class="panel preview-panel">
+
+  <div class="preview-heading">
+    <h2>Emoji Preview</h2>
+    <span class="live-tag">● LIVE RESULT</span>
+  </div>
+
+  <div class="canvas-stage">
+
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">😀</div>
+      <strong>Your Emoji Art Will Appear Here</strong>
+      <p>Upload an image and click Generate Emoji Art to see your result.</p>
+    </div>
+
+    <canvas id="resultCanvas"></canvas>
+
+  </div>
+
+  <div class="preview-info">
+    <span id="outputInfo">Output: Not generated</span>
+    <span class="status" id="statusText">Ready</span>
+  </div>
+
+  <div class="notice">
+    <strong>Website Size Guide</strong><br>
+    128 × 128 px: Small icons and compact UI elements.<br>
+    256 × 256 px: General website graphics and profile images.<br>
+    512 × 512 px: High-quality website images and larger displays.
+  </div>
+
+</section>
+
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+
+  <div class="feature">
+    <div class="icon">😀</div>
+    <strong>Emoji Art</strong>
+    <p>Transform your photo into a creative composition made from emoji characters.</p>
+  </div>
+
+  <div class="feature">
+    <div class="icon">🎨</div>
+    <strong>Color Emoji Grid</strong>
+    <p>Match emoji tiles to the colors of your uploaded picture.</p>
+  </div>
+
+  <div class="feature">
+    <div class="icon">📥</div>
+    <strong>PNG Download</strong>
+    <p>Export your creation in 128, 256 or 512 pixel square dimensions.</p>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  Free Online Tools by <strong>Toolaxa</strong> | Create Smarter, Work Faster.
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ELEMENTS AND APP STATE */
+
+const $ = id => document.getElementById(id);
+
+const imageUpload = $("imageUpload");
+const resultCanvas = $("resultCanvas");
+const ctx = resultCanvas.getContext("2d", { willReadFrequently: true });
+
+let uploadedImage = null;
+let currentMode = "art";
+let currentEmojiText = "";
+let isGenerated = false;
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+/* EMOJI COLLECTIONS */
+
+const emojiCollections = {
+  faces: [
+    { e: "⬛", c: "#111111" },
+    { e: "😎", c: "#222222" },
+    { e: "😐", c: "#808080" },
+    { e: "😀", c: "#f5d442" },
+    { e: "😃", c: "#ffca28" },
+    { e: "😄", c: "#ffd54f" },
+    { e: "🙂", c: "#ffb74d" },
+    { e: "😊", c: "#ff9800" },
+    { e: "😍", c: "#e91e63" },
+    { e: "🥰", c: "#ec407a" },
+    { e: "😡", c: "#e53935" },
+    { e: "😢", c: "#42a5f5" },
+    { e: "😱", c: "#ab47bc" },
+    { e: "🤢", c: "#8bc34a" }
+  ],
+
+  mixed: [
+    { e: "⬛", c: "#111111" },
+    { e: "🌑", c: "#343434" },
+    { e: "🌫️", c: "#9e9e9e" },
+    { e: "☁️", c: "#eeeeee" },
+    { e: "🌞", c: "#ffca28" },
+    { e: "🍋", c: "#fdd835" },
+    { e: "🍊", c: "#fb8c00" },
+    { e: "🍎", c: "#e53935" },
+    { e: "🍓", c: "#d81b60" },
+    { e: "💜", c: "#8e24aa" },
+    { e: "💙", c: "#1e88e5" },
+    { e: "🌊", c: "#039be5" },
+    { e: "💚", c: "#43a047" },
+    { e: "🌿", c: "#7cb342" },
+    { e: "🤎", c: "#795548" },
+    { e: "🌸", c: "#f48fb1" },
+    { e: "⭐", c: "#ffc107" },
+    { e: "🔥", c: "#ef6c00" },
+    { e: "🤍", c: "#ffffff" },
+    { e: "🩵", c: "#80deea" }
+  ],
+
+  nature: [
+    { e: "🌑", c: "#202124" },
+    { e: "🪨", c: "#777777" },
+    { e: "☁️", c: "#eeeeee" },
+    { e: "🌞", c: "#ffca28" },
+    { e: "🍋", c: "#fdd835" },
+    { e: "🍊", c: "#fb8c00" },
+    { e: "🌹", c: "#e53935" },
+    { e: "🌺", c: "#ec407a" },
+    { e: "🍇", c: "#8e24aa" },
+    { e: "🌊", c: "#039be5" },
+    { e: "💧", c: "#42a5f5" },
+    { e: "🌳", c: "#2e7d32" },
+    { e: "🍀", c: "#66bb6a" },
+    { e: "🌿", c: "#9ccc65" },
+    { e: "🪵", c: "#795548" },
+    { e: "🌸", c: "#f48fb1" }
+  ],
+
+  hearts: [
+    { e: "🖤", c: "#212121" },
+    { e: "🤍", c: "#eeeeee" },
+    { e: "❤️", c: "#e53935" },
+    { e: "🩷", c: "#f48fb1" },
+    { e: "🧡", c: "#fb8c00" },
+    { e: "💛", c: "#fdd835" },
+    { e: "💚", c: "#43a047" },
+    { e: "🩵", c: "#4fc3f7" },
+    { e: "💙", c: "#1e88e5" },
+    { e: "💜", c: "#8e24aa" },
+    { e: "🤎", c: "#795548" },
+    { e: "💖", c: "#ec407a" },
+    { e: "⭐", c: "#ffc107" },
+    { e: "✨", c: "#fff176" }
+  ]
+};
+
+/* BRIGHTNESS EMOJI MAPPING */
+
+const brightnessEmojis = [
+  "⬛", "🌑", "😎", "🌫️", "😐", "🙂",
+  "😊", "😀", "😃", "😄", "🌞"
+];
+
+/* TOAST */
+
+let toastTimeout;
+
+function showToast(message) {
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimeout);
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+/* IMAGE UPLOAD */
+
+imageUpload.addEventListener("change", event => {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    showToast("Please select a valid image.");
+    imageUpload.value = "";
+    return;
+  }
+
+  if (file.size > MAX_FILE_SIZE) {
+    showToast("Image size must be below 10 MB.");
+    imageUpload.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = event => {
+    const img = new Image();
+
+    img.onload = () => {
+      uploadedImage = img;
+
+      $("fileInfo").textContent =
+        `${file.name} · ${img.naturalWidth} × ${img.naturalHeight} px`;
+
+      $("statusText").textContent = "Image loaded";
+      showToast("Image uploaded successfully.");
+
+      generateEmojiArt();
+    };
+
+    img.onerror = () => {
+      uploadedImage = null;
+      showToast("Unable to load this image.");
+    };
+
+    img.src = event.target.result;
+  };
+
+  reader.onerror = () => {
+    showToast("Unable to read this image file.");
+  };
+
+  reader.readAsDataURL(file);
+});
+
+/* DRAG AND DROP UPLOAD */
+
+const uploadBox = document.querySelector(".upload-box");
+
+["dragenter", "dragover"].forEach(eventName => {
+  uploadBox.addEventListener(eventName, event => {
+    event.preventDefault();
+    uploadBox.classList.add("dragover");
+  });
+});
+
+["dragleave", "drop"].forEach(eventName => {
+  uploadBox.addEventListener(eventName, event => {
+    event.preventDefault();
+    uploadBox.classList.remove("dragover");
+  });
+});
+
+uploadBox.addEventListener("drop", event => {
+  const files = event.dataTransfer.files;
+
+  if (!files || !files.length) return;
+
+  imageUpload.files = files;
+  imageUpload.dispatchEvent(new Event("change", { bubbles: true }));
+});
+
+/* MODE SELECTION */
+
+document.querySelectorAll(".mode-option").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".mode-option").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    currentMode = button.dataset.mode;
+
+    if (currentMode === "art") {
+      $("generateBtn").textContent = "✨ Generate Emoji Art";
+    } else {
+      $("generateBtn").textContent = "🎨 Generate Emoji Grid";
+    }
+
+    if (uploadedImage) {
+      generateEmojiArt();
+    }
+  });
+});
+
+/* COLOR DISTANCE */
+
+function colorDistance(r1, g1, b1, r2, g2, b2) {
+  const rMean = (r1 + r2) / 2;
+
+  const r = r1 - r2;
+  const g = g1 - g2;
+  const b = b1 - b2;
+
+  return Math.sqrt(
+    (2 + rMean / 256) * r * r +
+    4 * g * g +
+    (2 + (255 - rMean) / 256) * b * b
+  );
+}
+
+function getNearestEmoji(r, g, b) {
+  const set = emojiCollections[$("emojiSet").value] || emojiCollections.mixed;
+
+  let nearest = set[0];
+  let minimum = Infinity;
+
+  for (const item of set) {
+    const hex = item.c.replace("#", "");
+
+    const er = parseInt(hex.substring(0, 2), 16);
+    const eg = parseInt(hex.substring(2, 4), 16);
+    const eb = parseInt(hex.substring(4, 6), 16);
+
+    const distance = colorDistance(r, g, b, er, eg, eb);
+
+    if (distance < minimum) {
+      minimum = distance;
+      nearest = item;
+    }
+  }
+
+  return nearest.e;
+}
+
+function getBrightness(r, g, b) {
+  return (r * 0.299 + g * 0.587 + b * 0.114);
+}
+
+function getBrightnessEmoji(brightness) {
+  const index = Math.max(
+    0,
+    Math.min(
+      brightnessEmojis.length - 1,
+      Math.round(brightness / 255 * (brightnessEmojis.length - 1))
+    )
+  );
+
+  return brightnessEmojis[index];
+}
+
+/* IMAGE SAMPLING */
+
+function prepareSampleGrid(img, columns, rows, background) {
+  const sampleCanvas = document.createElement("canvas");
+  sampleCanvas.width = columns;
+  sampleCanvas.height = rows;
+
+  const sampleCtx = sampleCanvas.getContext("2d", {
+    willReadFrequently: true
+  });
+
+  sampleCtx.fillStyle = background;
+  sampleCtx.fillRect(0, 0, columns, rows);
+
+  const imageRatio = img.naturalWidth / img.naturalHeight;
+  const gridRatio = columns / rows;
+
+  let drawWidth;
+  let drawHeight;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  if (imageRatio > gridRatio) {
+    drawWidth = columns;
+    drawHeight = columns / imageRatio;
+    offsetY = (rows - drawHeight) / 2;
+  } else {
+    drawHeight = rows;
+    drawWidth = rows * imageRatio;
+    offsetX = (columns - drawWidth) / 2;
+  }
+
+  sampleCtx.drawImage(
+    img,
+    offsetX,
+    offsetY,
+    drawWidth,
+    drawHeight
+  );
+
+  return sampleCtx.getImageData(0, 0, columns, rows);
+}
+
+/* GENERATE EMOJI OUTPUT */
+
+function generateEmojiArt() {
+  if (!uploadedImage) {
+    showToast("Please upload an image first.");
+    return;
+  }
+
+  const generateBtn = $("generateBtn");
+
+  try {
+    generateBtn.disabled = true;
+    $("statusText").textContent = "Generating...";
+
+    const size = Number($("outputSize").value);
+    const density = Number($("density").value);
+    const background = $("backgroundColor").value;
+
+    const columns = density;
+    const rows = density;
+
+    const cellWidth = size / columns;
+    const cellHeight = size / rows;
+
+    const sample = prepareSampleGrid(
+      uploadedImage,
+      columns,
+      rows,
+      background
+    );
+
+    const data = sample.data;
+
+    resultCanvas.width = size;
+    resultCanvas.height = size;
+
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, size, size);
+
+    const emojiFontSize = Math.max(
+      5,
+      Math.floor(Math.min(cellWidth, cellHeight) * 0.95)
+    );
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = `${emojiFontSize}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+
+    const textLines = [];
+
+    for (let y = 0; y < rows; y++) {
+      let line = "";
+
+      for (let x = 0; x < columns; x++) {
+        const index = (y * columns + x) * 4;
+
+        const r = data[index];
+        const g = data[index + 1];
+        const b = data[index + 2];
+        const alpha = data[index + 3];
+
+        let emoji;
+
+        if (alpha < 10) {
+          emoji = " ";
+        } else if (currentMode === "art") {
+          const brightness = getBrightness(r, g, b);
+          emoji = getBrightnessEmoji(brightness);
+        } else {
+          emoji = getNearestEmoji(r, g, b);
+        }
+
+        line += emoji;
+
+        if (emoji !== " ") {
+          ctx.fillText(
+            emoji,
+            x * cellWidth + cellWidth / 2,
+            y * cellHeight + cellHeight / 2
+          );
+        }
+      }
+
+      textLines.push(line);
+    }
+
+    currentEmojiText = textLines.join("\n");
+
+    resultCanvas.style.display = "block";
+    $("emptyState").style.display = "none";
+
+    $("outputInfo").textContent =
+      `Output: ${size} × ${size} px · ${columns} × ${rows} emoji cells`;
+
+    $("statusText").textContent = "Generated successfully";
+
+    $("copyEmojiBtn").disabled = false;
+    $("downloadBtn").disabled = false;
+    $("copyHtmlBtn").disabled = false;
+
+    isGenerated = true;
+
+    showToast("Emoji art generated successfully.");
+
+  } catch (error) {
+    console.error("Emoji generation error:", error);
+    showToast("Unable to generate emoji art. Please try another image.");
+    $("statusText").textContent = "Generation failed";
+  } finally {
+    generateBtn.disabled = false;
+  }
+}
+
+/* GENERATE BUTTON */
+
+$("generateBtn").addEventListener("click", generateEmojiArt);
+
+/* SETTINGS CHANGE */
+
+["outputSize", "density", "emojiSet", "backgroundColor"].forEach(id => {
+  $(id).addEventListener("input", () => {
+    $("densityValue").textContent = $("density").value;
+
+    if (uploadedImage) {
+      generateEmojiArt();
+    }
+  });
+
+  $(id).addEventListener("change", () => {
+    if (uploadedImage) {
+      generateEmojiArt();
+    }
+  });
+});
+
+/* COPY TEXT */
+
+async function copyText(text, successMessage = "Copied successfully.") {
+  if (!text) {
+    showToast("No content available to copy.");
+    return false;
+  }
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textarea = document.createElement("textarea");
+
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      const success = document.execCommand("copy");
+      textarea.remove();
+
+      if (!success) {
+        throw new Error("Copy failed");
+      }
+    }
+
+    showToast(successMessage);
+    return true;
+
+  } catch (error) {
+    console.error(error);
+    showToast("Copy failed. Please use HTTPS or localhost.");
+    return false;
+  }
+}
+
+/* COPY EMOJI */
+
+$("copyEmojiBtn").addEventListener("click", () => {
+  copyText(currentEmojiText, "Emoji copied successfully.");
+});
+
+/* DOWNLOAD PNG */
+
+$("downloadBtn").addEventListener("click", () => {
+  if (!isGenerated) {
+    showToast("Generate emoji art first.");
+    return;
+  }
+
+  try {
+    resultCanvas.toBlob(blob => {
+      if (!blob) {
+        showToast("Unable to create PNG file.");
+        return;
+      }
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      const size = resultCanvas.width;
+      const mode = currentMode === "art" ? "emoji-art" : "emoji-grid";
+
+      link.href = url;
+      link.download = `toolaxa-${mode}-${size}x${size}.png`;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+      showToast("PNG downloaded successfully.");
+
+    }, "image/png");
+
+  } catch (error) {
+    console.error(error);
+    showToast("PNG download failed.");
+  }
+});
+
+/* COPY HTML EMBED CODE */
+
+$("copyHtmlBtn").addEventListener("click", async () => {
+  if (!isGenerated) {
+    showToast("Generate emoji art first.");
+    return;
+  }
+
+  try {
+    const imageData = resultCanvas.toDataURL("image/png");
+    const size = resultCanvas.width;
+
+    const htmlCode =
+`<!-- Toolaxa Emoji Art -->
+<img
+  src="${imageData}"
+  alt="Emoji Art"
+  width="${size}"
+  height="${size}"
+  loading="lazy"
+  style="max-width:100%;height:auto;display:block;"
+>`;
+
+    await copyText(htmlCode, "HTML embed code copied.");
+
+  } catch (error) {
+    console.error(error);
+    showToast("Unable to create HTML code.");
+  }
+});
+
+/* INITIALIZATION */
+
+$("densityValue").textContent = $("density").value;
+
+</script>
+
+</body>
+</html>

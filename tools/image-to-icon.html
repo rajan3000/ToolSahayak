@@ -1,0 +1,1468 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics - Toolaxa -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+    <title>Image to Icon Converter - Free Online PNG Icon Maker | Toolaxa</title>
+    <meta name="description" content="Convert images into professional website icons, favicons and app icons online for free. Create PNG icons in multiple sizes with custom background, rounded corners and padding using Toolaxa.">
+    <meta name="keywords" content="image to icon converter, image to favicon, favicon generator, PNG icon maker, website icon generator, app icon maker, online icon converter, Toolaxa">
+    <meta name="author" content="Toolaxa">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#635bff">
+
+    <!-- Replace with your actual website URL -->
+    <link rel="canonical" href="https://toolaxa.com/tools/image-to-icon.html">
+
+    <!-- Google Search Console: Replace YOUR_VERIFICATION_CODE -->
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Image to Icon Converter - Toolaxa">
+    <meta property="og:description" content="Create website icons, favicons and app icons from your images. Free online icon converter.">
+    <meta property="og:url" content="https://toolaxa.com/tools/image-to-icon.html">
+    <meta property="og:site_name" content="Toolaxa">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Image to Icon Converter - Toolaxa">
+    <meta name="twitter:description" content="Convert your images into website icons and app icons for free.">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image to Icon Converter",
+        "url": "https://toolaxa.com/tools/image-to-icon.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "description": "Free online tool to convert images into website icons, favicons and app icons in multiple sizes.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Toolaxa",
+            "url": "https://toolaxa.com/"
+        }
+    }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #635bff;
+            --primary-dark: #5046e5;
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #172033;
+            --muted: #697386;
+            --border: #e5e9f2;
+            --success: #159b68;
+            --shadow: 0 8px 30px rgba(30, 40, 80, .07);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .topbar {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 850;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -.7px;
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #7168ff, #5146e5);
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 21px;
+        }
+
+        .nav-tag {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 34px 20px 60px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #eeedff;
+            color: var(--primary-dark);
+            padding: 6px 13px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 750;
+            margin-bottom: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(27px, 4vw, 39px);
+            line-height: 1.2;
+            letter-spacing: -1.1px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: auto;
+            font-size: 15px;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            box-shadow: var(--shadow);
+            padding: 23px;
+            min-width: 0;
+        }
+
+        .panel-title {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 17px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .step-number {
+            width: 27px;
+            height: 27px;
+            display: grid;
+            place-items: center;
+            background: #eeedff;
+            color: var(--primary);
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .upload-area {
+            display: block;
+            width: 100%;
+            min-height: 190px;
+            border: 2px dashed #a5b4fc;
+            border-radius: 16px;
+            padding: 30px 18px;
+            text-align: center;
+            background: #f8f9ff;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.25s ease;
+            outline: none;
+        }
+
+            .upload-area:hover,
+            .upload-area.dragover {
+                border: 2px dashed #635bff;
+                background: #f0efff;
+                box-shadow: 0 0 0 4px rgba(99, 91, 255, 0.08);
+            }
+
+        .upload-area:focus-within {
+            border-color: #635bff;
+            box-shadow: 0 0 0 4px rgba(99, 91, 255, 0.12);
+
+        }
+
+        .upload-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 13px;
+            display: grid;
+            place-items: center;
+            background: #eeedff;
+            border: 1px solid #dedbff;
+            border-radius: 15px;
+            font-size: 28px;
+        }
+
+        .upload-area h3 {
+            font-size: 15px;
+            font-weight: 750;
+            color: #172033;
+            margin-bottom: 6px;
+        }
+
+        .upload-area p {
+            font-size: 12px;
+            color: #697386;
+            margin: 0;
+        }
+
+        .upload-area input {
+            display: none;
+        }
+
+        .file-info {
+            display: none;
+            margin-top: 12px;
+            padding: 11px;
+            border-radius: 10px;
+            background: #f1f8f5;
+            color: #16784f;
+            font-size: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        .section-divider {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 22px 0;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .field select,
+        .field input[type="number"] {
+            width: 100%;
+            height: 43px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 0 12px;
+            background: white;
+            outline: none;
+            color: var(--text);
+        }
+
+        .field select:focus,
+        .field input:focus {
+            border-color: var(--primary);
+        }
+
+        .field input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary);
+        }
+
+        .field input[type="color"] {
+            width: 55px;
+            height: 38px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .color-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .color-value {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .range-info {
+            display: flex;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f1f5;
+        }
+
+        .toggle-row:last-child {
+            border-bottom: 0;
+        }
+
+        .toggle-row span {
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .toggle-row input {
+            width: 17px;
+            height: 17px;
+            accent-color: var(--primary);
+        }
+
+        .preview-panel {
+            position: sticky;
+            top: 88px;
+        }
+
+        .preview-stage {
+            min-height: 300px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background-color: #f8f9fc;
+            background-image:
+                linear-gradient(45deg, #e9ebf1 25%, transparent 25%),
+                linear-gradient(-45deg, #e9ebf1 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #e9ebf1 75%),
+                linear-gradient(-45deg, transparent 75%, #e9ebf1 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+            display: grid;
+            place-items: center;
+            padding: 25px;
+            overflow: hidden;
+        }
+
+        #previewCanvas {
+            width: min(220px, 65%);
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: contain;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .13);
+            border-radius: 10px;
+            display: block;
+        }
+
+        .empty-preview {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .empty-preview div {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .preview-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 13px 0 18px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .preview-meta strong {
+            color: var(--text);
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-weight: 750;
+            font-size: 13px;
+            transition: .2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: #eeedff;
+            color: var(--primary-dark);
+        }
+
+        .btn-light {
+            background: #f1f3f8;
+            color: #344054;
+        }
+
+        .btn-success {
+            background: #e8f7ef;
+            color: #138254;
+        }
+
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .button-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .button-stack .full {
+            grid-column: 1 / -1;
+        }
+
+        .sizes-heading {
+            font-size: 14px;
+            font-weight: 800;
+            margin: 20px 0 10px;
+        }
+
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .size-item {
+            background: #fafbfe;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            text-align: center;
+            padding: 10px 4px;
+        }
+
+        .size-item strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .size-item small {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .info-section {
+            margin-top: 28px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 23px;
+        }
+
+        .info-section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-section p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 13px;
+            margin-top: 18px;
+        }
+
+        .info-card {
+            padding: 15px;
+            background: #f8f9fc;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+        }
+
+        .info-card div {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .info-card strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .info-card p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+
+        .faq-item:last-child {
+            border: 0;
+        }
+
+        .faq-item h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .faq-item p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 22px 15px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer strong {
+            color: var(--primary);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            background: #172033;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 13px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .2);
+            opacity: 0;
+            pointer-events: none;
+            transition: .25s;
+            z-index: 100;
+            max-width: calc(100% - 30px);
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .loading {
+            display: none;
+            color: var(--primary);
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        @media(max-width: 850px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-panel {
+                position: static;
+            }
+        }
+
+        @media(max-width: 560px) {
+            .container {
+                padding: 23px 12px 40px;
+            }
+
+            .nav {
+                padding: 11px 14px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-tag {
+                font-size: 11px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .preview-stage {
+                min-height: 245px;
+            }
+
+            .size-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-stack {
+                grid-template-columns: 1fr;
+            }
+
+            .button-stack .full {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <nav class="nav">
+        <a href="../index.html" class="logo">
+            <span class="logo-mark">T</span>
+            Toolaxa
+        </a>
+        <span class="nav-tag">Free Online Tools</span>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <div class="hero-badge">✦ FREE ONLINE IMAGE TOOL</div>
+        <h1>Image to Icon Converter</h1>
+        <p>Convert your images into professional website icons, favicons and app icons. Customize, preview and download multiple sizes instantly.</p>
+    </section>
+
+    <div class="workspace">
+
+        <!-- LEFT: SETTINGS -->
+        <section class="panel">
+
+            <h2 class="panel-title">
+                <span class="step-number">1</span>
+                Upload Your Image
+            </h2>
+
+            <label class="upload-area" id="uploadArea" for="imageInput">
+                <div class="upload-icon">🖼️</div>
+                <h3>Click to upload or drag & drop</h3>
+                <p>JPG, PNG, WEBP · Maximum file size 10 MB</p>
+                <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp">
+            </label>
+
+            <div class="file-info" id="fileInfo"></div>
+
+            <hr class="section-divider">
+
+            <h2 class="panel-title">
+                <span class="step-number">2</span>
+                Customize Your Icon
+            </h2>
+
+            <div class="field">
+                <label for="outputSize">Output Size</label>
+                <select id="outputSize">
+                    <option value="16">16 × 16 px - Small Favicon</option>
+                    <option value="32">32 × 32 px - Standard Favicon</option>
+                    <option value="48">48 × 48 px - Browser Icon</option>
+                    <option value="64">64 × 64 px</option>
+                    <option value="128" selected>128 × 128 px - Website Icon</option>
+                    <option value="180">180 × 180 px - Apple Touch Icon</option>
+                    <option value="192">192 × 192 px - Android Icon</option>
+                    <option value="256">256 × 256 px - High Resolution</option>
+                    <option value="512">512 × 512 px - App Icon</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="fitMode">Image Fit</label>
+                <select id="fitMode">
+                    <option value="contain">Fit - Show Full Image</option>
+                    <option value="cover" selected>Cover - Fill Entire Icon</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="backgroundColor">Background Color</label>
+                <div class="color-row">
+                    <input type="color" id="backgroundColor" value="#ffffff">
+                    <span class="color-value" id="colorValue">#ffffff</span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="paddingRange">Image Padding</label>
+                <input type="range" id="paddingRange" min="0" max="30" value="5">
+                <div class="range-info">
+                    <span>0%</span>
+                    <strong id="paddingValue">5%</strong>
+                    <span>30%</span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="radiusRange">Rounded Corners</label>
+                <input type="range" id="radiusRange" min="0" max="50" value="15">
+                <div class="range-info">
+                    <span>Square</span>
+                    <strong id="radiusValue">15%</strong>
+                    <span>Round</span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="borderRange">Border Thickness</label>
+                <input type="range" id="borderRange" min="0" max="10" value="0">
+                <div class="range-info">
+                    <span>None</span>
+                    <strong id="borderValue">0 px</strong>
+                    <span>10 px</span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="borderColor">Border Color</label>
+                <div class="color-row">
+                    <input type="color" id="borderColor" value="#635bff">
+                    <span class="color-value" id="borderColorValue">#635bff</span>
+                </div>
+            </div>
+
+            <div class="toggle-row">
+                <span>Transparent Background</span>
+                <input type="checkbox" id="transparentBg">
+            </div>
+
+            <div class="toggle-row">
+                <span>Enable Rounded Corners</span>
+                <input type="checkbox" id="roundedEnabled" checked>
+            </div>
+
+            <div class="toggle-row">
+                <span>Enable Border</span>
+                <input type="checkbox" id="borderEnabled">
+            </div>
+
+            <div style="margin-top:20px">
+                <button class="btn btn-primary" id="resetBtn" style="width:100%">
+                    ↺ Reset Settings
+                </button>
+            </div>
+
+        </section>
+
+        <!-- RIGHT: PREVIEW -->
+        <section class="panel preview-panel">
+
+            <h2 class="panel-title">
+                <span class="step-number">3</span>
+                Icon Preview
+            </h2>
+
+            <div class="preview-stage" id="previewStage">
+
+                <div class="empty-preview" id="emptyPreview">
+                    <div>🎨</div>
+                    Upload an image to see your icon preview
+                </div>
+
+                <canvas id="previewCanvas" width="512" height="512" hidden></canvas>
+
+            </div>
+
+            <div class="preview-meta">
+                <span>Selected Size: <strong id="selectedSizeText">128 × 128 px</strong></span>
+                <span>Format: <strong>PNG</strong></span>
+            </div>
+
+            <div class="button-stack">
+                <button class="btn btn-primary" id="downloadBtn" disabled>
+                    ↓ Download PNG
+                </button>
+
+                <button class="btn btn-secondary" id="copyImageBtn" disabled>
+                    ▣ Copy Icon Image
+                </button>
+
+                <button class="btn btn-success full" id="downloadZipBtn" disabled>
+                    ⇩ Download All Sizes (ZIP)
+                </button>
+
+                <button class="btn btn-light full" id="copyHtmlBtn" disabled>
+                    &lt;/&gt; Copy HTML Embed Code
+                </button>
+
+                <button class="btn btn-light full" id="copyFaviconBtn" disabled>
+                    ◈ Copy Favicon HTML Code
+                </button>
+            </div>
+
+            <div class="loading" id="loadingText">Preparing your icons, please wait...</div>
+
+            <div class="sizes-heading">Available Standard Sizes</div>
+
+            <div class="size-grid">
+                <div class="size-item"><strong>16 × 16</strong><small>Small Favicon</small></div>
+                <div class="size-item"><strong>32 × 32</strong><small>Favicon</small></div>
+                <div class="size-item"><strong>48 × 48</strong><small>Browser</small></div>
+                <div class="size-item"><strong>128 × 128</strong><small>Website</small></div>
+                <div class="size-item"><strong>180 × 180</strong><small>Apple</small></div>
+                <div class="size-item"><strong>192 × 192</strong><small>Android</small></div>
+                <div class="size-item"><strong>256 × 256</strong><small>High Res</small></div>
+                <div class="size-item"><strong>512 × 512</strong><small>App Icon</small></div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- INFORMATION -->
+    <section class="info-section">
+        <h2>How to Use Image to Icon Converter?</h2>
+        <p>Create your website icon in just a few simple steps. No design software or technical knowledge required.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div>📤</div>
+                <strong>1. Upload Image</strong>
+                <p>Select your JPG, PNG or WEBP image from your device.</p>
+            </div>
+            <div class="info-card">
+                <div>🎨</div>
+                <strong>2. Customize Icon</strong>
+                <p>Adjust image fit, background, padding, border and rounded corners.</p>
+            </div>
+            <div class="info-card">
+                <div>⬇️</div>
+                <strong>3. Download & Use</strong>
+                <p>Download your icon or copy HTML code to use it on your website.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>1. What is an Image to Icon Converter?</h3>
+            <p>An Image to Icon Converter transforms regular images into square PNG icons suitable for websites, browsers and applications.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Which image formats are supported?</h3>
+            <p>You can upload JPG, JPEG, PNG and WEBP images up to 10 MB.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. Which icon sizes are available?</h3>
+            <p>You can create icons in 16, 32, 48, 64, 128, 180, 192, 256 and 512 pixel sizes.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. How do I use the generated icon on my website?</h3>
+            <p>Download the PNG icon and upload it to your website, or use the Copy HTML Embed Code option to get ready-to-use HTML.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. Is this tool free?</h3>
+            <p>Yes. Toolaxa Image to Icon Converter is free to use. You can create and download multiple icon sizes without registration.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Are my images uploaded to a server?</h3>
+            <p>No. Image processing happens locally in your browser. Your selected image is not sent to our server.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>© <span id="year"></span> <strong>Toolaxa</strong>. All Rights Reserved.</p>
+    <p style="margin-top:5px">Free Online Tools to Make Your Work Easier.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+    "use strict";
+
+    const $ = (id) => document.getElementById(id);
+
+    const imageInput = $("imageInput");
+    const uploadArea = $("uploadArea");
+    const previewCanvas = $("previewCanvas");
+    const previewCtx = previewCanvas.getContext("2d", { alpha: true });
+
+    let sourceImage = null;
+    let sourceFileName = "toolaxa-icon";
+    let toastTimer = null;
+
+    const standardSizes = [16, 32, 48, 64, 128, 180, 192, 256, 512];
+
+    $("year").textContent = new Date().getFullYear();
+
+    function showToast(message) {
+        const toast = $("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2600);
+    }
+
+    function safeFileName(name) {
+        return name
+            .replace(/\.[^/.]+$/, "")
+            .replace(/[^a-z0-9_-]/gi, "-")
+            .replace(/-+/g, "-")
+            .replace(/^-|-$/g, "")
+            .toLowerCase() || "toolaxa-icon";
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+        const r = Math.max(0, Math.min(radius, width / 2, height / 2));
+
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + width - r, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+        ctx.lineTo(x + width, y + height - r);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+        ctx.lineTo(x + r, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+    }
+
+    function getSettings() {
+        return {
+            size: Number($("outputSize").value),
+            fit: $("fitMode").value,
+            background: $("backgroundColor").value,
+            padding: Number($("paddingRange").value),
+            radius: Number($("radiusRange").value),
+            border: Number($("borderRange").value),
+            borderColor: $("borderColor").value,
+            transparent: $("transparentBg").checked,
+            rounded: $("roundedEnabled").checked,
+            borderEnabled: $("borderEnabled").checked
+        };
+    }
+
+    function createIconCanvas(size) {
+        if (!sourceImage) {
+            throw new Error("Please upload an image first.");
+        }
+
+        const settings = getSettings();
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+
+        const ctx = canvas.getContext("2d", { alpha: true });
+
+        const padding = size * settings.padding / 100;
+        const borderWidth = settings.borderEnabled
+            ? size * settings.border / 100
+            : 0;
+
+        const inset = borderWidth / 2;
+        const x = inset;
+        const y = inset;
+        const boxSize = size - borderWidth * 2;
+
+        const cornerRadius = settings.rounded
+            ? boxSize * settings.radius / 100
+            : 0;
+
+        // Clip entire icon to rounded square.
+        ctx.save();
+
+        if (settings.rounded) {
+            roundRect(ctx, x, y, boxSize, boxSize, cornerRadius);
+            ctx.clip();
+        }
+
+        // Background
+        if (!settings.transparent) {
+            ctx.fillStyle = settings.background;
+            ctx.fillRect(0, 0, size, size);
+        }
+
+        // Image drawing area
+        const innerX = x + padding;
+        const innerY = y + padding;
+        const innerSize = Math.max(1, boxSize - padding * 2);
+
+        const imageWidth = sourceImage.naturalWidth || sourceImage.width;
+        const imageHeight = sourceImage.naturalHeight || sourceImage.height;
+
+        const imageRatio = imageWidth / imageHeight;
+        const areaRatio = innerSize / innerSize;
+
+        let drawWidth;
+        let drawHeight;
+        let drawX;
+        let drawY;
+
+        if (settings.fit === "cover") {
+            if (imageRatio > areaRatio) {
+                drawHeight = innerSize;
+                drawWidth = innerSize * imageRatio;
+            } else {
+                drawWidth = innerSize;
+                drawHeight = innerSize / imageRatio;
+            }
+        } else {
+            if (imageRatio > areaRatio) {
+                drawWidth = innerSize;
+                drawHeight = innerSize / imageRatio;
+            } else {
+                drawHeight = innerSize;
+                drawWidth = innerSize * imageRatio;
+            }
+        }
+
+        drawX = innerX + (innerSize - drawWidth) / 2;
+        drawY = innerY + (innerSize - drawHeight) / 2;
+
+        // Transparent background + contain mode keeps the image centered.
+        ctx.drawImage(sourceImage, drawX, drawY, drawWidth, drawHeight);
+
+        ctx.restore();
+
+        // Border
+        if (settings.borderEnabled && settings.border > 0) {
+            ctx.save();
+            ctx.strokeStyle = settings.borderColor;
+            ctx.lineWidth = borderWidth;
+
+            if (settings.rounded) {
+                roundRect(
+                    ctx,
+                    x + borderWidth / 2,
+                    y + borderWidth / 2,
+                    boxSize - borderWidth,
+                    boxSize - borderWidth,
+                    Math.max(0, cornerRadius - borderWidth / 2)
+                );
+            } else {
+                ctx.beginPath();
+                ctx.rect(
+                    x + borderWidth / 2,
+                    y + borderWidth / 2,
+                    boxSize - borderWidth,
+                    boxSize - borderWidth
+                );
+            }
+
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        return canvas;
+    }
+
+    function renderPreview() {
+        if (!sourceImage) return;
+
+        const size = getSettings().size;
+        const generated = createIconCanvas(size);
+
+        previewCanvas.width = size;
+        previewCanvas.height = size;
+
+        previewCtx.clearRect(0, 0, size, size);
+        previewCtx.drawImage(generated, 0, 0);
+
+        previewCanvas.hidden = false;
+        $("emptyPreview").hidden = true;
+        $("selectedSizeText").textContent = `${size} × ${size} px`;
+
+        $("downloadBtn").disabled = false;
+        $("copyImageBtn").disabled = false;
+        $("downloadZipBtn").disabled = false;
+        $("copyHtmlBtn").disabled = false;
+        $("copyFaviconBtn").disabled = false;
+    }
+
+    function handleFile(file) {
+        if (!file) return;
+
+        const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+        if (!allowedTypes.includes(file.type)) {
+            showToast("Please upload a JPG, PNG or WEBP image.");
+            return;
+        }
+
+        if (file.size > 10 * 1024 * 1024) {
+            showToast("File size must be less than 10 MB.");
+            return;
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+        const img = new Image();
+
+        img.onload = () => {
+            sourceImage = img;
+            sourceFileName = safeFileName(file.name);
+
+            $("fileInfo").style.display = "block";
+            $("fileInfo").textContent =
+                `✓ ${file.name} · ${img.naturalWidth} × ${img.naturalHeight} px`;
+
+            renderPreview();
+            showToast("Image uploaded successfully.");
+
+            URL.revokeObjectURL(objectUrl);
+        };
+
+        img.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            showToast("Unable to read this image. Please try another file.");
+        };
+
+        img.src = objectUrl;
+    }
+
+    imageInput.addEventListener("change", (event) => {
+        handleFile(event.target.files[0]);
+    });
+
+    uploadArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        uploadArea.classList.add("dragover");
+    });
+
+    uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+    });
+
+    uploadArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        uploadArea.classList.remove("dragover");
+
+        const file = event.dataTransfer.files[0];
+        handleFile(file);
+    });
+
+    function updateRangeLabels() {
+        $("paddingValue").textContent = $("paddingRange").value + "%";
+        $("radiusValue").textContent = $("radiusRange").value + "%";
+        $("borderValue").textContent = $("borderRange").value + " px";
+        $("colorValue").textContent = $("backgroundColor").value;
+        $("borderColorValue").textContent = $("borderColor").value;
+    }
+
+    const controlIds = [
+        "outputSize",
+        "fitMode",
+        "backgroundColor",
+        "paddingRange",
+        "radiusRange",
+        "borderRange",
+        "borderColor",
+        "transparentBg",
+        "roundedEnabled",
+        "borderEnabled"
+    ];
+
+    controlIds.forEach((id) => {
+        $(id).addEventListener("input", () => {
+            updateRangeLabels();
+            renderPreview();
+        });
+
+        $(id).addEventListener("change", () => {
+            updateRangeLabels();
+            renderPreview();
+        });
+    });
+
+    $("resetBtn").addEventListener("click", () => {
+        $("outputSize").value = "128";
+        $("fitMode").value = "cover";
+        $("backgroundColor").value = "#ffffff";
+        $("paddingRange").value = "5";
+        $("radiusRange").value = "15";
+        $("borderRange").value = "0";
+        $("borderColor").value = "#635bff";
+        $("transparentBg").checked = false;
+        $("roundedEnabled").checked = true;
+        $("borderEnabled").checked = false;
+
+        updateRangeLabels();
+        renderPreview();
+        showToast("Settings have been reset.");
+    });
+
+    function downloadCanvas(canvas, filename) {
+        canvas.toBlob((blob) => {
+            if (!blob) {
+                showToast("Could not create PNG. Please try again.");
+                return;
+            }
+
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }, "image/png");
+    }
+
+    $("downloadBtn").addEventListener("click", () => {
+        if (!sourceImage) return;
+
+        const size = getSettings().size;
+        const canvas = createIconCanvas(size);
+
+        downloadCanvas(canvas, `${sourceFileName}-${size}x${size}.png`);
+        showToast("PNG icon download started.");
+    });
+
+    async function canvasToBlob(canvas) {
+        return new Promise((resolve, reject) => {
+            canvas.toBlob((blob) => {
+                if (blob) resolve(blob);
+                else reject(new Error("PNG generation failed."));
+            }, "image/png");
+        });
+    }
+
+    $("downloadZipBtn").addEventListener("click", async () => {
+        if (!sourceImage) return;
+
+        if (typeof JSZip === "undefined") {
+            showToast("ZIP library could not load. Check your internet connection.");
+            return;
+        }
+
+        try {
+            $("loadingText").style.display = "block";
+            $("downloadZipBtn").disabled = true;
+
+            const zip = new JSZip();
+            const folder = zip.folder("Toolaxa-Icons");
+
+            for (const size of standardSizes) {
+                const canvas = createIconCanvas(size);
+                const blob = await canvasToBlob(canvas);
+
+                folder.file(
+                    `${sourceFileName}-${size}x${size}.png`,
+                    blob
+                );
+            }
+
+            const zipBlob = await zip.generateAsync({ type: "blob" });
+            const url = URL.createObjectURL(zipBlob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `${sourceFileName}-all-icons.zip`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+            showToast("All icon sizes downloaded successfully.");
+        } catch (error) {
+            console.error(error);
+            showToast("Unable to create ZIP. Please try again.");
+        } finally {
+            $("loadingText").style.display = "none";
+            $("downloadZipBtn").disabled = !sourceImage;
+        }
+    });
+
+    async function copyText(text, successMessage) {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+            } else {
+                const textarea = document.createElement("textarea");
+                textarea.value = text;
+                textarea.style.position = "fixed";
+                textarea.style.opacity = "0";
+                document.body.appendChild(textarea);
+                textarea.select();
+
+                const successful = document.execCommand("copy");
+                textarea.remove();
+
+                if (!successful) {
+                    throw new Error("Copy failed");
+                }
+            }
+
+            showToast(successMessage);
+        } catch (error) {
+            console.error(error);
+            showToast("Copy failed. Please try again.");
+        }
+    }
+
+    $("copyImageBtn").addEventListener("click", async () => {
+        if (!sourceImage) return;
+
+        try {
+            if (!navigator.clipboard || !window.ClipboardItem) {
+                showToast("Image copy is not supported in this browser. Use Download PNG.");
+                return;
+            }
+
+            const canvas = createIconCanvas(getSettings().size);
+            const blob = await canvasToBlob(canvas);
+
+            await navigator.clipboard.write([
+                new ClipboardItem({ "image/png": blob })
+            ]);
+
+            showToast("Icon image copied to clipboard.");
+        } catch (error) {
+            console.error(error);
+            showToast("Image copy not supported here. Try Download PNG.");
+        }
+    });
+
+    function canvasToDataURL(canvas) {
+        return canvas.toDataURL("image/png");
+    }
+
+    $("copyHtmlBtn").addEventListener("click", async () => {
+        if (!sourceImage) return;
+
+        const canvas = createIconCanvas(getSettings().size);
+        const dataUrl = canvasToDataURL(canvas);
+
+        const html = `<!-- Toolaxa Generated Icon -->
+<img
+    src="${dataUrl}"
+    alt="Website Icon"
+    width="${getSettings().size}"
+    height="${getSettings().size}"
+    style="width:${getSettings().size}px;height:${getSettings().size}px;object-fit:contain;"
+>`;
+
+        await copyText(html, "HTML embed code copied successfully.");
+    });
+
+    $("copyFaviconBtn").addEventListener("click", async () => {
+        if (!sourceImage) return;
+
+        const icon16 = canvasToDataURL(createIconCanvas(16));
+        const icon32 = canvasToDataURL(createIconCanvas(32));
+        const icon180 = canvasToDataURL(createIconCanvas(180));
+
+        const faviconHTML = `<!-- Toolaxa Generated Favicon Code -->
+<link rel="icon" type="image/png" sizes="16x16" href="${icon16}">
+<link rel="icon" type="image/png" sizes="32x32" href="${icon32}">
+<link rel="apple-touch-icon" sizes="180x180" href="${icon180}">`;
+
+        await copyText(
+            faviconHTML,
+            "Favicon HTML code copied successfully."
+        );
+    });
+
+    updateRangeLabels();
+
+})();
+</script>
+
+</body>
+</html>

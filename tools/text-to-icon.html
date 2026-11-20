@@ -1,0 +1,1349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics - Toolaxa -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05KPNRM3X5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-05KPNRM3X5');
+    </script>
+
+<title>Text to Icon Maker Online Free - Toolaxa</title>
+<meta name="description" content="Create professional icons from text, letters, initials, numbers and emojis with Toolaxa Text to Icon Maker. Customize colors, shapes, fonts and download website-ready PNG icons for free.">
+<meta name="keywords" content="text to icon maker, text to icon converter, create icon from text, favicon maker, initials icon generator, emoji icon maker, text icon generator, Toolaxa">
+<meta name="author" content="Toolaxa">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563eb">
+
+<link rel="canonical" href="https://YOUR-DOMAIN.com/tools/text-to-icon.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Text to Icon Maker - Toolaxa">
+<meta property="og:description" content="Create custom icons from text, letters and emojis. Download free PNG icons in standard website sizes.">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/tools/text-to-icon.html">
+<meta property="og:site_name" content="Toolaxa">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Text to Icon Maker - Toolaxa">
+<meta name="twitter:description" content="Create professional text icons online for free.">
+
+<!-- Replace with your Google Search Console verification code -->
+<meta name="google-site-verification" content="YOUR-GOOGLE-SEARCH-CONSOLE-CODE">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text to Icon Maker",
+  "url": "https://YOUR-DOMAIN.com/tools/text-to-icon.html",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "description": "Create custom icons from text, letters, initials, numbers and emojis. Download standard-size PNG icons.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Toolaxa"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&family=Roboto:wght@400;500;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --dark: #111827;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --bg: #f5f7fb;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 5%;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: -1px;
+}
+
+.brand span {
+  color: #111827;
+}
+
+.top-tag {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hero {
+  text-align: center;
+  padding: 35px 15px 25px;
+}
+
+.hero h1 {
+  font-size: clamp(25px, 4vw, 36px);
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 680px;
+  margin: auto;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 16px 45px;
+  margin: auto;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 21px;
+  box-shadow: 0 5px 20px rgba(15,23,42,.035);
+  min-width: 0;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.section-title span {
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.field {
+  margin-bottom: 17px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.field input[type="text"],
+.field select {
+  width: 100%;
+  border: 1px solid #dbe2ea;
+  border-radius: 9px;
+  padding: 11px 12px;
+  font-size: 13px;
+  background: white;
+  color: #334155;
+  outline: none;
+}
+
+.field input[type="text"]:focus,
+.field select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+}
+
+.field input[type="color"] {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #dbe2ea;
+  border-radius: 9px;
+  padding: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.field input[type="range"] {
+  width: 100%;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.helper {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-top: 7px;
+}
+
+.range-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.range-row output {
+  color: #2563eb;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.shape-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.shape-option {
+  border: 1px solid #dbe2ea;
+  background: white;
+  color: #475569;
+  padding: 11px 5px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.shape-option.active {
+  border: 2px solid #2563eb;
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.shape-symbol {
+  display: block;
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.toggle-row input {
+  width: 17px;
+  height: 17px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 13px 15px;
+  font-size: 12px;
+  font-weight: 800;
+  width: 100%;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.secondary-btn {
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-radius: 9px;
+  padding: 12px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.secondary-btn:hover {
+  background: #dbeafe;
+}
+
+.secondary-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.action-grid button {
+  min-width: 0;
+}
+
+.preview-panel {
+  min-height: 550px;
+}
+
+.preview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.preview-heading h2 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.live-tag {
+  font-size: 10px;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 5px 9px;
+  border-radius: 30px;
+  font-weight: 800;
+}
+
+.canvas-stage {
+  background-color: #f8fafc;
+  background-image:
+    linear-gradient(45deg, #e8edf4 25%, transparent 25%),
+    linear-gradient(-45deg, #e8edf4 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e8edf4 75%),
+    linear-gradient(-45deg, transparent 75%, #e8edf4 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+  min-height: 380px;
+  padding: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+#iconCanvas {
+  display: block;
+  width: 256px;
+  height: 256px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 6px 25px rgba(15,23,42,.12);
+  border-radius: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  padding: 45px 15px;
+}
+
+.empty-state .empty-icon {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.empty-state strong {
+  display: block;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.empty-state p {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.preview-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #64748b;
+  font-size: 11px;
+  margin-top: 13px;
+}
+
+.status {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.presets-title {
+  font-size: 12px;
+  font-weight: 800;
+  margin: 20px 0 10px;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 9px;
+}
+
+.preset {
+  aspect-ratio: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  transition: .2s;
+}
+
+.preset:hover {
+  transform: translateY(-2px);
+  border-color: #2563eb;
+}
+
+.notice {
+  margin-top: 17px;
+  padding: 12px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1e40af;
+  border-radius: 9px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.feature {
+  padding: 17px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.feature .icon {
+  font-size: 23px;
+}
+
+.feature strong {
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 5px;
+}
+
+.feature p {
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.faq {
+  margin-top: 25px;
+  background: white;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.faq h2 {
+  font-size: 18px;
+  margin: 0 0 15px;
+}
+
+.faq-item {
+  padding: 13px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.faq-item:last-child {
+  border-bottom: 0;
+}
+
+.faq-item strong {
+  font-size: 13px;
+}
+
+.faq-item p {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 6px 0 0;
+}
+
+.footer {
+  background: white;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 22px 10px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer strong {
+  color: #2563eb;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background: #111827;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-size: 12px;
+  z-index: 9999;
+  transition: .3s;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+
+.toast.show {
+  transform: translate(-50%, 0);
+}
+
+@media(max-width: 850px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    min-height: auto;
+  }
+}
+
+@media(max-width: 520px) {
+  .topbar {
+    padding: 13px 15px;
+  }
+
+  .top-tag {
+    font-size: 9px;
+  }
+
+  .hero {
+    padding: 27px 13px 20px;
+  }
+
+  .container {
+    padding: 0 10px 30px;
+  }
+
+  .panel {
+    padding: 15px 12px;
+  }
+
+  .canvas-stage {
+    min-height: 300px;
+    padding: 14px;
+  }
+
+  #iconCanvas {
+    width: min(256px, 100%);
+    height: auto;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .presets {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
+
+  .preset {
+    font-size: 17px;
+  }
+
+  .faq {
+    padding: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">Tool<span>axa</span></div>
+  <div class="top-tag">FREE ONLINE DESIGN TOOLS</div>
+</header>
+
+<section class="hero">
+  <h1>Text to Icon Maker</h1>
+  <p>Create beautiful icons from letters, names, initials, numbers and emojis. Customize your design and download professional PNG icons for your website, app or favicon.</p>
+</section>
+
+<main class="container">
+
+<div class="main-grid">
+
+<!-- ICON SETTINGS -->
+<section class="panel">
+
+  <h2 class="section-title"><span>01</span> Enter Your Text</h2>
+
+  <div class="field">
+    <label for="iconText">Text, Letter, Initials or Emoji</label>
+    <input type="text" id="iconText" value="T" maxlength="6" placeholder="Example: T, AB, 123, 🚀" autocomplete="off">
+    <p class="helper">Enter up to 6 characters. You can also use emojis.</p>
+  </div>
+
+  <div class="field">
+    <label for="fontFamily">Font Style</label>
+    <select id="fontFamily">
+      <option value="Inter">Inter - Modern</option>
+      <option value="Arial">Arial - Classic</option>
+      <option value="Nunito">Nunito - Rounded</option>
+      <option value="Roboto">Roboto - Clean</option>
+      <option value="Georgia">Georgia - Serif</option>
+      <option value="Playfair Display">Playfair Display - Elegant</option>
+      <option value="Impact">Impact - Bold</option>
+      <option value="monospace">Monospace - Tech</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="outputSize">Icon Size</label>
+    <select id="outputSize">
+      <option value="16">16 × 16 px - Browser Favicon</option>
+      <option value="32">32 × 32 px - Favicon Standard</option>
+      <option value="48">48 × 48 px - Small Icon</option>
+      <option value="64">64 × 64 px - UI Icon</option>
+      <option value="128">128 × 128 px - App Icon</option>
+      <option value="180">180 × 180 px - Apple Touch Icon</option>
+      <option value="192">192 × 192 px - Android Icon</option>
+      <option value="256" selected>256 × 256 px - Website Icon</option>
+      <option value="512">512 × 512 px - High Quality</option>
+    </select>
+    <p class="helper">Choose the exact PNG dimensions required by your website or application.</p>
+  </div>
+
+  <div style="height:5px"></div>
+
+  <h2 class="section-title"><span>02</span> Icon Appearance</h2>
+
+  <div class="field">
+    <label>Icon Shape</label>
+    <div class="shape-options">
+      <button type="button" class="shape-option active" data-shape="rounded">
+        <span class="shape-symbol">▣</span>
+        Rounded
+      </button>
+      <button type="button" class="shape-option" data-shape="square">
+        <span class="shape-symbol">■</span>
+        Square
+      </button>
+      <button type="button" class="shape-option" data-shape="circle">
+        <span class="shape-symbol">●</span>
+        Circle
+      </button>
+    </div>
+  </div>
+
+  <div class="color-grid">
+    <div class="field">
+      <label for="backgroundColor">Background Color</label>
+      <input type="color" id="backgroundColor" value="#2563eb">
+    </div>
+
+    <div class="field">
+      <label for="textColor">Text Color</label>
+      <input type="color" id="textColor" value="#ffffff">
+    </div>
+
+    <div class="field">
+      <label for="gradientColor">Second Color</label>
+      <input type="color" id="gradientColor" value="#7c3aed">
+    </div>
+
+    <div class="field">
+      <label for="borderColor">Border Color</label>
+      <input type="color" id="borderColor" value="#1d4ed8">
+    </div>
+  </div>
+
+  <label class="toggle-row">
+    <span>Use Gradient Background</span>
+    <input type="checkbox" id="useGradient">
+  </label>
+
+  <label class="toggle-row">
+    <span>Transparent Background</span>
+    <input type="checkbox" id="transparentBg">
+  </label>
+
+  <div class="field">
+    <div class="range-row">
+      <label for="fontSize">Text Size</label>
+      <output id="fontSizeValue">70%</output>
+    </div>
+    <input type="range" id="fontSize" min="20" max="100" value="70">
+  </div>
+
+  <div class="field">
+    <div class="range-row">
+      <label for="cornerRadius">Corner Roundness</label>
+      <output id="cornerRadiusValue">22%</output>
+    </div>
+    <input type="range" id="cornerRadius" min="0" max="50" value="22">
+  </div>
+
+  <div class="field">
+    <div class="range-row">
+      <label for="borderWidth">Border Thickness</label>
+      <output id="borderWidthValue">0 px</output>
+    </div>
+    <input type="range" id="borderWidth" min="0" max="20" value="0">
+  </div>
+
+  <div class="field">
+    <label for="fontWeight">Text Weight</label>
+    <select id="fontWeight">
+      <option value="400">Regular</option>
+      <option value="600">Semi Bold</option>
+      <option value="700">Bold</option>
+      <option value="800" selected>Extra Bold</option>
+      <option value="900">Black</option>
+    </select>
+  </div>
+
+  <button class="primary-btn" id="generateBtn">✨ Generate Icon</button>
+
+  <div class="action-grid">
+    <button class="secondary-btn" id="downloadBtn">⬇ Download PNG</button>
+    <button class="secondary-btn" id="copyImageBtn">📋 Copy Image</button>
+    <button class="secondary-btn" id="copyHtmlBtn">💻 Copy HTML Code</button>
+    <button class="secondary-btn" id="copyFaviconBtn">🌐 Copy Favicon Code</button>
+  </div>
+
+  <div class="notice">
+    <strong>Privacy:</strong> Your icon is created directly in your browser. No text or design is uploaded to any server.
+  </div>
+
+</section>
+
+<!-- PREVIEW -->
+<section class="panel preview-panel">
+
+  <div class="preview-heading">
+    <h2>Live Icon Preview</h2>
+    <span class="live-tag">● LIVE PREVIEW</span>
+  </div>
+
+  <div class="canvas-stage">
+    <canvas id="iconCanvas" width="256" height="256"></canvas>
+  </div>
+
+  <div class="preview-info">
+    <span id="outputInfo">Output: 256 × 256 px</span>
+    <span class="status" id="statusText">Ready</span>
+  </div>
+
+  <div class="presets-title">Quick Design Presets</div>
+
+  <div class="presets">
+    <button class="preset" type="button" data-text="T" data-bg="#2563eb" data-color="#ffffff" style="background:#2563eb;color:white;" aria-label="Blue preset">T</button>
+    <button class="preset" type="button" data-text="A" data-bg="#111827" data-color="#ffffff" style="background:#111827;color:white;" aria-label="Dark preset">A</button>
+    <button class="preset" type="button" data-text="B" data-bg="#16a34a" data-color="#ffffff" style="background:#16a34a;color:white;" aria-label="Green preset">B</button>
+    <button class="preset" type="button" data-text="★" data-bg="#f59e0b" data-color="#ffffff" style="background:#f59e0b;color:white;" aria-label="Star preset">★</button>
+    <button class="preset" type="button" data-text="🚀" data-bg="#7c3aed" data-color="#ffffff" style="background:#7c3aed;color:white;" aria-label="Rocket preset">🚀</button>
+    <button class="preset" type="button" data-text="AB" data-bg="#ec4899" data-color="#ffffff" style="background:#ec4899;color:white;" aria-label="Pink preset">AB</button>
+  </div>
+
+  <div class="notice">
+    <strong>Website Icon Size Guide</strong><br>
+    16 × 16 px: Browser favicon.<br>
+    32 × 32 px: Standard favicon.<br>
+    48 × 48 px: Small website icon.<br>
+    128 × 128 px: Application icon.<br>
+    180 × 180 px: Apple touch icon.<br>
+    192 × 192 px: Android / PWA icon.<br>
+    256 × 256 px: General website graphics.<br>
+    512 × 512 px: High-resolution app and PWA icon.
+  </div>
+
+</section>
+
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+
+  <div class="feature">
+    <div class="icon">✍️</div>
+    <strong>Text & Emoji Icons</strong>
+    <p>Create icons using letters, initials, numbers, symbols and emojis.</p>
+  </div>
+
+  <div class="feature">
+    <div class="icon">🎨</div>
+    <strong>Custom Design</strong>
+    <p>Customize fonts, colors, gradient backgrounds, shapes and borders.</p>
+  </div>
+
+  <div class="feature">
+    <div class="icon">📥</div>
+    <strong>Website-Ready PNG</strong>
+    <p>Download standard-size icons for websites, apps and favicons.</p>
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <strong>1. What is a Text to Icon Maker?</strong>
+    <p>A Text to Icon Maker converts letters, words, initials, numbers and emojis into custom graphical icons.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>2. Can I create a favicon for my website?</strong>
+    <p>Yes. Select 16 × 16 or 32 × 32 pixels to create a favicon. You can also copy the generated favicon HTML code.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>3. Which download sizes are available?</strong>
+    <p>You can create PNG icons in 16, 32, 48, 64, 128, 180, 192, 256 and 512 pixel square sizes.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>4. Can I use a transparent background?</strong>
+    <p>Yes. Enable Transparent Background to create a PNG icon without a background.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>5. Is this tool free?</strong>
+    <p>Yes. Toolaxa Text to Icon Maker is free to use and processes your design in your browser.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  Free Online Tools by <strong>Toolaxa</strong> | Create Smarter, Work Faster.
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ELEMENTS */
+
+const $ = id => document.getElementById(id);
+
+const canvas = $("iconCanvas");
+const ctx = canvas.getContext("2d");
+
+let currentShape = "rounded";
+let toastTimeout;
+
+/* TOAST MESSAGE */
+
+function showToast(message) {
+  const toast = $("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimeout);
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+/* GET SETTINGS */
+
+function getSettings() {
+  return {
+    text: $("iconText").value.trim() || "T",
+    size: Number($("outputSize").value),
+    font: $("fontFamily").value,
+    fontWeight: $("fontWeight").value,
+    fontSize: Number($("fontSize").value),
+    bg: $("backgroundColor").value,
+    textColor: $("textColor").value,
+    gradientColor: $("gradientColor").value,
+    borderColor: $("borderColor").value,
+    borderWidth: Number($("borderWidth").value),
+    radius: Number($("cornerRadius").value),
+    gradient: $("useGradient").checked,
+    transparent: $("transparentBg").checked,
+    shape: currentShape
+  };
+}
+
+/* DRAW ROUNDED RECTANGLE */
+
+function roundedRectPath(context, x, y, width, height, radius) {
+  const r = Math.min(radius, width / 2, height / 2);
+
+  context.beginPath();
+  context.moveTo(x + r, y);
+  context.lineTo(x + width - r, y);
+  context.quadraticCurveTo(x + width, y, x + width, y + r);
+  context.lineTo(x + width, y + height - r);
+  context.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+  context.lineTo(x + r, y + height);
+  context.quadraticCurveTo(x, y + height, x, y + height - r);
+  context.lineTo(x, y + r);
+  context.quadraticCurveTo(x, y, x + r, y);
+  context.closePath();
+}
+
+/* DRAW ICON */
+
+function renderIcon(targetCanvas, settings) {
+  const size = settings.size;
+
+  targetCanvas.width = size;
+  targetCanvas.height = size;
+
+  const context = targetCanvas.getContext("2d");
+
+  context.clearRect(0, 0, size, size);
+
+  const borderWidth = settings.borderWidth * size / 256;
+  const inset = borderWidth / 2;
+  const boxSize = size - borderWidth;
+  const radius = settings.radius / 100 * size;
+
+  context.save();
+
+  if (settings.shape === "circle") {
+    context.beginPath();
+    context.arc(size / 2, size / 2, boxSize / 2, 0, Math.PI * 2);
+  } else if (settings.shape === "square") {
+    context.beginPath();
+    context.rect(inset, inset, boxSize, boxSize);
+  } else {
+    roundedRectPath(
+      context,
+      inset,
+      inset,
+      boxSize,
+      boxSize,
+      radius
+    );
+  }
+
+  if (!settings.transparent) {
+    if (settings.gradient) {
+      const gradient = context.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, settings.bg);
+      gradient.addColorStop(1, settings.gradientColor);
+      context.fillStyle = gradient;
+    } else {
+      context.fillStyle = settings.bg;
+    }
+
+    context.fill();
+  }
+
+  if (borderWidth > 0) {
+    context.lineWidth = borderWidth;
+    context.strokeStyle = settings.borderColor;
+    context.stroke();
+  }
+
+  context.restore();
+
+  /* TEXT RENDERING */
+
+  const text = settings.text;
+  const scale = settings.fontSize / 100;
+
+  const maxTextWidth = size * 0.82;
+  const maxTextHeight = size * 0.72;
+
+  let fontSize = size * scale;
+
+  context.save();
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+
+  const fontStack =
+    `"${settings.font}", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+
+  context.font = `${settings.fontWeight} ${fontSize}px ${fontStack}`;
+
+  let metrics = context.measureText(text);
+
+  while (
+    (metrics.width > maxTextWidth ||
+     fontSize > maxTextHeight) &&
+    fontSize > 5
+  ) {
+    fontSize -= Math.max(1, size * 0.015);
+    context.font = `${settings.fontWeight} ${fontSize}px ${fontStack}`;
+    metrics = context.measureText(text);
+  }
+
+  context.fillStyle = settings.textColor;
+  context.fillText(text, size / 2, size / 2);
+
+  context.restore();
+
+  return targetCanvas;
+}
+
+/* GENERATE ICON */
+
+function generateIcon() {
+  try {
+    const settings = getSettings();
+
+    renderIcon(canvas, settings);
+
+    canvas.style.width = "256px";
+    canvas.style.height = "256px";
+
+    $("outputInfo").textContent =
+      `Output: ${settings.size} × ${settings.size} px`;
+
+    $("statusText").textContent = "Icon generated successfully";
+
+  } catch (error) {
+    console.error("Icon generation error:", error);
+    showToast("Unable to generate icon. Please try again.");
+  }
+}
+
+/* AUTO UPDATE */
+
+const controlIds = [
+  "iconText",
+  "outputSize",
+  "fontFamily",
+  "fontWeight",
+  "fontSize",
+  "backgroundColor",
+  "textColor",
+  "gradientColor",
+  "borderColor",
+  "borderWidth",
+  "cornerRadius",
+  "useGradient",
+  "transparentBg"
+];
+
+controlIds.forEach(id => {
+  const element = $(id);
+
+  element.addEventListener("input", () => {
+    updateRangeLabels();
+    generateIcon();
+  });
+
+  element.addEventListener("change", () => {
+    updateRangeLabels();
+    generateIcon();
+  });
+});
+
+/* UPDATE RANGE LABELS */
+
+function updateRangeLabels() {
+  $("fontSizeValue").textContent = $("fontSize").value + "%";
+  $("cornerRadiusValue").textContent = $("cornerRadius").value + "%";
+  $("borderWidthValue").textContent = $("borderWidth").value + " px";
+}
+
+/* GENERATE BUTTON */
+
+$("generateBtn").addEventListener("click", () => {
+  generateIcon();
+  showToast("Icon generated successfully.");
+});
+
+/* SHAPE SELECTION */
+
+document.querySelectorAll(".shape-option").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".shape-option").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    currentShape = button.dataset.shape;
+
+    generateIcon();
+  });
+});
+
+/* QUICK PRESETS */
+
+document.querySelectorAll(".preset").forEach(button => {
+  button.addEventListener("click", () => {
+    $("iconText").value = button.dataset.text;
+    $("backgroundColor").value = button.dataset.bg;
+    $("textColor").value = button.dataset.color;
+
+    $("transparentBg").checked = false;
+    $("useGradient").checked = false;
+
+    generateIcon();
+    showToast("Design preset applied.");
+  });
+});
+
+/* CREATE PNG BLOB */
+
+function createPNGBlob(targetCanvas) {
+  return new Promise((resolve, reject) => {
+    targetCanvas.toBlob(blob => {
+      if (blob) {
+        resolve(blob);
+      } else {
+        reject(new Error("Unable to create PNG."));
+      }
+    }, "image/png");
+  });
+}
+
+/* DOWNLOAD PNG */
+
+$("downloadBtn").addEventListener("click", async () => {
+  try {
+    const blob = await createPNGBlob(canvas);
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    const size = canvas.width;
+    const text = getSettings().text.replace(/[^a-z0-9]/gi, "").slice(0, 12) || "icon";
+
+    link.href = url;
+    link.download = `toolaxa-${text}-${size}x${size}.png`;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+    showToast("PNG icon downloaded successfully.");
+
+  } catch (error) {
+    console.error(error);
+    showToast("PNG download failed.");
+  }
+});
+
+/* COPY IMAGE */
+
+$("copyImageBtn").addEventListener("click", async () => {
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      showToast("Image copy is not supported in this browser. Use Download PNG.");
+      return;
+    }
+
+    const blob = await createPNGBlob(canvas);
+
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        "image/png": blob
+      })
+    ]);
+
+    showToast("Icon image copied successfully.");
+
+  } catch (error) {
+    console.error(error);
+    showToast("Image copy failed. Use HTTPS or localhost and allow clipboard access.");
+  }
+});
+
+/* COPY HTML EMBED CODE */
+
+$("copyHtmlBtn").addEventListener("click", async () => {
+  try {
+    const dataURL = canvas.toDataURL("image/png");
+    const settings = getSettings();
+    const size = settings.size;
+
+    const htmlCode =
+`<!-- Toolaxa Text Icon -->
+<img
+  src="${dataURL}"
+  alt="${settings.text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}"
+  width="${size}"
+  height="${size}"
+  style="max-width:100%;height:auto;display:block;"
+  loading="lazy"
+>`;
+
+    await copyText(htmlCode, "HTML image code copied.");
+
+  } catch (error) {
+    console.error(error);
+    showToast("Unable to create HTML code.");
+  }
+});
+
+/* COPY FAVICON HTML CODE */
+
+$("copyFaviconBtn").addEventListener("click", async () => {
+  try {
+    const settings = getSettings();
+
+    const sizes = [16, 32, 48, 180];
+    const imageData = {};
+
+    for (const size of sizes) {
+      const tempCanvas = document.createElement("canvas");
+
+      const tempSettings = {
+        ...settings,
+        size
+      };
+
+      renderIcon(tempCanvas, tempSettings);
+      imageData[size] = tempCanvas.toDataURL("image/png");
+    }
+
+    const faviconCode =
+`<!-- Toolaxa Favicon Code -->
+<link rel="icon" type="image/png" sizes="16x16" href="${imageData[16]}">
+<link rel="icon" type="image/png" sizes="32x32" href="${imageData[32]}">
+<link rel="icon" type="image/png" sizes="48x48" href="${imageData[48]}">
+<link rel="apple-touch-icon" sizes="180x180" href="${imageData[180]}">`;
+
+    await copyText(faviconCode, "Favicon HTML code copied.");
+
+  } catch (error) {
+    console.error(error);
+    showToast("Unable to create favicon code.");
+  }
+});
+
+/* CLIPBOARD TEXT HELPER */
+
+async function copyText(text, successMessage) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textarea = document.createElement("textarea");
+
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      const copied = document.execCommand("copy");
+      textarea.remove();
+
+      if (!copied) {
+        throw new Error("Clipboard copy failed.");
+      }
+    }
+
+    showToast(successMessage);
+
+  } catch (error) {
+    console.error(error);
+    showToast("Copy failed. Please use HTTPS or localhost.");
+  }
+}
+
+/* INITIALIZATION */
+
+updateRangeLabels();
+generateIcon();
+
+</script>
+
+</body>
+</html>
