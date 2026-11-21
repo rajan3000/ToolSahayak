@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Report Maker - A4 Photo Documentation Tool</title>
+<meta name="description" content="Create professional A4 photo reports with titles, remarks, multiple images, custom page layouts, headers, footers and PDF or Word export.">
+<meta name="keywords" content="photo report maker, image report, A4 photo report, photo documentation, PDF photo report, Word photo report">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:title" content="Photo Report Maker">
+<meta property="og:description" content="Create and download professional photo reports in A4 PDF and Word formats.">
+<meta property="og:type" content="website">
+
+<link rel="stylesheet" href="css/photo-report-maker.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+</head>
+
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand-icon">T</div>
+    <div>
+      <h1>Toolaxa</h1>
+      <p>Photo Report Maker • A4 layout • PDF & Word export</p>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="top-grid">
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>📝 Report Details</h2>
+        <p>Add titles, photos and remarks to your report.</p>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="field">
+          <label for="itemTitle">Title</label>
+          <input type="text" id="itemTitle" placeholder="e.g. CCTV Camera Installation">
+        </div>
+
+        <div class="field">
+          <label for="itemRemark">Remark</label>
+          <textarea id="itemRemark" placeholder="Enter description or remark..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Attached Photos</label>
+          <label class="file-drop" for="imageInput">
+            <div class="drop-icon">📁</div>
+            <strong>Click to select images</strong>
+            <span>Select multiple photos at once</span>
+            <span>JPG, PNG, WEBP, JPEG</span>
+          </label>
+          <input type="file" id="imageInput" accept="image/*" multiple>
+          <div id="selectedFiles" class="selected-files">No images selected</div>
+        </div>
+
+        <button id="addEntriesBtn" class="btn btn-primary btn-block">
+          ＋ Add Images to Report
+        </button>
+
+        <p class="small-help">
+          After adding, you can edit titles and remarks, replace photos, or delete entries.
+        </p>
+
+        <hr class="divider">
+
+        <h3 class="section-title">📄 A4 Page Settings</h3>
+
+        <div class="settings-grid">
+          <div class="field">
+            <label for="rowsPerPage">Rows per page</label>
+            <input type="number" id="rowsPerPage" min="1" max="10" value="2">
+          </div>
+
+          <div class="field">
+            <label for="colsPerPage">Columns per page</label>
+            <input type="number" id="colsPerPage" min="1" max="5" value="2">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pageBorder">A4 Page Border</label>
+          <select id="pageBorder">
+            <option value="border-none">No Border</option>
+            <option value="border-thin" selected>Thin</option>
+            <option value="border-medium">Medium</option>
+            <option value="border-thick">Thick</option>
+            <option value="border-double">Double</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="imageFit">Image Fit</label>
+          <select id="imageFit">
+            <option value="fit-contain" selected>Contain (show full photo)</option>
+            <option value="fit-cover">Cover (fill the area)</option>
+          </select>
+        </div>
+
+        <hr class="divider">
+
+        <h3 class="section-title">🔝 Header & Footer</h3>
+
+        <div class="field">
+          <label for="reportHeader">Header Text</label>
+          <textarea id="reportHeader" rows="2" placeholder="Company name / Report title"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="reportFooter">Footer Text</label>
+          <textarea id="reportFooter" rows="2" placeholder="Project name / Prepared by / Other details"></textarea>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="showPageNumbers" checked>
+          <span>Show page numbers</span>
+        </label>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="showDate" checked>
+          <span>Show report date in footer</span>
+        </label>
+
+        <p class="small-help">
+          Download options are available directly in the A4 Report Preview section.
+        </p>
+
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>🖼️ Attached Image List</h2>
+        <p>Manage your photos, titles, remarks, and images.</p>
+      </div>
+
+      <div class="panel-body">
+        <div class="stats">
+          <div class="stat" id="totalImages">Images: 0</div>
+          <div class="stat" id="totalPages">Pages: 0</div>
+          <div class="stat" id="pageCapacity">Per page: 4</div>
+        </div>
+
+        <div id="entriesList" class="entries-list">
+          <div class="empty-state">
+            <div class="empty-icon">🖼️</div>
+            <strong>No images added yet</strong>
+            <span>Use the form on the left to add images.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="panel preview-panel">
+
+    <div class="panel-header preview-toolbar">
+
+      <div class="toolbar-left">
+        <h2>📑 A4 Report Preview</h2>
+        <span class="stat" id="previewPageCount">0 pages</span>
+      </div>
+
+      <div class="preview-zoom-controls" style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
+
+        <button type="button" id="zoomOutBtn" class="btn btn-secondary" aria-label="Zoom out">
+          −
+        </button>
+
+        <span id="zoomLevel" class="stat" style="min-width:62px;text-align:center;">
+          100%
+        </span>
+
+        <button type="button" id="zoomInBtn" class="btn btn-secondary" aria-label="Zoom in">
+          ＋
+        </button>
+
+        <button type="button" id="zoomResetBtn" class="btn btn-secondary">
+          100%
+        </button>
+
+        <button type="button" id="refreshPreviewBtn" class="btn btn-secondary">
+          ↻ Refresh
+        </button>
+
+      </div>
+
+      <div class="preview-download-controls" style="display:flex;gap:8px;flex-wrap:wrap;">
+
+        <button type="button" id="downloadPdfBtn" class="btn btn-success">
+          ⬇ Download PDF
+        </button>
+
+        <button type="button" id="downloadDocBtn" class="btn btn-dark">
+          ⬇ Download Word (.docx)
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="preview-area">
+      <div id="previewPages" class="preview-pages">
+        <div class="empty-state" style="background:white;max-width:650px;width:100%;">
+          <div class="empty-icon">📄</div>
+          <strong>Your A4 report preview will appear here</strong>
+          <span>Add images to start creating your report.</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  © 2026 Toolaxa. All Rights Reserved. | Powered by Mr. Rajan.
+</footer>
+
+<script src="js/photo-report-maker.js"></script>
+
+</body>
+</html>
