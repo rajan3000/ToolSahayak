@@ -651,6 +651,32 @@ button,input {font:inherit;}
   color:#aebbd0;
 }
 
+/* SHOW MORE / SHOW LESS */
+
+.more-tools-btn {
+  display: block;
+  margin: 25px auto 0;
+  padding: 12px 28px;
+  border: 1px solid #d6e3fb;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.more-tools-btn:hover {
+  background: #eaf2ff;
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.more-tools-btn[hidden] {
+  display: none !important;
+}
+
 /* RESPONSIVE */
 
 @media(max-width:1050px) {
@@ -890,13 +916,13 @@ button,input {font:inherit;}
       <small>Calculations</small>
     </a>
 
-    <a href="#popular" class="category">
-      <div class="cat-icon cat-blue">🔎</div>
-      <strong>SEO Tools</strong>
+    <a href="#business-tools" class="category">
+      <div class="cat-icon cat-blue">🏢</div>
+      <strong>Business Tools</strong>
       <small>Web Utilities</small>
     </a>
 
-    <a href="#popular" class="category">
+    <a href="#text-tools" class="category">
       <div class="cat-icon cat-pink">T</div>
       <strong>Text Tools</strong>
       <small>Text Utilities</small>
@@ -1040,14 +1066,6 @@ button,input {font:inherit;}
         <span class="tool-link">Use Tool →</span>
       </a>
 
-      <a href="tools/text-to-voice.html" class="tool-card"
-         data-search="text to voice speech audio">
-        <div class="tool-icon color-green">🔊</div>
-        <h3>Text to Speech</h3>
-        <p>Convert text into speech.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
-
       <a href="tools/scientific-calculator.html" class="tool-card"
          data-search="scientific calculator mathematics">
         <div class="tool-icon color-purple">🧮</div>
@@ -1179,7 +1197,7 @@ button,input {font:inherit;}
         <span class="tool-link">Use Tool →</span>
       </a>
       <a href="tools/passport-photo-maker.html" class="tool-card">
-        <div class="tool-icon color-blue">🪪</div>
+        <div class="tool-icon color-blue">👩🏻‍💼</div>
         <h3>Passport Photo Maker</h3>
         <p>Create passport-size photos.</p>
         <span class="tool-link">Use Tool →</span>
@@ -1192,7 +1210,7 @@ button,input {font:inherit;}
       </a>
       <a href="tools/image-to-emoji.html" class="tool-card">
         <div class="tool-icon color-blue">😎</div>
-        <h3>Image to Emogi</h3>
+        <h3>Image to Emoji</h3>
         <p>Create emogi and download emogi and copy link.</p>
         <span class="tool-link">Use Tool →</span>
       </a>
@@ -1202,12 +1220,7 @@ button,input {font:inherit;}
         <p>Create icon and download icon and copy link.</p>
         <span class="tool-link">Use Tool →</span>
       </a>
-      <a href="tools/text-to-icon.html" class="tool-card">
-        <div class="tool-icon color-blue">☘︎</div>
-        <h3>Text to Icon</h3>
-        <p>Create icon from image and download icon and copy link.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
+      
       <a href="photo-report-maker.html" class="tool-card">
         <div class="tool-icon color-blue">📱</div>
         <h3>Photo to Report</h3>
@@ -1230,6 +1243,36 @@ button,input {font:inherit;}
     </div>
 
     <div class="tools-grid">
+      <a href="tools/gpa-cgpa-calculator.html" class="tool-card">
+        <div class="tool-icon color-purple">🎓</div>
+        <h3>GPA / CGPA Calculator</h3>
+        <p>Calculate GPA, CGPA and percentage.</p>
+        <span class="tool-link">Use Tool →</span>
+      </a>
+      <a href="tools/density-calculator.html" class="tool-card">
+        <div class="tool-icon color-blue">🧪</div>
+        <h3>Density Calculator</h3>
+        <p>Calculate density using mass and volume.</p>
+        <span class="tool-link">Use Tool →</span>
+      </a>
+      <a href="tools/molar-mass-calculator.html" class="tool-card">
+        <div class="tool-icon color-green">⚗️</div>
+        <h3>Molar Mass Calculator</h3>
+        <p>Calculate molecular and molar mass.</p>
+        <span class="tool-link">Use Tool →</span>
+      </a>
+      <a href="tools/scientific-calculator.html" class="tool-card">
+        <div class="tool-icon color-purple">🧮</div>
+        <h3>Scientific Calculator</h3>
+        <p>Calculate trigonometry and logarithms.</p>
+        <span class="tool-link">Use Tool →</span>
+      </a>
+      <a href="tools/force-calculator.html" class="tool-card">
+        <div class="tool-icon color-orange">⚖️</div>
+        <h3>Force Calculator</h3>
+        <p>Calculate force using mass and acceleration.</p>
+        <span class="tool-link">Use Tool →</span>
+      </a>
       <a href="tools/age-calculator.html" class="tool-card">
         <div class="tool-icon color-purple">🎂</div>
         <h3>Age Calculator</h3>
@@ -1280,22 +1323,10 @@ button,input {font:inherit;}
     </div>
 
     <div class="tools-grid">
-      <a href="tools/scientific-calculator.html" class="tool-card">
-        <div class="tool-icon color-purple">🧮</div>
-        <h3>Scientific Calculator</h3>
-        <p>Calculate trigonometry and logarithms.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
       <a href="tools/speed-distance-time.html" class="tool-card">
         <div class="tool-icon color-blue">🚗</div>
         <h3>Speed, Distance & Time</h3>
         <p>Calculate speed, distance and time.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
-      <a href="tools/force-calculator.html" class="tool-card">
-        <div class="tool-icon color-orange">⚖️</div>
-        <h3>Force Calculator</h3>
-        <p>Calculate force using mass and acceleration.</p>
         <span class="tool-link">Use Tool →</span>
       </a>
       <a href="tools/percentage-marks-calculator.html" class="tool-card">
@@ -1304,28 +1335,16 @@ button,input {font:inherit;}
         <p>Calculate exam marks and percentage.</p>
         <span class="tool-link">Use Tool →</span>
       </a>
-      <a href="tools/gpa-cgpa-calculator.html" class="tool-card">
-        <div class="tool-icon color-purple">🎓</div>
-        <h3>GPA / CGPA Calculator</h3>
-        <p>Calculate GPA, CGPA and percentage.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
-      <a href="tools/density-calculator.html" class="tool-card">
-        <div class="tool-icon color-blue">🧪</div>
-        <h3>Density Calculator</h3>
-        <p>Calculate density using mass and volume.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
-      <a href="tools/molar-mass-calculator.html" class="tool-card">
-        <div class="tool-icon color-green">⚗️</div>
-        <h3>Molar Mass Calculator</h3>
-        <p>Calculate molecular and molar mass.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
       <a href="tools/temperature-converter.html" class="tool-card">
         <div class="tool-icon color-orange">🌡️</div>
         <h3>Temperature Converter</h3>
         <p>Convert Celsius, Fahrenheit and Kelvin.</p>
+        <span class="tool-link">Use Tool →</span>
+      </a>
+      <a href="tools/kmz-device-location.html" class="tool-card">
+        <div class="tool-icon color-green">🌎</div>
+        <h3>KMZ Device Location Generator</h3>
+        <p>Mark device locations on a map and export them as a KMZ file for Google Earth.</p>
         <span class="tool-link">Use Tool →</span>
       </a>
     </div>
@@ -1373,7 +1392,7 @@ button,input {font:inherit;}
 </section>
 
 <!-- BUSINESS TOOLS -->
-<section class="section soft" id="quotation-invoice">
+<section class="section soft" id="business-tools">
   <div class="container">
     <div class="section-heading">
       <span class="section-label">FOR YOUR BUSINESS</span>
@@ -1395,15 +1414,37 @@ button,input {font:inherit;}
         <span class="tool-link">Use Tool →</span>
       </a>
 
-      <a href="tools/kmz-device-location.html" class="tool-card">
-        <div class="tool-icon color-green">🌎</div>
-        <h3>KMZ Device Location Generator</h3>
-        <p>Mark GPS locations and export to Google Earth.</p>
-        <span class="tool-link">Use Tool →</span>
-      </a>
     </div>
   </div>
 </section>
+
+      <!-- TEXT TOOLS -->
+      <section class="section soft" id="text-tools">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-label">TEXT & CONTENT TOOLS</span>
+            <h2>Text Tools</h2>
+            <p>Write, edit, convert and manage text effortlessly with free online tools.</p>
+          </div>
+
+          <div class="tools-grid">
+            <a href="tools/text-to-icon.html" class="tool-card">
+              <div class="tool-icon color-blue">☘︎</div>
+              <h3>Text to Icon</h3>
+              <p>Convert text or images into icons, download them, or copy their links.</p>
+              <span class="tool-link">Use Tool →</span>
+            </a>
+            <a href="tools/text-to-voice.html" class="tool-card"
+              data-search="text to voice speech audio">
+              <div class="tool-icon color-green">🔊</div>
+              <h3>Text to Speech</h3>
+              <p>Convert text into speech.</p>
+              <span class="tool-link">Use Tool →</span>
+            </a>
+            
+          </div>
+        </div>
+      </section>
 
 <!-- WHY TOOLAXA -->
 <section class="section" id="about">
@@ -1471,16 +1512,21 @@ button,input {font:inherit;}
 </footer>
 
 <script>
+// ================================
 // MOBILE MENU
+// ================================
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", function() {
+menuBtn.addEventListener("click", function () {
   const opened = navLinks.classList.toggle("open");
+
   menuBtn.textContent = opened ? "×" : "☰";
   menuBtn.setAttribute("aria-expanded", String(opened));
-  menuBtn.setAttribute("aria-label",
-    opened ? "Close menu" : "Open menu");
+  menuBtn.setAttribute(
+    "aria-label",
+    opened ? "Close menu" : "Open menu"
+  );
 });
 
 navLinks.querySelectorAll("a").forEach(link => {
@@ -1491,43 +1537,213 @@ navLinks.querySelectorAll("a").forEach(link => {
   });
 });
 
-// TOOL SEARCH
+
+// ================================
+// SHOW MORE / SHOW LESS SETTINGS
+// ================================
+
+// Mobile and Desktop visible card limits
+const toolLimits = {
+  popular: {
+    mobile: 8,
+    desktop: 12
+  },
+
+  "image-tools": {
+    mobile: 6,
+    desktop: 8
+  },
+
+  calculators: {
+    mobile: 6,
+    desktop: 8
+  },
+
+  "education-science": {
+    mobile: 4,
+    desktop: 4
+  },
+
+  "pdf-tools": {
+    mobile: 9,
+    desktop: 11
+  },
+
+  "business-tools": {
+    mobile: 2,
+    desktop: 2
+  },
+
+  "text-tools": {
+    mobile: 2,
+    desktop: 4
+  }
+};
+
+
+// ================================
+// INITIALIZE ALL TOOL SECTIONS
+// ================================
+const toolGrids = document.querySelectorAll(".tools-grid");
+
+toolGrids.forEach(grid => {
+  const section = grid.closest("section");
+  if (!section) return;
+
+  const sectionId = section.id;
+  const limits = toolLimits[sectionId];
+
+  if (!limits) return;
+
+  const cards = Array.from(
+    grid.querySelectorAll(".tool-card")
+  );
+
+  // Empty or small sections don't need a More button
+  if (cards.length <= limits.mobile) return;
+
+  let expanded = false;
+
+  // Create More / Less button
+  const moreButton = document.createElement("button");
+
+  moreButton.type = "button";
+  moreButton.className = "more-tools-btn";
+  moreButton.textContent = "Show More Tools";
+  moreButton.setAttribute("aria-expanded", "false");
+
+  // Place button below tool grid
+  grid.insertAdjacentElement("afterend", moreButton);
+
+  function updateTools() {
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
+    const visibleLimit = isMobile
+      ? limits.mobile
+      : limits.desktop;
+
+    cards.forEach((card, index) => {
+      card.hidden = !expanded && index >= visibleLimit;
+    });
+
+    // Show button only when tools exceed the visible limit
+    moreButton.hidden = cards.length <= visibleLimit;
+
+    moreButton.textContent = expanded
+      ? "Show Less"
+      : "Show More Tools";
+
+    moreButton.setAttribute(
+      "aria-expanded",
+      String(expanded)
+    );
+  }
+
+  moreButton.addEventListener("click", function () {
+  expanded = !expanded;
+  updateTools();
+
+  // Show Less click hone par usi section par scroll kare
+  if (!expanded) {
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+});
+
+  // Update layout if device size changes
+  window.addEventListener("resize", updateTools);
+
+  updateTools();
+});
+
+
+// ================================
+// TOOL SEARCH (POPULAR SECTION)
+// ================================
 const searchForm = document.getElementById("toolSearch");
 const searchInput = document.getElementById("searchInput");
+
 const allCards = Array.from(
   document.querySelectorAll("#searchResults .tool-card")
 );
+
 const noResults = document.getElementById("noResults");
 
+const popularMoreButton = document.querySelector(
+  "#searchResults + .more-tools-btn"
+);
+
+// Get initial visible limit for popular tools
+function getPopularLimit() {
+  const isMobile = window.matchMedia("(max-width: 760px)").matches;
+  return isMobile ? 8 : 12;
+}
+
+
+// Search filter function
 function filterTools() {
   const query = searchInput.value.trim().toLowerCase();
   let found = 0;
 
   allCards.forEach(card => {
     const text = (
-      card.innerText + " " + (card.dataset.search || "")
+      card.innerText + " " +
+      (card.dataset.search || "")
     ).toLowerCase();
 
     const match = text.includes(query);
+
     card.hidden = !match;
 
     if (match) found++;
   });
 
+  // No result message
   noResults.classList.toggle("show", found === 0);
+
+  // During search, show all matching results
+  // Hide More button while searching
+  if (popularMoreButton) {
+    popularMoreButton.hidden = query !== "";
+  }
+
+  // Reset card visibility when search is cleared
+  if (query === "") {
+    const limit = getPopularLimit();
+
+    allCards.forEach((card, index) => {
+      card.hidden = index >= limit;
+    });
+  }
+
   return found;
 }
 
-searchForm.addEventListener("submit", function(event) {
+
+// Search button
+searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
+
   filterTools();
 
   document.getElementById("popular").scrollIntoView({
-    behavior:"smooth"
+    behavior: "smooth"
   });
 });
 
-searchInput.addEventListener("input", function() {
+
+// Live search reset when input is cleared
+searchInput.addEventListener("input", function () {
+  if (searchInput.value.trim() === "") {
+    filterTools();
+  }
+});
+
+
+// Update popular section on screen resize
+window.addEventListener("resize", function () {
   if (searchInput.value.trim() === "") {
     filterTools();
   }

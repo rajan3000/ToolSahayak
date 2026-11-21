@@ -10,6 +10,8 @@ let reportItems = [];
 let selectedFiles = [];
 let isExporting = false;
 let previewZoom = 1;
+let showAllAttachedImages = false;
+const ATTACHED_IMAGES_LIMIT = 9;
 
 const $ = id => document.getElementById(id);
 
@@ -52,12 +54,6 @@ addEntriesBtn.addEventListener("click", async () => {
 
   const title = $("itemTitle").value.trim();
   const remark = $("itemRemark").value.trim();
-
-  if (!title) {
-    alert("Please enter a title.");
-    $("itemTitle").focus();
-    return;
-  }
 
   addEntriesBtn.disabled = true;
   addEntriesBtn.textContent = "⏳ Adding images...";
@@ -106,6 +102,7 @@ function getSettings() {
     cols: Math.max(1, Math.min(5, parseInt($("colsPerPage").value) || 1)),
     border: $("pageBorder").value,
     fit: $("imageFit").value,
+    imageBorder: $("imageBorder").checked,
     header: $("reportHeader").value.trim(),
     footer: $("reportFooter").value.trim(),
     pageNumbers: $("showPageNumbers").checked,
@@ -118,6 +115,7 @@ function getSettings() {
   "colsPerPage",
   "pageBorder",
   "imageFit",
+  "imageBorder",
   "reportHeader",
   "reportFooter",
   "showPageNumbers",
@@ -197,6 +195,7 @@ updateZoomLabel();
 
 function renderEntriesList() {
   if (!reportItems.length) {
+    showAllAttachedImages = false;
     entriesList.innerHTML = `
       <div class="empty-state">
         <div class="empty-icon">🖼️</div>
@@ -206,14 +205,22 @@ function renderEntriesList() {
     return;
   }
 
-  entriesList.innerHTML = reportItems.map((item, index) => `
+  const visibleItems = showAllAttachedImages
+    ? reportItems
+    : reportItems.slice(0, ATTACHED_IMAGES_LIMIT);
+
+  entriesList.innerHTML = visibleItems.map((item, index) => `
     <div class="entry-row" data-index="${index}">
       <div class="entry-info">
-        <div class="entry-title">${index + 1}. ${escapeHTML(item.title)}</div>
-        <div class="entry-remark">${escapeHTML(item.remark || "No remark")}</div>
+        <div class="entry-title">
+          ${index + 1}. ${escapeHTML(item.title || "Untitled Photo")}
+        </div>
+        <div class="entry-remark">
+          ${escapeHTML(item.remark || "No remark")}
+        </div>
       </div>
 
-      <img src="${item.image}" alt="${escapeHTML(item.title)}">
+      <img src="${item.image}" alt="${escapeHTML(item.title || "Photo")}">
 
       <div class="entry-actions">
         <button type="button" class="btn btn-primary" data-action="edit" data-index="${index}">Edit</button>
@@ -223,6 +230,32 @@ function renderEntriesList() {
       </div>
     </div>
   `).join("");
+
+  // Show More / Show Less button
+  if (reportItems.length > ATTACHED_IMAGES_LIMIT) {
+    const moreButton = document.createElement("button");
+
+    moreButton.type = "button";
+    moreButton.className = "entries-more-btn";
+
+    moreButton.textContent = showAllAttachedImages
+      ? "Show Less Images ▲"
+      : `Show More Images (${reportItems.length - ATTACHED_IMAGES_LIMIT} more) ▼`;
+
+    moreButton.addEventListener("click", () => {
+      showAllAttachedImages = !showAllAttachedImages;
+      renderEntriesList();
+
+      if (!showAllAttachedImages) {
+        entriesList.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+
+    entriesList.appendChild(moreButton);
+  }
 }
 
 entriesList.addEventListener("click", e => {
@@ -290,7 +323,7 @@ entriesList.addEventListener("change", async e => {
 function createReportPage(items, pageIndex, totalPages, settings, exportMode = false) {
   const page = document.createElement("div");
 
-  page.className = `report-page ${settings.border} ${settings.fit}`;
+  page.className = `report-page ${settings.border} ${settings.fit} ${settings.imageBorder ? "" : "no-image-border"}`;
   page.dataset.page = String(pageIndex + 1);
 
   page.style.width = "210mm";
@@ -323,15 +356,22 @@ function createReportPage(items, pageIndex, totalPages, settings, exportMode = f
 
       ${items.map(item => `
         <div class="report-item">
-          <div class="report-item-title">${escapeHTML(item.title)}</div>
 
           <div class="report-image-wrap">
-            <img class="report-image" src="${item.image}" alt="${escapeHTML(item.title)}">
+            <img
+              class="report-image ${settings.imageBorder ? "" : "no-image-border"}"
+              src="${item.image}"
+              alt="${escapeHTML(item.title || "Photo")}">
           </div>
+
+          ${item.title
+            ? `<div class="report-item-title">${escapeHTML(item.title)}</div>`
+            : ""}
 
           ${item.remark
             ? `<div class="report-remark"><span class="report-remark-label">Remark:</span> ${escapeHTML(item.remark)}</div>`
             : ""}
+
         </div>
       `).join("")}
 
@@ -757,91 +797,139 @@ async function generateDirectPdf() {
       const x = marginX + col * (cellWidth + gap);
       const y = contentTop + row * (cellHeight + gap);
 
-      // Cell border
-      pdf.setDrawColor(184, 184, 184);
-      pdf.setLineWidth(0.25);
-      pdf.rect(x, y, cellWidth, cellHeight);
+      // Cell border - controlled by Image Border setting
+        if (settings.imageBorder) {
+          pdf.setDrawColor(184, 184, 184);
+          pdf.setLineWidth(0.25);
+          pdf.rect(x, y, cellWidth, cellHeight);
+        }
 
-      // Title area
-        const titleHeight = 9;
+      // =========================
+        // IMAGE, TITLE & REMARK
+        // Title will appear below image
+        // =========================
 
-        // Title background
-        pdf.setFillColor(243, 244, 246);
-        pdf.rect(x, y, cellWidth, titleHeight, "F");
+        const titleLines = [];
 
-        // Title border
-        pdf.setDrawColor(184, 184, 184);
-        pdf.setLineWidth(0.3);
-        pdf.rect(x, y, cellWidth, titleHeight, "S");
+        if (item.title) {
+          pdf.setFont("helvetica", "bold");
+          pdf.setFontSize(9);
 
-        // Title text
-        pdf.setFont("helvetica", "bold");
-        pdf.setFontSize(9);
-        pdf.setTextColor(25, 25, 25);
-
-        const titleLines = pdf.splitTextToSize(
-            item.title || "",
+          const lines = pdf.splitTextToSize(
+            item.title,
             cellWidth - 6
+          );
+
+          titleLines.push(...lines.slice(0, 2));
+        }
+
+        // Title height (below image)
+        const titleHeight = titleLines.length
+          ? Math.max(8, titleLines.length * 4 + 2)
+          : 0;
+
+        // Remark area
+        let remarkHeight = 0;
+        let remarkLines = [];
+
+        if (item.remark) {
+          pdf.setFont("helvetica", "normal");
+          pdf.setFontSize(8);
+
+          remarkLines = pdf.splitTextToSize(
+            "Remark: " + item.remark,
+            cellWidth - 5
+          );
+
+          remarkLines = remarkLines.slice(0, 4);
+
+          remarkHeight = Math.max(
+            7,
+            remarkLines.length * 3.5 + 3
+          );
+        }
+
+        // Image area
+        const imageX = x + 2;
+        const imageY = y + 2;
+        const imageWidth = cellWidth - 4;
+
+        const imageHeight = Math.max(
+          5,
+          cellHeight - titleHeight - remarkHeight - 6
         );
 
-        // Center align horizontally & vertically
-        pdf.text(
-            titleLines.slice(0, 2),
+        // Load and draw image
+        const img = await loadImageForPdf(item.image);
+
+        const imageData = getPdfImageData(
+          img,
+          imageWidth,
+          imageHeight,
+          settings.fit
+        );
+
+        pdf.addImage(
+          imageData,
+          "JPEG",
+          imageX,
+          imageY,
+          imageWidth,
+          imageHeight,
+          undefined,
+          "FAST"
+        );
+
+        // =========================
+        // TITLE BELOW IMAGE
+        // =========================
+
+        if (titleLines.length) {
+          const titleY = imageY + imageHeight + 1;
+
+          // Title background
+          pdf.setFillColor(243, 244, 246);
+          pdf.rect(
+            x + 2,
+            titleY,
+            cellWidth - 4,
+            titleHeight,
+            "F"
+          );
+
+          pdf.setFont("helvetica", "bold");
+          pdf.setFontSize(9);
+          pdf.setTextColor(25, 25, 25);
+
+          pdf.text(
+            titleLines,
             x + cellWidth / 2,
-            y + titleHeight / 2,
+            titleY + titleHeight / 2,
             {
-                align: "center",
-                baseline: "middle"
+              align: "center",
+              baseline: "middle"
             }
-        );
+          );
+        }
 
-      // Remark area
-      let remarkHeight = 0;
-      let remarkLines = [];
+        // =========================
+        // REMARK BELOW TITLE
+        // =========================
 
-      if (item.remark) {
-        pdf.setFont("helvetica", "normal");
-        pdf.setFontSize(8);
+        if (remarkLines.length) {
+          const remarkY = y + cellHeight - remarkHeight + 2;
 
-        remarkLines = pdf.splitTextToSize(
-          "Remark: " + item.remark,
-          cellWidth - 5
-        );
+          pdf.setFont("helvetica", "normal");
+          pdf.setFontSize(8);
+          pdf.setTextColor(40, 40, 40);
 
-        remarkLines = remarkLines.slice(0, 4);
-        remarkHeight = Math.max(7, remarkLines.length * 3.5 + 3);
-      }
-
-      // Image area
-      const imageX = x + 2;
-      const imageY = y + titleHeight + 2;
-      const imageWidth = cellWidth - 4;
-
-      const imageHeight = Math.max(
-        5,
-        cellHeight - titleHeight - remarkHeight - 4
-      );
-
-      // Load and draw image
-      const img = await loadImageForPdf(item.image);
-
-      const imageData = getPdfImageData(
-        img,
-        imageWidth,
-        imageHeight,
-        settings.fit
-      );
-
-      pdf.addImage(
-        imageData,
-        "JPEG",
-        imageX,
-        imageY,
-        imageWidth,
-        imageHeight,
-        undefined,
-        "FAST"
-      );
+          pdf.text(
+            remarkLines,
+            x + 2,
+            remarkY,
+            { baseline: "top" }
+          );
+        }
 
       // Remark text
       if (remarkLines.length) {
@@ -989,7 +1077,13 @@ function dataUrlToUint8Array(dataUrl) {
   return bytes;
 }
 
-async function createWordImage(item, maxWidth, maxHeight, ImageRun) {
+async function createWordImage(
+  item,
+  maxWidth,
+  maxHeight,
+  ImageRun,
+  showBorder = true
+) {
   const img = await loadImageForWord(item.image);
 
   // Maintain original image aspect ratio
@@ -1002,17 +1096,56 @@ async function createWordImage(item, maxWidth, maxHeight, ImageRun) {
   const width = Math.max(1, Math.round(img.naturalWidth * ratio));
   const height = Math.max(1, Math.round(img.naturalHeight * ratio));
 
-  const mime = item.image.substring(
+  let imageData = dataUrlToUint8Array(item.image);
+
+  let mime = item.image.substring(
     item.image.indexOf(":") + 1,
     item.image.indexOf(";")
   );
 
-  const imageType = mime.toLowerCase().includes("png")
+  let imageType = mime.toLowerCase().includes("png")
     ? "png"
     : "jpg";
 
+  // Add optional border to image itself
+  if (showBorder) {
+    const canvas = document.createElement("canvas");
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+      throw new Error("Could not prepare Word image.");
+    }
+
+    // White background
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, width, height);
+
+    // Draw image
+    ctx.drawImage(img, 0, 0, width, height);
+
+    // Draw border inside image bounds
+    ctx.strokeStyle = "#505050";
+    ctx.lineWidth = Math.max(1, Math.round(width / 500));
+    ctx.strokeRect(
+      0,
+      0,
+      width - ctx.lineWidth,
+      height - ctx.lineWidth
+    );
+
+    // Convert to PNG with border
+    const borderedDataUrl = canvas.toDataURL("image/png");
+
+    imageData = dataUrlToUint8Array(borderedDataUrl);
+    imageType = "png";
+  }
+
   return new ImageRun({
-    data: dataUrlToUint8Array(item.image),
+    data: imageData,
     transformation: {
       width,
       height
@@ -1161,28 +1294,11 @@ async function generateWordDocument() {
           item,
           maxImageWidth,
           maxImageHeight,
-          ImageRun
+          ImageRun,
+          settings.imageBorder
         );
 
         const cellContent = [];
-
-        // Photo title
-        cellContent.push(
-          new Paragraph({
-            alignment: AlignmentType.CENTER,
-            spacing: {
-              before: 80,
-              after: 120
-            },
-            children: [
-              new TextRun({
-                text: item.title || "Photo",
-                bold: true,
-                size: 20
-              })
-            ]
-          })
-        );
 
         // Embedded image with fixed dimensions
         cellContent.push(
@@ -1194,6 +1310,26 @@ async function generateWordDocument() {
             children: [wordImage]
           })
         );
+
+        // Photo title BELOW image (optional)
+              if (item.title) {
+                cellContent.push(
+                  new Paragraph({
+                    alignment: AlignmentType.CENTER,
+                    spacing: {
+                      before: 80,
+                      after: 120
+                    },
+                    children: [
+                      new TextRun({
+                        text: item.title,
+                        bold: true,
+                        size: 20
+                      })
+                    ]
+                  })
+                );
+              }
 
         // Remark
         if (item.remark) {
